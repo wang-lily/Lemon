@@ -17,9 +17,36 @@
     <script src="../js/bootstrap.min.js"></script>
 </head>
 <body>
-     <div class="container">
+     <div class="container-fulid">
          <!-- 轮播 -->
-         <div class="carousel"></div>
+          <div  id='mycar' class="carousel" data-ride='carousel'> 
+             <!-- 图片 -->
+             <div class="carousel-inner">
+                <div class="carousel-item active"><img src="../img/carousel/lb01.png" alt="" class="w-100"></div>
+                <div class="carousel-item "><img src="../img/carousel/lb02.png" alt="" class="w-100"></div>
+                <div class="carousel-item "><img src="../img/carousel/lb03.png" alt="" class="w-100"></div>
+                <div class="carousel-item "><img src="../img/carousel/lb04.png" alt="" class="w-100"></div>
+                <div class="carousel-item "><img src="../img/carousel/lb05.png" alt="" class="w-100"></div>
+            </div> 
+            <!-- 左右按钮 -->
+            <a href="#mycar" class="carousel-control-next" data-slide='next'>
+                <span class="carousel-control-next-icon"></span>
+            </a>
+            <a href="#mycar" class="carousel-control-prev" data-slide='prev'>
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+            <!-- 指示器 -->
+            <ul class="carousel-indicators">
+                <li data-slide-to="0" data-target='#mycar' class="active"> </li>
+                <li data-slide-to="1" data-target='#mycar' class="active"> </li>
+                <li data-slide-to="2" data-target='#mycar' class="active"> </li>
+                <li data-slide-to="3" data-target='#mycar' class="active"> </li>
+                <li data-slide-to="4" data-target='#mycar' class="active"> </li>
+            </ul>
+
+
+
+         </div>
          <!-- 目的地 -->
          <div class="destination"></div>
          <!-- 人气指南 -->

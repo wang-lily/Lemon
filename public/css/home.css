@@ -1,0 +1,40 @@
+/* 轮播左右箭头 */
+#mycar>a>span{
+    width: 30px;
+    height: 30px;
+}
+/* 轮播指示器 */
+#mycar .carousel-indicators li{
+    width: 10px;
+    height:10px;
+    border-radius: 50%; 
+    bottom: -16px;
+}
+#mycar .carousel-indicators .active{
+    background: #ade096;
+}
+
+@media screen and (max-width:375px){
+    #mycar>a>span{
+        width: 16px;
+        height: 16px;
+    }
+
+}
+@media screen and (min-width:375px) and (max-width:768px){
+    #mycar>a>span{
+        width: 16px;
+        height: 16px;
+    }
+}
+@media screen and (min-width:768px) and (max-width:992px){
+  
+}
+@media screen and (min-width:992px){
+   #mycar .carousel-indicators li{
+        width: 14px;
+        height:14px;
+        border-radius: 50%; 
+    }
+}
+
