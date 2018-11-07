@@ -1,0 +1,24 @@
+.bg-secondary {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+#brand {
+  height: 40px;
+}
+
+.icon-geren,
+.icon-sousuo {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+@media screen and (max-width: 992px) and (min-width: 767px) {
+  #nav-content {
+    padding: 0;
+  }
+
+  #nav-content a {
+    font-size: 14px;
+    padding: 4px;
+  }
+}
