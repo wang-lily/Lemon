@@ -1,3 +1,7 @@
+.text_muted{
+    font-size: 0.8rem;
+    color:#b4b4b4;
+}
 /* 轮播左右箭头 */
 #mycar>a>span{
     width: 2rem;
@@ -13,15 +17,45 @@
 #mycar .carousel-indicators .active{
     background: #d1e6c7;
 }
+/* 目的地 */
+.text_tab{
+    font-size: 24px;
+}
+.nav-tabs{
+    border:none ;
+} 
+.nav-tabs .nav-link {
+    border: none;
+  }
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus{
+    color: #cf2396;
+    border-bottom: 2px solid #cf2396;
+}
+.nav-tabs .nav-link{
+    color: #000;
+}
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  color: #cf2396;
+}
 
+.pop_title{
+    font-size: 24px;
+    font-weight: bold;
+}
 /* 指南 */
 .views{
     font-size: 0.8rem;
-    overflow:hidden;text-overflow:ellipsis
 }
 
 /* 游记 */
-/* .popTravels  */
+.popTravels .travel_title {
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -ms-text-overflow: ellipsis;
+    width: 90%;
+}
 
 @media screen and (max-width:375px){
     #mycar>a>span{
