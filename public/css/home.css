@@ -1,3 +1,4 @@
+
 .text_muted{
     font-size: 0.8rem;
     color:#b4b4b4;
@@ -21,23 +22,16 @@
 .text_tab{
     font-size: 24px;
 }
-.nav-tabs{
-    border:none ;
+
+.destination  #tab_menu li{
+    border: 1px solid #e6b9b9;
+}
+.destination .hide{
+    display: none;
+}
+ #tab_menu li:hover{
+   background:#e6b9b9;
 } 
-.nav-tabs .nav-link {
-    border: none;
-  }
-.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus{
-    color: #cf2396;
-    border-bottom: 2px solid #cf2396;
-}
-.nav-tabs .nav-link{
-    color: #000;
-}
-.nav-tabs .nav-link.active,
-.nav-tabs .nav-item.show .nav-link {
-  color: #cf2396;
-}
 
 .pop_title{
     font-size: 24px;
