@@ -1,24 +1,12 @@
-
 .text_muted{
     font-size: 0.8rem;
     color:#b4b4b4;
 }
-/* 轮播左右箭头 */
-#mycar>a>span{
-    width: 2rem;
-    height: 2rem;
-}
-/* 轮播指示器 */
-#mycar .carousel-indicators li{
-    width: 0.5em;
-    height:0.5rem;
-    border-radius: 50%; 
-    bottom: -1.2rem;
-}
-#mycar .carousel-indicators .active{
-    background: #d1e6c7;
-}
+
 /* 目的地 */
+.destination .selected{
+    background:#e6b9b9;
+}
 .text_tab{
     font-size: 24px;
 }
@@ -29,9 +17,6 @@
 .destination .hide{
     display: none;
 }
- #tab_menu li:hover{
-   background:#e6b9b9;
-} 
 
 .pop_title{
     font-size: 24px;
@@ -52,26 +37,16 @@
 }
 
 @media screen and (max-width:375px){
-    #mycar>a>span{
-        width: 0.6rem;;
-        height: 0.6rem;
-    }
+   
 }
 @media screen and (min-width:375px) and (max-width:768px){
-    #mycar>a>span{
-        width: 0.6rem;
-        height: 0.6rem;
-    }
+   
 }
 @media screen and (min-width:768px) and (max-width:992px){
   
 }
 @media screen and (min-width:992px){
-   #mycar .carousel-indicators li{
-        width: 0.6rem;
-        height:0.6rem;
-        border-radius: 50%; 
-    }
+ 
 }
 
 

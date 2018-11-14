@@ -1,10 +1,7 @@
 window.onload = function () {
     tabToggle();
     carousel_task();
-    window.onresize=function(){
-        iFrameHeight();
-    }
-    
+ 
     
 }
 function tabToggle() {
@@ -13,10 +10,12 @@ function tabToggle() {
     var aBox = document.querySelectorAll('.tab_box>div');
     for (var i = 0; i < aLi.length; i++) {
         aLi[i].index = i;
-        aLi[i].onclick = function () {
+        aLi[i].onclick = function () {    
             for (var j = 0; j < aLi.length; j++) {
+                aLi[j].className=aLi[j].className.replace('selected','');//去掉所有li的selected样式
                 aBox[j].className = 'hide';//隐藏所有的tabDiv
             }
+            aLi[this.index].className+=' selected';
             aBox[this.index].className = '';
         }
     }
@@ -37,15 +36,4 @@ function  carousel_task(){
         imgObject.src = img1[index];
     }, 2000)
 }
-
-function iFrameHeight() {
-	var ifm= document.getElementById("iframeId");
-        var subWeb = document.frames ? 
-        document.frames["iframeId"].document : ifm.contentDocument;
-		if(ifm != null && subWeb != null) {
-			ifm.style.height = 'auto';//关键这一句，先取消掉之前iframe设置的高度
-            ifm.style.height = subWeb.body.scrollHeight+'px';
-            console.log(ifm.style.height);
-		}
-	};
 

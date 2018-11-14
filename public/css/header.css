@@ -272,7 +272,7 @@ input:focus {
   .collapse-navbar-1 {
     opacity: 1;
     line-height: 2;
-    height: 800px;
+    height: 580px;
     transition: all 0.5s linear;
   }
 
