@@ -1,0 +1,101 @@
+a {
+  color: rgba(0, 0, 0, 0.5); }
+  a:hover {
+    transform-origin: center center;
+    transform: scale(1.1);
+    color: #28a745;
+    text-decoration: none; }
+
+#header > img {
+  opacity: 0; }
+
+#header > div:nth-child(2) {
+  top: 0px;
+  left: 0; }
+
+#header .in {
+  top: 0;
+  left: 0;
+  opacity: 1;
+  transition: opacity 0.5s linear; }
+  #header .in p {
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    right: 0px; }
+
+#header .out {
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.5s linear; }
+  #header .out p {
+    display: none;
+    position: absolute;
+    bottom: 0px;
+    right: 0px; }
+
+#header .search-input {
+  position: absolute;
+  bottom: 50%; }
+  #header .search-input form {
+    margin: 0 auto;
+    border-radius: 1.2rem; }
+    #header .search-input form input {
+      height: 2.3rem; }
+    #header .search-input form span {
+      font-size: 1.5rem; }
+
+#all-pots div:nth-child(2) div:nth-child(1) span {
+  border-bottom: 1px solid #28a745; }
+  #all-pots div:nth-child(2) div:nth-child(1) span.active {
+    color: #28a745;
+    border-top: 1px solid #28a745;
+    border-left: 1px solid #28a745;
+    border-right: 1px solid #28a745;
+    border-bottom: 0;
+    border-radius: 5px 5px 0 0; }
+
+#all-pots div:nth-child(2) div:nth-child(2) {
+  border-left: 1px solid #28a745;
+  border-right: 1px solid #28a745;
+  border-bottom: 1px solid #28a745; }
+
+@media screen and (min-width: 576px) {
+  #header .search-input {
+    bottom: 30%; }
+    #header .search-input > p {
+      font-size: 4rem;
+      font-weight: bold; }
+    #header .search-input > form {
+      width: 500px; }
+  #body > div > h2 {
+    font-size: 2rem; }
+    #body > div > h2 + div > div:nth-child(1) {
+      font-size: 1.5rem !important; }
+      #body > div > h2 + div > div:nth-child(1) span {
+        padding-left: 1rem !important; }
+    #body > div > h2 + div > div:nth-child(2) a {
+      text-align: left;
+      padding-left: 1.5rem !important; } }
+
+@media screen and (max-width: 575.98px) {
+  #header div[data-target=lunboItem] p {
+    font-size: 0.8rem; }
+  #header .search-input {
+    bottom: 50%; }
+    #header .search-input > form {
+      width: 240px;
+      height: 1.5rem; }
+      #header .search-input > form span {
+        font-size: 1.2rem !important;
+        padding-right: 0.5rem;
+        padding-left: 0.5rem; }
+  #body > div > h2 {
+    font-size: 1.3rem; }
+    #body > div > h2 + div > div:nth-child(1) {
+      font-size: 1.2rem !important; }
+    #body > div > h2 + div > div:nth-child(2) a {
+      font-size: 1rem;
+      text-align: left;
+      padding: 0; } }
