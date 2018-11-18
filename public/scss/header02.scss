@@ -1,0 +1,282 @@
+
+$myfontColor0:rgba(40, 167, 69, 1);
+$myfontColor1:rgba(40, 167, 69, 0.7);
+$divHoverColor:rgba(0,0,0,0.1);
+
+
+*{margin:0;padding: 0;}
+ul,li,ol{
+  list-style: none;
+}
+a{
+  color: rgba(0,0,0,1);
+  text-decoration: none;
+  &:hover{
+    cursor: pointer;
+    color: rgba(0,0,0,0.7);
+    text-decoration: none;
+  }
+}
+// 导航栏内部导航样式-start
+#header-nav{
+  //导航图标样式start
+  .nav-icon{
+    width: 24px;
+    height: 16px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+    align-items: center;
+    &:hover{
+      li{
+        background-color:$myfontColor1;
+      }
+    }
+    li{
+      width: 24px;
+      height: 2px;
+      background: $myfontColor0;
+    }
+  }
+  //导航图标样式end
+  img{
+    height: 33px;
+  }
+  //个人中心样式
+  .icon-geren2,.icon-sousuo,.icon-dizhi{
+    font-size: 1.5rem;
+    color:$myfontColor0;
+    &:hover{
+      color:$myfontColor1;
+    }
+  }
+  // 下拉选项样式
+  .collapse-navbar{
+    overflow: hidden;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: start;
+    &>div:first-child{
+      width: 100%;
+      &>form{
+        display: flex;
+        align-items: center;
+        padding: 0;
+        background-color: rgba(0,0,0,0.1);
+        border-radius: 5px;
+        line-height: 2rem;
+        span{
+          display:inline-block;
+          width: 40px;
+          height: 40px;
+          line-height:40px;
+          text-align: center;
+          font-size:1.5rem;
+        }
+        input{
+          vertical-align: middle;
+          font-size: 1rem;
+          width:75%;
+          border:0;
+          background-color: rgba(0,0,0,0);
+          &:focus{
+            border:0;
+          }
+        }
+      }
+    }
+    &>ul>li{
+      &>a:hover{
+
+        transform:  scale(1.2,1.2);
+      }
+    }
+  }
+}
+// 导航栏内部导航样式-end
+
+//搜索页样式-start
+#search-page{
+  display: none;
+  .icon-sousuo,.icon-dizhi {
+    padding-right:5px;
+    //padding-left: 5px;
+    font-size: 1.5rem;
+    color: $myfontColor0;
+    font-weight: bold;
+  }
+  h5.icon-dizhi{
+    font-weight: normal;
+  }
+  p{
+    margin:0;
+    text-align:right;
+    button.icon-guanbi{
+      position:relative;
+      font-size: 1rem;
+      font-weight: bolder;
+      color:$myfontColor0
+    }
+  }
+  .card-header{
+    margin-bottom: 0.75rem;
+    padding:inherit;
+    background: transparent;
+    border: 1px solid rgba(0,0,0,0.3);
+  }
+  .card{
+    border: 0;
+    .card-body{
+      overflow: hidden;
+      padding:0;
+      &>div{
+        opacity: 0.8;
+        padding: 0.75rem 1.25rem;
+        &:hover{
+          opacity: 1;
+          background: $divHoverColor;
+          transform: translateX(2%);
+          transition:all 0.2s linear;
+        }
+      }
+    }
+  }
+  #search-btn{
+    color: rgba(0,0,0,0.7);
+    &:hover{
+      background: $myfontColor1;
+    }
+  }
+
+}
+//搜索页样式-end
+
+//导航图标动画start
+@keyframes topChange0 {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(4px) rotate(0);
+  }
+  100% {
+    transform: translateY(4px) rotate(45deg);
+  }
+}
+@keyframes topChange1 {
+  0% {
+    transform: translateY(4px) rotate(45deg);
+  }
+  50% {
+    transform: translateY(4px) rotate(0);
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+@keyframes bottomChange0 {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-4px) rotate(0);
+  }
+  100% {
+    transform: translateY(-4px) rotate(-45deg);
+  }
+}
+@keyframes bottomChange1 {
+  0% {
+    transform: translateY(-4px) rotate(-45deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(0);
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+//导航图标动画end
+
+//大屏幕
+@media screen and (min-width:576px){
+  nav{
+    height:45px;
+  }
+  .collapse-navbar{
+    width: 100%;
+    ul{
+      li{
+        padding: 10px;
+      }
+    }
+  }
+  #searchForm{
+    div{
+      width: 45%;
+      border: 0.5px solid $myfontColor1;
+      border-radius: 5px;
+      span{
+        margin: 0px 5px;
+      }
+      input{
+        border:0;
+      }
+    }
+  }
+}
+
+//小屏幕
+@media screen and (max-width:575.98px){
+  .collapse-navbar-0{
+    opacity: 0;
+    line-height: 0;
+    height:0px;
+    transition: all 0.5s linear;
+  }
+  .collapse-navbar-1{
+    opacity: 1;
+    line-height: 2;
+    height:800px;
+    transition: all 0.5s linear;
+  }
+  .collapse-navbar {
+    &>div:first-child {
+      padding: 10px;
+    }
+    border-top: 1px solid rgba(0,0,0,0.6);
+    padding: 10px;
+    ul{
+      width:75%;
+      &>li {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        padding:10px;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

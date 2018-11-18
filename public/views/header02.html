@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>header02</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/iconfont.css">
+    <link rel="shortcut icon" href="../img/logo/lemon_logo_pic.png"/>
+    <link rel="stylesheet" href="../css/header02.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <style>
+        /**{*/
+            /*border: 0.5px solid #000;*/
+
+        /*}*/
+        #img1{
+            opacity: 1;
+        }
+        .in{
+            top:0;
+            left:0;
+            opacity: 1;
+            transition: opacity 0.5s linear;
+        }
+        .in>p{
+            bottom:0;
+            left:0;
+            display:block;
+
+        }
+        .out{
+            top:0;
+            left:0;
+            opacity: 0;
+            transition: opacity 0.5s linear;
+        }
+        .out>p{
+            bottom:0;
+            left:0;
+            display:none;
+        }
+        #lb>p{
+            bottom:50%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body class="">
+<div class="container">
+    <!--导航栏-->
+    <nav id="header-nav" class="row align-items-center pt-sm-2">
+        <!--导航按钮-->
+        <div class="col d-sm-none">
+            <ul class="nav-icon mt-3" data-trigger="navIcon" data-status=0>
+                <li class="nav-icon-top"></li>
+                <li class="nav-icon-bottom"></li>
+            </ul>
+        </div>
+        <!--logo-->
+        <a class="col align-self-center text-center col-sm-auto order-sm-1" href="#">
+            <img id="brand" src="../img/logo/lemon_logo_black.png">
+        </a>
+        <!--个人中心-->
+        <a class="col iconfont icon-geren2 text-right col-sm-auto order-sm-4"></a>
+        <div class="col-12 d-sm-none"></div>
+        <!--导航/搜索-->
+        <div class="col-12 col-sm order-sm-2 d-sm-flex border-dark">
+            <!-- 下拉选项 -->
+            <div id="collapse-navbar" class="p-0 collapse-navbar collapse-navbar-0  d-sm-inline-flex justify-content-sm-around align-items-sm-center" data-target="collapse_navbar">
+                <div class="d-sm-none">
+                    <form>
+                        <span class="iconfont icon-sousuo"></span>
+                        <input type="text" name="search" placeholder="搜索...">
+                    </form>
+                </div>
+                <ul class="d-sm-inline-flex justify-content-sm-around m-0">
+                    <li><a class="iconfont icon-shouyefill" href="#"></a></li>
+                    <li><a href="#">景点</a></li>
+                    <li><a href="#">目的地</a></li>
+                    <li><a href="#">游记</a></li>
+                    <li><a href="#">美食</a></li>
+                    <li><a href="#">指南</a></li>
+                    <li><a class="iconfont icon-some" href="#"></a></li>
+                </ul>
+            </div>
+            <!--搜索框-->
+            <!--<form id="searchForm" class="d-none justify-content-sm-around align-items-sm-center  m-0 form-group w-100 bg-white" action="get">-->
+                <!--<div class=" d-inline-flex align-items-center">-->
+                    <!--<span class="iconfont icon-dizhi"></span>-->
+                    <!--<input class="" type="text">-->
+                <!--</div>-->
+                <!--<div class=" d-inline-flex align-items-center">-->
+                    <!--<span class="iconfont icon-sousuo"></span>-->
+                    <!--<input class="" type="text">-->
+
+                <!--</div>-->
+            <!--</form>-->
+        </div>
+       <!--搜索icon-->
+        <a class="d-none col-auto d-sm-inline order-sm-3 ml-2 iconfont  icon-sousuo" data-trigger="searchIcon"></a>
+    </nav>
+
+<!--搜索栏-->
+    <div id="search-page" class="fixed-top bg-white">
+        <p>
+            <button id="close-icon" class="btn bg-transparent iconfont icon-guanbi"></button>
+        </p>
+        <from class="row w-75 m-auto">
+            <!--按地方搜索-->
+            <div class="col-5 card">
+                <div class="card-header d-inline-flex align-items-center">
+                    <span class="iconfont icon-dizhi"></span>
+                    <input id="search-address" class="form-control border-0 bg-transparent" type="text" placeholder="请选择您查询的地区">
+                </div>
+                <div class="card-body d-none" data-target="content">
+                    <!--地点1-->
+                    <div class="search-list d-flex align-items-start">
+                        <div class=" d-inline-block">
+                            <h5 class="iconfont icon-dizhi"></h5>
+                        </div>
+                        <div class="d-inline-block">
+                            <h5>中国</h5>
+                            <p>峨眉山</p>
+                        </div>
+                    </div>
+                    <!--地点2-->
+                    <div class="search-list d-flex align-items-start">
+                        <div class=" d-inline-block">
+                            <h5 class="iconfont icon-dizhi"></h5>
+                        </div>
+                        <div class="d-inline-block">
+                            <h5>中国</h5>
+                            <p>峨眉山</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--全站搜索-->
+            <div class="col-5">
+                <div class="d-flex align-items-center card-header">
+                    <span class="iconfont icon-sousuo"></span>
+                    <input class="form-control bg-transparent border-0" type="text" placeholder="请输入您要查询的内容">
+                </div>
+            </div>
+            <div class="col-2">
+                    <button id="search-btn" class="btn pr-4 pl-4" >搜索</button>
+            </div>
+        </from>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+<script src="../js/header02.js"></script>
+<script>
+    window.onload = function(){
+        var lb = document.querySelector("[data-trigger=lb]");
+        var lbItems = document.querySelectorAll("[data-lb=lbItem]");
+        var i = 0;
+        var l = lbItems.length;
+        for(var j=0; j<l; j++){
+            if(lbItems[j].className.indexOf("in") != -1){
+                i = j;
+                break;
+            }
+        }
+        var timer = setInterval(function(){
+            lbItems[i].className =  lbItems[i].className.replace("in","out");
+            if(i == l-1){
+                i = 0;
+            }else{
+                i++;
+            }
+            lbItems[i].className =  lbItems[i].className.replace("out","in");
+        },5000);
+    }
+</script>
+</body>
+</html>
