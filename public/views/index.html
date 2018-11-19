@@ -16,35 +16,48 @@
     <link rel="stylesheet" href="../css/iconfont.css">
 </head>
 
+
 <body>
 
     <div class="container-fluid pr-0 pl-0">
-        <!-- <iframe src="header.html" frameborder="0" scrolling='none'  id='iframeId'   class="w-100"
-     ></iframe> -->
-     <%- include("./header.html") %>
-        <!-- 轮播 -->
-        <!-- 图片 -->
-            <div class="row">
-                <div class="col-sm-12">
-                    <img src="../img/carousel/lb01.png" class="carousel_item w-100" />
+        <%- include("./header.html") %>
+            <!-- 轮播 -->
+            <!-- 图片 -->
+            <div class="row carouselBox border position-relative">
+                <div class="col-sm-12 imgLg">
+                    <img src="../img/carousel/lb01.png" class="carousel_item first w-100" />
+                    <img src="../img/carousel/lb04.png" class="carousel_item w-100" />
+                    <img src="../img/carousel/lb08.png" class="carousel_item w-100" />
+                    <img src="../img/carousel/lb17.png" class="carousel_item w-100" />
+                    <img src="../img/carousel/lb18.png" class="carousel_item w-100" />
+                </div>
+
+                <div class="imgMd position-absolute w-40 bg-secondary">
+                    <ul class="d-flex flex-column justify-content-center">
+                        <li class="cuur"><img src="../img/carousel/sm_lb01.png" class="li_item w-100 mb-1" /></li>
+                        <li><img src="../img/carousel/sm_lb04.png" class="li_item w-100 mb-1" /></li>
+                        <li><img src="../img/carousel/sm_lb08.png" class="li_item w-100 mb-1" /></li>
+                        <li><img src="../img/carousel/sm_lb17.png" class="li_item w-100 mb-1" /></li>
+                        <li><img src="../img/carousel/sm_lb18.png" class="li_item w-100" /></li>
+                    </ul>
                 </div>
             </div>
-  
+
     </div>
 
     <!-- 目的地 -->
     <div class="destination">
         <div class="container ">
             <ul class="row mt-5 mb-3 " id='tab_menu'>
-                <li class=" col-lg-3 col-md-3 col-sm-12 text-center text_tab selected" data-id='#ind1'>亚洲</li>
-                <li class=" col-lg-3 col-md-3 col-sm-12 text-center text_tab" data-id='#ind2'>欧洲</li>
-                <li class=" col-lg-3 col-md-3 col-sm-12 text-center text_tab" data-id='#ind3'>美洲</li>
-                <li class=" col-lg-3 col-md-3 col-sm-12 text-center text_tab" data-id='#ind4'>全球</li>
+                <li class=" col-lg-3 col-md-3 col-sm-12 text-center text_tab selected">亚洲</li>
+                <li class=" col-lg-3 col-md-3 col-sm-12 text-center text_tab" >欧洲</li>
+                <li class=" col-lg-3 col-md-3 col-sm-12 text-center text_tab">美洲</li>
+                <li class=" col-lg-3 col-md-3 col-sm-12 text-center text_tab">全球</li>
             </ul>
 
             <!-- 内容部分 -->
             <div class="container tab_box mb-2">
-                <div id='ind1'>
+                <div  class="ind">
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-12 bordered mb-3 pl-0">
                             <div class="card ">
@@ -171,17 +184,17 @@
                         </div>
                     </div>
                 </div>
-                <div class=" hide " id='ind2'>
+                <div class="ind hide">
                     <div class=" text-center">
                         <img src="../img/loading.gif" alt="">
                     </div>
                 </div>
-                <div class=" hide" id='ind3'>
+                <div class="ind hide">
                     <div class="text-center">
                         <img src="../img/loading.gif" alt="">
                     </div>
                 </div>
-                <div class=" hide" id='ind4'>
+                <div class="ind hide">
                     <div class="text-center">
                         <img src="../img/loading.gif" alt="">
                     </div>
@@ -191,8 +204,6 @@
                 <a href="#" class="text-center">查看全部目的地&gt;</a>
             </div>
         </div>
-
-    </div>
 
     </div>
 
@@ -390,8 +401,22 @@
         </div>
     </div>
 
+    <!-- 回到顶部 -->
+    <div class="footerBox">
+        <ul>
+            <li class="toTop">
+                <i class="iconfont icon-shouqi"></i>
+            </li>
+            <li>
+                <i class="iconfont icon-dianping"></i>
+            </li>
+            <li>
+                <i class="iconfont icon-fenxiang"></i>
+            </li>
+        </ul>
     </div>
-		 <script src="../js/jquery.min.js"></script>
+    </div>
+    <script src="../js/jquery.min.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>

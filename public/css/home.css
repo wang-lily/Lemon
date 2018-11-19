@@ -1,23 +1,50 @@
+body{
+    position: relative;
+}
 .text_muted{
     font-size: 0.8rem;
     color:#b4b4b4;
 }
+/* 轮播 */
+.imgMd ul li {
+    width: 4rem;
+}
+.imgMd{
+   right:2rem;
+   top:1.6rem;
+   z-index: 99;
+}
+.imgMd .cuur {
+    box-shadow: 0px 0px 10px #f55f5a;
+}
+
+.imgLg img {
+    display: none;
+} 
+
+.imgLg .first {
+    display: block;
+}
 
 /* 目的地 */
 .destination .selected{
-    background:#e6b9b9;
+    background:#b0f39c;
+    box-shadow: 0 0.5rem 0.1rem #d6d2d2;
 }
 .text_tab{
     font-size: 24px;
 }
 
 .destination  #tab_menu li{
-    border: 1px solid #e6b9b9;
+    border-left: 1px solid #d4cbcb;
 }
+.destination  #tab_menu li:last-child{
+    border-right: 1px solid #d4cbcb;
+}
+
 .destination .hide{
     display: none;
 }
-
 .pop_title{
     font-size: 24px;
     font-weight: bold;
@@ -35,18 +62,90 @@
     -ms-text-overflow: ellipsis;
     width: 90%;
 }
-
+/* toTop */
+.footerBox{
+    position: fixed;
+    bottom: 1.4rem;
+    right:1.4rem;
+}
+.footerBox li{
+    display: block;
+    width: 4rem;
+    height:4rem;
+    text-align: center;
+    line-height:3rem;
+    background: #fff;
+    border: 1px solid #b4b4b4;
+}
+.footerBox li:first-child{
+    display: none;
+    border-bottom: none;
+}
+.footerBox li:nth-child(2){
+    border-bottom: none;
+}
+.footerBox li:hover{
+    background: rgba(0, 0, 0, .1);
+}
 @media screen and (max-width:375px){
-   
+    .imgMd ul li {
+        display: none;
+    }
 }
 @media screen and (min-width:375px) and (max-width:768px){
-   
+    .imgMd ul li {
+        display: none;
+    }
 }
-@media screen and (min-width:768px) and (max-width:992px){
-  
+@media screen and (min-width:768px) and (max-width:880px){
+    .imgMd ul li {
+        width:1.4rem;
+    }
+    .imgMd{
+       right:2rem;
+       top:1rem;
+       z-index: 99;
+    }
 }
-@media screen and (min-width:992px){
- 
+@media screen and (min-width:880px) and (max-width:1000px){
+    .imgMd ul li {
+        width:1.8rem;
+    }
+    .imgMd{
+       right:2rem;
+       top:0.8rem;
+       z-index: 99;
+    }
+}
+@media screen and (min-width:1000px) and (max-width:1200px){
+    .imgMd ul li {
+        width:2rem;
+    }
+    .imgMd{
+       right:2rem;
+       top:1.8rem;
+       z-index: 99;
+    }
+}
+@media screen and (min-width:1200px) and (max-width:1500px){
+    .imgMd ul li {
+        width:2.6rem;
+    }
+    .imgMd{
+       right:2rem;
+       top:1rem;
+       z-index: 99;
+    }
+}
+@media screen and (min-width:1500px) and (max-width:1700px){
+    .imgMd ul li {
+        width:3.2rem;
+    }
+    .imgMd{
+       right:2rem;
+       top:1.4rem;
+       z-index: 99;
+    }
 }
 
 
