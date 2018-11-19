@@ -17,9 +17,10 @@
 </head>
 
 <body>
-
+    <header id="header" class="container-fluid"></header>
     <div class="container-fluid pr-0 pl-0">
-        <%- include("./header.html") %>
+        <!-- <%- include("./header.html") %> -->
+
             <!-- 轮播 -->
             <!-- 图片 -->
             <div class="row carouselBox border position-relative">
@@ -32,7 +33,7 @@
                 </div>
 
                 <div class="imgMd position-absolute w-40">
-                    <ul class="d-flex flex-column justify-content-center">
+                    <ul>
                         <li class="cuur"><img src="../img/carousel/sm_lb01.png" class="li_item w-100 mb-1" /></li>
                         <li><img src="../img/carousel/sm_lb04.png" class="li_item w-100 mb-1" /></li>
                         <li><img src="../img/carousel/sm_lb08.png" class="li_item w-100 mb-1" /></li>
@@ -404,21 +405,22 @@
     <div class="footerBox">
         <ul>
             <li class="toTop">
-                <i class="iconfont icon-shouqi"></i>
+                <i class="iconfont">&#xe6b8;</i>
             </li>
             <li>
-                <i class="iconfont icon-dianping"></i>
+                <i class="iconfont">&#xe653;</i>
             </li>
             <li>
-                <i class="iconfont icon-fenxiang"></i>
+                <i class="iconfont">&#xe6a5;</i>
             </li>
         </ul>
     </div>
     </div>
     <script src="../js/jquery.min.js"></script>
-    <script src="../js/index.js"></script>
+    <script src="../js/index.js"></script>    
+ 
+    <script src="../js/header.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-</body>
-
+</body>   
 </html>

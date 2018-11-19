@@ -45,7 +45,7 @@ function  carouselTask(){
 
 function toTop(){
     $(window).scrollTop(0); //刷新后回到顶部
-    var dheight = 200;
+    var dheight = 400;
     $(document).scroll(function () {
         var s_top = $(document).scrollTop();
         if (s_top > dheight) {
