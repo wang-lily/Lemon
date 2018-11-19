@@ -13,6 +13,10 @@ a {
     color: rgba(0, 0, 0, 0.7);
     text-decoration: none; }
 
+input:focus {
+  box-shadow: none !important;
+  outline: none !important; }
+
 #header-nav .nav-icon {
   width: 24px;
   height: 16px;
@@ -70,6 +74,7 @@ a {
     transform: scale(1.2, 1.2); }
 
 #search-page {
+  z-index: 99;
   display: none; }
   #search-page .icon-sousuo, #search-page .icon-dizhi {
     padding-right: 5px;
@@ -97,84 +102,87 @@ a {
       overflow: hidden;
       padding: 0; }
       #search-page .card .card-body > div {
-        opacity: 0.8;
         padding: 0.75rem 1.25rem; }
         #search-page .card .card-body > div:hover {
-          opacity: 1;
-          background: rgba(0, 0, 0, 0.1);
-          transform: translateX(2%);
-          transition: all 0.2s linear; }
+          background: rgba(0, 0, 0, 0.1); }
+        #search-page .card .card-body > div > div {
+          opacity: 0.8; }
+          #search-page .card .card-body > div > div:hover {
+            opacity: 1;
+            transform: translateX(2%);
+            transition: all 0.2s linear; }
   #search-page #search-btn {
     color: rgba(0, 0, 0, 0.7); }
     #search-page #search-btn:hover {
       background: rgba(40, 167, 69, 0.7); }
+    #search-page #search-btn:focus {
+      box-shadow: none !important; }
 
-@keyframes topChange0 {
-  0% {
-    transform: translateY(0) rotate(0); }
-  50% {
-    transform: translateY(4px) rotate(0); }
-  100% {
-    transform: translateY(4px) rotate(45deg); } }
-
-@keyframes topChange1 {
-  0% {
-    transform: translateY(4px) rotate(45deg); }
-  50% {
-    transform: translateY(4px) rotate(0); }
-  100% {
-    transform: translateY(0) rotate(0); } }
-
-@keyframes bottomChange0 {
-  0% {
-    transform: translateY(0) rotate(0); }
-  50% {
-    transform: translateY(-4px) rotate(0); }
-  100% {
-    transform: translateY(-4px) rotate(-45deg); } }
-
-@keyframes bottomChange1 {
-  0% {
-    transform: translateY(-4px) rotate(-45deg); }
-  50% {
-    transform: translateY(-4px) rotate(0); }
-  100% {
-    transform: translateY(0) rotate(0); } }
+#user-center {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 100; }
 
 @media screen and (min-width: 576px) {
-  nav {
+  #header-nav {
     height: 45px; }
-  .collapse-navbar {
-    width: 100%; }
-    .collapse-navbar ul li {
-      padding: 10px; }
-  #searchForm div {
-    width: 45%;
-    border: 0.5px solid rgba(40, 167, 69, 0.7);
-    border-radius: 5px; }
-    #searchForm div span {
-      margin: 0px 5px; }
-    #searchForm div input {
-      border: 0; } }
+    #header-nav .collapse-navbar {
+      width: 100%; }
+      #header-nav .collapse-navbar ul li {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 1em;
+        padding-right: 1em; }
+  #user-center {
+    width: 15%; } }
 
 @media screen and (max-width: 575.98px) {
-  .collapse-navbar-0 {
+  @keyframes topChange0 {
+    0% {
+      transform: translateY(0) rotate(0); }
+    50% {
+      transform: translateY(4px) rotate(0); }
+    100% {
+      transform: translateY(4px) rotate(45deg); } }
+  @keyframes topChange1 {
+    0% {
+      transform: translateY(4px) rotate(45deg); }
+    50% {
+      transform: translateY(4px) rotate(0); }
+    100% {
+      transform: translateY(0) rotate(0); } }
+  @keyframes bottomChange0 {
+    0% {
+      transform: translateY(0) rotate(0); }
+    50% {
+      transform: translateY(-4px) rotate(0); }
+    100% {
+      transform: translateY(-4px) rotate(-45deg); } }
+  @keyframes bottomChange1 {
+    0% {
+      transform: translateY(-4px) rotate(-45deg); }
+    50% {
+      transform: translateY(-4px) rotate(0); }
+    100% {
+      transform: translateY(0) rotate(0); } }
+  #header-nav .collapse-navbar-0 {
     opacity: 0;
     line-height: 0;
     height: 0px;
     transition: all 0.5s linear; }
-  .collapse-navbar-1 {
+  #header-nav .collapse-navbar-1 {
     opacity: 1;
     line-height: 2;
     height: 800px;
     transition: all 0.5s linear; }
-  .collapse-navbar {
+  #header-nav .collapse-navbar {
     border-top: 1px solid rgba(0, 0, 0, 0.6);
     padding: 10px; }
-    .collapse-navbar > div:first-child {
+    #header-nav .collapse-navbar > div:first-child {
       padding: 10px; }
-    .collapse-navbar ul {
+    #header-nav .collapse-navbar ul {
       width: 75%; }
-      .collapse-navbar ul > li {
+      #header-nav .collapse-navbar ul > li {
         border-bottom: 1px solid rgba(0, 0, 0, 0.2);
         padding: 10px; } }
