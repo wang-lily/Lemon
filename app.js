@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 
 // //region wanglimei
 //
-// var app = express();
+ var app = express();
 // app.listen(3001);//服务器提供
 // console.log("服务器创建成功，端口号3001");
 //

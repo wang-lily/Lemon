@@ -2,7 +2,7 @@
 $(function(){
     $("<link rel='stylesheet' href='../css/header.css'>").appendTo("head");
     $.ajax({
-        url: "http://localhost:3001/views/header.html",
+        url: "http://localhost:3000/views/header.html",
         type: "get",
         success: function (res) {
             $(res).replaceAll("header");
@@ -35,11 +35,6 @@ $(function(){
 //搜索icon事件
             var searchIcon = document.querySelector("[data-trigger=searchIcon]");
             searchIcon.onclick = function(){
-                //导航栏样式变化
-                // var target1 = document.getElementById("collapse-navbar");
-                // target1.className = target1.className.replace("d-sm-inline-flex justify-content-sm-around align-items-sm-center", "d-sm-none");
-                // var target2 = document.getElementById("searchForm");
-                // target2.className = target2.className.concat(" d-sm-inline-flex");
                 //弹出搜索栏
                 var  searchPage = document.getElementById("search-page");
                 searchPage.style.display = "block";
