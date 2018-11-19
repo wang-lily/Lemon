@@ -58,23 +58,21 @@ a {
     border-right: 1px solid rgba(40, 167, 69, 0.5);
     border-bottom: 0; }
 
-#body #all-pots > div > div:nth-child(2) > div {
+#body #all-spots > div > div:nth-child(2) > div {
   border-left: 1px solid rgba(40, 167, 69, 0.7);
   border-right: 1px solid rgba(40, 167, 69, 0.7);
   border-bottom: 1px solid rgba(40, 167, 69, 0.7); }
 
 #body img + div {
   top: 0;
-  left: 0;
-  background: url("../img/tab/tab01.png") no-repeat center center;
-  background-size: contain; }
+  left: 0; }
   #body img + div > p {
     word-wrap: break-word;
     text-align: center; }
 
 @media screen and (min-width: 576px) {
   #header .search-input {
-    bottom: 30%; }
+    bottom: 20%; }
     #header .search-input > p {
       font-size: 4rem;
       font-weight: bold; }
@@ -84,14 +82,18 @@ a {
     font-size: 1.2rem; }
     #body > div > h6 + div > div:nth-child(1) {
       font-size: 1rem !important; }
-  #body #all-pots > div > div:nth-child(2) > div a {
+  #body #all-spots > div > div:nth-child(2) > div a {
     padding-left: 1.5rem !important; }
-  #body img + div > p {
-    height: 6rem;
-    font-size: 1rem;
-    width: 1rem;
-    letter-spacing: 0.5rem;
-    line-height: 1.2rem; } }
+  #body img + div {
+    background: url("../img/tab/tab01.png") no-repeat center center;
+    background-size: contain; }
+    #body img + div > p {
+      color: #fff;
+      height: 6rem;
+      font-size: 1rem;
+      width: 1rem;
+      letter-spacing: 0.5rem;
+      line-height: 1.2rem; } }
 
 @media screen and (max-width: 575.98px) {
   #header .imgs > div p {
@@ -107,12 +109,12 @@ a {
         padding-left: 0.5rem; }
   #body > div > h6 + div > div:nth-child(1) {
     font-size: 0.5rem !important; }
-  #body img + div > p {
-    height: 50%;
-    font-size: 0.5rem;
-    width: 0.5rem;
-    letter-spacing: 0.2rem;
-    line-height: 0.5rem; }
-  #body #all-pots > div > div:nth-child(2) > div a {
+  #body #all-spots > div > div:nth-child(2) > div a {
     font-size: 1rem;
-    padding: 0; } }
+    padding: 0; }
+  #body img + div > p {
+    color: #fff;
+    text-shadow: 1px 1px 1px #28a745;
+    height: 3rem;
+    font-size: 8px;
+    line-height: 0.9rem; } }
