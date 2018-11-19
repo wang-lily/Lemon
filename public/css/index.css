@@ -6,23 +6,27 @@ body{
     color:#b4b4b4;
 }
 /* 轮播 */
-.imgMd ul li {
+.carouselBox{
+    position: relative;
+    overflow: hidden;
+}
+.carouselBox .imgMd ul li {
     width: 4rem;
 }
-.imgMd{
+.carouselBox .imgMd{
    right:2rem;
    top:1.6rem;
    z-index: 99;
 }
-.imgMd .cuur {
+.carouselBox .imgMd .cuur {
     box-shadow: 0px 0px 10px #f55f5a;
 }
 
-.imgLg img {
+.carouselBox .imgLg img {
     display: none;
 } 
 
-.imgLg .first {
+.carouselBox .imgLg .first {
     display: block;
 }
 

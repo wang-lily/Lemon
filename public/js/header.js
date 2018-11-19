@@ -1,3 +1,6 @@
+
+
+
 //header-nav事件--start
 //导航按钮事件
 var navIcon = document.querySelector("[data-trigger=navIcon]");
@@ -50,6 +53,26 @@ var searchAddress = document.getElementById("search-address");
 searchAddress.onclick = function () {
     var target = document.querySelector("#search-page [data-target=content]");
     target.className = target.className.replace("d-none","");
-    this.parentElement.style.border = "1px solid rgba(40, 167, 69, 0.7)";
+    this.style.border = "1px solid rgba(40, 167, 69, 0.7)";
+    this.children[1].focus();
+    this.parentNode.nextElementSibling.children[0].style = null;
+}
+var searchAddressInput = searchAddress.children[1];
+searchAddressInput.onfocus =function () {
+    console.log(searchAddress.nextElementSibling)
+    searchAddress.nextElementSibling.className = searchAddress.nextElementSibling.className.replace("d-none", "");
+}
+searchAddressInput.onblur =function () {
+    searchAddress.nextElementSibling.className = searchAddress.nextElementSibling.className.concat(" d-none");
+   console.log(searchAddress.nextElementSibling
+       .className);
+}
+
+//search-all事件
+var searchAll = document.getElementById("search-all");
+searchAll.onclick = function () {
+    this.style.border = "1px solid rgba(40, 167, 69, 0.7)";
+    this.children[1].focus();
+    this.parentNode.previousElementSibling.children[0].style = null;
 }
 //search-page搜索栏--end
