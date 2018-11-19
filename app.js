@@ -20,7 +20,7 @@ app.engine('html',ejs.__express);
 //设置模板引擎的格式即运用何种模板引擎
 app.set("view engine","html");
 //设置路由
-app.get("/index",function(req,res){
+app.get("/",function(req,res){
   res.render("index",{title:tem.message});
 })
 	.listen(3000);
