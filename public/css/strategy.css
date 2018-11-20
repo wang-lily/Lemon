@@ -2,7 +2,7 @@
 .city-lists {
 	 position: relative; 
 }
-.list-left li { 
+/* .list-left li { 
 	font: 1rem "微软雅黑"; 
 	color: #000; 
 	text-align: center; 
@@ -12,7 +12,8 @@
 }
 .list-left .list_cutLi { 
 	background: #FAD949; 
-}
+} */
+
 
 /*list-right */
 .list-right { 

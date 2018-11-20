@@ -21,7 +21,7 @@
 
 
 // region JS 轮播
-window.onload = function(){
+$(function(){
     var lunbo = document.querySelector("[data-trigger = lunbo]");
     var lunboItems = document.querySelectorAll("[data-target = lunboItem]");
     function task(){
@@ -52,5 +52,5 @@ window.onload = function(){
     header.onmouseout = function () {
         timer = setInterval(task, 3000);
     }
-}
+})
 // endregion
