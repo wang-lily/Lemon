@@ -29,12 +29,6 @@ const bodyParser = require("body-parser");
 
 var app = express();
 
-<<<<<<< HEAD
-app.use(bodyParser.urlencoded({
-    extended: false
-}));
-app.use(express.static("public"))
-=======
 // 1.在app.js的头上定义ejs:
 const ejs = require('ejs');
 //定义变量
@@ -57,7 +51,6 @@ app.get("/",function(req,res){
   res.render("index",{title:tem.message});
 })
 	.listen(3001);
->>>>>>> 5fdaed06c318bccda36b8d0c1d0c2065e9790d46
 
-   .listen(3001);//服务器提供
+  //  .listen(3001);//服务器提供
 console.log("服务器创建成功，端口号3001");
