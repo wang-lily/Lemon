@@ -2,7 +2,7 @@
 $(function(){
     $("<link rel='stylesheet' href='../css/header.css'>").appendTo("head");
     $.ajax({
-        url: "http://localhost:3000/views/header.html",
+        url: "http://localhost:3001/views/header.html",
         type: "get",
         success: function (res) {
             $(res).replaceAll("header");
