@@ -12,7 +12,24 @@ footer .title i{
     font-size:2rem;
     color:#bcbcbc;
 }
+footer .title i:hover{
+    color:#93cae0;
+}
 footer .text_small{
     font-size: 0.8rem;
     color:#bcbcbc;
+}
+footer .footer_totop{
+    font-size: 34px;
+    color:#fff;
+}
+footer .footer_totop a{
+    text-decoration: none;
+    color:#fff;
+}
+@media screen and (max-width:375px){
+}
+@media screen and (min-width:375px) and (max-width:768px){
+}
+@media screen and (min-width:768px) and (max-width:1200px){
 }
