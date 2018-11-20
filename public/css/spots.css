@@ -5,7 +5,7 @@ a {
     color: #28a745;
     text-decoration: none; }
 
-#header > img {
+#header > picture {
   opacity: 0; }
 
 #header > div:nth-child(2) {
