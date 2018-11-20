@@ -1,0 +1,18 @@
+footer{
+    background-color:#3c3c3c;
+}
+footer .title a{
+    text-decoration: none;
+}
+footer .title{
+    color:#bcbcbc;
+    border-bottom:1px solid #bcbcbc;
+}
+footer .title i{
+    font-size:2rem;
+    color:#bcbcbc;
+}
+footer .text_small{
+    font-size: 0.8rem;
+    color:#bcbcbc;
+}
