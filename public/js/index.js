@@ -1,6 +1,7 @@
 $(function(){
     tabToggle();
     carouselTask();
+    // marrque();
     toTop();
 })
     
@@ -29,12 +30,12 @@ function  carouselTask(){
        $(".imgMd li").hover(function () {
             $(this).addClass("cuur").siblings().removeClass("cuur");
             index = $(this).index();
-            $(".carouselBox img").eq(index).addClass("first").siblings().removeClass("first");
+            $(".carouselBox picture").eq(index).addClass("first").siblings().removeClass("first");
         });
 
         setInterval(function () {
             $(".imgMd ul li").eq(index).addClass("cuur").siblings().removeClass("cuur");
-            $(".imgLg img").eq(index).addClass("first").siblings().removeClass("first");
+            $(".imgLg picture").eq(index).addClass("first").siblings().removeClass("first");
             index++;
             if (index > 5) {
                 index = 0;
@@ -43,9 +44,24 @@ function  carouselTask(){
 
 }
 
+// function marrque(){
+//     $('.marqueTitle p').hide();
+//     $('.marqueTitle>p:first-child').show();
+//     var length=$('.marqueTitle p').length;
+//     var index=0;
+//     setInterval(function(){
+//         index++;
+//         if(index>length){
+//             index=0;
+//         }
+//         $('.marqueTitle p').eq(index).show().siblings().hide();
+//     },2000)
+// }
+
+
 function toTop(){
     $(window).scrollTop(0); //刷新后回到顶部
-    var dheight = 200;
+    var dheight = 400;
     $(document).scroll(function () {
         var s_top = $(document).scrollTop();
         if (s_top > dheight) {
@@ -67,3 +83,4 @@ function toTop(){
     });
 
 }
+

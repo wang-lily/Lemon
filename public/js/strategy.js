@@ -1,8 +1,8 @@
 $(function(){
     var curItem=0; 
-    var len = $(".list-left ul li").length;    console.log(len) 
-    $(".list-right>div").eq(0).show().siblings().hide();
-    console.log($(".list-right>div"));
+    // var len = $(".list-left ul li").length;    console.log(len) 
+    // $(".list-right>div").eq(0).show().siblings().hide();
+    // console.log($(".list-right>div"));
     function autoPlay(){
         curItem++;   
         if(curItem > len-1){
