@@ -1,6 +1,6 @@
-a {
+section a {
   color: rgba(0, 0, 0, 0.5); }
-  a:hover {
+  section a:hover {
     transform-origin: center center;
     color: #28a745;
     text-decoration: none; }
@@ -63,12 +63,26 @@ a {
   border-right: 1px solid rgba(40, 167, 69, 0.7);
   border-bottom: 1px solid rgba(40, 167, 69, 0.7); }
 
-#body img + div {
+#body #all-spots img + div, #body #spots01 img + div, #body #spots02 img + div {
   top: 0;
   left: 0; }
-  #body img + div > p {
+  #body #all-spots img + div > p, #body #spots01 img + div > p, #body #spots02 img + div > p {
     word-wrap: break-word;
     text-align: center; }
+
+#body #spots03 .card-footer {
+  border-left: 0.5px solid rgba(40, 167, 69, 0.3);
+  border-right: 0.5px solid rgba(40, 167, 69, 0.3);
+  border-bottom: 0.5px solid rgba(40, 167, 69, 0.3); }
+  #body #spots03 .card-footer + img {
+    position: absolute;
+    top: 0;
+    left: 0; }
+  #body #spots03 .card-footer p:nth-child(1) {
+    font-size: 1rem; }
+  #body #spots03 .card-footer p:nth-child(2) {
+    font-size: 0.8rem;
+    color: #999; }
 
 @media screen and (min-width: 576px) {
   #header .search-input {
@@ -84,10 +98,10 @@ a {
       font-size: 1rem !important; }
   #body #all-spots > div > div:nth-child(2) > div a {
     padding-left: 1.5rem !important; }
-  #body img + div {
+  #body #all-spots img + div, #body #spots01 img + div, #body #spots02 img + div {
     background: url("../img/tab/tab01.png") no-repeat center center;
     background-size: contain; }
-    #body img + div > p {
+    #body #all-spots img + div > p, #body #spots01 img + div > p, #body #spots02 img + div > p {
       color: #fff;
       height: 6rem;
       font-size: 1rem;
@@ -112,7 +126,7 @@ a {
   #body #all-spots > div > div:nth-child(2) > div a {
     font-size: 1rem;
     padding: 0; }
-  #body img + div > p {
+  #body #all-spots img + div > p, #body #spots01 img + div > p, #body #spots02 img + div > p {
     color: #fff;
     text-shadow: 1px 1px 1px #28a745;
     height: 3rem;
