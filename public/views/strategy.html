@@ -18,60 +18,209 @@
 
 <body>
     <header id="header" class="container-fluid"></header>
-    <div class="container-fluid">
-    <!-- <%- include("./header.html") %> -->
-    <!-- <div class="list-title p-2 position-absolute w-100">热门旅游地</div> -->
-    <div class="container city-lists">
-        <div class="row">
-            <div class="col-sm-4 list-left">
-                <ul class="menus">
-                    <li class="bg">tab1</li>
-                    <li>tab2</li>
-                    <li>tab3</li>
-                    <li>tab4</li>
-                    <li>tab5</li>
-                    <li>tab6</li>
-                    <li>tab7</li>
-                </ul>
-            </div>
-
-            <div class="list-right col-sm-8 p-0">
-                <div class="right">
-                    <div class="scroll">
-                        <div class="tab_right">
-                            <img src="assets/a1.png" alt="">
-                        </div>
-                        <div class="tab_right">
-                            <img src="assets/a2.png" alt="">
-                        </div>
-                        <div class="tab_right">
-                            <img src="assets/a3.png" alt="">
-                        </div>
-                        <div class="tab_right">
-                            <img src="assets/a4.png" alt="">
-                        </div>
-                        <div class="tab_right">
-                            <img src="assets/a5.png" alt="">
-                        </div>
-                        <div class="tab_right">
-                            <img src="assets/a6.png" alt="">
-                        </div>
-                        <div class="tab_right">
-                            <img src="assets/a7.png" alt="">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="clear"></div>
+    <section class="strategy">
+        <div class="container-fluid  p-0">
+            <div class="imgLg  p-0 w-100 position-relative">
+                <img src="../img/carousel/lb10.png" alt="" class="w-100 first">
+                <!-- <div class="strategy_title position-absolute">我要从南走到北<br> 我还要从白走到黑</div> -->
+                <!-- <div class=""><img src="" alt=""></div> -->
             </div>
         </div>
-    </div>
-</div>
-    
+
+        <div class="container strategy_content pt-5 ">
+            <div class="row">
+                <div class="col-md-3 pl-0 content_left">
+                    <p class="mb-1 text-muted p-2"><i class="iconfont icon-mudedi1"></i> 攻略导航</p>
+                    <ul class="pointer_nav">
+                        <li class="mt-1 p-2 "><i class="iconfont icon-jiantou_yemian_xiangyou_o"></i>全部</li>
+                        <li class="mt-1 p-2 "><i class="iconfont icon-jiantou_yemian_xiangyou_o"></i>亚洲</li>
+                        <li class="mt-1 p-2 "><i class="iconfont icon-jiantou_yemian_xiangyou_o"></i>东南亚</li>
+                        <li class="mt-1 p-2 "><i class="iconfont icon-jiantou_yemian_xiangyou_o"></i>欧洲</li>
+                        <li class="mt-1 p-2 "><i class="iconfont icon-jiantou_yemian_xiangyou_o"></i>美洲</li>
+                        <li class="mt-1 p-2 "><i class="iconfont icon-jiantou_yemian_xiangyou_o"></i>大洋洲</li>
+                        <li class="mt-1 p-2 "><i class="iconfont icon-jiantou_yemian_xiangyou_o"></i>非洲&中东</li>
+                        <li class="mt-1 p-2 "><i class="iconfont icon-jiantou_yemian_xiangyou_o"></i>其他</li>
+                    </ul>
+
+                </div>
+                <div class="col-md-9 content_right">
+                    <h3 class="mb-3 p-2 text-muted">推荐攻略</h3>
+                    <!-- <div class="recommend  border p-4">
+                            <div class="box-top w-100 d-flex justify-content-between align-items-center">
+                                <p><i class="iconfont icon-zhongzhuan"></i>来自 <span>自由行攻略</span></p>
+                                <p><span>2331</span>柠檬赞<i class="iconfont icon-zan"></i></p>
+                            </div>
+
+                            <p class="box-title p-2">清迈哪儿值得玩？精选6大热门景点</p>
+
+                           <div class="row box-bottom">
+                            <div class="col-sm-4 pr-0">
+                                <img src="../img/270-165/Malaysia04.png" class="w-100" alt="">
+                            </div>
+                            <div class="col-sm-8 ">📖📖印度旅游局曾推广过一则印度旅游的广告：不可思议的印度（incredible
+                                India），而我觉得这个形容词来形容印度真的再适合不过了。
+                                ❥❥❥攻略部分❥❥❥
+                                ​🐷应猪哥要求，按照我们的写作风格，先呈上攻略部分~
+                                我们这次的行程线路图
+                                自东到西：德里 -...
+                            </div>
+                        </div>
+
+                        </div> -->
+                    <div class="recommend p-4">
+                        <div class="box-top w-100 d-flex justify-content-between align-items-center">
+                            <p><i class="iconfont icon-zhongzhuan"></i>来自 <span class="text-warning">自由行攻略</span></p>
+                            <p><span class="ml-1">2331</span>柠檬赞<i class="iconfont icon-zan text-warning pl-3"></i></p>
+                        </div>
+                        <p class="box-title p-2">清迈哪儿值得玩？精选6大热门景点</p>
+                        <div class="row box-bottom">
+                            <ul class="row col-sm-10 box-bottom list-unstyled">
+                                <li class="col-sm-4 pr-0">
+                                    <img src="../img/270-165/Malaysia04.png" class="w-100" alt="">
+                                </li>
+                                <li class="col-sm-4 pr-0">
+                                    <img src="../img/270-165/Malaysia06.png" class="w-100" alt="">
+                                </li>
+                                <li class="col-sm-4 pr-0">
+                                    <img src="../img/270-165/Malaysia09.png" class="w-100" alt="">
+                                </li>
+                            </ul>
+                            <p class="col-sm-2 d-flex  justify-content-around    
+                                 align-items-center pr-1 text-muted">23654浏览</p>
+                        </div>
+                    </div>
+                    <div class="recommend p-4">
+                        <div class="box-top w-100 d-flex justify-content-between align-items-center">
+                            <p><i class="iconfont icon-zhongzhuan"></i>来自 <span class="text-warning">自由行攻略</span></p>
+                            <p><span class="ml-1">2331</span>柠檬赞<i class="iconfont icon-zan text-warning pl-3"></i></p>
+                        </div>
+                        <p class="box-title p-2">清迈哪儿值得玩？精选6大热门景点</p>
+                        <div class="row box-bottom">
+                            <ul class="row col-sm-10 box-bottom list-unstyled">
+                                <li class="col-sm-4 pr-0">
+                                    <img src="../img/270-165/Malaysia04.png" class="w-100" alt="">
+                                </li>
+                                <li class="col-sm-4 pr-0">
+                                    <img src="../img/270-165/Malaysia06.png" class="w-100" alt="">
+                                </li>
+                                <li class="col-sm-4 pr-0">
+                                    <img src="../img/270-165/Malaysia09.png" class="w-100" alt="">
+                                </li>
+                            </ul>
+                            <p class="col-sm-2 d-flex  justify-content-around    
+                                     align-items-center pr-1 text-muted">23654浏览</p>
+                        </div>
+                    </div>
+                    <div class="recommend p-4">
+                        <div class="box-top w-100 d-flex justify-content-between align-items-center">
+                            <p><i class="iconfont icon-zhongzhuan"></i>来自 <span class="text-warning">自由行攻略</span></p>
+                            <p><span class="ml-1">2331</span>柠檬赞<i class="iconfont icon-zan text-warning pl-3"></i></p>
+                        </div>
+                        <p class="box-title p-2">清迈哪儿值得玩？精选6大热门景点</p>
+                        <div class="row box-bottom">
+                            <ul class="row col-sm-10 box-bottom list-unstyled">
+                                <li class="col-sm-4 pr-0">
+                                    <img src="../img/270-165/Malaysia04.png" class="w-100" alt="">
+                                </li>
+                                <li class="col-sm-4 pr-0">
+                                    <img src="../img/270-165/Malaysia06.png" class="w-100" alt="">
+                                </li>
+                                <li class="col-sm-4 pr-0">
+                                    <img src="../img/270-165/Malaysia09.png" class="w-100" alt="">
+                                </li>
+                            </ul>
+                            <p class="col-sm-2 d-flex  justify-content-around    
+                                         align-items-center pr-1 text-muted">23654浏览</p>
+                        </div>
+                    </div>
+                    <div class="recommend p-4">
+                        <div class="box-top w-100 d-flex justify-content-between align-items-center">
+                            <p><i class="iconfont icon-zhongzhuan"></i>来自 <span class="text-warning">自由行攻略</span></p>
+                            <p><span class="ml-1">2331</span>柠檬赞<i class="iconfont icon-zan text-warning pl-3"></i></p>
+                        </div>
+                        <p class="box-title p-2">清迈哪儿值得玩？精选6大热门景点</p>
+                        <div class="row box-bottom">
+                            <ul class="row col-sm-10 box-bottom list-unstyled">
+                                <li class="col-sm-4 pr-0">
+                                    <img src="../img/270-165/Malaysia04.png" class="w-100" alt="">
+                                </li>
+                                <li class="col-sm-4 pr-0">
+                                    <img src="../img/270-165/Malaysia06.png" class="w-100" alt="">
+                                </li>
+                                <li class="col-sm-4 pr-0">
+                                    <img src="../img/270-165/Malaysia09.png" class="w-100" alt="">
+                                </li>
+                            </ul>
+                            <p class="col-sm-2 d-flex  justify-content-around    
+                                             align-items-center pr-1 text-muted">23654浏览</p>
+                        </div>
+                    </div>
+                    <div class="recommend p-4">
+                        <div class="box-top w-100 d-flex justify-content-between align-items-center">
+                            <p><i class="iconfont icon-zhongzhuan"></i>来自 <span class="text-warning">自由行攻略</span></p>
+                            <p><span class="ml-1">2331</span>柠檬赞<i class="iconfont icon-zan text-warning pl-3"></i></p>
+                        </div>
+                        <p class="box-title p-2">清迈哪儿值得玩？精选6大热门景点</p>
+                        <div class="row box-bottom">
+                            <ul class="row col-sm-10 box-bottom list-unstyled">
+                                <li class="col-sm-4 pr-0">
+                                    <img src="../img/270-165/Malaysia04.png" class="w-100" alt="">
+                                </li>
+                                <li class="col-sm-4 pr-0">
+                                    <img src="../img/270-165/Malaysia06.png" class="w-100" alt="">
+                                </li>
+                                <li class="col-sm-4 pr-0">
+                                    <img src="../img/270-165/Malaysia09.png" class="w-100" alt="">
+                                </li>
+                            </ul>
+                            <p class="col-sm-2 d-flex  justify-content-around    
+                                                 align-items-center pr-1 text-muted">23654浏览</p>
+                        </div>
+                    </div>
+                    <div class="recommend p-4">
+                        <div class="box-top w-100 d-flex justify-content-between align-items-center">
+                            <p><i class="iconfont icon-zhongzhuan"></i>来自 <span class="text-warning">自由行攻略</span></p>
+                            <p><span class="ml-1">2331</span>柠檬赞<i class="iconfont icon-zan text-warning pl-3"></i></p>
+                        </div>
+                        <p class="box-title p-2">清迈哪儿值得玩？精选6大热门景点</p>
+                        <div class="row box-bottom">
+                            <ul class="row col-sm-10 box-bottom list-unstyled">
+                                <li class="col-sm-4 pr-0">
+                                    <img src="../img/270-165/Malaysia04.png" class="w-100" alt="">
+                                </li>
+                                <li class="col-sm-4 pr-0">
+                                    <img src="../img/270-165/Malaysia06.png" class="w-100" alt="">
+                                </li>
+                                <li class="col-sm-4 pr-0">
+                                    <img src="../img/270-165/Malaysia09.png" class="w-100" alt="">
+                                </li>
+                            </ul>
+                            <p class="col-sm-2 d-flex  justify-content-around    
+                                     align-items-center pr-1 text-muted">23654浏览</p>
+                        </div>
+                    </div>
+                    <!-- 分页 -->
+                    <h6 class="mb-3 p-2 text-muted small">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination mb-0 justify-content-end">
+                                <li class="page-item  disabled"><a class="page-link bg-transparent" href="#">上一页</a></li>
+                                <li class="page-item"><a class="page-link bg-transparent" href="#">1</a></li>
+                                <li class="page-item active"><a class="page-link border" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link bg-transparent" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link bg-transparent" href="#">下一页</a></li>
+                            </ul>
+                        </nav>
+                    </h6>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <script src="../js/jquery.min.js"></script>
-     <script src="../js/strategy.js"></script> 
-     <script src="../js/header.js"></script>
+    <script src="../js/strategy.js"></script>
+    <script src="../js/header.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
 </body>

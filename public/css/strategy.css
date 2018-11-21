@@ -1,49 +1,45 @@
-/* list-left */
-.city-lists {
-	 position: relative; 
+/* tab */
+.strategy .imgLg{
+    opacity: 0.9;
 }
-/* .list-left li { 
-	font: 1rem "微软雅黑"; 
-	color: #000; 
-	text-align: center; 
-	cursor: pointer; 
-     background: #8ed1c3; 
-    border:1px solid #8ed1c3;
+/* recommend */
+.strategy_content .content_left p{
+    font-size: 1.4rem;
 }
-.list-left .list_cutLi { 
-	background: #FAD949; 
-} */
-
-
-/*list-right */
-.list-right { 
-	border:1px solid #bbb;
+.strategy_content .content_right>h3{
+    border-bottom: 1px solid #ddd;
+    font-size:1.4rem;
 }
-.views{
-    font-size: 0.8rem;
-}
-.list-right .card,
-.list-right .card-header,
-.list-right .card-footer{
-    border: none;
-    background: #fff;
-}
-.list-right .card-footer{
-    text-indent: 2rem;
+.recommend{
+    border-bottom: 1px solid #ddd;
 }
 
+.recommend:hover{
+    background: #ddd;
+}
+.recommend .box-top>p:nth-child(2){
+    border:1px solid #FF9D00;
+    border-radius: 3rem;
+}
+.recommend .box-title{
+     font-size: 1.4rem;
+     width: 90%;
+     white-space: nowrap;
+     overflow:hidden;
+     text-overflow:ellipsis;
+     -ms-text-overflow: ellipsis;
+}
+.recommend .box-bottom{
+    line-height:1.6rem;
+}
+.strategy_content .pointer_nav li{
+    border: 1px solid #d4d4d4;
+}
 
-@media screen and (max-width:375px){
-    .list-left ul li{
-        display: none;
-    }
+.strategy_content .pointer_nav li:hover{
+    background: rgb(158, 224, 233)
 }
-@media screen and (min-width:375px) and (max-width:768px){
- 
+.strategy_content .pointer_nav li i{
+    margin-right: 1rem;
+    color: rgb(87, 83, 78);
 }
-@media screen and (min-width:768px) and (max-width:992px){
-  
-}
-@media screen and (min-width:992px){
- 
-} 
