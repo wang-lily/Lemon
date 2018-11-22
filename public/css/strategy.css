@@ -6,7 +6,8 @@
 .strategy_content .content_left p{
     font-size: 1.4rem;
 }
-.strategy_content .content_right>h3{
+.strategy_content .content_right>h3,
+.strategy_content .content_left>h3{
     border-bottom: 1px solid #ddd;
     font-size:1.4rem;
 }
@@ -37,9 +38,25 @@
 }
 
 .strategy_content .pointer_nav li:hover{
-    background: rgb(158, 224, 233)
+    background: rgb(158, 224, 233);
 }
 .strategy_content .pointer_nav li i{
     margin-right: 1rem;
     color: rgb(87, 83, 78);
+}
+
+@media screen and (max-width:375px){
+    .strategy_content .content_right>h3,
+    .strategy_content .content_left>h3{
+        font-size:1rem;
+    }
+}
+@media screen and (min-width:375px) and (max-width:768px){
+    .strategy_content .content_right>h3,
+    .strategy_content .content_left>h3{
+        font-size:1.2rem;
+    }
+}
+@media screen and (min-width:768px) and (max-width:1200px){
+
 }
