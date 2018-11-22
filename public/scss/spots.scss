@@ -6,6 +6,7 @@ $fontHoverColor:rgba(0,0,0,0.7);
 $inputBgColor0:rgba(0,0,0,0.1);
 $inputBgColor1:rgba(0,0,0,0);
 $bgColor01:rgba(40, 167, 69, 0.5);
+$bgColor02:rgba(40, 167, 69, 0.3);
 $font2r:2rem;
 $font1_5r:1.5rem;
 $font1_3r:1.3rem;
@@ -14,18 +15,17 @@ $font08r:0.8rem;
 $font1r:1rem;
 
 
-a{
+section a{
   color:rgba(0,0,0,0.5);
   &:hover{
     transform-origin: center center;
-    //transform: scale(1.1);
     color:$iconNormalColor;
     text-decoration: none;
   }
 }
 
-////region header样式简单
-//#header{
+//region header样式简单
+// #header{
 //  .imgs {
 //    top:0;
 //    left: 0;
@@ -45,7 +45,6 @@ a{
 //      }
 //    }
 //  }
-//
 //  .search-input{
 //    left: 0%;
 //    bottom:30%;
@@ -61,8 +60,8 @@ a{
 //      }
 //    }
 //  }
-//}
-////endregion header样式简单
+// }
+//endregion header样式简单
 
 //region header样式淡入淡出
 #header{
@@ -139,12 +138,35 @@ a{
     border-right:1px solid $iconHoverColor;
     border-bottom:1px solid $iconHoverColor;
   }
-  img+div {
-    top:0;
-    left:0;
-    &>p{
-      word-wrap: break-word;
-      text-align: center;
+  #all-spots,#spots01,#spots02{
+    img+div {
+      top:0;
+      left:0;
+      &>p{
+        word-wrap: break-word;
+        text-align: center;
+      }
+    }
+  }
+  #spots03{
+    .card-footer{
+      &+img{
+        position:absolute;
+        top:0;
+        left: 0;
+      }
+      p{
+        &:nth-child(1){
+          font-size: $font1r;
+        }
+        &:nth-child(2){
+          font-size: $font08r;
+          color:#999;
+        }
+      }
+      border-left:0.5px solid $bgColor02;
+      border-right:0.5px solid $bgColor02;
+      border-bottom:0.5px solid $bgColor02;
     }
   }
 }
@@ -173,10 +195,6 @@ a{
         & + div {
           & > div:nth-child(1) {
             font-size: $font1r !important;
-            span {
-              //padding-left: 0.5rem !important;
-              //padding-right: 0.5rem !important;
-            }
           }
         }
       }
@@ -186,16 +204,18 @@ a{
         padding-left: 1.5rem !important;
       }
     }
-    img + div {
-      background: url("../img/tab/tab01.png") no-repeat center center;
-      background-size:contain;
-      & > p {
-        color:#fff;
-        height: 6rem;
-        font-size: 1rem;
-        width: 1rem;
-        letter-spacing: 0.5rem;
-        line-height: 1.2rem;
+    #all-spots,#spots01,#spots02{
+      img + div {
+        background: url("../img/tab/tab01.png") no-repeat center center;
+        background-size:contain;
+        & > p {
+          color:#fff;
+          height: 6rem;
+          font-size: 1rem;
+          width: 1rem;
+          letter-spacing: 0.5rem;
+          line-height: 1.2rem;
+        }
       }
     }
   }
@@ -238,15 +258,17 @@ a{
         padding: 0;
       }
     }
-    img + div {
-      & > p {
-        color:#fff;
-        text-shadow:1px 1px 1px $iconNormalColor;
-        height: 3rem;
-        font-size: 8px;
-        //width: 0.6rem;
-        //letter-spacing: 0.3rem;
-        line-height: 0.9rem;
+    #all-spots,#spots01,#spots02{
+      img + div {
+        & > p {
+          color:#fff;
+          text-shadow:1px 1px 1px $iconNormalColor;
+          height: 3rem;
+          font-size: 8px;
+          //width: 0.6rem;
+          //letter-spacing: 0.3rem;
+          line-height: 0.9rem;
+        }
       }
     }
   }
