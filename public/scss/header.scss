@@ -54,8 +54,9 @@ header{
       height: 33px;
     }
     //个人中心样式
-    .icon-geren2,.icon-sousuo,.icon-dizhi{
-      font-size: 1.5rem;
+    .icon-login1_0,.icon-login1_1,.icon-login2_0,.icon-login2_1,.icon-sousuo,.icon-dizhi{
+      font-size: 1.7rem;
+      font-weight: 550;
       color:$iconNormalColor;
       &:hover{
         color:$iconHoverColor;

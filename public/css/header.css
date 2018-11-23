@@ -34,10 +34,11 @@ header #header-nav .nav-icon {
 header #header-nav img {
   height: 33px; }
 
-header #header-nav .icon-geren2, header #header-nav .icon-sousuo, header #header-nav .icon-dizhi {
-  font-size: 1.5rem;
+header #header-nav .icon-login1_0, header #header-nav .icon-login1_1, header #header-nav .icon-login2_0, header #header-nav .icon-login2_1, header #header-nav .icon-sousuo, header #header-nav .icon-dizhi {
+  font-size: 1.7rem;
+  font-weight: 550;
   color: #28a745; }
-  header #header-nav .icon-geren2:hover, header #header-nav .icon-sousuo:hover, header #header-nav .icon-dizhi:hover {
+  header #header-nav .icon-login1_0:hover, header #header-nav .icon-login1_1:hover, header #header-nav .icon-login2_0:hover, header #header-nav .icon-login2_1:hover, header #header-nav .icon-sousuo:hover, header #header-nav .icon-dizhi:hover {
     color: rgba(40, 167, 69, 0.7); }
 
 header #header-nav .collapse-navbar {
