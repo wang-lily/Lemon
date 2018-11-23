@@ -176,7 +176,7 @@ header{
 
 
 //大屏幕
-@media screen and (min-width:576px){
+@media screen and (min-width:768px){
   header{
     #header-nav {
       height: 45px;
@@ -200,7 +200,7 @@ header{
 }
 
 //小屏幕
-@media screen and (max-width:575.98px){
+@media screen and (max-width:767px){
   header{
     //导航图标动画start
     @keyframes topChange0 {

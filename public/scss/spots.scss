@@ -65,8 +65,8 @@ section a{
 
 //region header样式淡入淡出
 #header{
-  &>picture {
-    opacity: 0;
+  &>div:first-child {
+    //opacity: 0;
   }
   &> div:nth-child(2) {
     top: 0;
@@ -97,8 +97,13 @@ section a{
   }
   .search-input {
     position: absolute;
-    bottom: 50%;
+    bottom: 20%;
+    & > p {
+      font-size: 4rem;
+      font-weight: bold;
+    }
     form {
+      width: 500px;
       margin: 0 auto;
       border-radius: 1.2rem;
       input {
@@ -172,21 +177,7 @@ section a{
 }
 
 //大屏幕
-@media screen and (min-width:576px) {
-  //region header
-  #header {
-    .search-input {
-      & > p {
-        font-size: 4rem;
-        font-weight: bold;
-      }
-      bottom: 20%;
-      & > form {
-        width: 500px;
-      }
-    }
-  }
-  //endregion header
+@media screen and (min-width:768px) {
 
   #body {
     & > div {
@@ -221,24 +212,11 @@ section a{
   }
 }
   //小屏幕
-@media screen and (max-width: 575.98px) {
+@media screen and (max-width: 767px) {
   #header {
     .imgs > div {
       p {
         font-size: $font08r;
-      }
-    }
-    .search-input {
-      bottom: 50%;
-      & > form {
-        width: 240px;
-        height: 1.5rem;
-        span {
-          font-size: 1.2rem !important;
-          padding-right: 0.5rem;
-          padding-left: 0.5rem;
-        }
-
       }
     }
   }
@@ -265,8 +243,6 @@ section a{
           text-shadow:1px 1px 1px $iconNormalColor;
           height: 3rem;
           font-size: 8px;
-          //width: 0.6rem;
-          //letter-spacing: 0.3rem;
           line-height: 0.9rem;
         }
       }
