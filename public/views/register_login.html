@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/iconfont.css">
+    <link rel="shortcut icon" href="../img/logo/lemon_logo_pic.png"/>
+    <link rel="stylesheet" href="../css/login_register.css">
+    <script src="../js/jquery.min.js"></script>
+</head>
+<body class="d-flex justify-content-between align-items-center w-100 login">
+    <div class="position-relative m-auto m-5">
+        <div class="bg-white">
+            <p class="pl-4 pt-2 m-0 text-danger">
+                <small id="alert" class="v-hide">您的邮箱或手机号已被使用！</small>
+            </p>
+            <!-- 注册表单start -->
+            <form id="form-register" class="row pt-0 pb-0 pl-4 pr-4 m-0 d-none" methods="post">
+                <input type="text" name="uname" id="uname-reg" class="form-control p-2 mb-2" placeholder="邮箱/手机号">
+                <input type="password" name="upwd" id="upwd-reg" class="form-control p-2 mb-2" placeholder="密码">
+                <input type="password" id="upwd-again" class="form-control p-2 mb-2" placeholder="确认密码">
+                <p class="w-100 text-center m-0" >
+                    <small>密码为6~14位数字或者字母</small>
+                </p>
+                <button id="register" type="submit" class="btn btn-success w-100 p-2 mt-2"><span class="h5">立即注册</span></button>
+                <p class="d-flex justify-content-center align-items-center m-auto p-2">
+                    <label class="d-flex align-items-center m-0">
+                        <input type="checkbox">
+                        <small class="text-muted">&nbsp;已阅读并接受</small>
+                    </label>
+                    <a>
+                        <small class="text-info">《lemon用户协议》</small>
+                    </a>
+                </p>
+            </form>
+            <!-- 注册表单end -->
+            <!-- 登录表单start -->
+            <form id="form-login" class="row pt-0 pb-4 pl-4 pr-4 m-0">
+                <input type="text" name="uname" id="uname-login" class="form-control p-2 mb-2" placeholder="您的邮箱/手机号">
+                <input type="password" name="upwd" id="upwd-login" class="form-control p-2 mb-2" placeholder="您的密码">
+                <p class="w-100 text-right m-0">
+                    <a href="#">
+                        <small>忘记密码</small>
+                    </a>
+                </p>
+                <button id="login" type="submit" class="btn btn-success w-100 p-2 mt-2"><span class="h5">登&nbsp;录</span></button>
+            </form>
+            <!-- 登录表单end -->
+            <div class="border-bottom"></div>
+            <div class="pl-4 pr-4">
+                <p class="text-muted mt-2 mb-1">
+                    <small >合作账户登录</small>
+                </p>
+                <h1 class="d-flex justify-content-center align-items-center pb-3 m-0">
+                    <a class="iconfont icon-qq pl-3 pr-3 m-0" herf="#"></a>
+                    <a class="iconfont icon-weixin pl-3 pr-3 m-0" herf="#"></a>
+                    <a class="iconfont icon-weibo pl-3 pr-3 m-0" herf="#"></a>
+                </h1>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center pb-4 pt-2">
+            <p class="m-auto pt-1 pb-1 pl-3 pr-3">
+                <small class="text-white">还没有账号？</small>
+                <a href="javascript:;"><small>马上注册</small></a>
+            </p>
+        </div>
+        <p class="position-absolute w-100 text-right pr-1 pt-1">
+            <a href="javascript:history.go(-1);" class="iconfont icon-guanbi text-success"></a>
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+$iconHoverColor:rgba(40, 167, 69, 0.7);
+$fontNormalColor:rgba(0,0,0,0.5);
+$bgColor:rgba(0,0,0,0.3);
+$fontColor:#FF9800;
+*{margin: 0;padding: 0}
+html{
+    height: 100%;
+}
+body{
+    &.login{
+        background: url(../img/login/pic03.jpg) no-repeat center center;
+    }
+    &.register{
+        background: url(../img/login/pic02.jpg) no-repeat center center;
+    }
+    padding:10px;
+    background-size: cover;
+    font-family: "HelveticaNeue","LucidaGrande","SegoeUI",Arial, Helvetica, Verdana, sans-serif;
+    height: 100%;
+    a{
+        cursor:pointer;
+        text-decoration: none !important;
+    }
+    &>div{
+        width:350px;
+        &>div:first-child{
+            border-radius: 3px;
+            &>form>p{
+                &>a{
+                    color:$fontColor;
+                }
+                color:$fontColor;
+            }
+        }
+        &>div:nth-child(2){
+            &>p{
+                border-radius:15px; background:$bgColor;
+                &>a{
+                    color:$fontColor !important;
+                }
+            }
+        }
+        p{
+            top:0;
+            right:0;
+        }
+    }
+    .icon-qq,.icon-weibo,.icon-weixin{
+        color:$fontNormalColor !important;
+        &:hover{
+            color:$iconHoverColor !important;
+            transition: all 0.2s linear;
+        }
+    }
+    .v-hide{
+        visibility: hidden;
+    }
+}
