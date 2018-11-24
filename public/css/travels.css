@@ -1,0 +1,12 @@
+.line {
+  background: rgba(0, 0, 0, 0.5);
+  height: 1px;
+  width: 100px; }
+
+@media screen and (min-width: 768px) {
+  .tab > p {
+    font-size: 2rem; } }
+
+@media screen and (max-width: 767px) {
+  .tab > p {
+    font-size: 1rem; } }

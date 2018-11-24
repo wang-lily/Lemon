@@ -1,0 +1,41 @@
+$iconNormalColor:rgba(40, 167, 69, 1);
+$iconHoverColor:rgba(40, 167, 69, 0.7);
+$divHoverColor:rgba(0,0,0,0.1);
+$fontNormalColor:rgba(0,0,0,1);
+$fontHoverColor:rgba(0,0,0,0.7);
+$inputBgColor0:rgba(0,0,0,0.1);
+$inputBgColor1:rgba(0,0,0,0);
+$bgColor01:rgba(40, 167, 69, 0.5);
+$bgColor02:rgba(40, 167, 69, 0.3);
+$font2r:2rem;
+$font1_5r:1.5rem;
+$font1_3r:1.3rem;
+$font1_2r:1.2rem;
+$font08r:0.8rem;
+$font1r:1rem;
+$lineBg:rgba(0,0,0,0.5);
+
+
+.line{
+    background:$lineBg;
+    height: 1px;
+    width:100px;
+}
+
+
+  //大屏幕
+  @media screen and (min-width:768px) {
+    .tab{
+        &>p{
+            font-size: $font2r;
+        }
+    }
+  }
+  //小屏幕
+  @media screen and (max-width: 767px) {
+    .tab{
+        &>p{
+            font-size: $font1r;
+        }
+    }
+  }
