@@ -11,7 +11,8 @@ body {
   font-family: "HelveticaNeue","LucidaGrande","SegoeUI",Arial, Helvetica, Verdana, sans-serif;
   height: 100%; }
   body.login {
-    background: url(../img/login/pic03.jpg) no-repeat center center; }
+    background: url(../img/login/pic03.jpg) no-repeat center center;
+    background-size: cover; }
   body.register {
     background: url(../img/login/pic02.jpg) no-repeat center center; }
   body a {

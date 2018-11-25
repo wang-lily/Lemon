@@ -46,6 +46,7 @@ section a {
     margin: 0 auto;
     border-radius: 1.2rem; }
     #header .search-input form input {
+      border: none;
       height: 2.3rem; }
     #header .search-input form span {
       font-size: 1.5rem; }

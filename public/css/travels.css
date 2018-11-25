@@ -1,12 +1,23 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+ul > li {
+  list-style: none; }
+
 .line {
   background: rgba(0, 0, 0, 0.5);
   height: 1px;
   width: 100px; }
 
+section #navigation .active {
+  color: #28a745;
+  border-bottom: 2px solid #28a745; }
+
 @media screen and (min-width: 768px) {
-  .tab > p {
-    font-size: 2rem; } }
+  section #navigation > div:first-child > span {
+    font-size: 1.5rem; } }
 
 @media screen and (max-width: 767px) {
-  .tab > p {
+  section #navigation > div:first-child > span {
     font-size: 1rem; } }

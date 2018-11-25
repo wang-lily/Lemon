@@ -16,26 +16,54 @@ $font1r:1rem;
 $lineBg:rgba(0,0,0,0.5);
 
 
+*{margin:0;padding:0;}
+ul>li{
+  list-style: none;
+}
 .line{
     background:$lineBg;
     height: 1px;
     width:100px;
 }
-
-
+section{
+  #navigation{
+    .active{
+      color:$iconNormalColor;
+      border-bottom:2px solid $iconNormalColor;
+    }
+  }
+}
   //大屏幕
   @media screen and (min-width:768px) {
-    .tab{
-        &>p{
-            font-size: $font2r;
+    //.tab{
+    //    &>p{
+    //        font-size: $font2r;
+    //    }
+    //}
+    section{
+      #navigation{
+        &>div:first-child{
+          &>span{
+            font-size: $font1_5r;
+          }
         }
+      }
     }
   }
   //小屏幕
   @media screen and (max-width: 767px) {
-    .tab{
-        &>p{
+    //.tab{
+    //    &>p{
+    //        font-size: $font1r;
+    //    }
+    //}
+    section{
+      #navigation{
+        &>div:first-child{
+          &>span{
             font-size: $font1r;
+          }
         }
+      }
     }
   }

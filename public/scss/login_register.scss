@@ -9,6 +9,7 @@ html{
 body{
     &.login{
         background: url(../img/login/pic03.jpg) no-repeat center center;
+        background-size:cover;
     }
     &.register{
         background: url(../img/login/pic02.jpg) no-repeat center center;
