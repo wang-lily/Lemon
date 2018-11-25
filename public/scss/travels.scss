@@ -48,6 +48,28 @@ section{
           }
         }
       }
+      #content{
+        &>div.item{
+          height:165px;
+          &>div:nth-child(2){
+            &>h5{
+              height:25%;
+              font-size: $font1_5r;
+            }
+            &>p{
+              line-height: 1.4;
+              height:50%;
+              font-size: $font1_2r;
+              overflow: hidden;
+            }
+            &>div{
+              height: 25%;
+              font-size: $font1r;
+            }
+          }
+        }
+
+      }
     }
   }
   //小屏幕
@@ -64,6 +86,27 @@ section{
             font-size: $font1r;
           }
         }
+      }
+      #content{
+        &>div.item{
+          height:80px;
+          &>div:nth-child(2){
+            &>h5{
+              height:25%;
+              font-size: $font1r;
+            }
+            &>p{
+              height:50%;
+              font-size: $font08r;
+              overflow: hidden;
+            }
+            &>div{
+              height: 25%;
+              font-size: $font08r;
+            }
+          }
+        }
+
       }
     }
   }

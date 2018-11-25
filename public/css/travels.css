@@ -16,8 +16,33 @@ section #navigation .active {
 
 @media screen and (min-width: 768px) {
   section #navigation > div:first-child > span {
-    font-size: 1.5rem; } }
+    font-size: 1.5rem; }
+  section #content > div.item {
+    height: 165px; }
+    section #content > div.item > div:nth-child(2) > h5 {
+      height: 25%;
+      font-size: 1.5rem; }
+    section #content > div.item > div:nth-child(2) > p {
+      line-height: 1.4;
+      height: 50%;
+      font-size: 1.2rem;
+      overflow: hidden; }
+    section #content > div.item > div:nth-child(2) > div {
+      height: 25%;
+      font-size: 1rem; } }
 
 @media screen and (max-width: 767px) {
   section #navigation > div:first-child > span {
-    font-size: 1rem; } }
+    font-size: 1rem; }
+  section #content > div.item {
+    height: 80px; }
+    section #content > div.item > div:nth-child(2) > h5 {
+      height: 25%;
+      font-size: 1rem; }
+    section #content > div.item > div:nth-child(2) > p {
+      height: 50%;
+      font-size: 0.8rem;
+      overflow: hidden; }
+    section #content > div.item > div:nth-child(2) > div {
+      height: 25%;
+      font-size: 0.8rem; } }
