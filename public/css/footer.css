@@ -15,6 +15,9 @@ footer .title i{
 footer .title i:hover{
     color:#93cae0;
 }
+footer img#brand{
+    width:75%;
+}
 footer .text_small{
     font-size: 0.8rem;
     color:#bcbcbc;
@@ -28,8 +31,24 @@ footer .footer_totop a{
     color:#fff;
 }
 @media screen and (max-width:375px){
+    footer h4{
+        font-size: 0.6rem;
+    }
+    footer img#brand{
+        width: 25%;
+    }
+
 }
 @media screen and (min-width:375px) and (max-width:768px){
+    footer h4{
+        font-size:0.8rem;
+    }
+    footer img#brand{
+        width:25%;
+    }
 }
 @media screen and (min-width:768px) and (max-width:1200px){
+    footer img#brand{
+        width:75%;
+    }
 }
