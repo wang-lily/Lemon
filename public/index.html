@@ -1,5 +1,7 @@
+<!-- 访问：http://localhost:3001/ -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,42 +21,84 @@
     <header></header>
     <section>
         <div class="container-fluid pr-0 pl-0 mr-0">
-            <!-- <%- include("./header.html") %> -->
             <!-- 轮播 -->
-            <!-- 图片 -->
             <div class="row carouselBox border position-relative mr-0 ml-0">
                 <div class="col-sm-12 imgLg p-0">
-                    <!-- <img src="img/carousel/lb01.png" class="carousel_item first w-100" />
-                    <img src="img/carousel/lb04.png" class="carousel_item w-100" />
-                    <img src="img/carousel/lb08.png" class="carousel_item w-100" />
-                    <img src="img/carousel/lb17.png" class="carousel_item w-100" />
-                    <img src="img/carousel/lb18.png" class="carousel_item w-100" /> -->
-
-                    <picture class="first">
-                        <source media="(min-width: 999px)" srcset="img/carousel/lb01.png">
-                        <source media="(max-width:1000px)" srcset="img/carousel/lb01_500x250.png">
-                        <img class="w-100" src="img/carousel/picture.png">
-                    </picture>
-                    <picture>
-                        <source media="(min-width: 999px)" srcset="img/carousel/lb04.png">
-                        <source media="(max-width:1000px)" srcset="img/carousel/lb04_500x250.png">
-                        <img class="w-100" src="img/carousel/picture.png">
-                    </picture>
-                    <picture>
-                        <source media="(min-width: 999px)" srcset="img/carousel/lb08.png">
-                        <source media="(max-width:1000px)" srcset="img/carousel/lb08_500x250.png">
-                        <img class="w-100" src="img/carousel/picture.png">
-                    </picture>
-                    <picture>
-                        <source media="(min-width: 999px)" srcset="img/carousel/lb17.png">
-                        <source media="(max-width:1000px)" srcset="img/carousel/lb17_500x250.png">
-                        <img class="w-100" src="img/carousel/picture.png">
-                    </picture>
-                    <picture>
-                        <source media="(min-width: 999px)" srcset="img/carousel/lb18.png">
-                        <source media="(max-width:1000px)" srcset="img/carousel/lb18_500x250.png">
-                        <img class="w-100" src="img/carousel/picture.png">
-                    </picture>
+                    <div class="first box">
+                        <picture>
+                            <source media="(min-width: 999px)" srcset="img/carousel/lb01.png">
+                            <source media="(max-width:1000px)" srcset="img/carousel/lb01_500x250.png">
+                            <img class="w-100" src="img/carousel/picture.png">
+                        </picture>
+                        <div class="position-absolute">
+                            <h4>24<span>/Nov.2018</span>  </h4>
+                            <p >来一场说走就走的旅行...</p>
+                        </div>
+                       <div class="position-absolute link">
+                           <a href="#" class="pt-1 pb-1 pr-5 pl-5 ml-1"> <i class="iconfont icon-dianping"></i>写游记</a>
+                           <a href="#" class="pt-1 pb-1 pr-5 pl-5 ml-1"> 历历在目</i></a>
+                       </div>
+                    </div>
+                    <div class=" box">
+                        <picture>
+                            <source media="(min-width: 999px)" srcset="img/carousel/lb04.png">
+                            <source media="(max-width:1000px)" srcset="img/carousel/lb04_500x250.png">
+                            <img class="w-100" src="img/carousel/picture.png">
+                        </picture>
+                        <div class="position-absolute">
+                            <h4>2<span>/Nov.2018</span>  </h4>
+                            <p >我和你就像一座埃菲尔铁塔和爱琴海。</p>
+                        </div>
+                        <div class="position-absolute link">
+                                <a href="#" class="pt-1 pb-1 pr-5 pl-5 ml-1">  <i class="iconfont icon-dianping"></i>写游记</a>
+                                <a href="#" class="pt-1 pb-1 pr-5 pl-5 ml-1"> 历历在目</i></a>
+                            </div>
+                    </div>
+                    <div  class=" box">
+                        <picture>
+                            <source media="(min-width: 999px)" srcset="img/carousel/lb08.png">
+                            <source media="(max-width:1000px)" srcset="img/carousel/lb08_500x250.png">
+                            <img class="w-100" src="img/carousel/picture.png">
+                        </picture>
+                        <div class="position-absolute">
+                            <h4>11<span>/Nov.2018</span>  </h4>
+                            <p >生活就像一盒巧克力。</p>
+                        </div>
+                        <div class="position-absolute link">
+                                <a href="#" class="pt-1 pb-1 pr-5 pl-5 ml-1">  <i class="iconfont icon-dianping"></i>写游记</a>
+                                <a href="#" class="pt-1 pb-1 pr-5 pl-5 ml-1"> 历历在目</i></a>
+                            </div>
+                    </div>
+                    <div  class=" box">
+                        <picture>
+                            <source media="(min-width: 999px)" srcset="img/carousel/lb17.png">
+                            <source media="(max-width:1000px)" srcset="img/carousel/lb17_500x250.png">
+                            <img class="w-100" src="img/carousel/picture.png">
+                        </picture>
+                        <div class="position-absolute">
+                            <h4>24<span>/Nov.2018</span>  </h4>
+                            <p >听说摩天轮的每个格子里都装满幸福...</p>
+                        </div>  
+                        <div class="position-absolute link">
+                                <a href="#" class="pt-1 pb-1 pr-5 pl-5 ml-1">  <i class="iconfont icon-dianping"></i>写游记</a>
+                                <a href="#" class="pt-1 pb-1 pr-5 pl-5 ml-1"> 历历在目</i></a>
+                            </div>
+                    </div> 
+                    <div  class=" box">      
+                        <picture>
+                            <source media="(min-width: 999px)" srcset="img/carousel/lb18.png">
+                            <source media="(max-width:1000px)" srcset="img/carousel/lb18_500x250.png">
+                            <img class="w-100" src="img/carousel/picture.png">
+                        </picture>
+                        <div class="position-absolute">
+                            <h4>24<span>/Nov.2018</span>  </h4>
+                            <p >是我选择了生活，而不是生活选择了我。</p>
+                        </div>
+                        <div class="position-absolute link">
+                                <a href="#" class="pt-1 pb-1 pr-5 pl-5 ml-1">  <i class="iconfont icon-dianping"></i>写游记</a>
+                                <a href="#" class="pt-1 pb-1 pr-5 pl-5 ml-1"> 历历在目</i></a>
+                            </div>
+                </div>      
                 </div>
 
                 <div class="imgMd position-absolute w-40">
@@ -67,13 +111,15 @@
                     </ul>
                 </div>
             </div>
-
         </div>
-    
+
         <!-- 目的地 -->
         <div class="destination">
+                <div class="col-12 text-center pt-5">
+                        <span class="pop_title">首页推荐</span>
+                    </div>
             <div class="container ">
-                <ul class="row mt-5 mb-3 " id='tab_menu'>
+                <ul class="row mt-2 mb-3 " id='tab_menu'>
                     <li class=" col-3 text-center text_tab selected">亚洲</li>
                     <li class=" col-3 text-center text_tab">欧洲</li>
                     <li class=" col-3 text-center text_tab">美洲</li>
@@ -84,7 +130,7 @@
                 <div class="container tab_box mb-2">
                     <div class="ind">
                         <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-6 bordered mb-3 pl-0 pr-0">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-6 bordered mb-3 ">
                                 <div class="card ">
                                     <div class="card-head">
                                         <img src="img/380_220/hg_cd368_220.png" alt="" class="w-100 ">
@@ -103,8 +149,8 @@
                                         </p>
                                     </div>
                                 </div>
-                            </div> 
-                            <div class="col-lg-4 col-md-4 col-sm-6 bordered mb-3 pl-0 pr-0">
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-6 bordered mb-3 ">
                                 <div class="card">
                                     <div class="card-head">
                                         <img src="img/380_220/rb_bhd368_220.png" alt="" class="w-100 ">
@@ -124,7 +170,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6 bordered mb-3 pl-0 pr-0 ">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-6 bordered mb-3  ">
                                 <div class="card">
                                     <div class="card-head">
                                         <img src="img/380_220/tw-dbj368_220.png" alt="" class="w-100 ">
@@ -145,7 +191,7 @@
 
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6 bordered mb-3 pl-0 pr-0 ">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-6 bordered mb-3  ">
                                 <div class="card">
                                     <div class="card-head">
                                         <img src="img/380_220/china-emeishan02_368_220.png" alt="" class="w-100 ">
@@ -165,8 +211,8 @@
                                     </div>
 
                                 </div>
-                            </div> 
-                            <div class="col-lg-4 col-md-4 col-sm-6 bordered mb-3 pl-0 pr-0">
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-6 bordered mb-3 ">
                                 <div class="card">
                                     <div class="card-head">
                                         <img src="img/380_220/rb_db368_220.png" alt="" class="w-100 ">
@@ -186,8 +232,8 @@
                                     </div>
 
                                 </div>
-                            </div> 
-                            <div class="col-lg-4 col-md-4 col-sm-6 bordered mb-5 pl-0 pr-0">
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-5 ">
                                 <div class="card">
                                     <div class="card-head">
                                         <img src="img/380_220/china-xizang08_368_220.png" alt="" class="w-100 ">
@@ -207,6 +253,26 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-5 ">
+                                    <div class="card">
+                                        <div class="card-head">
+                                            <img src="img/380_220/tw_gx368_220.png" alt="" class="w-100 ">
+                                        </div>
+                                        <div class="card-body pb-0">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span>中国
+                                                    <span class="pl-2 pr-2">|</span>台湾</span>
+                                                <span class="flex-end">
+                                                    <div class="btn btn-primary btn-sm  mr-1 p-0">游记</div>
+                                                    <div class="btn btn-info btn-sm p-0">指南</div>
+                                                </span>
+                                            </div>
+                                            <p class="float-right mt-2">景点
+                                                <b>1224</b>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
                     </div>
                     <div class="ind hide">

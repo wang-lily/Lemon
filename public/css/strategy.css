@@ -30,6 +30,9 @@
      text-overflow:ellipsis;
      -ms-text-overflow: ellipsis;
 }
+.recommend .box-title a{
+      color:rgb(63, 60, 60);
+}
 .recommend .box-bottom{
     line-height:1.6rem;
 }
@@ -50,12 +53,20 @@
     .strategy_content .content_left>h3{
         font-size:1rem;
     }
+    .recommend .box-title a{
+        color:rgb(63, 60, 60);
+        font-size: 0.8rem;
+  }
 }
 @media screen and (min-width:375px) and (max-width:768px){
     .strategy_content .content_right>h3,
     .strategy_content .content_left>h3{
         font-size:1.2rem;
     }
+    .recommend .box-title a{
+        color:rgb(63, 60, 60);
+        font-size: 1.2rem;
+  }
 }
 @media screen and (min-width:768px) and (max-width:1200px){
 
