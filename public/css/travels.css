@@ -5,31 +5,75 @@
 ul > li {
   list-style: none; }
 
+a {
+  color: #000; }
+  a:hover {
+    color: #000;
+    text-decoration: none; }
+
 .line {
   background: rgba(0, 0, 0, 0.5);
   height: 1px;
   width: 100px; }
 
+.icon-love {
+  color: pink; }
+
 section #navigation .active {
   color: #28a745;
   border-bottom: 2px solid #28a745; }
 
+section #content > div.item:hover {
+  box-shadow: 0px 0px 15px 2px #ffc107;
+  transition: all .3s linear; }
+
+section #page-nav > ul > li {
+  height: 1.5rem;
+  border: 0.5px solid rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  text-align: center;
+  line-height: 1.5rem;
+  padding-left: 0.7rem;
+  padding-right: 0.7rem; }
+  section #page-nav > ul > li:first-child, section #page-nav > ul > li:last-child {
+    margin: 0.5rem; }
+  section #page-nav > ul > li.active {
+    color: #fff !important;
+    background: rgba(40, 167, 69, 0.7); }
+  section #page-nav > ul > li:hover {
+    color: #fff !important;
+    background: rgba(40, 167, 69, 0.3); }
+
+section #page-nav > p > span:first-child {
+  display: inline-block;
+  width: 3rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  border: 0.5px solid rgba(0, 0, 0, 0.1); }
+
+section #page-nav > p > button {
+  border-radius: 3px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: 1rem;
+  background: rgba(40, 167, 69, 0.7); }
+
 @media screen and (min-width: 768px) {
   section #navigation > div:first-child > span {
-    font-size: 1.5rem; }
+    font-size: 1.3rem; }
   section #content > div.item {
     height: 165px; }
     section #content > div.item > div:nth-child(2) > h5 {
       height: 25%;
-      font-size: 1.5rem; }
+      font-size: 1.2rem; }
     section #content > div.item > div:nth-child(2) > p {
       line-height: 1.4;
       height: 50%;
-      font-size: 1.2rem;
+      font-size: 1rem;
       overflow: hidden; }
     section #content > div.item > div:nth-child(2) > div {
       height: 25%;
-      font-size: 1rem; } }
+      font-size: 0.8rem; } }
 
 @media screen and (max-width: 767px) {
   section #navigation > div:first-child > span {
@@ -40,6 +84,7 @@ section #navigation .active {
       height: 25%;
       font-size: 1rem; }
     section #content > div.item > div:nth-child(2) > p {
+      line-height: 1.4;
       height: 50%;
       font-size: 0.8rem;
       overflow: hidden; }

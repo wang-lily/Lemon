@@ -14,22 +14,83 @@ $font1_2r:1.2rem;
 $font08r:0.8rem;
 $font1r:1rem;
 $lineBg:rgba(0,0,0,0.5);
+$borderColor:#ffc107;
 
 
 *{margin:0;padding:0;}
 ul>li{
   list-style: none;
 }
+a{
+  color:#000;
+  &:hover{
+    color:#000;
+    text-decoration: none;
+  }
+}
 .line{
     background:$lineBg;
     height: 1px;
     width:100px;
+}
+.icon-love{
+  color:pink;
 }
 section{
   #navigation{
     .active{
       color:$iconNormalColor;
       border-bottom:2px solid $iconNormalColor;
+    }
+  }
+  #content{
+    &>div.item{
+      &:hover{
+        box-shadow: 0px 0px 15px 2px $borderColor;
+        transition:all .3s linear;
+      }
+    }
+  }
+  #page-nav{
+    &>ul>li{
+      // width:1.5rem;
+      height:1.5rem;
+      border:0.5px solid $inputBgColor0;
+      font-size:$font1r;
+      text-align: center;
+      line-height: 1.5rem;
+      padding-left: 0.7rem;
+      padding-right: 0.7rem;
+
+      &:first-child,&:last-child{
+        // width: 2.5rem;
+        margin:0.5rem;
+      }
+      &.active{
+        color:#fff !important;
+        background:$iconHoverColor;
+        // border-radius: 50%;
+      }
+      &:hover{
+        color:#fff !important;
+        background:$bgColor02;
+      }
+    }
+    &>p{
+      &>span:first-child{
+        display: inline-block;
+        width: 3rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        border:0.5px solid $inputBgColor0;
+      }
+      &>button{
+        border-radius: 3px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin-left: 1rem;
+        background: $iconHoverColor;
+      }
     }
   }
 }
@@ -44,7 +105,7 @@ section{
       #navigation{
         &>div:first-child{
           &>span{
-            font-size: $font1_5r;
+            font-size: $font1_3r;
           }
         }
       }
@@ -54,17 +115,17 @@ section{
           &>div:nth-child(2){
             &>h5{
               height:25%;
-              font-size: $font1_5r;
+              font-size: $font1_2r;
             }
             &>p{
               line-height: 1.4;
               height:50%;
-              font-size: $font1_2r;
+              font-size: $font1r;
               overflow: hidden;
             }
             &>div{
               height: 25%;
-              font-size: $font1r;
+              font-size: $font08r;
             }
           }
         }
@@ -96,6 +157,7 @@ section{
               font-size: $font1r;
             }
             &>p{
+              line-height: 1.4;
               height:50%;
               font-size: $font08r;
               overflow: hidden;
