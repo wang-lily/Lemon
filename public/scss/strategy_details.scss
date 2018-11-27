@@ -1,0 +1,36 @@
+/* bigTitle */
+$titleColor:#FF9800;
+.strategy_details .bigTitle{
+   div{
+      border-bottom: 1px solid #ddd;
+    p{
+        font-size: 0.8rem;
+    } 
+   }
+    .tag li>p{
+        :nth-child(1):hover{
+            color:$titleColor;
+        }
+        :nth-child(2){
+            font-size: 0.8rem;
+        }
+    }
+}
+/*content*/ 
+.strategy_details .details {
+  .content{
+      h4::first-letter{
+        font-size: 2rem;
+        color:$titleColor;
+    }
+  }  
+  .catalog{
+      h3:first-child{
+         font-size: 1.8rem;
+        //  margin-top: 30rem !important;
+      }
+      .pointer_nav_right li a{
+          color:#000;
+      }
+  }
+}

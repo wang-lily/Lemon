@@ -5,18 +5,12 @@
     font-size: 0.8rem; }
 
 .strategy_details .bigTitle .tag li > p :nth-child(1):hover {
-  color: #FF9800; }
+  color: #FF9D00; }
 
 .strategy_details .bigTitle .tag li > p :nth-child(2) {
   font-size: 0.8rem; }
 
 /*content*/
-.strategy_details .details .content h4::first-letter {
-  font-size: 2rem;
-  color: #FF9800; }
-
-.strategy_details .details .catalog h3:first-child {
-  font-size: 1.8rem; }
-
-.strategy_details .details .catalog .pointer_nav_right li a {
-  color: #000; }
+.strategy_details .details .content > div h5::first-letter {
+  font-size: 66rem;
+  color: #FF9D00; }
