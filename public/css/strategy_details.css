@@ -20,3 +20,7 @@
 
 .strategy_details .details .catalog .pointer_nav_right li a {
   color: #000; }
+
+@media screen and (max-width: 767px) {
+  .strategy_details .details .catalog {
+    display: none; } }
