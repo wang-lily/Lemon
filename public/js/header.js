@@ -7,7 +7,7 @@ $(function(){
         type: "get",
         success: function (res) {
             $(res).replaceAll("header");
-            function navSpreed(elem){
+            function navSpread(elem){
                 $(elem).children(":first").css("animation","topChange0 0.5s linear forwards")
                         .next().css("animation","bottomChange0 0.5s linear forwards");
                     $(elem).attr("data-status", 1);
@@ -27,7 +27,7 @@ $(function(){
                 var $dataStatus = $(this).attr("data-status");
                 if($dataStatus == 0){
                     //导航按钮变化
-                    navSpreed(this);
+                    navSpread(this);
                     return;
                 }
                 if($dataStatus == 1){

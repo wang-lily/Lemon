@@ -89,7 +89,8 @@ section #page-nav > p > button {
       line-height: 1.4;
       height: 50%;
       font-size: 1rem;
-      overflow: hidden; }
+      overflow: hidden;
+      text-overflow: ellipsis; }
     section #content > div.item > div:nth-child(2) > div {
       height: 25%;
       font-size: 0.8rem; }
@@ -108,7 +109,8 @@ section #page-nav > p > button {
       line-height: 1.4;
       height: 50%;
       font-size: 0.8rem;
-      overflow: hidden; }
+      overflow: hidden;
+      text-overflow: ellipsis; }
     section #content > div.item > div:nth-child(2) > div {
       height: 25%;
       font-size: 0.8rem; }
