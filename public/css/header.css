@@ -41,6 +41,44 @@ header {
     color: #28a745; }
     header #header-nav .icon-login1_0:hover, header #header-nav .icon-login1_1:hover, header #header-nav .icon-login2_0:hover, header #header-nav .icon-login2_1:hover, header #header-nav .icon-sousuo:hover, header #header-nav .icon-dizhi:hover {
       color: rgba(40, 167, 69, 0.7); }
+  header #header-nav .personal > div {
+    top: 37px;
+    right: 0px; }
+    header #header-nav .personal > div > div {
+      width: 10px;
+      height: 10px;
+      background: white;
+      transform: translateY(50%) rotate(45deg);
+      border-top: 0.5px solid #999;
+      border-left: 0.5px solid #999; }
+    header #header-nav .personal > div > ul {
+      background: white;
+      border: 0.5px solid #999;
+      border-radius: 3px; }
+      header #header-nav .personal > div > ul.speed {
+        width: 200px;
+        height: 150px;
+        transition: all 0.3s linear; }
+      header #header-nav .personal > div > ul.fold {
+        overflow: hidden;
+        padding: 0 !important;
+        width: 0px;
+        height: 0px;
+        transition: all 0.3s linear; }
+      header #header-nav .personal > div > ul > li {
+        font-weight: normal;
+        font-size: 0.8rem;
+        padding: 12px;
+        color: black; }
+        header #header-nav .personal > div > ul > li:first-child {
+          color: #28a745;
+          font-size: 1.2rem; }
+        header #header-nav .personal > div > ul > li:last-child {
+          margin-bottom: 1rem; }
+        header #header-nav .personal > div > ul > li:not(:first-child):hover {
+          background: rgba(0, 0, 0, 0.1);
+          color: rgba(0, 0, 0, 0.7);
+          transition: background 0.3s linear; }
   header #header-nav .collapse-navbar {
     overflow: hidden;
     display: flex;
