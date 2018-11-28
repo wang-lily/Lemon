@@ -44,7 +44,7 @@ section #page-nav > ul > li {
     color: #fff !important;
     background: rgba(40, 167, 69, 0.3); }
 
-section #page-nav > p > span:first-child {
+section #page-nav > p > input {
   display: inline-block;
   width: 3rem;
   margin-left: 1rem;
@@ -61,6 +61,16 @@ section #page-nav > p > button {
 @media screen and (min-width: 768px) {
   section #navigation > div:first-child > span {
     font-size: 1.3rem; }
+  section #navigation > form > div {
+    box-shadow: inset 0px 0px 19px 2px rgba(0, 0, 0, 0.3);
+    font-size: 1.3rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem; }
+    section #navigation > form > div:hover {
+      padding-left: 1.2rem;
+      width: 16rem;
+      transition: width 0.5s linear; }
   section #content > div.item {
     height: 165px; }
     section #content > div.item > div:nth-child(2) > h5 {
