@@ -1,4 +1,45 @@
-body section{
+body section {
     background: url(../img/pics/bg-pics.png) no-repeat fixed;
     background-size: cover;
 }
+
+.pics  .pics_wall{
+         width:92%;
+         overflow-y: auto;
+         overflow-x: hidden;
+         
+        .title {
+            img {
+                width: 8rem;
+                height: 6rem;
+                margin-top: -1.6rem;
+                padding: 1rem;
+            }
+            &>span {
+                left: 3.8rem;
+                bottom: 1.2rem;
+                color: #fff;
+                font-size: 1rem;
+                .curYear {
+                    font-size: 1.4rem;
+                }
+            }
+        }
+        .masonry {
+            position: relative;
+            margin: 0 auto;
+            clear: both;
+            .item {
+                position: absolute;
+                width: 150px;
+                margin: 5px;
+                border: 1px solid #ddd;
+                transition: all 1s;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
