@@ -20,7 +20,7 @@
 
 <body >
 <header></header>
-<form>
+<form action="post" enctype="multipart/form-data">
     <div id="top" class="container-fluid position-relative w-100 p-0 m-0">
         <picture>
             <source media="(min-width: 1000px)" srcset="../img/carousel/lb08.png">
@@ -36,29 +36,39 @@
     </div>
     <div class="container">
          <div id="content" class="row"> 
-            <div class="col p-0">
-                <textarea class="w-100 p-3 border" rows="" cols="" placeholder="从这里开始，记录旅程的点点滴滴..."></textarea>
+            <div class="col border p-0">
+                <textarea class="w-100 p-3" rows="" cols="" placeholder="从这里开始，记录旅程的点点滴滴...">
+                    <img src="../img/170-240/Malaysia01.png" alt="">
+                </textarea>
+                <img src="../img/170-240/Malaysia01.png" alt="">
             </div>
             <div class="col-auto d-flex p-0 aside">
                 <div class="m-auto h-100 d-flex align-items-center">
                     <span id="arrow" class="iconfont icon-arrow_l align-items-center h3"></span>
                 </div>
                 <ul class="pt-3 m-0">
-                    <li>
-                        <a href="javascript:;" class="iconfont icon-tupian text-warning h4"></a>
+                    <li class="position-relative">
+                        <span href="javascript:;" class="iconfont icon-tupian text-warning h4"></span>
                         <span>&nbsp;&nbsp;插入图片</span>
+                        <input accept="image/*" class="position-absolute" type="file"/>
                     </li>
-                    <li>
-                        <a href="javascript:;" class="iconfont icon-shipin text-warning h4"></a>
+                    <li class="position-relative">
+                        <span href="javascript:;" class="iconfont icon-shipin text-warning h4"></span>
                         <span>&nbsp;&nbsp;插入视频</span>
+                        <input accept="video/*" class="position-absolute" type="file"/>
                     </li>
-                    <li>
-                        <a href="javascript:;" class="iconfont icon-biaoti text-warning h4"></a>
+                    <li class="position-relative">
+                        <span href="javascript:;" class="iconfont icon-biaoti text-warning h4"></span>
                         <span>&nbsp;&nbsp;插入段落标题</span>
+                        <!-- <input class="position-absolute" type="file"/> -->
+                    </li>
+                    <li class="position-relative">
+                        <span href="javascript:;" class="iconfont icon-yinle text-warning h4"></span>
+                        <span>&nbsp;&nbsp;添加背景音乐</span>
+                        <input accept="audio/*" class="position-absolute" type="file"/>
                     </li>
                     <li>
-                        <a href="javascript:;" class="iconfont icon-yinle text-warning h4"></a>
-                        <span>&nbsp;&nbsp;添加背景音乐</span>
+                        <input accept="image/*" type="file"/ style="opacity: 1;">
                     </li>
                 </ul>
             </div>
