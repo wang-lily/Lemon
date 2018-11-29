@@ -1,0 +1,4 @@
+.info .catalog li:hover {
+  background: #FF9800;
+  border-radius: 0.6rem;
+  width: 90%; }

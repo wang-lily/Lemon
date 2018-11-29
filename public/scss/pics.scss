@@ -4,9 +4,13 @@ body section {
 }
 
 .pics  .pics_wall{
-         width:92%;
+         width:100%;
          overflow-y: auto;
-         overflow-x: hidden;
+         -ms-overflow-style: none; //IE 10+
+         overflow: -moz-scrollbars-none; //Firefox
+         &::-webkit-scrollbar {
+          display: none; //Safari and Chrome
+         }
          
         .title {
             img {
@@ -43,3 +47,19 @@ body section {
             }
         }
     }
+    @media screen and (max-width:375px){
+        .pics  .pics_wall .masonry .item{
+            width: 140px;
+        }
+    }
+    @media screen and (min-width:375px) and (max-width:768px){
+        .pics  .pics_wall .masonry .item{
+            width: 162px;
+        }
+    }
+    @media screen and (min-width:768px) and (max-width:1200px){
+        .pics  .pics_wall .masonry .item{
+            width: 160px;
+        }
+    }
+  

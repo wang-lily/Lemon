@@ -3,9 +3,12 @@ body section {
   background-size: cover; }
 
 .pics .pics_wall {
-  width: 92%;
+  width: 100%;
   overflow-y: auto;
-  overflow-x: hidden; }
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none; }
+  .pics .pics_wall::-webkit-scrollbar {
+    display: none; }
   .pics .pics_wall .title img {
     width: 8rem;
     height: 6rem;
@@ -31,3 +34,15 @@ body section {
       .pics .pics_wall .masonry .item img {
         width: 100%;
         height: 100%; }
+
+@media screen and (max-width: 375px) {
+  .pics .pics_wall .masonry .item {
+    width: 140px; } }
+
+@media screen and (min-width: 375px) and (max-width: 768px) {
+  .pics .pics_wall .masonry .item {
+    width: 162px; } }
+
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+  .pics .pics_wall .masonry .item {
+    width: 160px; } }
