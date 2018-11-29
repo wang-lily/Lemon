@@ -20,7 +20,7 @@
 
 <body >
 <header></header>
-<section>
+<form>
     <div id="top" class="container-fluid position-relative w-100 p-0 m-0">
         <picture>
             <source media="(min-width: 1000px)" srcset="../img/carousel/lb08.png">
@@ -35,20 +35,70 @@
         </div>
     </div>
     <div class="container">
-        <form id="form" action="" class="row">
-            <textarea class="col-md w-100 p-3" rows="" cols="" placeholder="从这里开始，记录旅程的点点滴滴..."></textarea>
-            <div class="col-md-auto d-flex bg-dark">
-                <span class="iconfont icon-arrow_l align-items-center text-white m-auto h3 "></span>
-                <ul class="">
-                    <li>插入图片</li>
-                    <li>插入视频</li>
-                    <li>插入段落标题</li>
-                    <li>添加背景音乐</li>
+         <div id="content" class="row"> 
+            <div class="col p-0">
+                <textarea class="w-100 p-3 border" rows="" cols="" placeholder="从这里开始，记录旅程的点点滴滴..."></textarea>
+            </div>
+            <div class="col-auto d-flex p-0 aside">
+                <div class="m-auto h-100 d-flex align-items-center">
+                    <span id="arrow" class="iconfont icon-arrow_l align-items-center h3"></span>
+                </div>
+                <ul class="pt-3 m-0">
+                    <li>
+                        <a href="javascript:;" class="iconfont icon-tupian text-warning h4"></a>
+                        <span>&nbsp;&nbsp;插入图片</span>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="iconfont icon-shipin text-warning h4"></a>
+                        <span>&nbsp;&nbsp;插入视频</span>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="iconfont icon-biaoti text-warning h4"></a>
+                        <span>&nbsp;&nbsp;插入段落标题</span>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="iconfont icon-yinle text-warning h4"></a>
+                        <span>&nbsp;&nbsp;添加背景音乐</span>
+                    </li>
                 </ul>
             </div>
-        </form>
+            <div class="col-12 my-btn w-100 text-center">
+                    <button class="m-2">预览</button>
+                    <button class="m-2">发表</button>   
+            </div>
+        </div> 
+        <!-- <div id="content" class="row">
+                <div class="col-md p-0">
+                    <textarea class="w-100 p-3 border" rows="" cols="" placeholder="从这里开始，记录旅程的点点滴滴..."></textarea>
+                </div>
+                <div class="col-md-auto d-flex bg-dark p-0 aside">
+                    <span class="iconfont icon-arrow_l align-items-center text-white m-auto h3 "></span>
+                    <ul class="spread">
+                        <li>
+                            <a class="iconfont icon-tupian text-warning h4"></a>
+                            <span>&nbsp;&nbsp;插入图片</span>
+                        </li>
+                        <li>
+                            <a class="iconfont icon-shipin text-warning h4"></a>
+                            <span>&nbsp;&nbsp;插入视频</span>
+                        </li>
+                        <li>
+                            <a class="iconfont icon-biaoti text-warning h4"></a>
+                            <span>&nbsp;&nbsp;插入段落标题</span>
+                        </li>
+                        <li>
+                            <a class="iconfont icon-yinle text-warning h4"></a>
+                            <span>&nbsp;&nbsp;添加背景音乐</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="my-btn w-100 text-center">
+                    <button>预览</button>
+                    <button>发表</button>   
+                </div>
+            </div> -->
     </div>
-</section>
+</form>
 
 <footer></footer>
 <script src="../js/jquery-1.11.3.js"></script>

@@ -17,14 +17,19 @@ $font1r:1rem;
 
 
 *{margin:0;padding:0;border:0}
+a:hover{
+   text-decoration: none; 
+}
 
 #top{
     &>p{
+        width: 100%;
+        text-align: center;
         text-shadow: 0 0 0.2em #8F7;
         letter-spacing: 0.5rem;
         top:30%;
         left: 50%;
-        transform: translate(-50%,50%);
+        transform: translateX(-50%);
     }
     &>div{
         // width: 50%;
@@ -39,26 +44,55 @@ $font1r:1rem;
         }
     }
 }
-#form{
-    &>div{
+#content{
+    &>div.aside{
+        &>div:first-child{
+            background-image:linear-gradient(to left,#fff 20%, rgba(0,0,0,0.3) 100%);
+        }
         height: 500px;
-        color:#fff;
         font-family: "微软雅黑";
         &>ul{
+            background-color:#fff;
             width:0px;
             overflow: hidden;
-            &.spread{
-                width:150px;
-            }
+            transition: width 0.3s linear;
             &>li{
+                &:hover{
+                    box-shadow: 0px 0px 20px 4px rgba(0,0,0,0.1);
+                }
+                border-bottom:1px solid $inputBgColor0;
+                font-weight: normal !important;
                 white-space:nowrap;
                 overflow: hidden;
-                padding:1rem;
+                padding:0.5rem;
+                padding-left: 0;
             }
         }
     }
     textarea{
         height: 500px;
+    }
+    .my-btn{
+        button{
+            &:first-child{
+                // margin-right: 1rem;
+                background: #fff;
+                box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.5);
+                color:$iconNormalColor;
+                &:hover{
+                    box-shadow: inset 0px 0px 20px 2px rgba(0,0,0,0.5);
+                }
+            }
+            &:last-child{
+                // margin-left: 1rem;
+                box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.5);
+                background: $iconNormalColor;
+                color: #fff;
+                &:hover{
+                    box-shadow: inset 0px 0px 20px 2px rgba(0,0,0,0.5);
+                }
+            }
+        }
     }
 }
 
@@ -66,16 +100,35 @@ $font1r:1rem;
 //大屏幕
 @media screen and (min-width:768px){
     #top{
-            &>p{
-                font-size: $font2r;
-            }
-            &>div{
-                width: 50%;
-                &>input{
-                    height: 4rem;
-                }
+        &>p{
+            font-size: $font2r;
+        }
+        &>div{
+            width: 50%;
+            &>input{
+                height: 4rem;
             }
         }
+    }
+    #content{
+        ul{
+            a{
+                font-size: 1.5rem;
+            }
+            font-size: 1rem;
+            &.spread{
+                width:150px !important;
+            }
+        }
+        .my-btn{
+            button{
+                font-size: $font1_2r;
+                width: 8rem;
+                height: 3rem;
+                border-radius:1.5rem;
+            }
+        }
+    }
 }
 
 
@@ -89,6 +142,25 @@ $font1r:1rem;
             width: 75%;
             &>input{
                 height: 2rem;
+            }
+        }
+    }
+    #content{
+        ul{
+            &.spread{
+                width:120px !important;
+            }
+            a{
+                font-size: 1rem;
+            }
+            font-size: 0.8rem;
+        }
+        .my-btn{
+            button{
+                font-size: $font1r;
+                width: 6rem;
+                height: 2rem;
+                border-radius:1rem;
             }
         }
     }

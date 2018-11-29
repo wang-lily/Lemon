@@ -28,7 +28,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 var app = express();
-app.use(bodyParser.urlencoded({extended:true}))
-	.use(express.static("public"))
-	.listen(3001);
+app.listen(3001);
 console.log("服务器创建成功，端口号3001");
+app.use(bodyParser.urlencoded({extended:true}))
+app.use(express.static(__dirname + "/public"))
