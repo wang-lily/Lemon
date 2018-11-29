@@ -42,11 +42,24 @@ a:hover {
       overflow: hidden;
       padding: 0.5rem;
       padding-left: 0; }
+      #content > div.aside > ul > li > input {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        opacity: 0; }
       #content > div.aside > ul > li:hover {
         box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.1); }
 
-#content textarea {
+#content > div:first-child {
   height: 500px; }
+  #content > div:first-child textarea {
+    resize: none;
+    height: auto;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none; }
+    #content > div:first-child textarea::-webkit-scrollbar {
+      display: none; }
 
 #content .my-btn button:first-child {
   background: #fff;
