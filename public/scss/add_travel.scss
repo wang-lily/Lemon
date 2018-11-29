@@ -1,0 +1,167 @@
+$iconNormalColor:rgba(40, 167, 69, 1);
+$iconHoverColor:rgba(40, 167, 69, 0.7);
+$divHoverColor:rgba(0,0,0,0.1);
+$fontNormalColor:rgba(0,0,0,1);
+$fontHoverColor:rgba(0,0,0,0.7);
+$inputBgColor0:rgba(0,0,0,0.1);
+$inputBgColor1:rgba(0,0,0,0);
+$bgColor01:rgba(40, 167, 69, 0.5);
+$bgColor02:rgba(40, 167, 69, 0.3);
+$font3r:3rem;
+$font2r:2rem;
+$font1_5r:1.5rem;
+$font1_3r:1.3rem;
+$font1_2r:1.2rem;
+$font08r:0.8rem;
+$font1r:1rem;
+
+
+*{margin:0;padding:0;border:0}
+a:hover{
+   text-decoration: none; 
+}
+
+#top{
+    &>p{
+        width: 100%;
+        text-align: center;
+        text-shadow: 0 0 0.2em #8F7;
+        letter-spacing: 0.5rem;
+        top:30%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    &>div{
+        // width: 50%;
+        bottom:10%;
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 3px 3px 31px 0px #000;
+        &>input{
+            // height: 4rem;
+            width: 100%;
+            border-radius:5px;
+        }
+    }
+}
+#content{
+    &>div.aside{
+        &>div:first-child{
+            background-image:linear-gradient(to left,#fff 20%, rgba(0,0,0,0.3) 100%);
+        }
+        height: 500px;
+        font-family: "微软雅黑";
+        &>ul{
+            background-color:#fff;
+            width:0px;
+            overflow: hidden;
+            transition: width 0.3s linear;
+            &>li{
+                &:hover{
+                    box-shadow: 0px 0px 20px 4px rgba(0,0,0,0.1);
+                }
+                border-bottom:1px solid $inputBgColor0;
+                font-weight: normal !important;
+                white-space:nowrap;
+                overflow: hidden;
+                padding:0.5rem;
+                padding-left: 0;
+            }
+        }
+    }
+    textarea{
+        height: 500px;
+    }
+    .my-btn{
+        button{
+            &:first-child{
+                // margin-right: 1rem;
+                background: #fff;
+                box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.5);
+                color:$iconNormalColor;
+                &:hover{
+                    box-shadow: inset 0px 0px 20px 2px rgba(0,0,0,0.5);
+                }
+            }
+            &:last-child{
+                // margin-left: 1rem;
+                box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.5);
+                background: $iconNormalColor;
+                color: #fff;
+                &:hover{
+                    box-shadow: inset 0px 0px 20px 2px rgba(0,0,0,0.5);
+                }
+            }
+        }
+    }
+}
+
+
+//大屏幕
+@media screen and (min-width:768px){
+    #top{
+        &>p{
+            font-size: $font2r;
+        }
+        &>div{
+            width: 50%;
+            &>input{
+                height: 4rem;
+            }
+        }
+    }
+    #content{
+        ul{
+            a{
+                font-size: 1.5rem;
+            }
+            font-size: 1rem;
+            &.spread{
+                width:150px !important;
+            }
+        }
+        .my-btn{
+            button{
+                font-size: $font1_2r;
+                width: 8rem;
+                height: 3rem;
+                border-radius:1.5rem;
+            }
+        }
+    }
+}
+
+
+//小屏幕
+@media screen and (max-width:767px){
+    #top{
+        &>p{
+            font-size: $font1_3r;
+        }
+        &>div{
+            width: 75%;
+            &>input{
+                height: 2rem;
+            }
+        }
+    }
+    #content{
+        ul{
+            &.spread{
+                width:120px !important;
+            }
+            a{
+                font-size: 1rem;
+            }
+            font-size: 0.8rem;
+        }
+        .my-btn{
+            button{
+                font-size: $font1r;
+                width: 6rem;
+                height: 2rem;
+                border-radius:1rem;
+            }
+        }
+    }
+}

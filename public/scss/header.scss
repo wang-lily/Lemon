@@ -6,6 +6,8 @@ $fontNormalColor:rgba(0,0,0,1);
 $fontHoverColor:rgba(0,0,0,0.7);
 $inputBgColor0:rgba(0,0,0,0.1);
 $inputBgColor1:rgba(0,0,0,0);
+$font08r:0.8rem;
+$font1_2r:1.2rem;
 
 //基础样式start
 *{margin:0;padding: 0}
@@ -64,6 +66,53 @@ header{
       color:$iconNormalColor;
       &:hover{
         color:$iconHoverColor;
+      }
+    }
+    .personal{
+      &>div{
+        top:37px;
+        right:0px;
+        &>div{
+          width:10px;
+          height: 10px; 
+          background:rgba(255,255,255,1);
+          transform:translateY(50%) rotate(45deg);border-top:0.5px solid #999;
+          border-left:0.5px solid #999;
+        }
+        &>ul{
+          &.speed{
+            width:200px;
+            transition:all 0.3s linear;
+          }
+          &.fold{
+            overflow: hidden;
+            padding:0 !important;
+            width:0px;
+            height:0px;
+            transition:all 0.3s linear;
+          }
+          background:rgba(255,255,255,1); 
+          border:0.5px solid #999;
+          border-radius:3px;
+          &>li{
+            font-weight: normal;
+            font-size: $font08r;
+            padding:12px;
+            color:$fontNormalColor;
+            &:first-child{
+              color:$iconNormalColor;
+              font-size: $font1_2r;
+            }
+            &:last-child{
+              margin-bottom: 1rem;
+            }
+            &:not(:first-child):hover{
+              background: $inputBgColor0;
+              color:$fontHoverColor;
+              transition: background 0.3s linear;
+            }
+          }
+        }
       }
     }
     // 下拉选项样式
