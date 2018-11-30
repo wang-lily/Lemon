@@ -1,7 +1,48 @@
 $fontColor:#FF9800;
 
-.info .catalog li:hover{
-    background: $fontColor;
-    border-radius:0.6rem;
-    width:90%;
+.info {
+    .catalog{.active {
+        background: $fontColor;
+        border-radius: 0.6rem;
+        width: 100%;
+    }
+    .publicList li {
+         width:100%;
+         white-space: nowrap;
+         overflow:hidden;
+         text-overflow: ellipsis;
+         -ms-text-overflow: ellipsis;
+
+        a{
+            text-decoration: none;
+            color:#000;
+            &:hover{
+                color:$fontColor;
+            }
+        }
+        
+    }
+} 
+    
+    .profile {
+        &>p {
+            &>span:first-child {
+                font-size: 2rem;
+                color: $fontColor;
+            }
+
+            &>b {
+                font-size: 1.2rem;
+                color: $fontColor;
+            }
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        &[type='submit'] {
+            background: $fontColor;
+        }
+    }
 }

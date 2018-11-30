@@ -1,4 +1,30 @@
-.info .catalog li:hover {
+.info .catalog .active {
   background: #FF9800;
   border-radius: 0.6rem;
-  width: 90%; }
+  width: 100%; }
+
+.info .catalog .publicList li {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis; }
+  .info .catalog .publicList li a {
+    text-decoration: none;
+    color: #000; }
+    .info .catalog .publicList li a:hover {
+      color: #FF9800; }
+
+.info .profile > p > span:first-child {
+  font-size: 2rem;
+  color: #FF9800; }
+
+.info .profile > p > b {
+  font-size: 1.2rem;
+  color: #FF9800; }
+
+.info .profile textarea {
+  resize: none; }
+
+.info .profile[type='submit'] {
+  background: #FF9800; }
