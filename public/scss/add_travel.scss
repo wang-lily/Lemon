@@ -81,6 +81,7 @@ a:hover{
         textarea{
             resize: none;
             height: auto;
+            // max-height: 500px;
             -ms-overflow-style: none; //IE 10+
             overflow: -moz-scrollbars-none; //Firefox
             &::-webkit-scrollbar {

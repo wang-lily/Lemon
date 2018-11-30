@@ -56,6 +56,7 @@ a:hover {
   #content > div:first-child textarea {
     resize: none;
     height: auto;
+    max-height: 500px;
     -ms-overflow-style: none;
     overflow: -moz-scrollbars-none; }
     #content > div:first-child textarea::-webkit-scrollbar {
