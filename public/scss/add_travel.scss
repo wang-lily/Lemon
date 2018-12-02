@@ -1,3 +1,4 @@
+
 $iconNormalColor:rgba(40, 167, 69, 1);
 $iconHoverColor:rgba(40, 167, 69, 0.7);
 $divHoverColor:rgba(0,0,0,0.1);
@@ -32,13 +33,11 @@ a:hover{
         transform: translateX(-50%);
     }
     &>div{
-        // width: 50%;
         bottom:10%;
         left: 50%;
         transform: translateX(-50%);
         box-shadow: 3px 3px 31px 0px #000;
         &>input{
-            // height: 4rem;
             width: 100%;
             border-radius:5px;
         }
@@ -46,54 +45,72 @@ a:hover{
 }
 #content{
     &>div.aside{
-        &>div:first-child{
-            background-image:linear-gradient(to left,#fff 20%, rgba(0,0,0,0.3) 100%);
-        }
-        height: 500px;
+        box-shadow: -2px 0 5px rgba(0,0,0,0.3);
         font-family: "微软雅黑";
-        &>ul{
-            background-color:#fff;
-            width:0px;
-            overflow: hidden;
-            transition: width 0.3s linear;
-            &>li{
-                &>input{
-                    width: 100%; 
-                    height: 100%; 
-                    top:0;
-                    left:0;
-                    opacity: 0;
-                }
-                &:hover{
-                    box-shadow: 0px 0px 20px 4px rgba(0,0,0,0.1);
-                }
-                border-bottom:1px solid $inputBgColor0;
-                font-weight: normal !important;
-                white-space:nowrap;
+        &>div{
+            height: auto;
+            &>ul{
+                background-color:#fff;
+                width:0px;
                 overflow: hidden;
-                padding:0.5rem;
-                padding-left: 0;
+                transition: width 0.3s linear;
+                &>li{
+                    &>input{
+                        width: 100%; 
+                        height: 100%; 
+                        top:0;
+                        left:0;
+                        opacity: 0;
+                    }
+                    &:hover{
+                        box-shadow: 0px 0px 20px 4px rgba(0,0,0,0.1);
+                    }
+                    border-bottom:1px solid $inputBgColor0;
+                    font-weight: normal !important;
+                    white-space:nowrap;
+                    overflow: hidden;
+                    padding:0.5rem;
+                    padding-left: 0;
+                    &:nth-child(6),&:nth-child(7),&:nth-child(8){
+                        border:none;
+                        // padding-top:2rem;
+                        &:hover{
+                            box-shadow: none;
+                        }
+                    }
+                    &>ol{
+                        list-style-type:decimal-leading-zero !important;
+                    }
+                }
             }
         }
+        
     }
-    &>div:first-child{
-        height: 500px;
-        textarea{
-            resize: none;
-            height: auto;
-            // max-height: 500px;
-            -ms-overflow-style: none; //IE 10+
+   .section{
+       &>div>div:first-child{
+            max-width: 100%;
+       }
+        resize: none;
+        border-right:0 !important;
+        overflow: scroll;
+        -ms-overflow-style: none; //IE 10+
             overflow: -moz-scrollbars-none; //Firefox
             &::-webkit-scrollbar {
                 display: none; //Safari and Chrome
             }
+        img{
+            max-height: 500px;
+            max-width:100%;
+        }
+        textarea{
+            margin-left: 1px;
+            resize: none;
         }
     }
     
     .my-btn{
         button{
             &:first-child{
-                // margin-right: 1rem;
                 background: #fff;
                 box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.5);
                 color:$iconNormalColor;
@@ -102,7 +119,6 @@ a:hover{
                 }
             }
             &:last-child{
-                // margin-left: 1rem;
                 box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.5);
                 background: $iconNormalColor;
                 color: #fff;
@@ -129,6 +145,12 @@ a:hover{
         }
     }
     #content{
+        .aside{
+            height: 1000px;
+        }
+        .section{
+            height: 1000px;
+        }
         ul{
             a{
                 font-size: 1.5rem;
@@ -164,6 +186,12 @@ a:hover{
         }
     }
     #content{
+        .aside{
+            height: 500px;
+        }
+        .section{
+            height: 500px;
+        }
         ul{
             &.spread{
                 width:120px !important;

@@ -1,86 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Lemon-发表游记</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/iconfont.css">
-    <link rel="shortcut icon" href="../img/logo/lemon_logo_pic.png"/>
-    <link rel="stylesheet" href="../css/add_travel.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/iconfont.css" />
+    <link rel="shortcut icon" href="../img/logo/lemon_logo_pic.png" />
+    <link rel="stylesheet" href="../css/add_travel.css" />
     <!-- <script src="../js/jquery.min.js"></script> -->
-    <!--<script src="../js/popper.min.js"></script>-->
-    <!--<script src="../js/bootstrap.min.js"></script>-->
+    <!-- <script src="../js/popper.min.js"></script> -->
+    <!-- <script src="../js/bootstrap.min.js"></script> -->
     <style>
-    *{
-         border:1px solid #000;
-    }  
+      * {
+        /* border:1px solid #000; */
+      }
     </style>
-</head>
+  </head>
 
-<body >
-<header></header>
-<form action="post" enctype="multipart/form-data">
-    <div id="top" class="container-fluid position-relative w-100 p-0 m-0">
+  <body>
+    <header></header>
+    <form action="post" enctype="multipart/form-data">
+      <div id="top" class="container-fluid position-relative w-100 p-0 m-0">
         <picture>
-            <source media="(min-width: 1000px)" srcset="../img/carousel/lb08.png">
-            <source media="(max-width:999px)" srcset="../img/carousel/lb08_500x250.png">
-            <img class="w-100" src="../img/carousel/picture.png">
+          <source
+            media="(min-width: 1000px)"
+            srcset="../img/carousel/lb08.png"
+          />
+          <source
+            media="(max-width:999px)"
+            srcset="../img/carousel/lb08_500x250.png"
+          />
+          <img class=" w-100" src="../img/carousel/picture.png" />
         </picture>
-        <p class="position-absolute text-white">
-            -记录精彩瞬间-
-        </p>  
+        <p class="position-absolute text-white">-记录精彩瞬间-</p>
         <div class="position-absolute">
-            <input class="p-3" type="text" placeholder="填写游记标题">
+          <input class="p-3" type="text" placeholder="填写游记标题" />
         </div>
-    </div>
-    <div class="container">
-         <div id="content" class="row"> 
-            <div class="col border p-0">
-                <textarea id="tarea" class="w-100 p-3" rows="1" placeholder="从这里开始，记录旅程的点点滴滴..."></textarea>
-            </div>
-            <div class="col-auto d-flex p-0 aside">
-                <div class="m-auto h-100 d-flex align-items-center">
-                    <span id="arrow" class="iconfont icon-arrow_l align-items-center h3"></span>
+      </div>
+      <div class="container p-0">
+        <div id="content" class="position-relative">
+          <div id="section" class="border p-0 section">
+            <textarea
+              class="w-100 p-3 pr-5"
+              rows="1"
+              placeholder="从这里开始，记录旅程的点点滴滴..."
+            ></textarea>
+            <!-- 插入的图片和描述1 start -->
+            <!-- <div class="d-flex flex-column justify-content-center">
+                <div class="w-100 text-center">
+                    <img src="../img/390-552/Malaysia03_390_552.png" alt="" />
                 </div>
-                <ul class="pt-3 m-0">
-                    <li class="position-relative">
-                        <span href="javascript:;" class="iconfont icon-tupian text-warning h4"></span>
-                        <span>&nbsp;&nbsp;插入图片</span>
-                        <input accept="image/*" class="position-absolute" type="file"/>
-                    </li>
-                    <li class="position-relative">
-                        <span href="javascript:;" class="iconfont icon-shipin text-warning h4"></span>
-                        <span>&nbsp;&nbsp;插入视频</span>
-                        <input accept="video/*" class="position-absolute" type="file"/>
-                    </li>
-                    <li class="position-relative">
-                        <span href="javascript:;" class="iconfont icon-biaoti text-warning h4"></span>
-                        <span>&nbsp;&nbsp;插入段落标题</span>
-                        <!-- <input class="position-absolute" type="file"/> -->
-                    </li>
-                    <li class="position-relative">
-                        <span href="javascript:;" class="iconfont icon-yinle text-warning h4"></span>
-                        <span>&nbsp;&nbsp;添加背景音乐</span>
-                        <input accept="audio/*" class="position-absolute" type="file"/>
-                    </li>
-                    <li>
-                        <input accept="image/*" type="file"/ style="opacity: 1;">
-                    </li>
-                </ul>
+                <div class="m-auto">
+                    <span class="text-info pl-3 iconfont icon-tubiao"></span>
+                    <input class="p-3 "  type="text" placeholder="为图片添加地点" />
+                </div>
+                <textarea
+                class="w-100 p-3 pr-5"
+                rows="1"
+                placeholder="添加内容……"
+                ></textarea> 
+            </div> -->
+            <!-- 插入的图片和描述1 end -->
+            
+          </div>
+          <div
+            id="aside"
+            class="position-absolute bg-white p-0 aside"
+            style=" top:0;right:0;"
+          >
+            <div id="alert-insert" class="d-flex  align-items-center">
+              <div class="m-auto">
+                <span
+                  id="arrow"
+                  class="iconfont icon-arrow_l align-items-center h3"
+                ></span>
+              </div>
+              <ul class="d-flex flex-column justify-content-center pt-3 m-0">
+                <li class="position-relative mr-1">
+                  <span
+                    href="javascript:;"
+                    class="iconfont icon-tupian text-warning h4"
+                  ></span>
+                  <span>&nbsp;&nbsp;插入图片</span>
+                  <input
+                    id="insertImg"
+                    accept="image/*"
+                    class="position-absolute"
+                    type="file"
+                  />
+                </li>
+                <li class="position-relative mr-1">
+                  <span
+                    href="javascript:;"
+                    class="iconfont icon-shipin text-warning h4"
+                  ></span>
+                  <span>&nbsp;&nbsp;插入视频</span>
+                  <input
+                    accept="video/*"
+                    class="position-absolute"
+                    type="file"
+                  />
+                </li>
+                <li class="position-relative mr-1">
+                  <span
+                    href="javascript:;"
+                    class="iconfont icon-biaoti text-warning h4"
+                  ></span>
+                  <span>&nbsp;&nbsp;插入段落标题</span>
+                  <input id="insertTitle" class="position-absolute" type="button" />
+                </li>
+                <li class="position-relative mr-1">
+                        <span
+                          href="javascript:;"
+                          class="iconfont icon-biaoti text-warning h4"
+                        ></span>
+                        <span>&nbsp;&nbsp;插入文本</span>
+                        <input id="insertTxt" class="position-absolute" type="button" />
+                      </li>
+                <li class="position-relative mr-1">
+                  <span
+                    href="javascript:;"
+                    class="iconfont icon-yinle text-warning h4"
+                  ></span>
+                  <span>&nbsp;&nbsp;添加背景音乐</span>
+                  <input
+                    accept="audio/*"
+                    class="position-absolute"
+                    type="file"
+                  />
+                </li>
+                <li class="position-relative mr-1">
+                  <small class="text-muted">16:41:11 自动保存了草稿</small>
+                </li>
+                <li class="position-relative p-1 mr-1 my-btn text-center">
+                  <button class="h-50 bg-white">
+                    <small class="text-success">保存草稿</small>
+                  </button>
+                </li>
+                <li class="position-relative mr-1 pt-3">
+                  <h6 class="text-center m-0 pb-1 border-bottom">游记目录</h6>
+                  <ol id="travel-list" class="text-muted pl-2 pt-2">
+                    <li><small>1/&nbsp;&nbsp;默认段落</small></li>
+                  </ol>
+                </li>
+              </ul>
             </div>
-            <div class="col-12 my-btn w-100 text-center">
-                    <button class="m-2">预览</button>
-                    <button class="m-2">发表</button>   
-            </div>
-        </div> 
-    </div>
-</form>
-
-<footer></footer>
-<script src="../js/jquery-1.11.3.js"></script>
-<script src="../js/header.js"></script>
-<script src="../js/add_travel.js"></script>
-<script src="../js/footer.js"></script>
-</body>
+          </div>
+          <div class="my-btn w-100 text-center mb-3">
+            <button class="m-2">预览</button> <button class="m-2">发表</button>
+          </div>
+        </div>
+      </div>
+    </form>
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/add_travel.js"></script>
+    <script src="../js/footer.js"></script>
+  </body>
 </html>

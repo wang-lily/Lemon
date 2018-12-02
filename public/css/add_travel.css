@@ -26,41 +26,53 @@ a:hover {
     border-radius: 5px; }
 
 #content > div.aside {
-  height: 500px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
   font-family: "微软雅黑"; }
-  #content > div.aside > div:first-child {
-    background-image: linear-gradient(to left, #fff 20%, rgba(0, 0, 0, 0.3) 100%); }
-  #content > div.aside > ul {
-    background-color: #fff;
-    width: 0px;
-    overflow: hidden;
-    transition: width 0.3s linear; }
-    #content > div.aside > ul > li {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      font-weight: normal !important;
-      white-space: nowrap;
+  #content > div.aside > div {
+    height: auto; }
+    #content > div.aside > div > ul {
+      background-color: #fff;
+      width: 0px;
       overflow: hidden;
-      padding: 0.5rem;
-      padding-left: 0; }
-      #content > div.aside > ul > li > input {
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        opacity: 0; }
-      #content > div.aside > ul > li:hover {
-        box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.1); }
+      transition: width 0.3s linear; }
+      #content > div.aside > div > ul > li {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        font-weight: normal !important;
+        white-space: nowrap;
+        overflow: hidden;
+        padding: 0.5rem;
+        padding-left: 0; }
+        #content > div.aside > div > ul > li > input {
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          opacity: 0; }
+        #content > div.aside > div > ul > li:hover {
+          box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.1); }
+        #content > div.aside > div > ul > li:nth-child(6), #content > div.aside > div > ul > li:nth-child(7), #content > div.aside > div > ul > li:nth-child(8) {
+          border: none; }
+          #content > div.aside > div > ul > li:nth-child(6):hover, #content > div.aside > div > ul > li:nth-child(7):hover, #content > div.aside > div > ul > li:nth-child(8):hover {
+            box-shadow: none; }
+        #content > div.aside > div > ul > li > ol {
+          list-style-type: decimal-leading-zero !important; }
 
-#content > div:first-child {
-  height: 500px; }
-  #content > div:first-child textarea {
-    resize: none;
-    height: auto;
+#content .section {
+  resize: none;
+  border-right: 0 !important;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none; }
+  #content .section > div > div:first-child {
+    max-width: 100%; }
+  #content .section::-webkit-scrollbar {
+    display: none; }
+  #content .section img {
     max-height: 500px;
-    -ms-overflow-style: none;
-    overflow: -moz-scrollbars-none; }
-    #content > div:first-child textarea::-webkit-scrollbar {
-      display: none; }
+    max-width: 100%; }
+  #content .section textarea {
+    margin-left: 1px;
+    resize: none; }
 
 #content .my-btn button:first-child {
   background: #fff;
@@ -83,6 +95,10 @@ a:hover {
     width: 50%; }
     #top > div > input {
       height: 4rem; }
+  #content .aside {
+    height: 1000px; }
+  #content .section {
+    height: 1000px; }
   #content ul {
     font-size: 1rem; }
     #content ul a {
@@ -102,6 +118,10 @@ a:hover {
     width: 75%; }
     #top > div > input {
       height: 2rem; }
+  #content .aside {
+    height: 500px; }
+  #content .section {
+    height: 500px; }
   #content ul {
     font-size: 0.8rem; }
     #content ul.spread {
