@@ -50,9 +50,9 @@ a:hover {
           opacity: 0; }
         #content > div.aside > div > ul > li:hover {
           box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.1); }
-        #content > div.aside > div > ul > li:nth-child(6), #content > div.aside > div > ul > li:nth-child(7), #content > div.aside > div > ul > li:nth-child(8) {
+        #content > div.aside > div > ul > li:nth-child(5), #content > div.aside > div > ul > li:nth-child(6), #content > div.aside > div > ul > li:nth-child(7) {
           border: none; }
-          #content > div.aside > div > ul > li:nth-child(6):hover, #content > div.aside > div > ul > li:nth-child(7):hover, #content > div.aside > div > ul > li:nth-child(8):hover {
+          #content > div.aside > div > ul > li:nth-child(5):hover, #content > div.aside > div > ul > li:nth-child(6):hover, #content > div.aside > div > ul > li:nth-child(7):hover {
             box-shadow: none; }
         #content > div.aside > div > ul > li > ol {
           list-style-type: decimal-leading-zero !important; }
