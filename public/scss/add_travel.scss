@@ -86,11 +86,17 @@ a:hover{
         }
         
     }
+    .add_address{
+        // height:100px;
+        // background: url(../img/tab/add_address.png) bottom center no-repeat;
+        // background-size:contain;
+    }
    .section{
        &>div>div:first-child{
+        //    width:auto !important;
             max-width: 100%;
        }
-        resize: none;
+        // resize: none;
         border-right:0 !important;
         overflow: scroll;
         -ms-overflow-style: none; //IE 10+

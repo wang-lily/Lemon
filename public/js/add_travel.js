@@ -261,9 +261,14 @@ $(function(){
     $(window).scroll(function(){
         var temp = $("#top").css("height").slice(0,-2);
         var scrollTopNew = $(this).scrollTop();
-        var translateY = scrollTopNew -temp;
+        var translateY = scrollTopNew -temp+43;
+        if(translateY<=0){
+            $("#alert-insert").css("transform",`translateY(0)`);
+            return;
+        }
         if(translateY>0){
-            $("#alert-insert").css("transform",`translateY(${translateY+43}px)`);
+            console.log(scrollTopNew);
+            $("#alert-insert").css("transform",`translateY(${translateY}px)`);
         }
     })
 
@@ -284,7 +289,7 @@ $(function(){
             <div class="w-100 text-center">
                 <img src="${url}" alt="" />
             </div>
-            <div class="m-auto">
+            <div class="m-auto border-bottom">
                 <span class="text-info pl-3 iconfont icon-tubiao"></span>
                 <input class="p-3 "  type="text" placeholder="为图片添加地点" />
             </div> 

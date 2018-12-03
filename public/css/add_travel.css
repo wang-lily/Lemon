@@ -58,7 +58,6 @@ a:hover {
           list-style-type: decimal-leading-zero !important; }
 
 #content .section {
-  resize: none;
   border-right: 0 !important;
   overflow: scroll;
   -ms-overflow-style: none;
