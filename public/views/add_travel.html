@@ -40,32 +40,48 @@
       </div>
       <div class="container p-0">
         <div id="content" class="position-relative">
-          <div id="section" class="border p-0 section">
+          <div id="section" class="position-relative border p-0 section">
+            <!-- 暂存图片用户不可见start -->
+            <div id="load-img" class="position-absolute">
+            </div>
+            <!-- 暂存图片用户不可见end -->
             <textarea
               class="w-100 p-3 pr-5"
               rows="1"
               placeholder="从这里开始，记录旅程的点点滴滴..."
             ></textarea>
             <!-- 插入的图片和描述1 start -->
-            <div class="d-flex flex-column justify-content-center">
-                <div class="w-100 text-center mb-3">
-                    <img src="../img/270-165/Malaysia06.png" alt="" />
+            <!-- <div>
+                <div class=" d-flex flex-column justify-content-center item">
+                    <div class="position-relative w-100 text-center mb-3">
+                      <img src="../img/carousel/lb01.png" alt="" />
+                      <div class="position-absolute p-2 text-left mask" >
+                        <a href="javascript:;" class="iconfont icon-delete2 bg-transparent text-warning m-2" title="删除"></a>
+                        <a href="javascript:;" class="iconfont icon-reset bg-transparent text-warning m-2" title="重置"></a>
+                      </div>
+                    </div>
+                    <div class="m-auto border-bottom">
+                        <span class="text-info p-2 iconfont icon-tubiao"></span>
+                        <input class="p-2"  type="text" placeholder="为图片添加地点"/>
+                    </div> 
                 </div>
-                <div class="m-auto border-bottom">
-                    <span class="text-info p-2 iconfont icon-tubiao"></span>
-                    <input class="p-2"  type="text" placeholder="为图片添加地点"/>
-                </div> 
-            </div>
+                <textarea
+                    class="w-100 p-3 pr-5"
+                    rows="1"
+                    placeholder="..."
+                  ></textarea>
+            </div> -->
             <!-- 插入的图片和描述1 end -->
             
             
           </div>
+          <!-- 侧边栏aside start -->
           <div
             id="aside"
             class="position-absolute bg-white p-0 aside"
             style=" top:0;right:0;"
           >
-            <div id="alert-insert" class="d-flex  align-items-center">
+            <div id="alert-insert" class="d-flex  align-items-center alert-insert">
               <div class="m-auto">
                 <span
                   id="arrow"
@@ -109,7 +125,7 @@
                 <li class="position-relative mr-1">
                         <span
                           href="javascript:;"
-                          class="iconfont icon-biaoti text-warning h4"
+                          class="iconfont icon-txt text-warning h4"
                         ></span>
                         <span>&nbsp;&nbsp;插入文本</span>
                         <input id="insertTxt" class="position-absolute" type="button" />
@@ -132,13 +148,28 @@
               </ul>
             </div>
           </div>
+          <!-- 侧边栏aside end -->
           <div class="my-btn w-100 text-center mb-3">
             <button class="m-2">预览</button> <button class="m-2">发表</button>
           </div>
         </div>
       </div>
     </form>
+
+
+
+    <!-- 插入图片尺寸不合适时弹出提示 start -->
+    <div id="pop-mask" class="fixed-top w-100 h-100 d-none" style="z-index:300; background: rgba(0,0,0,0.5)">
+      <div class="fixed-top bg-light d-flex flex-column justify-content-center" style="z-index:301;top:50%;left: 50%;transform: translate(-50%,-50%);width:270px;height:165px;box-shadow: 0px 0px 31px 0px #000;border-radius: 5px;">
+          <div class="h6 p-4">您选择的图片尺寸太小，请选择尺寸大于270px*165px的图片</div>
+          <div class="text-center">
+              <button class="btn btn-warning w-25">确定</button>
+          </div>
+        </div>
+    </div>
+    <!--插入图片后弹出提示 end-->
     <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/autosize.js"></script>
     <script src="../js/header.js"></script>
     <script src="../js/add_travel.js"></script>
     <script src="../js/footer.js"></script>

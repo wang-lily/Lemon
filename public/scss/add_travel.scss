@@ -47,7 +47,7 @@ a:hover{
     &>div.aside{
         box-shadow: -2px 0 5px rgba(0,0,0,0.3);
         font-family: "微软雅黑";
-        &>div{
+        &>div.alert-insert{
             height: auto;
             &>ul{
                 background-color:#fff;
@@ -86,15 +86,16 @@ a:hover{
         }
         
     }
-    .add_address{
-        // height:100px;
-        // background: url(../img/tab/add_address.png) bottom center no-repeat;
-        // background-size:contain;
-    }
    .section{
-       &>div>div:first-child{
+       .item>div:first-child{
         //    width:auto !important;
             max-width: 100%;
+            .mask{
+                background:rgba(0,0,0,0.5);
+                width:270px;height:165px;
+                top:0;left:50%;
+                transform:translateX(-50%); font-size:2rem;
+            }
        }
         // resize: none;
         border-right:0 !important;
@@ -152,10 +153,10 @@ a:hover{
     }
     #content{
         .aside{
-            height: 1000px;
+            height: 800px;
         }
         .section{
-            height: 1000px;
+            height: 800px;
         }
         ul{
             a{

@@ -27,13 +27,13 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
-// const cors = require("cors");
+const cors = require("cors");
 var app = express();
 app.listen(3001);
 console.log("服务器创建成功，端口号3001");
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname + "/public"));
-// app.use(cors({
-//     origin:["http://192.168.0.112:3001"],
-//     credentials:true
-// }))
+app.use(cors({
+    origin:["http://192.168.0.112:3001","http://127.0.0.1:3001"],
+    credentials:true
+}))

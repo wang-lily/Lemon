@@ -28,33 +28,33 @@ a:hover {
 #content > div.aside {
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
   font-family: "微软雅黑"; }
-  #content > div.aside > div {
+  #content > div.aside > div.alert-insert {
     height: auto; }
-    #content > div.aside > div > ul {
+    #content > div.aside > div.alert-insert > ul {
       background-color: #fff;
       width: 0px;
       overflow: hidden;
       transition: width 0.3s linear; }
-      #content > div.aside > div > ul > li {
+      #content > div.aside > div.alert-insert > ul > li {
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         font-weight: normal !important;
         white-space: nowrap;
         overflow: hidden;
         padding: 0.5rem;
         padding-left: 0; }
-        #content > div.aside > div > ul > li > input {
+        #content > div.aside > div.alert-insert > ul > li > input {
           width: 100%;
           height: 100%;
           top: 0;
           left: 0;
           opacity: 0; }
-        #content > div.aside > div > ul > li:hover {
+        #content > div.aside > div.alert-insert > ul > li:hover {
           box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.1); }
-        #content > div.aside > div > ul > li:nth-child(5), #content > div.aside > div > ul > li:nth-child(6), #content > div.aside > div > ul > li:nth-child(7) {
+        #content > div.aside > div.alert-insert > ul > li:nth-child(5), #content > div.aside > div.alert-insert > ul > li:nth-child(6), #content > div.aside > div.alert-insert > ul > li:nth-child(7) {
           border: none; }
-          #content > div.aside > div > ul > li:nth-child(5):hover, #content > div.aside > div > ul > li:nth-child(6):hover, #content > div.aside > div > ul > li:nth-child(7):hover {
+          #content > div.aside > div.alert-insert > ul > li:nth-child(5):hover, #content > div.aside > div.alert-insert > ul > li:nth-child(6):hover, #content > div.aside > div.alert-insert > ul > li:nth-child(7):hover {
             box-shadow: none; }
-        #content > div.aside > div > ul > li > ol {
+        #content > div.aside > div.alert-insert > ul > li > ol {
           list-style-type: decimal-leading-zero !important; }
 
 #content .section {
@@ -62,8 +62,16 @@ a:hover {
   overflow: scroll;
   -ms-overflow-style: none;
   overflow: -moz-scrollbars-none; }
-  #content .section > div > div:first-child {
+  #content .section .item > div:first-child {
     max-width: 100%; }
+    #content .section .item > div:first-child .mask {
+      background: rgba(0, 0, 0, 0.5);
+      width: 270px;
+      height: 165px;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem; }
   #content .section::-webkit-scrollbar {
     display: none; }
   #content .section img {
@@ -95,9 +103,9 @@ a:hover {
     #top > div > input {
       height: 4rem; }
   #content .aside {
-    height: 1000px; }
+    height: 800px; }
   #content .section {
-    height: 1000px; }
+    height: 800px; }
   #content ul {
     font-size: 1rem; }
     #content ul a {
