@@ -66,16 +66,18 @@ a:hover {
   #content .section .item > div:first-child {
     max-width: 100%; }
     #content .section .item > div:first-child .mask {
-      background: rgba(0, 0, 0, 0.5);
-      width: 270px;
-      height: 165px;
+      display: none;
+      padding-top: 10px !important;
+      width: 100px;
       top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 2rem;
-      opacity: 0; }
-      #content .section .item > div:first-child .mask:hover {
-        opacity: 1; }
+      left: 0;
+      font-size: 1rem; }
+      #content .section .item > div:first-child .mask > a {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        line-height: 20px;
+        background: rgba(0, 0, 0, 0.5); }
   #content .section::-webkit-scrollbar {
     display: none; }
   #content .section img {
