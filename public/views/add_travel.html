@@ -13,6 +13,7 @@
     <!-- <script src="../js/bootstrap.min.js"></script> -->
     <style>
       * {
+        
         /* border:1px solid #000; */
       }
     </style>
@@ -45,13 +46,11 @@
             <div id="preview" class="position-absolute">
             </div>
             <!-- 暂存图片用户不可见end -->
-            <div>
-              <textarea id="ta"
+            <textarea
               class="w-100 p-3 pr-5"
               rows="1" 
               placeholder="从这里开始，记录旅程的点点滴滴..."
             ></textarea>
-            </div>
             <!-- 插入的图片和描述1 start -->
             <div>
               <div class=" d-flex flex-column justify-content-center item">
@@ -70,43 +69,39 @@
                       <span class="text-info p-2 iconfont icon-tubiao"></span>
                       <input class="p-2"  type="text" placeholder="为图片添加地点"/>
                   </div> 
-              </div><div>
-              <textarea
-                  class="w-100 pl-3 pt-0 pb-0 pr-5"
-                  rows="1"
-                ></textarea></div>
-          </div>
+              </div>
+            </div>
+            <textarea
+                class="w-100 pl-3 pt-0 pb-0 pr-5"
+                rows="1"
+            ></textarea>
             <!-- 插入的图片和描述1 end -->
 
             <!-- 插入的视频start -->
             <div>
               <div class=" d-flex flex-column justify-content-center item">
-                  <div class="position-relative text-center mb-3 m-auto" style="width:500px;" data-target="inserted">
-                  <video src="../img/x.mp4" controls style="width:500px;" /></video>
-                    <div class="position-absolute p-2 text-left mask">
-                      <a href="javascript:;" class="iconfont icon-delete2 text-warning p-2 m-0" title="删除"></a>
-                      <a href="javascript:;" class="position-relative iconfont icon-reset text-warning p-2 m-0" title="重置">
-                    <input accept="video/*"
-                    class="position-absolute hide-input"
-                    type="file">
-                  </a>
-                    </div>
+                <div class="position-relative text-center mb-3 m-auto" style="max-width:500px;" data-target="inserted">
+                <video src="../img/x.mp4" controls webkit-playsinline="true" playsinline="true" x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portraint" style="width:500px;" /></video>
+                  <div class="position-absolute p-2 text-left mask">
+                    <a href="javascript:;" class="iconfont icon-delete2 text-warning p-2 m-0" title="删除"></a>
+                    <a href="javascript:;" class="position-relative iconfont icon-reset text-warning p-2 m-0" title="重置">
+                  <input accept="video/*"
+                  class="position-absolute hide-input"
+                  type="file">
+                </a>
                   </div>
-                  <div class="m-auto border-bottom">
-                      <span class="text-info p-2 iconfont icon-tubiao"></span>
-                      <input class="p-2"  type="text" placeholder="为图片添加地点"/>
-                  </div> 
-                  
-              </div><div>
-              <textarea
-                  class="w-100 pl-3 pt-0 pb-0 pr-5"
-                  rows="1"
-                ></textarea></div>
-          </div>
-            <!-- 插入的视频end -->
-            
-            
-            
+                </div>
+                <div class="m-auto border-bottom">
+                    <span class="text-info p-2 iconfont icon-tubiao"></span>
+                    <input class="p-2"  type="text" placeholder="为视频添加地点"/>
+                </div> 
+              </div>
+            </div>
+            <textarea
+              class="w-100 pl-3 pt-0 pb-0 pr-5"
+              rows="1"
+            ></textarea>
+            <!-- 插入的视频end -->  
           </div>
           <!-- 侧边栏aside start -->
           <div
@@ -169,7 +164,7 @@
                   <small class="text-center pt-2 pb-2">保存了草稿</small>
                 </li>
                 <li class="position-relative p-1 mr-1 my-btn text-center">
-                  <button class="h-50 bg-white">
+                  <button class="h-100 bg-white">
                     <small class="text-success">保存草稿</small>
                   </button>
                 </li>
