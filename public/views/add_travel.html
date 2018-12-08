@@ -36,7 +36,7 @@
         </picture>
         <p class="position-absolute text-white">-记录精彩瞬间-</p>
         <div class="position-absolute">
-          <input class="p-3" type="text" placeholder="填写游记标题" />
+          <input class="p-3" type="text" placeholder="填写游记标题" autofocus/>
         </div>
       </div>
       <div class="container p-0">
@@ -51,57 +51,6 @@
               rows="1" 
               placeholder="从这里开始，记录旅程的点点滴滴..."
             ></textarea>
-            <!-- 插入的图片和描述1 start -->
-            <div>
-              <div class=" d-flex flex-column justify-content-center item">
-                  <div class="position-relative text-center mb-3 m-auto" style="width:270px" data-target="inserted">
-                    <img src="../img/270-165/Malaysia05.png" alt="" />
-                    <div class="position-absolute p-2 text-left mask">
-                      <a href="javascript:;" class="iconfont icon-delete2 text-warning p-2 m-0" title="删除"></a>
-                      <a href="javascript:;" class="position-relative iconfont icon-reset text-warning p-2 m-0" title="重置">
-                        <input accept="image/*"
-                        class="position-absolute hide-input"
-                        type="file">
-                      </a>
-                    </div>
-                  </div>
-                  <div class="m-auto border-bottom">
-                      <span class="text-info p-2 iconfont icon-tubiao"></span>
-                      <input class="p-2"  type="text" placeholder="为图片添加地点"/>
-                  </div> 
-              </div>
-            </div>
-            <textarea
-                class="w-100 pl-3 pt-0 pb-0 pr-5"
-                rows="1"
-            ></textarea>
-            <!-- 插入的图片和描述1 end -->
-
-            <!-- 插入的视频start -->
-            <div>
-              <div class=" d-flex flex-column justify-content-center item">
-                <div class="position-relative text-center mb-3 m-auto" style="max-width:500px;" data-target="inserted">
-                <video src="../img/x.mp4" controls webkit-playsinline="true" playsinline="true" x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portraint" style="width:500px;" /></video>
-                  <div class="position-absolute p-2 text-left mask">
-                    <a href="javascript:;" class="iconfont icon-delete2 text-warning p-2 m-0" title="删除"></a>
-                    <a href="javascript:;" class="position-relative iconfont icon-reset text-warning p-2 m-0" title="重置">
-                  <input accept="video/*"
-                  class="position-absolute hide-input"
-                  type="file">
-                </a>
-                  </div>
-                </div>
-                <div class="m-auto border-bottom">
-                    <span class="text-info p-2 iconfont icon-tubiao"></span>
-                    <input class="p-2"  type="text" placeholder="为视频添加地点"/>
-                </div> 
-              </div>
-            </div>
-            <textarea
-              class="w-100 pl-3 pt-0 pb-0 pr-5"
-              rows="1"
-            ></textarea>
-            <!-- 插入的视频end -->  
           </div>
           <!-- 侧边栏aside start -->
           <div
@@ -117,47 +66,53 @@
                 ></span>
               </div>
               <ul class="d-flex flex-column justify-content-center pt-3 m-0">
-                <li class="position-relative mr-1">
-                  <span
+                <li class="position-relative mr-1 btn-shadow">
+                  <label  id="insertImg">
+                    <a
                     href="javascript:;"
                     class="iconfont icon-tupian text-warning h4"
-                  ></span>
+                  ></a>
                   <span>&nbsp;&nbsp;插入图片</span>
-                  <input
-                    id="insertImg"
+                  </label>
+                  <input id="fileImg"
                     accept="image/*"
-                    class="position-absolute hide-input"
+                    class="hide-input"
                     type="file"
                   />
                 </li>
-                <li class="position-relative mr-1">
-                  <span
+                <li class="position-relative mr-1 btn-shadow">
+                  <label id="insertVideo">
+                    <a
                     href="javascript:;"
                     class="iconfont icon-shipin text-warning h4"
-                  ></span>
+                  ></a>
                   <span>&nbsp;&nbsp;插入视频</span>
-                  <input
-                    id="insertVideo"
+                  </label>
+                  <input id="fileVideo"
                     accept="video/*"
-                    class="position-absolute hide-input"
+                    class="hide-input"
                     type="file"
                   />
                 </li>
-                <li class="position-relative mr-1">
-                  <span
+                <li class="position-relative mr-1 btn-shadow">
+                  <label  id="insertTitle">
+                    <a
                     href="javascript:;"
                     class="iconfont icon-biaoti text-warning h4"
-                  ></span>
+                  ></a>
                   <span>&nbsp;&nbsp;插入段落标题</span>
-                  <input id="insertTitle" class="position-absolute hide-input" type="button" />
+                  </label>
+                  <input id="btnTitle" class="hide-input" type="button" />
                 </li>
-                <li class="position-relative mr-1">
-                        <span
+                <li class="position-relative mr-1 btn-shadow">
+                        <label  id="insertTxt">
+                          <a
                           href="javascript:;"
                           class="iconfont icon-txt text-warning h4"
-                        ></span>
+                        ></a>
                         <span>&nbsp;&nbsp;插入文本</span>
-                        <input id="insertTxt" class="position-absolute hide-input" type="button" />
+                        </label>
+                        <input id="btnTxt" class="hide-input" type="button"/>
                       </li>
                 <li class="position-relative d-flex flex-column p-0 mr-1 text-muted">
                   <small class="text-center pt-2">16:41:11</small>
