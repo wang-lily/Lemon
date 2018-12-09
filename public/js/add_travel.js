@@ -1,11 +1,11 @@
 $(function(){
     var focusedEles = {
-        "editable": document.querySelector("#section>textarea:last-child"),//存放#section中获得焦点的对象,默认为最后一个textarea；
-        "prev":null,
-        "now":null,
-        "target":null
+        "editable": document.querySelector("#section>textarea:last-child"),//存放#section中获得焦点的可文本编辑的元素,默认为最后一个textarea；
+        "prev":null,//存放#section中前一个获得焦点的元素
+        "now":null,//存放#section中当前获得焦点对象的元素
+        "target":null//存放#section中的目标元素
     };
-
+    var btnA = null;//存放#section中被点击的title为“重置”的a元素
     //初始化#section的顶部
     function initSection(){
         if($("#section").children().length < 2){
@@ -16,7 +16,7 @@ $(function(){
             $("#section").append(textareaHtml);
         }
         var firstTa = $("#section").children()[1];
-        if(!$.trim(firstTa.value)){
+        if(!(firstTa.value)){
             $(firstTa).val(" ");
         }
     }
@@ -24,7 +24,6 @@ $(function(){
     function imgPreview(url,callback){
         var imgPreview = `<img src="${url}" style="opacity:0"/>`;
         var img = `<img src="${url}" alt="" />`;
-        // var keyWords = "图片";
         $("#preview").append(imgPreview);
         var imgPreviewWidth = "";
         var imgPreviewHeight = "";
@@ -40,11 +39,8 @@ $(function(){
     }
 
     function isInsertedable(){
-        // console.log(focusedEles);
         if(focusedEles["now"]!==focusedEles["editable"]){
             console.log("不在可编辑区"); 
-            // console.log(focusedEles["prev"]);
-            // console.log(focusedEles["now"]);
             return false;
         }
         if(focusedEles["editable"].nodeName != "TEXTAREA" && focusedEles["editable"].getAttribute("placeholder")!="添加标题"){
@@ -60,14 +56,10 @@ $(function(){
             $nextTxtEle:null,
             prevTxt:"",
             nextTxt:""
-
         }
-        // console.log(focusedEles["editable"]);
         var cursePos = focusedEles["editable"].selectionEnd;
         prevAndNext.prevTxt = focusedEles["editable"].value.slice(0,cursePos);
         prevAndNext.nextTxt = focusedEles["editable"].value.slice(cursePos,focusedEles["editable"].value.length);
-        // console.log("prevAndNext.prevTxt"+prevAndNext.prevTxt);
-        // console.log("prevAndNext.nextTxt"+prevAndNext.nextTxt);
         // 获取ta相邻的前一个为可编辑（textarea，input）的元素
         if($(focusedEles["editable"]).prev()[0] && ($(focusedEles["editable"]).prev()[0].tagName=="TEXTAREA" || $(focusedEles["editable"]).prev()[0].tagName=="INPUT")){
             prevAndNext.$prevTxtEle = $(focusedEles["editable"]).prev();
@@ -76,12 +68,6 @@ $(function(){
         if($(focusedEles["editable"]).next()[0] && ($(focusedEles["editable"]).next()[0].tagName=="TEXTAREA" || $(focusedEles["editable"]).next()[0].tagName=="INPUT")){
             prevAndNext.$nextTxtEle = $(focusedEles["editable"]).next();
         }
-        // if(prevAndNext.$prevTxtEle){
-        //     console.log(`prevEle:${prevAndNext.$prevTxtEle.html() || prevAndNext.$prevTxtEle.val()}`);
-        // }
-        // if(prevAndNext.$nextTxtEle){
-        //     console.log(`nextEle:${prevAndNext.$nextTxtEle.html() || prevAndNext.$nextTxtEle.val()}`);
-        // }
         return prevAndNext;
     }
     function mergeTxt(prevAndNext,target){
@@ -155,27 +141,25 @@ $(function(){
             if($divImg.prev()[0] && $divImg.prev()[0].tagName=="TEXTAREA" && $divImg.next()[0] && $divImg.next()[0].tagName=="TEXTAREA"){
                 var prevVal = $divImg.prev().val();
                 $divImg.prev().remove();
-                $divImg.next().html(`${prevVal + $divImg.next().html()}`).load(function(){
-                    autosize($("textarea"));
-                });
-                // console.log($divImg.next().html());
+                $divImg.next().val(`${prevVal + $divImg.next().val()}`);
+                autosize.update($("textarea"));
             }
-            if (!$.trim($divImg.next().val())){
-                $divImg.next().remove();
-            }
+            // if (!$divImg.next().val()){
+            //     $divImg.next().remove();
+            // }
             $divImg.remove();
             return;
         }
         // 重置img
         if(e.target.title=="重置"){
-            focusedEles["target"] = e.target;
+            btnA = e.target;
             if($(e.target).parent().prev()[0].tagName=="VIDEO"){
-                focusedEles["target"] = e.target;
+                btnA = e.target;
                 $("#fileVideo").trigger("click");
                 return;
             }
             if($(e.target).parent().prev()[0].tagName=="IMG"){
-                focusedEles["target"] = e.target;
+                btnA = e.target;
                 $("#fileImg").trigger("click");
                 return;
             }
@@ -205,7 +189,7 @@ $(function(){
                         return;
                     }
                     if(imgObj){
-                        if(!focusedEles["target"]){
+                        if(!btnA){
                             var prevAndNext = getPrevAndNext();
                             // console.log(prevAndNext);
                             var target = focusedEles.editable;
@@ -255,9 +239,9 @@ $(function(){
                             fileImg.value = "";
                             return;
                         }
-                        else if(focusedEles["target"].title=="重置"){
-                            $(focusedEles["target"]).parent().prev().replaceWith(`${imgObj.img}`).parent().width(`${imgObj.imgPreviewWidth}`);
-                            focusedEles["target"] = null;
+                        else if(btnA.title=="重置"){
+                            $(btnA).parent().prev().replaceWith(`${imgObj.img}`).parent().width(`${imgObj.imgPreviewWidth}`);
+                            btnA = null;
                             $("#preview").html("");
                             fileImg.value = "";
                             return;
@@ -281,7 +265,7 @@ $(function(){
             var video = `<video src="${url}" controls webkit-playsinline="true" playsinline="true" x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portraint" style="width:${window.innerWidth}px;max-width:500px;" /></video>`;
             var maxWidth = "500px";
             
-            if(!focusedEles["target"]){
+            if(!btnA){
                 var prevAndNext = getPrevAndNext();
                 // console.log(prevAndNext);
                 var target = focusedEles.editable;
@@ -322,9 +306,9 @@ $(function(){
                 $(target).replaceWith(videoHtml);
                 autosize($("textarea"));
                 fileVideo.value = "";
-            }else if(focusedEles["target"].title=="重置"){
-                $(focusedEles["target"]).parent().prev().replaceWith(`${video}`);
-                focusedEles["target"] = null;
+            }else if(btnA.title=="重置"){
+                $(btnA).parent().prev().replaceWith(`${video}`);
+                btnA = null;
                 fileVideo.value = "";
                 return;
             }
@@ -395,6 +379,15 @@ $(function(){
         $("#pop-mask").toggleClass("d-none");
     })
     
+    $(window).keydown(function(e){
+        if(e.keyCode===8 && (e.target.nodeName=="INPUT" || e.target.nodeName=="TEXTAREA")){
+            if($(e.target).prev()[0] && ($(e.target).prev()[0].tagName=="INPUT" || $(e.target).prev()[0].tagName=="TEXTAREA")){
+                if(!$(e.target).val()){
+                    $(e.target).remove();
+                }
+            }
+        }
+    })
     
     
     
