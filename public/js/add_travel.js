@@ -2,8 +2,7 @@ $(function(){
     var focusedEles = {
         "editable": document.querySelector("#section>textarea:last-child"),//存放#section中获得焦点的可文本编辑的元素,默认为最后一个textarea；
         "prev":null,//存放#section中前一个获得焦点的元素
-        "now":null,//存放#section中当前获得焦点对象的元素
-        "target":null//存放#section中的目标元素
+        "now":null//存放#section中当前获得焦点对象的元素
     };
     var btnA = null;//存放#section中被点击的title为“重置”的a元素
     //初始化#section的顶部
@@ -105,7 +104,27 @@ $(function(){
             autosize($("textarea"));
         }
     }
+    //使textarea尺寸自适应
+    autosize($("textarea"));
 
+    $(window).keydown(function(e){
+        if(e.keyCode===8 && (e.target.nodeName=="INPUT" || e.target.nodeName=="TEXTAREA")){
+            if(!$(e.target).val()){
+                if(($(e.target).next()[0] && ($(e.target).next()[0].tagName=="INPUT" || $(e.target).next()[0].tagName=="TEXTAREA")) || ($(e.target).prev()[0] && ($(e.target).prev()[0].tagName=="INPUT" || $(e.target).prev()[0].tagName=="TEXTAREA"))){
+                    $(e.target).remove();
+                    
+                }else{
+                    $(e.target).removeAttr("placeholder");
+                }
+                return;
+            }
+            if($(e.target).prev()[0] && $(e.target).prev()[0].tagName==e.target.tagName && e.target.selectionEnd == 0){
+                $(e.target).val(`${$(e.target).prev().val()}${$(e.target).val()}`);
+                $(e.target).prev().remove();
+                autosize.update($(e.target));
+            }
+        }
+    })
     // 鼠标滚动事件
     $(document).scroll(function(){
         var temp = $("#top").css("height").slice(0,-2);
@@ -119,14 +138,16 @@ $(function(){
             $("#alert-insert").css("transform",`translateY(${translateY}px)`);
         }
     })
-    //使textarea尺寸自适应
-    autosize($("textarea"));
 
     $("body").on("focus","input,textarea",function(){
         focusedEles["prev"] = focusedEles["now"];
         focusedEles["now"] = this;
         // console.log(focusedEles["prev"]);
         // console.log(focusedEles["now"]);
+    })
+    
+    $("#section").on("load", "#section textarea",function(){
+        this.focus();
     })
     $("#section").on("focus","textarea,input",function(){
         // $(".aside input").toggleClass("d-none").parent().toggleClass("btn-shadow");
@@ -172,7 +193,9 @@ $(function(){
         $(this).children("div.mask").css("display","none");
     })
     
-
+    $(".aside input").click(function(e){
+        e.stopPropagation();
+    })
     $("#arrow").click(function(){
         $(this).toggleClass("icon-arrow_l").toggleClass("icon-arrow-r").parent().next().toggleClass("spread");
     })
@@ -196,7 +219,7 @@ $(function(){
                             mergeTxt(prevAndNext,target);
                             // 替换目标原素
                             var imgHtml = "";
-                            if(!prevAndNext.prevTxt || !$(target).prev()[0] || $(target).prev()[0].tagName!=="TEXTAREA"){
+                            if(!prevAndNext.prevTxt || !$(target).prev()[0] || ($(target).prev()[0].tagName!=="TEXTAREA" && $(target).prev()[0].tagName!=="INPUT")){
                                 imgHtml += `<textarea
                                 class="w-100 pl-3 pt-0 pb-0 pr-5"
                                 rows="1"
@@ -222,14 +245,16 @@ $(function(){
                     </div>
                 </div>
                 `;
-                            if(!prevAndNext.nextTxt || !$(target).next()[0] || $(target).next()[0].tagName!="TEXTAREA"){
+                            if(!prevAndNext.nextTxt || !$(target).next()[0] || ($(target).next()[0].tagName!="TEXTAREA" && $(target).next()[0].tagName!="INPUT")){
                                 imgHtml += `<textarea
                                 class="w-100 pl-3 pt-0 pb-0 pr-5"
                                 rows="1"
                               ></textarea>`;
                             }
-                            // console.log(!prevAndNext.nextTxt || !$(target).next()[0] || $(target).next()[0].tagName!="TEXTAREA");
-                            $(target).replaceWith(imgHtml);
+                            var $imgHtml = $(imgHtml).replaceAll(target);
+                            if($imgHtml[$imgHtml.length-1].tagName=="TEXTAREA" && !$imgHtml[$imgHtml.length-1].nextElementSibling){
+                                $imgHtml[$imgHtml.length-1].focus();
+                            }
                             autosize($("textarea"));
 
                             $(imgHtml).on("load",'div[data-target="inserted"]',function(){
@@ -272,7 +297,7 @@ $(function(){
                 mergeTxt(prevAndNext,target);
                 // 替换目标原素
                 var videoHtml = "";
-                if(!prevAndNext.prevTxt || !$(target).prev()[0] || $(target).prev()[0].tagName!=="TEXTAREA"){
+                if(!prevAndNext.prevTxt || !$(target).prev()[0] || ($(target).prev()[0].tagName!=="TEXTAREA" && $(target).prev()[0].tagName!=="INPUT")){
                     videoHtml += `<textarea
                     class="w-100 pl-3 pt-0 pb-0 pr-5"
                     rows="1"
@@ -297,13 +322,16 @@ $(function(){
                 </div> -->
             </div>
         </div>`;
-                if(!prevAndNext.nextTxt || !$(target).next()[0] || $(target).next()[0].tagName!="TEXTAREA"){
+                if(!prevAndNext.nextTxt || !$(target).next()[0] || ($(target).next()[0].tagName!="TEXTAREA" && $(target).next()[0].tagName!="INPUT")){
                     videoHtml += `<textarea
                     class="w-100 pl-3 pt-0 pb-0 pr-5"
                     rows="1"
                     ></textarea>`;
                 }
-                $(target).replaceWith(videoHtml);
+                var $videoHtml = $(videoHtml).replaceAll(target);
+                if($videoHtml[$videoHtml.length-1].tagName=="TEXTAREA" && !$videoHtml[$videoHtml.length-1].nextElementSibling){
+                    $videoHtml[$videoHtml.length-1].focus();
+                }
                 autosize($("textarea"));
                 fileVideo.value = "";
             }else if(btnA.title=="重置"){
@@ -325,7 +353,7 @@ $(function(){
         mergeTxt(prevAndNext,target);
         // 替换目标原素
         var inputHtml = `<input type="text" class="w-100 h5 pl-3" placeholder="添加标题" style="font-weight:bold;"/>`;
-        $(target).replaceWith(inputHtml);
+        $(inputHtml).replaceAll(target)[0].focus();
         autosize($("textarea"));
         return;  
     })
@@ -340,7 +368,7 @@ $(function(){
         rows="1"
         placeholder="添加内容……"
         ></textarea>`;
-        $(target).replaceWith(textareaHtml);
+        $(textareaHtml).replaceAll(target)[0].focus();
         autosize($("textarea"));
         return;
     })
@@ -379,15 +407,7 @@ $(function(){
         $("#pop-mask").toggleClass("d-none");
     })
     
-    $(window).keydown(function(e){
-        if(e.keyCode===8 && (e.target.nodeName=="INPUT" || e.target.nodeName=="TEXTAREA")){
-            if($(e.target).prev()[0] && ($(e.target).prev()[0].tagName=="INPUT" || $(e.target).prev()[0].tagName=="TEXTAREA")){
-                if(!$(e.target).val()){
-                    $(e.target).remove();
-                }
-            }
-        }
-    })
+    
     
     
     
