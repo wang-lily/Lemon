@@ -42,14 +42,16 @@ body{
     text-overflow:ellipsis;
     -ms-text-overflow: ellipsis;
 }
-.carouselBox .imgLg .link{
+.carouselBox  .link{
     bottom: 4%;
-    left:39%;
+    left:50%;
+    transform: translateX(-50%);
 }
-.carouselBox .imgLg .link a{
+.carouselBox  .link a{
    background: rgba(0, 0, 0, .6);
    color:#fff;
    text-decoration: none;
+   padding: 1rem;
 }
 .carouselBox .imgLg picture+div span{
     font-size: 1.2rem;
@@ -142,8 +144,8 @@ body{
     .carouselBox .imgLg picture+div{
         display: none;
     }
-    .carouselBox .imgLg .link{
-        display: none;
+     .carouselBox  .link a{
+        font-size: 0.8rem;
     }
 }
 
@@ -160,14 +162,12 @@ body{
         background: #fff;
         border: 1px solid #b4b4b4;
     }
-    .carouselBox .imgLg picture+div{
+     .carouselBox .imgLg picture+div{
        display: none;
     }
-    .carouselBox .imgLg .link{
-        bottom: 4%;
-        left:30%;
-    }
-   
+    .carouselBox .imgLg .link a{
+        display: none;
+    } 
 }
 
 @media screen and (min-width:768px) and (max-width:1200px){
@@ -179,9 +179,5 @@ body{
        top:50%;
        margin-top: -2rem;
        z-index: 99;
-    }
-    .carouselBox .imgLg .link{
-        bottom: 4%;
-        left:33%;
     }
 }

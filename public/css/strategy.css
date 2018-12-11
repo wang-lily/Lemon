@@ -21,7 +21,9 @@
 .recommend .box-top>p:nth-child(2){
     border:1px solid #FF9D00;
     border-radius: 3rem;
+    font-size: 0.8rem;
 }
+
 .recommend .box-title{
      font-size: 1.4rem;
      width: 90%;
@@ -36,16 +38,42 @@
 .recommend .box-bottom{
     line-height:1.6rem;
 }
+.recommend .box-bottom p{
+    font-size: 0.8rem;
+}
 .strategy_content .pointer_nav li{
     border: 1px solid #d4d4d4;
+    /* font-size: 1rem; */
+
 }
 
 .strategy_content .pointer_nav li:hover{
     background: rgb(158, 224, 233);
 }
-.strategy_content .pointer_nav li i{
-    margin-right: 1rem;
-    color: rgb(87, 83, 78);
+.strategy_content .pointer_nav li span{
+    color: #FF9D00;
+    font-size: 18px;
+}
+.strategy_content  .other>div{
+    border: 1px solid #d4d4d4;
+}
+.strategy_content  .other>p{
+    border: 1px solid #d4d4d4;
+    font-size: 1rem;
+}
+.strategy_content  .other p span{
+      color: #FF9D00;
+      font-size: 18px;
+}
+.strategy_content .other:hover>div{
+    display: block !important;
+}
+
+.strategy_content .other>div a{
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+    font-size: 0.8rem;
 }
 
 @media screen and (max-width:375px){
