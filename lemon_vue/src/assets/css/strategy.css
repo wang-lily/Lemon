@@ -1,0 +1,101 @@
+/* tab */
+.strategy .imgLg{
+    opacity: 0.9;
+}
+/* recommend */
+.strategy_content .content_left p{
+    font-size: 1.4rem;
+}
+.strategy_content .content_right>h3,
+.strategy_content .content_left>h3{
+    border-bottom: 1px solid #ddd;
+    font-size:1.4rem;
+}
+.recommend{
+    border-bottom: 1px solid #ddd;
+}
+
+.recommend:hover{
+    background: #ddd;
+}
+.recommend .box-top>p:nth-child(2){
+    border:1px solid #FF9D00;
+    border-radius: 3rem;
+    font-size: 0.8rem;
+}
+
+.recommend .box-title{
+     font-size: 1.4rem;
+     width: 90%;
+     white-space: nowrap;
+     overflow:hidden;
+     text-overflow:ellipsis;
+     -ms-text-overflow: ellipsis;
+}
+.recommend .box-title a{
+      color:rgb(63, 60, 60);
+}
+.recommend .box-bottom{
+    line-height:1.6rem;
+}
+.recommend .box-bottom p{
+    font-size: 0.8rem;
+}
+.strategy_content .pointer_nav li{
+    border: 1px solid #d4d4d4;
+    /* font-size: 1rem; */
+
+}
+
+.strategy_content .pointer_nav li:hover{
+    background: rgb(158, 224, 233);
+}
+.strategy_content .pointer_nav li span{
+    color: #FF9D00;
+    font-size: 18px;
+}
+.strategy_content  .other>div{
+    border: 1px solid #d4d4d4;
+}
+.strategy_content  .other>p{
+    border: 1px solid #d4d4d4;
+    font-size: 1rem;
+}
+.strategy_content  .other p span{
+      color: #FF9D00;
+      font-size: 18px;
+}
+.strategy_content .other:hover>div{
+    display: block !important;
+}
+
+.strategy_content .other>div a{
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+    font-size: 0.8rem;
+}
+
+@media screen and (max-width:375px){
+    .strategy_content .content_right>h3,
+    .strategy_content .content_left>h3{
+        font-size:1rem;
+    }
+    .recommend .box-title a{
+        color:rgb(63, 60, 60);
+        font-size: 0.8rem;
+  }
+}
+@media screen and (min-width:375px) and (max-width:768px){
+    .strategy_content .content_right>h3,
+    .strategy_content .content_left>h3{
+        font-size:1.2rem;
+    }
+    .recommend .box-title a{
+        color:rgb(63, 60, 60);
+        font-size: 1.2rem;
+  }
+}
+@media screen and (min-width:768px) and (max-width:1200px){
+
+}

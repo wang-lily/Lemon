@@ -1,0 +1,145 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none; }
+
+a:hover {
+  text-decoration: none; }
+
+#top > p {
+  width: 100%;
+  text-align: center;
+  text-shadow: 0 0 0.2em #8F7;
+  letter-spacing: 0.5rem;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%); }
+
+#top > div {
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 3px 3px 31px 0px #000; }
+  #top > div > input {
+    width: 100%;
+    border-radius: 5px; }
+
+#content .hide-input {
+  margin-left: 100px; }
+
+#content > div.aside {
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+  font-family: "微软雅黑"; }
+  #content > div.aside > div.alert-insert {
+    height: auto; }
+    #content > div.aside > div.alert-insert > ul {
+      background-color: #fff;
+      width: 0px;
+      overflow: hidden;
+      transition: width 0.3s linear; }
+      #content > div.aside > div.alert-insert > ul > li {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        font-weight: normal !important;
+        white-space: nowrap;
+        overflow: hidden;
+        padding: 0.5rem;
+        padding-left: 0; }
+        #content > div.aside > div.alert-insert > ul > li.btn-shadow:hover {
+          box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 0.1); }
+        #content > div.aside > div.alert-insert > ul > li:nth-child(5), #content > div.aside > div.alert-insert > ul > li:nth-child(6), #content > div.aside > div.alert-insert > ul > li:nth-child(7) {
+          border: none; }
+          #content > div.aside > div.alert-insert > ul > li:nth-child(5):hover, #content > div.aside > div.alert-insert > ul > li:nth-child(6):hover, #content > div.aside > div.alert-insert > ul > li:nth-child(7):hover {
+            box-shadow: none; }
+        #content > div.aside > div.alert-insert > ul > li > ol {
+          list-style-type: decimal-leading-zero !important; }
+
+#content .section {
+  border-right: 0 !important;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none; }
+  #content .section .item > div:first-child {
+    max-width: 100%; }
+    #content .section .item > div:first-child .mask {
+      display: none;
+      padding-top: 10px !important;
+      width: 100px;
+      top: 0;
+      left: 0;
+      font-size: 1rem; }
+      #content .section .item > div:first-child .mask > a {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        line-height: 20px;
+        background: rgba(0, 0, 0, 0.5); }
+  #content .section::-webkit-scrollbar {
+    display: none; }
+  #content .section img {
+    max-height: 500px;
+    max-width: 100%; }
+  #content .section textarea {
+    margin-left: 1px;
+    resize: none; }
+
+#content .my-btn button:first-child {
+  background: #fff;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5);
+  color: #28a745; }
+  #content .my-btn button:first-child:hover {
+    box-shadow: inset 0px 0px 20px 2px rgba(0, 0, 0, 0.5); }
+
+#content .my-btn button:last-child {
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5);
+  background: #28a745;
+  color: #fff; }
+  #content .my-btn button:last-child:hover {
+    box-shadow: inset 0px 0px 20px 2px rgba(0, 0, 0, 0.5); }
+
+@media screen and (min-width: 768px) {
+  #top > p {
+    font-size: 2rem; }
+  #top > div {
+    width: 50%; }
+    #top > div > input {
+      height: 4rem; }
+  #content .aside {
+    height: 800px; }
+  #content .section {
+    height: 800px; }
+  #content ul {
+    font-size: 1rem; }
+    #content ul a {
+      font-size: 1.5rem; }
+    #content ul.spread {
+      width: 150px !important; }
+  #content .my-btn button {
+    font-size: 1.2rem;
+    width: 8rem;
+    height: 3rem;
+    border-radius: 1.5rem; } }
+
+@media screen and (max-width: 767px) {
+  #top > p {
+    font-size: 1.3rem; }
+  #top > div {
+    width: 75%; }
+    #top > div > input {
+      height: 2rem; }
+  #content .aside {
+    height: 500px; }
+  #content .section {
+    height: 500px; }
+  #content ul {
+    font-size: 0.8rem; }
+    #content ul.spread {
+      width: 120px !important; }
+    #content ul a {
+      font-size: 1rem; }
+  #content .my-btn button {
+    font-size: 1rem;
+    width: 6rem;
+    height: 2rem;
+    border-radius: 1rem; } }

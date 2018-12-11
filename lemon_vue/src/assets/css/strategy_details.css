@@ -1,0 +1,26 @@
+/* bigTitle */
+.strategy_details .bigTitle div {
+  border-bottom: 1px solid #ddd; }
+  .strategy_details .bigTitle div p {
+    font-size: 0.8rem; }
+
+.strategy_details .bigTitle .tag li > p :nth-child(1):hover {
+  color: #FF9800; }
+
+.strategy_details .bigTitle .tag li > p :nth-child(2) {
+  font-size: 0.8rem; }
+
+/*content*/
+.strategy_details .details .content h4::first-letter {
+  font-size: 2rem;
+  color: #FF9800; }
+
+.strategy_details .details .catalog h3:first-child {
+  font-size: 1.8rem; }
+
+.strategy_details .details .catalog .pointer_nav_right li a {
+  color: #000; }
+
+@media screen and (max-width: 767px) {
+  .strategy_details .details .catalog {
+    display: none; } }

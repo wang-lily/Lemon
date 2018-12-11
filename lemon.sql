@@ -51,7 +51,7 @@ CREATE TABLE travel(
 	mtitle VARCHAR(50),
 	stitle VARCHAR(50),
 	comment VARCHAR(200),
-	video_path VARCHAR(60),
+	video_path VARCHAR(60)
 );
 #攻略表
 CREATE TABLE pointer(
@@ -70,5 +70,14 @@ CREATE TABLE pointer(
 	zan INT,
 	btitle VARCHAR(50),
 	mtitle VARCHAR(50),
-	stitle VARCHAR(50),
+	stitle VARCHAR(50)
 );
+#logo
+CREATE TABLE logo_img(
+	logo_pid INT PRIMARY KEY AUTO_INCREMENT,
+	img_url VARCHAR(200)
+);
+INSERT INTO logo_img VALUES(1,
+"http://127.0.0.1:3001/img/logo/lemon_logo_black.png");
+INSERT INTO logo_img VALUES(2,
+"http://127.0.0.1:3001/img/logo/lemon_logo_white.png");

@@ -1,0 +1,183 @@
+body{
+    position: relative;
+}
+.text_muted{
+    font-size: 0.8rem;
+    color:#b4b4b4;
+}
+/* 轮播 */
+.carouselBox{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.carouselBox .imgMd{
+   right:2rem;
+   top:50%;
+   margin-top: -3.2rem;
+   z-index: 99;
+}
+.carouselBox .imgMd ul li {
+    width: 2rem;
+}
+.carouselBox .imgMd .cuur {
+    box-shadow: 0px 0px 10px #f55f5a;
+}
+
+.carouselBox .imgLg>div{
+    display: none;
+} 
+.carouselBox .imgLg picture{
+    opacity: 0.9;
+}
+.carouselBox .imgLg picture+div{
+    top:22%;
+    left:10%;
+    color:#fff;
+    font-size: 1.4rem;
+    width: 38%;
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -ms-text-overflow: ellipsis;
+}
+.carouselBox  .link{
+    bottom: 4%;
+    left:50%;
+    transform: translateX(-50%);
+}
+.carouselBox  .link a{
+   background: rgba(0, 0, 0, .6);
+   color:#fff;
+   text-decoration: none;
+   padding: 1rem;
+}
+.carouselBox .imgLg picture+div span{
+    font-size: 1.2rem;
+}
+.carouselBox .imgLg .first {
+    display: block;
+}
+
+
+/* 目的地 */
+.destination .selected{
+    /* background:#b0f39c; */
+    border-bottom: 2px solid #b0e591;
+    /* box-shadow: 0 0.5rem 0.1rem #d6d2d2; */
+    transition: all 2s;
+}
+.text_tab{
+    font-size: 24px;
+}
+.destination #tab_menu li{
+    width:80%;
+}
+
+.destination .hide{
+    display: none;
+}
+
+.pop_title{
+    font-size: 24px;
+    font-weight: bold;
+}
+/* 指南 */
+.views{
+    font-size: 0.8rem;
+}
+
+/* 游记 */
+.popTravels .travel_title {
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -ms-text-overflow: ellipsis;
+    width: 90%;
+}
+/* toTop */
+.footerBox{
+    position: fixed;
+    bottom: 1.4rem;
+    right:1.4rem;
+}
+.footerBox li{
+    display: block;
+    width: 4rem;
+    height:4rem;
+    text-align: center;
+    line-height:4rem;
+    background: #fff;
+    border: 1px solid #b4b4b4;
+}
+.footerBox li:first-child{
+    display: none;
+    border-bottom: none;
+}
+.footerBox li:nth-child(2){
+    border-bottom: none;
+}
+.footerBox li:hover{
+    background: rgba(0, 0, 0, .1);
+}
+
+
+
+
+ @media screen and (max-width:375px){
+    .carouselBox .imgMd ul li {
+        display: none;
+    }
+    .destination #tab_menu li{
+        font-size: 0.4rem;
+    }
+    .footerBox li{
+        display: block;
+        width: 1.8rem;
+        height:1.8rem;
+        text-align: center;
+        line-height:2rem;
+        background: #fff;
+        border: 1px solid #b4b4b4;
+    } 
+    .carouselBox .imgLg picture+div{
+        display: none;
+    }
+     .carouselBox  .link a{
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (min-width:375px) and (max-width:768px){
+    .carouselBox  .imgMd ul li {
+        display: none;
+    }
+    .footerBox li{
+        display: block;
+        width: 2.2rem;
+        height:2.2rem;
+        text-align: center;
+        line-height:2rem;
+        background: #fff;
+        border: 1px solid #b4b4b4;
+    }
+     .carouselBox .imgLg picture+div{
+       display: none;
+    }
+    .carouselBox .imgLg .link a{
+        display: none;
+    } 
+}
+
+@media screen and (min-width:768px) and (max-width:1200px){
+    .carouselBox  .imgMd ul li {
+        width:1.4rem;
+    }
+    .carouselBox .imgMd{
+       right:2rem;
+       top:50%;
+       margin-top: -2rem;
+       z-index: 99;
+    }
+}

@@ -1,140 +1,20 @@
 <template>
   <div id="app">
-    <!-- <img src="./assets/logo.png"> -->
-    <header class="fixed-top  pb-md-2 bg-white">
-      <div class="container">
-          <!--导航栏start-->
-          <nav id="header-nav" class="row align-items-center pt-md-2">
-              <!--导航按钮-->
-              <div class="col d-md-none">
-                  <ul class="nav-icon m-0" data-trigger="navIcon" data-status=0>
-                      <li class="nav-icon-top"></li>
-                      <li class="nav-icon-bottom"></li>
-                  </ul>
-              </div>
-              <!--logo-->
-              <a href="/">
-                  <img id="brand" src="../img/logo/lemon_logo_black.png">
-              </a>
-              <!--个人中心-->
-              <a class="col iconfont icon-login1_0 text-right col-md-auto order-md-4 p-md-0 d-none" href="/views/register_login.html"></a>
-              <div class="col col-md-auto order-md-4 position-relative iconfont icon-login1_1 text-right p-md-0 personal" data-trigger="toggle">
-                  <div class="position-absolute flex-column pr-3 p-md-0 d-none" data-target="toggleItem">
-                      <div class="align-self-end mr-2"></div>
-                      <ul class="pl-3 pr-3 speed">
-                          <li class="text-left border-bottom">lily!</li>
-                          <li class="text-left border-bottom"><a href="/views/personal.html" class="iconfont icon-touxiang">&nbsp;个人中心</a></li>
-                          <li class="text-left border-bottom"><a href="/views/add_travel.html" class="iconfont icon-fabiaoyouji">&nbsp;发表游记</a></li>
-                          <li class="text-left border-bottom"><a href="#" class="iconfont icon-tuichu"></a>&nbsp;退出</li>
-                      </ul>
-                  </div>
-              </div>
-              <div class="col-12 d-md-none"></div>
-              <!--导航/搜索-->
-              <div class="col-12 col-md order-md-2 d-md-flex border-dark">
-                  <!-- 下拉选项 -->
-                  <div id="collapse-navbar" class="p-0 collapse-navbar collapse-navbar-0  d-md-inline-flex justify-content-md-around align-items-md-center" data-target="collapse_navbar">
-                      <div class="d-md-none">
-                          <form>
-                              <span class="iconfont icon-sousuo"></span>
-                              <input type="text" name="search" placeholder="搜索...">
-                          </form>
-                      </div>
-                      <ul class="d-md-inline-flex justify-content-md-around m-0">
-                          <li><a class="iconfont icon-shouyefill" href="/"></a></li>
-                          <!--<li><a href="#">目的地</a></li>-->
-                          <li><a href="/views/spots.html">景点</a></li>
-                          <li><a href="/views/travels.html">游记</a></li>
-                          <li><a href="#">美食</a></li>
-                          <li><a href="/views/strategy.html">指南</a></li>
-                          <li><a class="iconfont icon-some" href="#"></a></li>
-                      </ul>
-                  </div>
-              </div>
-            <!--搜索icon-->
-              <a class="d-none col-auto d-md-inline order-md-3 ml-2 iconfont  icon-sousuo" data-trigger="searchIcon"></a>
-          </nav>
-          <!--导航栏end-->
-
-          <!--搜索栏start-->
-          <div id="search-page" class="fixed-top bg-white">
-              <p>
-                  <button id="close-icon" class="btn bg-transparent iconfont icon-guanbi"></button>
-              </p>
-              <from class="row w-75 m-auto">
-                  <!--按地方搜索-->
-                  <div class="col-5 card">
-                      <div id="search-address" class="card-header d-inline-flex align-items-center">
-                          <span class="iconfont icon-dizhi"></span>
-                          <input class="form-control border-0 bg-transparent" type="text" placeholder="请选择您查询的地区">
-                          <span class="iconfont icon-xiala"></span>
-                      </div>
-                          <div class="card-body d-none" data-target="content">
-                              <!--地点1-->
-                              <div>
-                                  <div class="search-list d-flex align-items-start">
-                                      <div class=" d-inline-block">
-                                          <h5 class="iconfont icon-dizhi"></h5>
-                                      </div>
-                                      <div class="d-inline-block">
-                                          <h5>中国</h5>
-                                          <p>峨眉山</p>
-                                      </div>
-                                  </div>
-                              </div>
-                              <!--地点2-->
-                              <div>
-                                  <div class="search-list d-flex align-items-start">
-                                      <div class=" d-inline-block">
-                                          <h5 class="iconfont icon-dizhi"></h5>
-                                      </div>
-                                      <div class="d-inline-block">
-                                          <h5>中国</h5>
-                                          <p>九寨沟</p>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                  </div>
-                      <!--全站搜索-->
-                  <div class="col-5">
-                      <div id="search-all" class="d-flex align-items-center card-header">
-                          <span class="iconfont icon-sousuo"></span>
-                          <input class="form-control bg-transparent border-0" type="text" placeholder="请输入您要查询的内容">
-                      </div>
-                  </div>
-                  <div class="col-2">
-                          <button id="search-btn" class="btn pr-4 pl-4" >搜索</button>
-                  </div>
-                  <div class="bg-white p-3"></div>
-              </from>
-          </div>
-              <!--搜索栏end-->
-      </div>   
-    </header>
-
-    <router-view/>
-
-
+    <router-view></router-view>
   </div>
 </template>
-
-<script src="js/jquery.min.js"></script>
-<script src="js/header.js"></script>
-<script src="js/footer.js"></script>
 <script>
 export default {
-  name: 'App'
 }
 </script>
 
-<style>
+<style scoped>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  /* font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 60px; */
 }
 </style>

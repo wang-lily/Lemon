@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+html {
+  height: 100%; }
+
+body {
+  padding: 10px;
+  background-size: cover;
+  font-family: "HelveticaNeue","LucidaGrande","SegoeUI",Arial, Helvetica, Verdana, sans-serif;
+  height: 100%; }
+  body.login {
+    background: url(../img/login/pic03.jpg) no-repeat center center;
+    background-size: cover; }
+  body.register {
+    background: url(../img/login/pic02.jpg) no-repeat center center; }
+  body a {
+    cursor: pointer;
+    text-decoration: none !important; }
+  body > div {
+    width: 350px; }
+    body > div > div:first-child {
+      border-radius: 3px; }
+      body > div > div:first-child > form > p {
+        color: #FF9800; }
+        body > div > div:first-child > form > p > a {
+          color: #FF9800; }
+    body > div > div:nth-child(2) > p {
+      border-radius: 15px;
+      background: rgba(0, 0, 0, 0.3); }
+      body > div > div:nth-child(2) > p > a {
+        color: #FF9800 !important; }
+    body > div p {
+      top: 0;
+      right: 0; }
+  body .icon-qq, body .icon-weibo, body .icon-weixin {
+    color: rgba(0, 0, 0, 0.5) !important; }
+    body .icon-qq:hover, body .icon-weibo:hover, body .icon-weixin:hover {
+      color: rgba(40, 167, 69, 0.7) !important;
+      transition: all 0.2s linear; }
+  body .v-hide {
+    visibility: hidden; }
