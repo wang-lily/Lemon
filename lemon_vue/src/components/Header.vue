@@ -129,8 +129,7 @@
         }
     }
 </script>
-<style scoped>
-  /* @import '../assets/css/bootstrap.css'; */
+<style>
   @import '../assets/css/header.css';
 </style>
     
