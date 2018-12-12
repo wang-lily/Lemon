@@ -37,7 +37,12 @@ console.log("服务器创建成功，端口号3001");
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname + "/public"));
 app.use(cors({
-    origin:["http://192.168.0.112:3001","http://127.0.0.1:3001"],
+    origin:[
+        "http://192.168.0.112:3001",
+        "http://127.0.0.1:3001",
+        "http://127.0.0.1:8080",
+        "http://localhost:8080"
+    ],
     credentials:true
 }))
 

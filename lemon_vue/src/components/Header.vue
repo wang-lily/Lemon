@@ -41,7 +41,7 @@
                       <ul class="d-md-inline-flex justify-content-md-around m-0">
                           <li><a class="iconfont icon-shouyefill" href="/"></a></li>
                           <!--<li><a href="#">目的地</a></li>-->
-                          <li><a href="/views/spots.html">景点</a></li>
+                          <li><router-link to="/Spots">景点</router-link></li>
                           <li><a href="/views/travels.html">游记</a></li>
                           <li><a href="#">美食</a></li>
                           <li><a href="/views/strategy.html">指南</a></li>

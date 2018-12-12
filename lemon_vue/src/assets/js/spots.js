@@ -1,29 +1,18 @@
-// region JQ 简单轮播
-// $(function(){
-//     function task(){
-//         var $lunbo =  $("#header>[data-trigger=lunbo]");
-//         var $item = $lunbo.find(".in");
-//         if($item.next().parent().is($lunbo)){
-//             $item.removeClass("in").next().addClass("in");
-//         }else{
-//             $item.removeClass("in");
-//             $lunbo.children(":first-child").addClass("in");
-//         }
-//     }
-//     var timer = setInterval(task, 3000);
-//     $("#header").mouseenter(function(){
-//             clearInterval(timer);
-//         }).mouseleave(function(){
-//             timer = setInterval(task, 3000);
-//     })
-// })
-// endregion
 
 
-// region JS 轮播
-$(function(){
+function getSpotsEffect(){
     var lunbo = document.querySelector("[data-trigger = lunbo]");
     var lunboItems = document.querySelectorAll("[data-target = lunboItem]");
+    
+    var timer = setInterval(task, 3000);
+    var header = lunbo.parentElement;
+    header.onmouseover = function(){
+        clearInterval(timer);
+    }
+    header.onmouseout = function () {
+        timer = setInterval(task, 3000);
+    }
+
     function task(){
         var i = 0;
         while(true){
@@ -43,14 +32,9 @@ $(function(){
             i++;
         }
         lunboItems[i].className = lunboItems[i].className.replace("out","in");
+        console.log(lunboItems[i]);
     }
-    var timer = setInterval(task, 3000);
-    var header = lunbo.parentElement;
-    header.onmouseover = function(){
-        clearInterval(timer);
-    }
-    header.onmouseout = function () {
-        timer = setInterval(task, 3000);
-    }
-})
-// endregion
+    return task;
+}
+
+export {getSpotsEffect}
