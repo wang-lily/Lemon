@@ -96,7 +96,7 @@ body{
     -ms-text-overflow: ellipsis;
     width: 90%;
 }
-/* toTop */
+/* toTop
 .footerBox{
     position: fixed;
     bottom: 1.4rem;
@@ -120,7 +120,7 @@ body{
 }
 .footerBox li:hover{
     background: rgba(0, 0, 0, .1);
-}
+} */
 
 
 
@@ -132,7 +132,7 @@ body{
     .destination #tab_menu li{
         font-size: 0.4rem;
     }
-    .footerBox li{
+    /* .footerBox li{
         display: block;
         width: 1.8rem;
         height:1.8rem;
@@ -140,7 +140,7 @@ body{
         line-height:2rem;
         background: #fff;
         border: 1px solid #b4b4b4;
-    } 
+    }  */
     .carouselBox .imgLg picture+div{
         display: none;
     }
@@ -153,7 +153,7 @@ body{
     .carouselBox  .imgMd ul li {
         display: none;
     }
-    .footerBox li{
+    /* .footerBox li{
         display: block;
         width: 2.2rem;
         height:2.2rem;
@@ -161,7 +161,7 @@ body{
         line-height:2rem;
         background: #fff;
         border: 1px solid #b4b4b4;
-    }
+    } */
      .carouselBox .imgLg picture+div{
        display: none;
     }

@@ -21,7 +21,7 @@
                       <div class="align-self-end mr-2"></div>
                       <ul class="pl-3 pr-3 speed">
                           <li class="text-left border-bottom">lily!</li>
-                          <li class="text-left border-bottom"><a href="/views/personal.html" class="iconfont icon-touxiang">&nbsp;个人中心</a></li>
+                          <li class="text-left border-bottom"><router-link to="/personal" class="iconfont icon-touxiang">&nbsp;个人中心</router-link> </li>
                           <li class="text-left border-bottom"><a href="/views/add_travel.html" class="iconfont icon-fabiaoyouji">&nbsp;发表游记</a></li>
                           <li class="text-left border-bottom"><a href="#" class="iconfont icon-tuichu"></a>&nbsp;退出</li>
                       </ul>

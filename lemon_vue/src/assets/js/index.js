@@ -1,11 +1,11 @@
+import $ from 'jquery'
+
 $(function(){
-    tabToggle();
-    carouselTask();
+    // tabToggle();
+    // carouselTask();
     toTop();
 })
     
-
-
 function tabToggle() {
     var oTab = document.getElementById('tab_menu');
     var aLi = oTab.getElementsByTagName('li');
@@ -22,7 +22,6 @@ function tabToggle() {
         }
     }
 }
-
 
 function  carouselTask(){
     var index = 0;
@@ -57,7 +56,7 @@ function toTop(){
     });
 
     $(".footerBox .toTop").click(function () {
-        timer = setInterval(function () {
+       var  timer = setInterval(function () {
             var top = $(document).scrollTop();//获取滚动条距离顶部距离
             var step = top / 5;//滚动条每走一步的距离
             $(document).scrollTop(top - step);//更新距离顶部的高度
@@ -69,3 +68,5 @@ function toTop(){
 
 }
 
+export {tabToggle,carouselTask,toTop};
+// export {toTop};

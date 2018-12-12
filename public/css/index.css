@@ -97,7 +97,7 @@ body{
     width: 90%;
 }
 /* toTop */
-.footerBox{
+/* .footerBox{
     position: fixed;
     bottom: 1.4rem;
     right:1.4rem;
@@ -120,7 +120,7 @@ body{
 }
 .footerBox li:hover{
     background: rgba(0, 0, 0, .1);
-}
+} */
 
 
 

@@ -28,6 +28,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const spots = require("./routes/spots");
+
+
 var app = express();
 app.listen(3001);
 console.log("服务器创建成功，端口号3001");
@@ -37,3 +40,6 @@ app.use(cors({
     origin:["http://192.168.0.112:3001","http://127.0.0.1:3001"],
     credentials:true
 }))
+
+
+app.use("/spots",spots);
