@@ -3,6 +3,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Spots from '../views/Spots.vue'
 import Personal from '../views/Personal.vue'
+import Register_Login from '../views/Register_Login.vue'
 // import Index from '../views/Index.vue'
 
 
@@ -15,6 +16,6 @@ export default new Router({
       {path: '/personal', component: Personal},
       {path: '/spots', component: Spots}
     ]},
-   
+    {path:'/login_register',component:Register_Login}
   ]
 })
