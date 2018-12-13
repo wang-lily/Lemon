@@ -13,7 +13,13 @@ ol, li, pre, form, fieldset, legend, button, input, textarea, th {
   fieldset, img { border:0; }
   button, input, select, textarea { font-size:100%; }
   table { border-collapse:collapse; border-spacing:0; }
-  
+  html{
+    height: 100%;
+  }
+  body{
+    font-family: "HelveticaNeue","LucidaGrande","SegoeUI",Arial, Helvetica, Verdana, sans-serif;
+    height: 100%;
+  }
 
  
 @media screen and (max-width:375px){

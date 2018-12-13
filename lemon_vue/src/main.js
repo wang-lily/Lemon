@@ -14,7 +14,7 @@ import axios from 'axios'
 Vue.prototype.axios = axios;
 // Vue.prototype.jquery = $;
 
-
+Vue.config.productionTip = false;//阻止 vue 在启动时生成生产提示
 /* eslint-disable no-new */
 new Vue({
   router,
