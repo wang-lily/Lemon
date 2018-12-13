@@ -15,10 +15,9 @@ export default new Router({
   routes: [
     {path: '/', component: Home,children:[
       {path: '', component: Index},
-      {path: '/personal', component: Personal}
+      {path: '/personal', component: Personal},
+      {path: '/spots', component: Spots},
     ]},
-    {path: '/personal', component: Personal},
-    {path: '/spots', component: Spots},
     {path:'/login_register',component:Register_Login},
     {path: '**', component: NotFound}
     ],
