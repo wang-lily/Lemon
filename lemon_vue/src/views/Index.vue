@@ -1,109 +1,54 @@
 <template>
-     <section>
-        <div class="container-fluid pr-0 pl-0 mr-0">
-            <!-- 轮播 -->
-            <div class="row carouselBox border position-relative mr-0 ml-0"> 
+<section>  
+       <!-- 轮播 -->
+       <div class="container-fluid pr-0 pl-0 mr-0">
+          <div class="row carouselBox border position-relative mr-0 ml-0"> 
                
                 <div class="col-sm-12 imgLg p-0">
-                    <div class="first box">
+                    <div class="box" :class="carousel.ind==index?'first':''"  v-for="(item,index) in carousel.carouselList">
                         <picture>
-                            <source media="(min-width: 999px)" srcset="img/carousel/lb01.png">
-                            <source media="(max-width:1000px)" srcset="img/carousel/lb01_500x250.png">
-                            <img class="w-100" src="img/carousel/picture.png">
+                            <source media="(min-width: 999px)" :srcset="item.lg_url">
+                            <source media="(max-width:1000px)" :srcset="item.md_url">
+                            <img class="w-100" :src="item.src">
                         </picture>
                         <div class="position-absolute">
-                            <h4>24<span>/Nov.2018</span>  </h4>
-                            <p >来一场说走就走的旅行...</p>
+                            <h4>{{item.day}}<span>/{{item.years}}</span>  </h4>
+                            <p >{{item.tip}}</p>
                         </div>
-                      
-                    </div>
-                    <div class=" box">
-                        <picture>
-                            <source media="(min-width: 999px)" srcset="img/carousel/lb04.png">
-                            <source media="(max-width:1000px)" srcset="img/carousel/lb04_500x250.png">
-                            <img class="w-100" src="img/carousel/picture.png">
-                        </picture>
-                        <div class="position-absolute">
-                            <h4>2<span>/Nov.2018</span>  </h4>
-                            <p >我和你就像一座埃菲尔铁塔和爱琴海。</p>
-                        </div>
-       
-                    </div>
-                    <div  class=" box">
-                        <picture>
-                            <source media="(min-width: 999px)" srcset="img/carousel/lb08.png">
-                            <source media="(max-width:1000px)" srcset="img/carousel/lb08_500x250.png">
-                            <img class="w-100" src="img/carousel/picture.png">
-                        </picture>
-                        <div class="position-absolute">
-                            <h4>11<span>/Nov.2018</span>  </h4>
-                            <p >生活就像一盒巧克力。</p>
-                        </div>
-     
-                    </div>
-                    <div  class=" box">
-                        <picture>
-                            <source media="(min-width: 999px)" srcset="img/carousel/lb17.png">
-                            <source media="(max-width:1000px)" srcset="img/carousel/lb17_500x250.png">
-                            <img class="w-100" src="img/carousel/picture.png">
-                        </picture>
-                        <div class="position-absolute">
-                            <h4>24<span>/Nov.2018</span>  </h4>
-                            <p >听说摩天轮的每个格子里都装满幸福...</p>
-                        </div>  
-
                     </div> 
-                    <div  class=" box">      
-                        <picture>
-                            <source media="(min-width: 999px)" srcset="img/carousel/lb18.png">
-                            <source media="(max-width:1000px)" srcset="img/carousel/lb18_500x250.png">
-                            <img class="w-100" src="img/carousel/picture.png">
-                        </picture>
-                        <div class="position-absolute">
-                            <h4>24<span>/Nov.2018</span>  </h4>
-                            <p >是我选择了生活，而不是生活选择了我。</p>
-                        </div>
-                </div>      
-                </div>
+                </div> 
 
-                <div class="imgMd position-absolute w-40">
+                 <div class="imgMd position-absolute w-40">
                     <ul class="d-flex flex-column justify-content-center">
-                        <li class="cuur"><img src="img/carousel/sm_lb01.png" class="li_item w-100 mb-1" /></li>
-                        <li><img src="img/carousel/sm_lb04.png" class="li_item w-100 mb-1" /></li>
-                        <li><img src="img/carousel/sm_lb08.png" class="li_item w-100 mb-1" /></li>
-                        <li><img src="img/carousel/sm_lb17.png" class="li_item w-100 mb-1" /></li>
-                        <li><img src="img/carousel/sm_lb18.png" class="li_item w-100" /></li>
+                        <li  v-for="(item,index) in carousel.carouselList" :class="carousel.ind==index?'cuur':''" @mousemove="carousel.ind=index"><img :src="item.sm_url" class="li_item w-100 mb-1" /></li>
                     </ul>
                 </div>
 
                 <div class="position-absolute link">
-                        <a href="/views/add_travel.html" class="pt-1 pb-1 ml-1"> <i class="iconfont icon-dianping"></i>写游记</a>
-                        <a href="/views/pics.html" class="pt-1 pb-1  ml-1"> 历历在目</i></a>
-                </div>
+                    <a href="" class="pt-1 pb-1 ml-1"> <i class="iconfont icon-dianping"></i>写游记</a>
+                    <a href="" class="pt-1 pb-1  ml-1"> 历历在目</i></a>
+                </div> 
             </div>
-        </div>
+       </div>
 
-        <!-- 目的地 -->
+       <!-- 目的地 -->
         <div class="destination">
                 <div class="col-12 text-center pt-5">
                         <span class="pop_title">首页推荐</span>
                     </div>
             <div class="container ">
                 <ul class="row mt-2 mb-3 " id='tab_menu'>
-                    <li class=" col-3 text-center text_tab selected">亚洲</li>
-                    <li class=" col-3 text-center text_tab">欧洲</li>
-                    <li class=" col-3 text-center text_tab">美洲</li>
-                    <li class=" col-3 text-center text_tab">全球</li>
+                    <li class=" col-3 text-center text_tab" v-for="(item,index) in tab.barList" :class="tab.ind==index?'selected':''"  @click="tab.ind=index">{{item}}</li>
                 </ul>
 
                 <!-- 内容部分 -->
                 <div class="container tab_box mb-2">
-                    <div class="ind">
+                    <div class="ind" :class="tab.ind==0?'':'hide'">
                         <div class="row">
                             <div class="col-lg-3 col-md-3 col-sm-6 col-6 bordered mb-3 ">
                                 <div class="card ">
                                     <div class="card-head">
-                                        <img src="img/380_220/hg_cd368_220.png" alt="" class="w-100 ">
+                                        <!-- <img src="img/380_220/hg_cd368_220.png" alt="" class="w-100 "> -->
                                     </div>
                                     <div class="card-body pb-0">
                                         <div class="d-flex justify-content-between align-items-center flex-wrap">
@@ -120,144 +65,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-6 bordered mb-3 ">
-                                <div class="card">
-                                    <div class="card-head">
-                                        <img src="img/380_220/rb_bhd368_220.png" alt="" class="w-100 ">
-                                    </div>
-                                    <div class="card-body pb-0">
-                                        <div class="d-flex justify-content-between align-items-center flex-wrap">
-                                            <span>日本
-                                                <span class="pl-2 pr-2">|</span>北海道</span>
-                                            <span class="flex-end">
-                                                <div class="btn btn-primary btn-sm  mr-1 p-0">游记</div>
-                                                <div class="btn btn-info btn-sm p-0">指南</div>
-                                            </span>
-                                        </div>
-                                        <p class="float-right mt-2">景点
-                                            <b>1234</b>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-6 bordered mb-3  ">
-                                <div class="card">
-                                    <div class="card-head">
-                                        <img src="img/380_220/tw-dbj368_220.png" alt="" class="w-100 ">
-                                    </div>
-                                    <div class="card-body pb-0">
-                                        <div class="d-flex justify-content-between align-items-center flex-wrap">
-                                            <span>台湾
-                                                <span class="pl-2 pr-2">|</span>东北角</span>
-                                            <span class="flex-end">
-                                                <div class="btn btn-primary btn-sm  mr-1 p-0">游记</div>
-                                                <div class="btn btn-info btn-sm p-0">指南</div>
-                                            </span>
-                                        </div>
-                                        <p class="float-right mt-2">景点
-                                            <b>1554</b>
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-6 bordered mb-3  ">
-                                <div class="card">
-                                    <div class="card-head">
-                                        <img src="img/380_220/china-emeishan02_368_220.png" alt="" class="w-100 ">
-                                    </div>
-                                    <div class="card-body pb-0">
-                                        <div class="d-flex justify-content-between align-items-center flex-wrap">
-                                            <span>中国
-                                                <span class="pl-2 pr-2">|</span>峨眉山</span>
-                                            <span class="flex-end">
-                                                <div class="btn btn-primary btn-sm  mr-1 p-0">游记</div>
-                                                <div class="btn btn-info btn-sm p-0">指南</div>
-                                            </span>
-                                        </div>
-                                        <p class="float-right mt-2">景点
-                                            <b>1224</b>
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-6 bordered mb-3 ">
-                                <div class="card">
-                                    <div class="card-head">
-                                        <img src="img/380_220/rb_db368_220.png" alt="" class="w-100 ">
-                                    </div>
-                                    <div class="card-body pb-0">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <span>日本
-                                                <span class="pl-2 pr-2">|</span>大阪</span>
-                                            <span class="flex-end">
-                                                <div class="btn btn-primary btn-sm  mr-1 p-0">游记</div>
-                                                <div class="btn btn-info btn-sm p-0">指南</div>
-                                            </span>
-                                        </div>
-                                        <p class="float-right mt-2">景点
-                                            <b>1224</b>
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-5 ">
-                                <div class="card">
-                                    <div class="card-head">
-                                        <img src="img/380_220/china-xizang08_368_220.png" alt="" class="w-100 ">
-                                    </div>
-                                    <div class="card-body pb-0">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <span>中国
-                                                <span class="pl-2 pr-2">|</span>西藏</span>
-                                            <span class="flex-end">
-                                                <div class="btn btn-primary btn-sm  mr-1 p-0">游记</div>
-                                                <div class="btn btn-info btn-sm p-0">指南</div>
-                                            </span>
-                                        </div>
-                                        <p class="float-right mt-2">景点
-                                            <b>1224</b>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-5 ">
-                                    <div class="card">
-                                        <div class="card-head">
-                                            <img src="img/380_220/tw_gx368_220.png" alt="" class="w-100 ">
-                                        </div>
-                                        <div class="card-body pb-0">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <span>中国
-                                                    <span class="pl-2 pr-2">|</span>台湾</span>
-                                                <span class="flex-end">
-                                                    <div class="btn btn-primary btn-sm  mr-1 p-0">游记</div>
-                                                    <div class="btn btn-info btn-sm p-0">指南</div>
-                                                </span>
-                                            </div>
-                                            <p class="float-right mt-2">景点
-                                                <b>1224</b>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
                         </div>
                     </div>
-                    <div class="ind hide">
-                        <div class=" text-center">
-                            <img src="img/loading.gif" alt="">
-                        </div>
-                    </div>
-                    <div class="ind hide">
+                   
+                    <div v-for="i in 3" class="ind" :class="tab.ind==i?'':'hide'">
                         <div class="text-center">
-                            <img src="img/loading.gif" alt="">
-                        </div>
-                    </div>
-                    <div class="ind hide">
-                        <div class="text-center">
-                            <img src="img/loading.gif" alt="">
+                            <img src="../../static/wait/loading.gif" alt=""> 
                         </div>
                     </div>
                 </div>
@@ -265,7 +78,6 @@
                     <a href="#" class="text-center">查看全部目的地&gt;</a>
                 </div>
             </div>
-
         </div>
 
         <!-- 人气指南 -->
@@ -279,7 +91,7 @@
                     <div class="col-lg-2 col-md-3 col-sm-6 col-6 bordered mb-2">
                         <div class="card ">
                             <div class="card-head">
-                                <img src="img/170-240/Singapore10.png" alt="" class="w-100">
+                                <!-- <img src="img/170-240/Singapore10.png" alt="" class="w-100"> -->
                             </div>
                             <div class="card-body pl-0 ml-1 pt-0 pb-0">
                                 <p class="mb-0">新加坡</p>
@@ -288,66 +100,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6 bordered mb-2">
-                        <div class="card">
-                            <div class="card-head">
-                                <img src="img/170-240/china-emeishan03.png" alt="" class="w-100">
-                            </div>
-                            <div class="card-body  pl-0 ml-1 pt-0 pb-0">
-                                <p class="mb-0">峨眉山</p>
-                                <span class="views text_muted">浏览量
-                                    <b>1134</b>次</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6 bordered mb-2">
-                        <div class="card">
-                            <div class="card-head">
-                                <img src="img/170-240/Malaysia08.png" alt="" class="w-100">
-                            </div>
-                            <div class="card-body  pl-0 ml-1 pt-0 pb-0">
-                                <p class="mb-0">马来西亚</p>
-                                <span class="views text_muted">浏览量
-                                    <b>1134</b>次</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6 bordered mb-2">
-                        <div class="card">
-                            <div class="card-head">
-                                <img src="img/170-240/Philippine07.png" alt="" class="w-100">
-                            </div>
-                            <div class="card-body  pl-0 ml-1 pt-0 pb-0">
-                                <p class="mb-0">菲律宾</p>
-                                <span class="views text_muted">浏览量
-                                    <b>1134</b>次</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6 bordered mb-2">
-                        <div class="card">
-                            <div class="card-head">
-                                <img src="img/170-240/Nepal03.png" alt="" class="w-100">
-                            </div>
-                            <div class="card-body  pl-0 ml-1 pt-0 pb-0">
-                                <p class="mb-0">曼谷</p>
-                                <span class="views text_muted">浏览量
-                                    <b>1134</b>次</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6  col-6 bordered mb-5">
-                        <div class="card">
-                            <div class="card-head">
-                                <img src="img/170-240/rb_db.png" alt="" class="w-100">
-                            </div>
-                            <div class="card-body  pl-0 ml-1 pt-0 pb-0">
-                                <p class="mb-0">富士山</p>
-                                <span class="views text_muted">浏览量
-                                    <b>1134</b>次</span>
-                            </div>
-                        </div>
-                    </div>
+                </div>
 
 
                 </div>
@@ -365,7 +118,7 @@
                     <div class="col-lg-3 col-md-3 col-sm-6 bordered mb-5">
                         <div class="card">
                             <div class="card-head">
-                                <img src="img/270-165/Singapore07.png" alt="" class="w-100">
+                                <!-- <img src="img/270-165/Singapore07.png" alt="" class="w-100"> -->
                             </div>
                             <div class="card-body  ml-1  pb-1  ">
                                 <p class="mb-0">
@@ -386,100 +139,63 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 bordered mb-5">
-                        <div class="card">
-                            <div class="card-head">
-                                <img src="img/270-165/rb_db.png" alt="" class="w-100">
-                            </div>
-                            <div class="card-body  ml-1  pb-1  ">
-                                <p class="mb-0">
-                                    <h6 class="travel_title">
-                                        <a href="#">享受日本深度自由行</a>
-                                    </h6>
-                                </p>
-                                <p class="mb-0 travel_title text_muted">
-                                    <i class="iconfont">&#xe652;</i>东京，大阪，奈良，京都</p>
-                                <p class="mb-2 travel_title">和很多人一样，它在最初的印象中是模糊陌生的</p>
-                                <p class="mb-0 d-flex justify-content-between flex-wrap text_muted">
-                                    <span>
-                                        <b>作者</b>
-                                        林爱念念</span>
-                                    <span>
-                                        <b> 时间</b> 2018-4-14</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 bordered mb-5">
-                        <div class="card">
-                            <div class="card-head">
-                                <img src="img/270-165/tg.png" alt="" class="w-100">
-                            </div>
-                            <div class="card-body  ml-1  pb-1  ">
-                                <p class="mb-0">
-                                    <h6 class="travel_title">
-                                        <a href="#">喜欢一首歌，爱上一座城</a>
-                                    </h6>
-                                </p>
-                                <p class="mb-0 travel_title text_muted">
-                                    <i class="iconfont">&#xe652;</i>普吉岛，素叻他尼，曼谷，七岩，北揽</p>
-                                <p class="mb-2 travel_title">第一次来，我就爱上了这里</p>
-                                <p class="mb-0 d-flex justify-content-between flex-wrap text_muted">
-                                    <span>
-                                        <b>作者</b>
-                                        卡卡小人</span>
-                                    <span>
-                                        <b> 时间</b> 2018-7-9</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 bordered mb-5">
-                        <div class="card">
-                            <div class="card-head">
-                                <img src="img/270-165/china-jiuzhaigou04.png" alt="" class="w-100">
-                            </div>
-                            <div class="card-body  ml-1  pb-1  ">
-                                <p class="mb-0">
-                                    <h6 class="travel_title">
-                                        <a href="#">九寨沟的三天三夜</a>
-                                    </h6>
-                                </p>
-                                <p class="mb-0 travel_title text_muted">
-                                    <i class="iconfont">&#xe652;</i>盆景滩，树正寨，树正群海，诺日朗瀑布</p>
-                                <p class="mb-2 travel_title">幸好思念无声，否则你一定震耳欲聋</p>
-                                <p class="mb-0 d-flex justify-content-between flex-wrap text_muted">
-                                    <span>
-                                        <b>作者</b>
-                                        雪泡</span>
-                                    <span>
-                                        <b> 时间</b> 2018-5-6</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                  
                 </div>
             </div>
         </div>
+
     </section>
 </template>
 
 <script>
-import  {tabToggle,carouselTask} from '../../src/assets/js/index.js';
     export default{
         data(){
             return{
-
+               carousel:{  
+                   carouselList:['','','','',''],
+                   timer:null,
+                   ind:0
+                },
+                tab:{
+                    barList:['亚洲','欧洲','美洲','全球'],
+                    ind:0
+                }
+               
+                
             }
         },
-        methods:{},
+        methods:{
+             carouselTask(){
+                this.carousel.timer=setInterval(()=>{
+                      this.carousel.ind++;
+                      if(this.carousel.ind>this.carousel.carouselList.length-1){
+                           this.carousel.ind=0;
+                      }
+                 },2000)
+             },
+             loadCarousel(){
+                 this.axios.get('http://localhost:3001/index/carousel',{
+                params:{num1:1,num2:4,num3:8,num4:17,num5:18}
+                }).then(res=>{
+                    this.carousel.carouselList=res.data;
+                })
+             },
+        },
+        created() {
+            this.loadCarousel();
+            this.carouselTask();
+            
+        },
         mounted(){
-            tabToggle();
-            carouselTask();
-        }
+          
+    
+        },
+        destroyed() {
+            
+        },
 
     }
 </script>
 <style>
-     @import '../assetss/css/index.css';
+     @import '../assets/css/index.css';
 </style>

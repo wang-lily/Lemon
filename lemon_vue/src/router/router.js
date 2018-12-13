@@ -3,7 +3,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 // import Spots from '../views/Spots.vue'
 import Personal from '../views/Personal.vue'
-// import Index from '../views/Index.vue'
+import Index from '../views/Index.vue'
+import NotFound from '../views/NotFound.vue'
 
 
 Vue.use(Router)
@@ -11,9 +12,10 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {path: '/', component: Home,children:[
-      // {path: '', component: Index},
+      {path: '', component: Index},
       {path: '/personal', component: Personal}
     ]},
+    {path: '**', component: NotFound},
    
   ]
 })

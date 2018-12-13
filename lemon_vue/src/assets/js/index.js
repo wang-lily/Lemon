@@ -1,14 +1,13 @@
 import $ from 'jquery'
 
-$(function(){
-    // tabToggle();
-    // carouselTask();
-    toTop();
-})
+// $(function(){
+//     // tabToggle();
+//     toTop();
+// })
     
 function tabToggle() {
-    var oTab = document.getElementById('tab_menu');
-    var aLi = oTab.getElementsByTagName('li');
+    // var oTab = document.getElementById('tab_menu');
+    var aLi = document.querySelector('#tab_menu>li');
     var aBox = document.querySelectorAll('.tab_box>div');
     for (var i = 0; i < aLi.length; i++) {
         aLi[i].index = i;
@@ -21,26 +20,6 @@ function tabToggle() {
             aBox[this.index].className = '';
         }
     }
-}
-
-function  carouselTask(){
-    var index = 0;
-       $(".imgMd li").hover(function () {
-            $(this).addClass("cuur").siblings().removeClass("cuur");
-            index = $(this).index();
-            $(".carouselBox .box").eq(index).addClass("first").siblings().removeClass("first");
-
-        });
-
-        setInterval(function () { 
-            $(".imgMd ul li").eq(index).addClass("cuur").siblings().removeClass("cuur");
-            $(".carouselBox .box").eq(index).addClass("first").siblings().removeClass("first");
-            index++;
-            if (index > 5) {
-                index = 0;
-            }
-        }, 2000);
-
 }
 
 function toTop(){
@@ -68,5 +47,5 @@ function toTop(){
 
 }
 
-export {tabToggle,carouselTask,toTop};
-// export {toTop};
+// export {tabToggle,carouselTask,toTop};
+export {toTop};
