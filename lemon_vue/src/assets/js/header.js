@@ -72,5 +72,9 @@ import $ from 'jquery'
                 $(this).parent().prev().children(":first").prop("style","");
             })
             //endregion search-page搜索栏--end
+
+            $("#nav-items").on("click","li [data-target='item']",function(){
+                $("[data-trigger=navIcon][data-status=1]").trigger("click");
+            })
         }
 export {getHeaderEffect} 

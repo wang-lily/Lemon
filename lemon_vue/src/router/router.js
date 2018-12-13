@@ -1,13 +1,15 @@
 import Home from '../views/Home.vue'
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Spots from '../views/Spots.vue'
+import Spots from '../views/Spots.vue'
 import Personal from '../views/Personal.vue'
 import Index from '../views/Index.vue'
 import NotFound from '../views/NotFound.vue'
+import Register_Login from '../views/Register_Login.vue'
+// import Index from '../views/Index.vue'
 
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [
@@ -15,7 +17,9 @@ export default new Router({
       {path: '', component: Index},
       {path: '/personal', component: Personal}
     ]},
-    {path: '**', component: NotFound},
-   
-  ]
+    {path: '/personal', component: Personal},
+    {path: '/spots', component: Spots},
+    {path:'/login_register',component:Register_Login},
+    {path: '**', component: NotFound}
+    ],
 })

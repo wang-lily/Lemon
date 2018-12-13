@@ -15,8 +15,8 @@
                   <img id="brand" src="../assets/logo/lemon_logo_black.png">
               </a>
               <!--个人中心-->
-              <a class="col iconfont icon-login1_0 text-right col-md-auto order-md-4 p-md-0 d-none" href="/views/register_login.html"></a>
-              <div class="col col-md-auto order-md-4 position-relative iconfont icon-login1_1 text-right p-md-0 personal" data-trigger="toggle">
+              <router-link class="col iconfont icon-login1_0 text-right col-md-auto order-md-4 p-md-0" to="/login_register"></router-link>
+              <div class="col col-md-auto order-md-4 position-relative iconfont icon-login1_1 text-right p-md-0 personal d-none" data-trigger="toggle">
                   <div class="position-absolute flex-column pr-3 p-md-0 d-none" data-target="toggleItem">
                       <div class="align-self-end mr-2"></div>
                       <ul class="pl-3 pr-3 speed">
@@ -38,14 +38,14 @@
                               <input type="text" name="search" placeholder="搜索...">
                           </form>
                       </div>
-                      <ul class="d-md-inline-flex justify-content-md-around m-0">
+                      <ul id="nav-items" class="d-md-inline-flex justify-content-md-around m-0">
                           <li><a class="iconfont icon-shouyefill" href="/"></a></li>
                           <!--<li><a href="#">目的地</a></li>-->
-                          <li><a href="/views/spots.html">景点</a></li>
-                          <li><a href="/views/travels.html">游记</a></li>
-                          <li><a href="#">美食</a></li>
-                          <li><a href="/views/strategy.html">指南</a></li>
-                          <li><a class="iconfont icon-some" href="#"></a></li>
+                          <li><router-link to="/spots" data-target="item">景点</router-link></li>
+                          <li><a href="/views/travels.html" data-target="item">游记</a></li>
+                          <li><a href="#" data-target="item">美食</a></li>
+                          <li><a href="/views/strategy.html" data-target="item">指南</a></li>
+                          <li><a class="iconfont icon-some" href="#" data-target="item"></a></li>
                       </ul>
                   </div>
               </div>

@@ -117,6 +117,9 @@ INSERT INTO spot VALUES(25,"泰国","暹罗广场");
 INSERT INTO spot VALUES(26,"泰国","芭提雅");
 
 
+-- INSERT INTO carousel VALUES(DEFAULT,"中国","香港","http://127.0.0.1:3001/img/carousel/picture.png",
+-- "http://127.0.0.1:3001/img/carousel/lb23.png","http://127.0.0.1:3001/img/carousel/lb23_500x250.png",NULL);
+
 #图片总表
 CREATE TABLE img(
 	iid INT PRIMARY KEY AUTO_INCREMENT,
