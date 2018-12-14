@@ -73,47 +73,49 @@ INSERT INTO carousel VALUES(21,"中国","台湾","http://127.0.0.1:3001/img/caro
 INSERT INTO carousel VALUES(22,NULL,"西藏","http://127.0.0.1:3001/img/carousel/picture.png",
 "http://127.0.0.1:3001/img/carousel/lb22.png","http://127.0.0.1:3001/img/carousel/lb22_500_250.png",NULL,NULL,null,null);
 INSERT INTO carousel VALUES(23,"中国","香港","http://127.0.0.1:3001/img/carousel/picture.png",
-"http://127.0.0.1:3001/img/carousel/lb23.png","http://127.0.0.1:3001/img/carousel/lb23_500x250.png",NULL,NULL,null,null);
+"http://127.0.0.1:3001/img/carousel/lb23.png",
+"http://127.0.0.1:3001/img/carousel/lb23_500x250.png",NULL,NULL,null,null);
 
 #景点表
 CREATE TABLE spot(
 	sid INT PRIMARY KEY AUTO_INCREMENT,
 	country VARCHAR(48),
-	spot VARCHAR(48),
+	spot VARCHAR(48)
 );
 #中国
-INSERT INTO spot VALUES(1,'中国','峨眉山');
-INSERT INTO spot VALUES(2,'中国','黄山');
-INSERT INTO spot VALUES(3,'中国','九寨沟');
-INSERT INTO spot VALUES(4,'中国','西安');
-INSERT INTO spot VALUES(5,'中国','台湾');
+INSERT INTO spot VALUES(1,"中国","峨眉山");
+INSERT INTO spot VALUES(2,"中国","黄山");
+INSERT INTO spot VALUES(3,"中国","九寨沟");
+INSERT INTO spot VALUES(4,"中国","青海湖");
+INSERT INTO spot VALUES(5,"中国","西藏");
+INSERT INTO spot VALUES(6,"中国","台湾");
 #韩国
-INSERT INTO spot VALUES(6,'韩国','釜山');
-INSERT INTO spot VALUES(7,'韩国','京畿道');
-INSERT INTO spot VALUES(8,'韩国','江原道');
-INSERT INTO spot VALUES(9,'韩国','济州岛');
-INSERT INTO spot VALUES(10,'韩国','仁川');
+INSERT INTO spot VALUES(7,"韩国","釜山");
+INSERT INTO spot VALUES(8,"韩国","京畿道");
+INSERT INTO spot VALUES(9,"韩国","江原道");
+INSERT INTO spot VALUES(10,"韩国","济州岛");
+INSERT INTO spot VALUES(11,"韩国","仁川");
 #马来西亚
-INSERT INTO spot VALUES(11,'马来西亚',null);
+INSERT INTO spot VALUES(12,"马来西亚",null);
 #尼泊尔
-INSERT INTO spot VALUES(12,'尼泊尔',null);
+INSERT INTO spot VALUES(13,"尼泊尔",null);
 #菲律宾
-INSERT INTO spot VALUES(13,'菲律宾',null);
+INSERT INTO spot VALUES(14,"菲律宾",null);
 #日本
-INSERT INTO spot VALUES(14,'日本','北海道');
-INSERT INTO spot VALUES(15,'日本','大阪');
-INSERT INTO spot VALUES(16,'日本','金阁寺');
-INSERT INTO spot VALUES(17,'日本','奈良');
-INSERT INTO spot VALUES(18,'日本','宇和岛城');
+INSERT INTO spot VALUES(15,"日本","北海道");
+INSERT INTO spot VALUES(16,"日本","大阪");
+INSERT INTO spot VALUES(17,"日本","金阁寺");
+INSERT INTO spot VALUES(18,"日本","奈良");
+INSERT INTO spot VALUES(19,"日本","宇和岛城");
 #新加坡
-INSERT INTO spot VALUES(19,'新加坡',null);
+INSERT INTO spot VALUES(20,"新加坡",null);
 #泰国
-INSERT INTO spot VALUES(20,'泰国','曼谷');
-INSERT INTO spot VALUES(21,'泰国','普吉岛');
-INSERT INTO spot VALUES(22,'泰国','清迈市');
-INSERT INTO spot VALUES(23,'泰国','东芭乐园');
-INSERT INTO spot VALUES(24,'泰国','暹罗广场');
-INSERT INTO spot VALUES(25,'泰国','芭提雅');
+INSERT INTO spot VALUES(21,"泰国","曼谷");
+INSERT INTO spot VALUES(22,"泰国","普吉岛");
+INSERT INTO spot VALUES(23,"泰国","清迈市");
+INSERT INTO spot VALUES(24,"泰国","东芭乐园");
+INSERT INTO spot VALUES(25,"泰国","暹罗广场");
+INSERT INTO spot VALUES(26,"泰国","芭提雅");
 
 
 #图片总表
@@ -188,11 +190,335 @@ INSERT INTO img VALUES(19,3,"http://127.0.0.1:3001/img/170-240/china-jiuzhaigou0
 INSERT INTO img VALUES(20,3,"http://127.0.0.1:3001/img/170-240/china-jiuzhaigou08.png","http://127.0.0.1:3001/img/270-165/china-jiuzhaigou08.png",
 "http://127.0.0.1:3001/img/380-220/china-jiuzhaigou08.png",
 "http://127.0.0.1:3001/img/390-550/china-jiuzhaigou08.png");
+#青海湖
+INSERT INTO img VALUES(21,4,"http://127.0.0.1:3001/img/170-240/china-qinghaihu01.png",
+"http://127.0.0.1:3001/img/270-165/china-qinghaihu01.png",
+"http://127.0.0.1:3001/img/380-220/china-qinghaihu01.png",
+"http://127.0.0.1:3001/img/390-550/china-qinghaihu01.png");
+INSERT INTO img VALUES(22,4,"http://127.0.0.1:3001/img/170-240/china-qinghaihu02.png",
+"http://127.0.0.1:3001/img/270-165/china-qinghaihu02.png",
+"http://127.0.0.1:3001/img/380-220/china-qinghaihu02.png",
+"http://127.0.0.1:3001/img/390-550/china-qinghaihu02.png");
+INSERT INTO img VALUES(23,4,"http://127.0.0.1:3001/img/170-240/china-qinghaihu03.png",
+"http://127.0.0.1:3001/img/270-165/china-qinghaihu03.png",
+"http://127.0.0.1:3001/img/380-220/china-qinghaihu03.png",
+"http://127.0.0.1:3001/img/390-550/china-qinghaihu03.png");
+INSERT INTO img VALUES(24,4,"http://127.0.0.1:3001/img/170-240/china-qinghaihu04.png",
+"http://127.0.0.1:3001/img/270-165/china-qinghaihu04.png",
+"http://127.0.0.1:3001/img/380-220/china-qinghaihu04.png",
+"http://127.0.0.1:3001/img/390-550/china-qinghaihu04.png");
+INSERT INTO img VALUES(25,4,"http://127.0.0.1:3001/img/170-240/china-qinghaihu05.png",
+"http://127.0.0.1:3001/img/270-165/china-qinghaihu05.png",
+"http://127.0.0.1:3001/img/380-220/china-qinghaihu05.png",
+"http://127.0.0.1:3001/img/390-550/china-qinghaihu05.png");
+INSERT INTO img VALUES(26,4,"http://127.0.0.1:3001/img/170-240/china-qinghaihu06.png",
+"http://127.0.0.1:3001/img/270-165/china-qinghaihu06.png",
+"http://127.0.0.1:3001/img/380-220/china-qinghaihu06.png",
+"http://127.0.0.1:3001/img/390-550/china-qinghaihu06.png");
+INSERT INTO img VALUES(27,4,"http://127.0.0.1:3001/img/170-240/china-qinghaihu07.png",
+"http://127.0.0.1:3001/img/270-165/china-qinghaihu07.png",
+"http://127.0.0.1:3001/img/380-220/china-qinghaihu07.png",
+"http://127.0.0.1:3001/img/390-550/china-qinghaihu07.png");
+INSERT INTO img VALUES(28,4,"http://127.0.0.1:3001/img/170-240/china-qinghaihu08.png",
+"http://127.0.0.1:3001/img/270-165/china-qinghaihu08.png",
+"http://127.0.0.1:3001/img/380-220/china-qinghaihu08.png",
+"http://127.0.0.1:3001/img/390-550/china-qinghaihu08.png");
+#西藏
+INSERT INTO img VALUES(29,5,"http://127.0.0.1:3001/img/170-240/china-xizang01.png",
+"http://127.0.0.1:3001/img/270-165/china-xizang01.png",
+"http://127.0.0.1:3001/img/380-220/china-xizang01.png",
+"http://127.0.0.1:3001/img/390-550/china-xizang01.png");
+INSERT INTO img VALUES(30,5,"http://127.0.0.1:3001/img/170-240/china-xizang02.png",
+"http://127.0.0.1:3001/img/270-165/china-xizang02.png",
+"http://127.0.0.1:3001/img/380-220/china-xizang02.png",
+"http://127.0.0.1:3001/img/390-550/china-xizang02.png");
+INSERT INTO img VALUES(31,5,"http://127.0.0.1:3001/img/170-240/china-xizang03.png",
+"http://127.0.0.1:3001/img/270-165/china-xizang03.png",
+"http://127.0.0.1:3001/img/380-220/china-xizang03.png",
+"http://127.0.0.1:3001/img/390-550/china-xizang03.png");
+INSERT INTO img VALUES(32,5,"http://127.0.0.1:3001/img/170-240/china-xizang04.png",
+"http://127.0.0.1:3001/img/270-165/china-xizang04.png",
+"http://127.0.0.1:3001/img/380-220/china-xizang04.png",
+"http://127.0.0.1:3001/img/390-550/china-xizang04.png");
+INSERT INTO img VALUES(33,5,"http://127.0.0.1:3001/img/170-240/china-xizang05.png",
+"http://127.0.0.1:3001/img/270-165/china-xizang05.png",
+"http://127.0.0.1:3001/img/380-220/china-xizang05.png",
+"http://127.0.0.1:3001/img/390-550/china-xizang05.png");
+INSERT INTO img VALUES(34,5,"http://127.0.0.1:3001/img/170-240/china-xizang06.png",
+"http://127.0.0.1:3001/img/270-165/china-xizang06.png",
+"http://127.0.0.1:3001/img/380-220/china-xizang06.png",
+"http://127.0.0.1:3001/img/390-550/china-xizang06.png");
+INSERT INTO img VALUES(35,5,"http://127.0.0.1:3001/img/170-240/china-xizang07.png",
+"http://127.0.0.1:3001/img/270-165/china-xizang07.png",
+"http://127.0.0.1:3001/img/380-220/china-xizang07.png",
+"http://127.0.0.1:3001/img/390-550/china-xizang07.png");
+INSERT INTO img VALUES(36,5,"http://127.0.0.1:3001/img/170-240/china-xizang08.png",
+"http://127.0.0.1:3001/img/270-165/china-xizang08.png",
+"http://127.0.0.1:3001/img/380-220/china-xizang08.png",
+"http://127.0.0.1:3001/img/390-550/china-xizang08.png");
+INSERT INTO img VALUES(39,5,"http://127.0.0.1:3001/img/170-240/china-xizang09.png",
+"http://127.0.0.1:3001/img/270-165/china-xizang09.png",
+"http://127.0.0.1:3001/img/380-220/china-xizang09.png",
+"http://127.0.0.1:3001/img/390-550/china-xizang09.png");
+#台湾
+INSERT INTO img VALUES(40,6,"http://127.0.0.1:3001/img/170-240/tw.png",
+"http://127.0.0.1:3001/img/270-165/tw.png",
+"http://127.0.0.1:3001/img/380-220/tw.png",
+"http://127.0.0.1:3001/img/390-550/tw.png");
+INSERT INTO img VALUES(41,6,"http://127.0.0.1:3001/img/170-240/tw_101.png",
+"http://127.0.0.1:3001/img/270-165/tw_101.png",
+"http://127.0.0.1:3001/img/380-220/tw_101.png",
+"http://127.0.0.1:3001/img/390-550/tw_101.png");
+INSERT INTO img VALUES(42,6,"http://127.0.0.1:3001/img/170-240/tw_gx.png",
+"http://127.0.0.1:3001/img/270-165/tw_gx.png",
+"http://127.0.0.1:3001/img/380-220/tw_gx.png",
+"http://127.0.0.1:3001/img/390-550/tw_gx.png");
+INSERT INTO img VALUES(43,6,"http://127.0.0.1:3001/img/170-240/tw_kd.png",
+"http://127.0.0.1:3001/img/270-165/tw_kd.png",
+"http://127.0.0.1:3001/img/380-220/tw_kd.png",
+"http://127.0.0.1:3001/img/390-550/tw_kd.png");
+INSERT INTO img VALUES(44,6,"http://127.0.0.1:3001/img/170-240/tw_nh.png",
+"http://127.0.0.1:3001/img/270-165/tw_nh.png",
+"http://127.0.0.1:3001/img/380-220/tw_nh.png",
+"http://127.0.0.1:3001/img/390-550/tw_nh.png");
+INSERT INTO img VALUES(45,6,"http://127.0.0.1:3001/img/170-240/tw_xj.png",
+"http://127.0.0.1:3001/img/270-165/tw_xj.png",
+"http://127.0.0.1:3001/img/380-220/tw_xj.png",
+"http://127.0.0.1:3001/img/390-550/tw_xj.png");
+INSERT INTO img VALUES(46,6,"http://127.0.0.1:3001/img/170-240/tw-dbj.png",
+"http://127.0.0.1:3001/img/270-165/tw-dbj.png",
+"http://127.0.0.1:3001/img/380-220/tw-dbj.png",
+"http://127.0.0.1:3001/img/390-550/tw-dbj.png");
+#釜山
+INSERT INTO img VALUES(47,7,"http://127.0.0.1:3001/img/170-240/hg_fs.png",
+"http://127.0.0.1:3001/img/270-165/hg_fs.png",
+"http://127.0.0.1:3001/img/380-220/hg_fs.png",
+"http://127.0.0.1:3001/img/390-550/hg_fs.png");
+#京畿道
+INSERT INTO img VALUES(48,8,"http://127.0.0.1:3001/img/170-240/hg_jjd.png",
+"http://127.0.0.1:3001/img/270-165/hg_jjd.png",
+"http://127.0.0.1:3001/img/380-220/hg_jjd.png",
+"http://127.0.0.1:3001/img/390-550/hg_jjd.png");
+#江原道
+INSERT INTO img VALUES(49,9,"http://127.0.0.1:3001/img/170-240/hg_jyd.png",
+"http://127.0.0.1:3001/img/270-165/hg_jyd.png",
+"http://127.0.0.1:3001/img/380-220/hg_jyd.png",
+"http://127.0.0.1:3001/img/390-550/hg_jyd.png");
+#济州岛
+INSERT INTO img VALUES(50,10,"http://127.0.0.1:3001/img/170-240/hg_jzd.png",
+"http://127.0.0.1:3001/img/270-165/hg_jzd.png",
+"http://127.0.0.1:3001/img/380-220/hg_jzd.png",
+"http://127.0.0.1:3001/img/390-550/hg_jzd.png");
+#仁川
+INSERT INTO img VALUES(51,11,"http://127.0.0.1:3001/img/170-240/hg_rc.png",
+"http://127.0.0.1:3001/img/270-165/hg_rc.png",
+"http://127.0.0.1:3001/img/380-220/hg_rc.png",
+"http://127.0.0.1:3001/img/390-550/hg_rc.png");
+#马来西亚
+INSERT INTO img VALUES(52,12,"http://127.0.0.1:3001/img/170-240/Malaysia01.png",
+"http://127.0.0.1:3001/img/270-165/Malaysia01.png",
+"http://127.0.0.1:3001/img/380-220/Malaysia01.png",
+"http://127.0.0.1:3001/img/390-550/Malaysia01.png");
+INSERT INTO img VALUES(53,12,"http://127.0.0.1:3001/img/170-240/Malaysia02.png",
+"http://127.0.0.1:3001/img/270-165/Malaysia02.png",
+"http://127.0.0.1:3001/img/380-220/Malaysia02.png",
+"http://127.0.0.1:3001/img/390-550/Malaysia02.png");
+INSERT INTO img VALUES(54,12,"http://127.0.0.1:3001/img/170-240/Malaysia03.png",
+"http://127.0.0.1:3001/img/270-165/Malaysia03.png",
+"http://127.0.0.1:3001/img/380-220/Malaysia03.png",
+"http://127.0.0.1:3001/img/390-550/Malaysia03.png");
+INSERT INTO img VALUES(55,12,"http://127.0.0.1:3001/img/170-240/Malaysia04.png",
+"http://127.0.0.1:3001/img/270-165/Malaysia04.png",
+"http://127.0.0.1:3001/img/380-220/Malaysia04.png",
+"http://127.0.0.1:3001/img/390-550/Malaysia04.png");
+INSERT INTO img VALUES(56,12,"http://127.0.0.1:3001/img/170-240/Malaysia05.png",
+"http://127.0.0.1:3001/img/270-165/Malaysia05.png",
+"http://127.0.0.1:3001/img/380-220/Malaysia05.png",
+"http://127.0.0.1:3001/img/390-550/Malaysia05.png");
+INSERT INTO img VALUES(57,12,"http://127.0.0.1:3001/img/170-240/Malaysia06.png",
+"http://127.0.0.1:3001/img/270-165/Malaysia06.png",
+"http://127.0.0.1:3001/img/380-220/Malaysia06.png",
+"http://127.0.0.1:3001/img/390-550/Malaysia06.png");
+INSERT INTO img VALUES(58,12,"http://127.0.0.1:3001/img/170-240/Malaysia07.png",
+"http://127.0.0.1:3001/img/270-165/Malaysia07.png",
+"http://127.0.0.1:3001/img/380-220/Malaysia07.png",
+"http://127.0.0.1:3001/img/390-550/Malaysia07.png");
+INSERT INTO img VALUES(59,12,"http://127.0.0.1:3001/img/170-240/Malaysia08.png",
+"http://127.0.0.1:3001/img/270-165/Malaysia08.png",
+"http://127.0.0.1:3001/img/380-220/Malaysia08.png",
+"http://127.0.0.1:3001/img/390-550/Malaysia08.png");
+INSERT INTO img VALUES(60,12,"http://127.0.0.1:3001/img/170-240/Malaysia09.png",
+"http://127.0.0.1:3001/img/270-165/Malaysia09.png",
+"http://127.0.0.1:3001/img/380-220/Malaysia09.png",
+"http://127.0.0.1:3001/img/390-550/Malaysia09.png");
+INSERT INTO img VALUES(61,12,"http://127.0.0.1:3001/img/170-240/Malaysia10.png",
+"http://127.0.0.1:3001/img/270-165/Malaysia10.png",
+"http://127.0.0.1:3001/img/380-220/Malaysia10.png",
+"http://127.0.0.1:3001/img/390-550/Malaysia10.png");
+#尼泊尔
+INSERT INTO img VALUES(62,13,"http://127.0.0.1:3001/img/170-240/Nepal01.png",
+"http://127.0.0.1:3001/img/270-165/Nepal01.png",
+"http://127.0.0.1:3001/img/380-220/Nepal01.png",
+"http://127.0.0.1:3001/img/390-550/Nepal01.png");
+INSERT INTO img VALUES(63,13,"http://127.0.0.1:3001/img/170-240/Nepal02.png",
+"http://127.0.0.1:3001/img/270-165/Nepal02.png",
+"http://127.0.0.1:3001/img/380-220/Nepal02.png",
+"http://127.0.0.1:3001/img/390-550/Nepal02.png");
+INSERT INTO img VALUES(64,13,"http://127.0.0.1:3001/img/170-240/Nepal03.png",
+"http://127.0.0.1:3001/img/270-165/Nepal03.png",
+"http://127.0.0.1:3001/img/380-220/Nepal03.png",
+"http://127.0.0.1:3001/img/390-550/Nepal03.png");
+INSERT INTO img VALUES(65,13,"http://127.0.0.1:3001/img/170-240/Nepal04.png",
+"http://127.0.0.1:3001/img/270-165/Nepal04.png",
+"http://127.0.0.1:3001/img/380-220/Nepal04.png",
+"http://127.0.0.1:3001/img/390-550/Nepal04.png");
+INSERT INTO img VALUES(66,13,"http://127.0.0.1:3001/img/170-240/Nepal06.png",
+"http://127.0.0.1:3001/img/270-165/Nepal06.png",
+"http://127.0.0.1:3001/img/380-220/Nepal06.png",
+"http://127.0.0.1:3001/img/390-550/Nepal06.png");
+INSERT INTO img VALUES(67,13,"http://127.0.0.1:3001/img/170-240/Nepal07.png",
+"http://127.0.0.1:3001/img/270-165/Nepal07.png",
+"http://127.0.0.1:3001/img/380-220/Nepal07.png",
+"http://127.0.0.1:3001/img/390-550/Nepal07.png");
+INSERT INTO img VALUES(68,13,"http://127.0.0.1:3001/img/170-240/Nepal09.png",
+"http://127.0.0.1:3001/img/270-165/Nepal09.png",
+"http://127.0.0.1:3001/img/380-220/Nepal09.png",
+"http://127.0.0.1:3001/img/390-550/Nepal09.png");
+INSERT INTO img VALUES(69,13,"http://127.0.0.1:3001/img/170-240/Nepal10.png",
+"http://127.0.0.1:3001/img/270-165/Nepal10.png",
+"http://127.0.0.1:3001/img/380-220/Nepal10.png",
+"http://127.0.0.1:3001/img/390-550/Nepal10.png");
+INSERT INTO img VALUES(70,13,"http://127.0.0.1:3001/img/170-240/Nepal11.png",
+"http://127.0.0.1:3001/img/270-165/Nepal11.png",
+"http://127.0.0.1:3001/img/380-220/Nepal11.png",
+"http://127.0.0.1:3001/img/390-550/Nepal11.png");
 
+#菲律宾
+INSERT INTO img VALUES(71,14,"http://127.0.0.1:3001/img/170-240/Philippine01.png",
+"http://127.0.0.1:3001/img/270-165/Philippine01.png",
+"http://127.0.0.1:3001/img/380-220/Philippine01.png",
+"http://127.0.0.1:3001/img/390-550/Philippine01.png");
+INSERT INTO img VALUES(72,14,"http://127.0.0.1:3001/img/170-240/Philippine04.png",
+"http://127.0.0.1:3001/img/270-165/Philippine04.png",
+"http://127.0.0.1:3001/img/380-220/Philippine04.png",
+"http://127.0.0.1:3001/img/390-550/Philippine04.png");
+INSERT INTO img VALUES(73,14,"http://127.0.0.1:3001/img/170-240/Philippine05.png",
+"http://127.0.0.1:3001/img/270-165/Philippine05.png",
+"http://127.0.0.1:3001/img/380-220/Philippine05.png",
+"http://127.0.0.1:3001/img/390-550/Philippine05.png");
+INSERT INTO img VALUES(74,14,"http://127.0.0.1:3001/img/170-240/Philippine06.png",
+"http://127.0.0.1:3001/img/270-165/Philippine06.png",
+"http://127.0.0.1:3001/img/380-220/Philippine06.png",
+"http://127.0.0.1:3001/img/390-550/Philippine06.png");
+INSERT INTO img VALUES(75,14,"http://127.0.0.1:3001/img/170-240/Philippine07.png",
+"http://127.0.0.1:3001/img/270-165/Philippine07.png",
+"http://127.0.0.1:3001/img/380-220/Philippine07.png",
+"http://127.0.0.1:3001/img/390-550/Philippine07.png");
+INSERT INTO img VALUES(76,14,"http://127.0.0.1:3001/img/170-240/Philippine08.png",
+"http://127.0.0.1:3001/img/270-165/Philippine08.png",
+"http://127.0.0.1:3001/img/380-220/Philippine08.png",
+"http://127.0.0.1:3001/img/390-550/Philippine08.png");
+INSERT INTO img VALUES(77,14,"http://127.0.0.1:3001/img/170-240/Philippine11.png",
+"http://127.0.0.1:3001/img/270-165/Philippine11.png",
+"http://127.0.0.1:3001/img/380-220/Philippine11.png",
+"http://127.0.0.1:3001/img/390-550/Philippine11.png");
+#北海道
+INSERT INTO img VALUES(78,15,"http://127.0.0.1:3001/img/170-240/rb_bhd.png",
+"http://127.0.0.1:3001/img/270-165/rb_bhd.png",
+"http://127.0.0.1:3001/img/380-220/rb_bhd.png",
+"http://127.0.0.1:3001/img/390-550/rb_bhd.png");
+#大阪
+INSERT INTO img VALUES(79,16,"http://127.0.0.1:3001/img/170-240/rb_db.png",
+"http://127.0.0.1:3001/img/270-165/rb_db.png",
+"http://127.0.0.1:3001/img/380-220/rb_db.png",
+"http://127.0.0.1:3001/img/390-550/rb_db.png");
+#金阁寺
+INSERT INTO img VALUES(80,17,"http://127.0.0.1:3001/img/170-240/rb_jgs.png",
+"http://127.0.0.1:3001/img/270-165/rb_jgs.png",
+"http://127.0.0.1:3001/img/380-220/rb_jgs.png",
+"http://127.0.0.1:3001/img/390-550/rb_jgs.png");
+#奈良
+INSERT INTO img VALUES(81,18,"http://127.0.0.1:3001/img/170-240/rb_nl.png",
+"http://127.0.0.1:3001/img/270-165/rb_nl.png",
+"http://127.0.0.1:3001/img/380-220/rb_nl.png",
+"http://127.0.0.1:3001/img/390-550/rb_nl.png");
+#宇和岛城
+INSERT INTO img VALUES(82,19,"http://127.0.0.1:3001/img/170-240/rb_yhdc.png",
+"http://127.0.0.1:3001/img/270-165/rb_yhdc.png",
+"http://127.0.0.1:3001/img/380-220/rb_yhdc.png",
+"http://127.0.0.1:3001/img/390-550/rb_yhdc.png");
+#新加坡
+INSERT INTO img VALUES(83,20,"http://127.0.0.1:3001/img/170-240/Singapore02.png",
+"http://127.0.0.1:3001/img/270-165/Singapore02.png",
+"http://127.0.0.1:3001/img/380-220/Singapore02.png",
+"http://127.0.0.1:3001/img/390-550/Singapore02.png");
+INSERT INTO img VALUES(84,20,"http://127.0.0.1:3001/img/170-240/Singapore03.png",
+"http://127.0.0.1:3001/img/270-165/Singapore03.png",
+"http://127.0.0.1:3001/img/380-220/Singapore03.png",
+"http://127.0.0.1:3001/img/390-550/Singapore03.png");
+INSERT INTO img VALUES(85,20,"http://127.0.0.1:3001/img/170-240/Singapore04.png",
+"http://127.0.0.1:3001/img/270-165/Singapore04.png",
+"http://127.0.0.1:3001/img/380-220/Singapore04.png",
+"http://127.0.0.1:3001/img/390-550/Singapore04.png");
+INSERT INTO img VALUES(86,20,"http://127.0.0.1:3001/img/170-240/Singapore05.png",
+"http://127.0.0.1:3001/img/270-165/Singapore05.png",
+"http://127.0.0.1:3001/img/380-220/Singapore05.png",
+"http://127.0.0.1:3001/img/390-550/Singapore05.png");
+INSERT INTO img VALUES(87,20,"http://127.0.0.1:3001/img/170-240/Singapore06.png",
+"http://127.0.0.1:3001/img/270-165/Singapore06.png",
+"http://127.0.0.1:3001/img/380-220/Singapore06.png",
+"http://127.0.0.1:3001/img/390-550/Singapore06.png");
+INSERT INTO img VALUES(88,20,"http://127.0.0.1:3001/img/170-240/Singapore07.png",
+"http://127.0.0.1:3001/img/270-165/Singapore07.png",
+"http://127.0.0.1:3001/img/380-220/Singapore07.png",
+"http://127.0.0.1:3001/img/390-550/Singapore07.png");
+INSERT INTO img VALUES(89,20,"http://127.0.0.1:3001/img/170-240/Singapore08.png",
+"http://127.0.0.1:3001/img/270-165/Singapore08.png",
+"http://127.0.0.1:3001/img/380-220/Singapore08.png",
+"http://127.0.0.1:3001/img/390-550/Singapore08.png");
+INSERT INTO img VALUES(90,20,"http://127.0.0.1:3001/img/170-240/Singapore09.png",
+"http://127.0.0.1:3001/img/270-165/Singapore09.png",
+"http://127.0.0.1:3001/img/380-220/Singapore09.png",
+"http://127.0.0.1:3001/img/390-550/Singapore09.png");
+INSERT INTO img VALUES(91,20,"http://127.0.0.1:3001/img/170-240/Singapore10.png",
+"http://127.0.0.1:3001/img/270-165/Singapore10.png",
+"http://127.0.0.1:3001/img/380-220/Singapore10.png",
+"http://127.0.0.1:3001/img/390-550/Singapore10.png");
+INSERT INTO img VALUES(92,20,"http://127.0.0.1:3001/img/170-240/Singapore11.png",
+"http://127.0.0.1:3001/img/270-165/Singapore11.png",
+"http://127.0.0.1:3001/img/380-220/Singapore11.png",
+"http://127.0.0.1:3001/img/390-550/Singapore11.png");
 
-
-
-
+#曼谷
+INSERT INTO img VALUES(93,21,"http://127.0.0.1:3001/img/170-240/tg_mg.png",
+"http://127.0.0.1:3001/img/270-165/tg_mg.png",
+"http://127.0.0.1:3001/img/380-220/tg_mg.png",
+"http://127.0.0.1:3001/img/390-550/tg_mg.png");
+#普吉岛
+INSERT INTO img VALUES(94,22,"http://127.0.0.1:3001/img/170-240/tg_pjd.png",
+"http://127.0.0.1:3001/img/270-165/tg_pjd.png",
+"http://127.0.0.1:3001/img/380-220/tg_pjd.png",
+"http://127.0.0.1:3001/img/390-550/tg_pjd.png");
+#清迈市
+INSERT INTO img VALUES(95,23,"http://127.0.0.1:3001/img/170-240/tg_qms.png",
+"http://127.0.0.1:3001/img/270-165/tg_qms.png",
+"http://127.0.0.1:3001/img/380-220/tg_qms.png",
+"http://127.0.0.1:3001/img/390-550/tg_qms.png");
+#东芭乐园
+INSERT INTO img VALUES(96,24,"http://127.0.0.1:3001/img/170-240/tg_dbly.png",
+"http://127.0.0.1:3001/img/270-165/tg_dbly.png",
+"http://127.0.0.1:3001/img/380-220/tg_dbly.png",
+"http://127.0.0.1:3001/img/390-550/tg_dbly.png");
+#暹罗广场
+INSERT INTO img VALUES(97,25,"http://127.0.0.1:3001/img/170-240/tg_llgc.png",
+"http://127.0.0.1:3001/img/270-165/tg_llgc.png",
+"http://127.0.0.1:3001/img/380-220/tg_llgc.png",
+"http://127.0.0.1:3001/img/390-550/tg_llgc.png");
+#芭提雅
+INSERT INTO img VALUES(98,26,"http://127.0.0.1:3001/img/170-240/tg_bty.png",
+"http://127.0.0.1:3001/img/270-165/tg_bty.png",
+"http://127.0.0.1:3001/img/380-220/tg_bty.png",
+"http://127.0.0.1:3001/img/390-550/tg_bty.png");
 
 #游记表
 CREATE TABLE travel(

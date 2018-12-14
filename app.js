@@ -30,6 +30,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const spots = require("./routes/spots");
 const index = require("./routes/index");
+const user = require("./routes/user");
 
 
 var app = express();
@@ -50,3 +51,4 @@ app.use(cors({
 
 app.use("/spots",spots);
 app.use("/index",index);
+app.use("/user",user);
