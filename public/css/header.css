@@ -70,6 +70,11 @@ header {
         padding: 12px;
         color: black; }
         header #header-nav .personal > div > ul > li:first-child {
+          width: 100%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          -ms-text-overflow: ellipsis;
           color: #28a745;
           font-size: 1.2rem; }
         header #header-nav .personal > div > ul > li:last-child {

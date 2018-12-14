@@ -15,6 +15,7 @@ export default new Router({
   routes: [
     {path: '/', component: Home,children:[
       {path: '', component: Index},
+      {path: '/index', component: Index},
       {path: '/personal', component: Personal},
       {path: '/spots', component: Spots},
     ]},

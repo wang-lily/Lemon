@@ -5,12 +5,12 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router/router.js'
-// import store from './store'
+import store from './store'
 import axios from 'axios'
 // import $ from 'jquery'
 // import '@/assets/css/bootstrap.css'
 // Vue.config.productionTip = false;
-// axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = true;
 Vue.prototype.axios = axios;
 // Vue.prototype.jquery = $;
 
@@ -18,6 +18,6 @@ Vue.config.productionTip = false;//阻止 vue 在启动时生成生产提示
 /* eslint-disable no-new */
 new Vue({
   router,
-  // store,
+  store,
   render: h => h(App)
 }).$mount('#app')
