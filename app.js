@@ -31,7 +31,7 @@ const cors = require("cors");
 const spots = require("./routes/spots");
 const index = require("./routes/index");
 const user = require("./routes/user");
-
+const  pics= require("./routes/pics");
 
 var app = express();
 app.listen(3001);
@@ -52,3 +52,4 @@ app.use(cors({
 app.use("/spots",spots);
 app.use("/index",index);
 app.use("/user",user);
+app.use("/pics",pics);

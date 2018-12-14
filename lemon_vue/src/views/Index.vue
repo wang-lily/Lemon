@@ -26,7 +26,7 @@
 
                 <div class="position-absolute link">
                     <a href="" class="pt-1 pb-1 ml-1"> <i class="iconfont icon-dianping"></i>写游记</a>
-                    <a href="" class="pt-1 pb-1  ml-1"> 历历在目</i></a>
+                    <router-link to='/pics' class="pt-1 pb-1  ml-1">历历在目</i></router-link> 
                 </div> 
             </div>
        </div>
@@ -70,7 +70,7 @@
                    
                     <div v-for="i in 3" class="ind" :class="tab.ind==i?'':'hide'">
                         <div class="text-center">
-                            <img src="../../static/wait/loading.gif" alt=""> 
+                            <img src="../assets/background/loading.gif" alt=""> 
                         </div>
                     </div>
                 </div>

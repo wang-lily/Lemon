@@ -21,7 +21,7 @@
     position: relative;
     width: 100%;
     height: 100%;
-    background: url('../../static/notfound/notfound.png') center; 
+    background: url('../assets/background/notfound.png') center; 
 }
     .notFound a{
          position: absolute;

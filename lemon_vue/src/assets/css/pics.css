@@ -1,5 +1,5 @@
-body section {
-  background: url(../img/pics/bg-pics.png) no-repeat fixed;
+body section.pics{
+  background: url(../background/bg-pics.png) no-repeat fixed;
   background-size: cover; }
 
 .pics .pics_wall {
