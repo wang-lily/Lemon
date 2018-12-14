@@ -26,7 +26,7 @@
 
                 <div class="position-absolute link">
                     <a href="" class="pt-1 pb-1 ml-1"> <i class="iconfont icon-dianping"></i>写游记</a>
-                    <a href="" class="pt-1 pb-1  ml-1"> 历历在目</i></a>
+                    <router-link to='/pics' class="pt-1 pb-1  ml-1">历历在目</i></router-link> 
                 </div> 
             </div>
        </div>
@@ -45,22 +45,22 @@
                 <div class="container tab_box mb-2">
                     <div class="ind" :class="tab.ind==0?'':'hide'">
                         <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-6 bordered mb-3 ">
+                            <div v-for="item in tab.imgList"  class="col-lg-3 col-md-3 col-sm-6 col-6 bordered mb-3 ">
                                 <div class="card ">
                                     <div class="card-head">
-                                        <!-- <img src="img/380_220/hg_cd368_220.png" alt="" class="w-100 "> -->
+                                        <img :src="item.iimg_380_220" alt="" class="w-100 ">
                                     </div>
                                     <div class="card-body pb-0">
                                         <div class="d-flex justify-content-between align-items-center flex-wrap">
-                                            <span>韩国
-                                                <span class="pl-2 pr-2">|</span>京畿道</span>
+                                            <span>{{item.country}}
+                                                <span class="pl-1 pr-1">|</span>{{item.spot}}</span>
                                             <span class="flex-end">
-                                                <div class="btn btn-primary btn-sm  mr-1 p-0">游记</div>
-                                                <div class="btn btn-info btn-sm p-0">指南</div>
+                                                <div class="btn btn-primary btn-sm  mr-1 p-0"><small>游记</small></div>
+                                                <div class="btn btn-info btn-sm p-0"><small>指南</small></div>
                                             </span>
                                         </div>
-                                        <p class="float-right mt-2">景点
-                                            <b>2435</b>
+                                        <p class="float-right mt-2">
+                                           <small>热度 <i class="iconfont icon-xingxing1" v-for="i in item.hot"></i></small>
                                         </p>
                                     </div>
                                 </div>
@@ -70,7 +70,7 @@
                    
                     <div v-for="i in 3" class="ind" :class="tab.ind==i?'':'hide'">
                         <div class="text-center">
-                            <img src="../../static/wait/loading.gif" alt=""> 
+                            <img src="../assets/background/loading.gif" alt=""> 
                         </div>
                     </div>
                 </div>
@@ -158,7 +158,8 @@
                 },
                 tab:{
                     barList:['亚洲','欧洲','美洲','全球'],
-                    ind:0
+                    ind:0,
+                    imgList:[]
                 }
                
                 
@@ -180,10 +181,20 @@
                     this.carousel.carouselList=res.data;
                 })
              },
+
+             //http://localhost:3001/index/tab
+               loadTab(){
+                 this.axios.get('http://localhost:3001/index/tab'
+                ).then(res=>{
+                    this.tab.imgList=res.data;
+                    console.log(this.tab.imgList)
+                })
+             },
         },
         created() {
             this.loadCarousel();
             this.carouselTask();
+            this. loadTab()
             
         },
         mounted(){

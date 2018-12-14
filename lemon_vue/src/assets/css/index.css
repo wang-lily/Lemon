@@ -68,7 +68,7 @@ body{
     /* box-shadow: 0 0.5rem 0.1rem #d6d2d2; */
     transition: all 2s;
 }
-.text_tab{
+.destination .text_tab{
     font-size: 24px;
 }
 .destination #tab_menu li{
@@ -79,9 +79,12 @@ body{
     display: none;
 }
 
-.pop_title{
+.destination .pop_title{
     font-size: 24px;
     font-weight: bold;
+}
+.destination small i{
+    color: #FF9800;
 }
 /* 指南 */
 .views{
