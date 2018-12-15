@@ -24,7 +24,11 @@
   color: #FF9800; }
 
 .info .profile textarea {
+  overflow:hidden;
   resize: none; }
 
 .info .profile[type='submit'] {
   background: #FF9800; }
+.info .deleteMe small:hover{
+  color: #FF9800 !important;
+}

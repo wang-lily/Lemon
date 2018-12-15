@@ -187,7 +187,7 @@
                  this.axios.get('http://localhost:3001/index/tab'
                 ).then(res=>{
                     this.tab.imgList=res.data;
-                    console.log(this.tab.imgList)
+                    // console.log(this.tab.imgList)
                 })
              },
         },
