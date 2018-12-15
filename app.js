@@ -28,15 +28,18 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const session=require("express-session");
+
+
 const spots = require("./routes/spots");
 const index = require("./routes/index");
 const user = require("./routes/user");
-
+const  pics= require("./routes/pics");
 
 var app = express();
 app.listen(3001);
 console.log("服务器创建成功，端口号3001");
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static(__dirname + "/public"));
 app.use(cors({
     origin:[
@@ -47,8 +50,14 @@ app.use(cors({
     ],
     credentials:true
 }))
+app.use(session({
+    secret:"128位随机字符",
+    resave:false,
+    saveUninitialized:true
+  }))
 
 
 app.use("/spots",spots);
 app.use("/index",index);
 app.use("/user",user);
+app.use("/pics",pics);

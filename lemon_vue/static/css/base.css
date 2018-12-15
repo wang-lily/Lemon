@@ -21,4 +21,7 @@ ol, li, pre, form, fieldset, legend, button, input, textarea, th {
     font-family: "HelveticaNeue","LucidaGrande","SegoeUI",Arial, Helvetica, Verdana, sans-serif;
     height: 100%;
   }
+  #app{
+    height:100%;
+  }
  

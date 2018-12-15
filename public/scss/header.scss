@@ -100,6 +100,12 @@ header{
             padding:12px;
             color:$fontNormalColor;
             &:first-child{
+              width: 100%;
+              white-space: nowrap;
+              overflow:hidden;
+              text-overflow:ellipsis;
+              -ms-text-overflow: ellipsis;
+              
               color:$iconNormalColor;
               font-size: $font1_2r;
             }

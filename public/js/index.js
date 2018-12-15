@@ -24,25 +24,25 @@ function tabToggle() {
 }
 
 
-function  carouselTask(){
-    var index = 0;
-       $(".imgMd li").hover(function () {
-            $(this).addClass("cuur").siblings().removeClass("cuur");
-            index = $(this).index();
-            $(".carouselBox .box").eq(index).addClass("first").siblings().removeClass("first");
+// function  carouselTask(){
+//     var index = 0;
+//        $(".imgMd li").hover(function () {
+//             $(this).addClass("cuur").siblings().removeClass("cuur");
+//             index = $(this).index();
+//             $(".carouselBox .box").eq(index).addClass("first").siblings().removeClass("first");
 
-        });
+//         });
 
-        setInterval(function () { 
-            $(".imgMd ul li").eq(index).addClass("cuur").siblings().removeClass("cuur");
-            $(".carouselBox .box").eq(index).addClass("first").siblings().removeClass("first");
-            index++;
-            if (index > 5) {
-                index = 0;
-            }
-        }, 2000);
+//         setInterval(function () { 
+//             $(".imgMd ul li").eq(index).addClass("cuur").siblings().removeClass("cuur");
+//             $(".carouselBox .box").eq(index).addClass("first").siblings().removeClass("first");
+//             index++;
+//             if (index > 5) {
+//                 index = 0;
+//             }
+//         }, 2000);
 
-}
+// }
 
 function toTop(){
     $(window).scrollTop(0); //刷新后回到顶部
