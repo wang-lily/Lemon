@@ -171,7 +171,7 @@
                       if(this.carousel.ind>this.carousel.carouselList.length-1){
                            this.carousel.ind=0;
                       }
-                 },2000)
+                 },4000)
              },
              loadCarousel(){
                  this.axios.get('http://localhost:3001/index/carousel',{
