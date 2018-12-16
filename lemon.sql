@@ -14,6 +14,7 @@ CREATE TABLE user(
 	vid INT,
 	profile VARCHAR(125)
 );
+insert into user values(null,'jack','aa123456','13012345678',1,'jack@163.com',null,'我是jack');
 #轮播表
 CREATE TABLE carousel(
 	cid INT PRIMARY KEY AUTO_INCREMENT,

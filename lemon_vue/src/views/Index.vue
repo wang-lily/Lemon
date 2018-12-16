@@ -172,7 +172,7 @@
                       if(this.carousel.ind>this.carousel.carouselList.length-1){
                            this.carousel.ind=0;
                       }
-                 },2000)
+                 },4000)
              },
              loadCarousel(){
                  this.axios.get('http://localhost:3001/index/carousel',{
@@ -187,7 +187,7 @@
                  this.axios.get('http://localhost:3001/index/tab'
                 ).then(res=>{
                     this.tab.imgList=res.data;
-                    console.log(this.tab.imgList)
+                    // console.log(this.tab.imgList)
                 })
              },
         },
