@@ -3,12 +3,13 @@
         <div class="position-relative m-auto">
             <div class="bg-white">
                 <p v-show="status==='register'" class="pl-4 pt-2 m-0 text-danger">
-                    <small id="registerForm-alert" :class="registerForm.alert.show?'':'v-hide'">{{registerForm.alert.msg}}&nbsp;</small>
+                     <!-- :class="registerForm.alert.show?'':'v-hide'" -->
+                    <small id="registerForm-alert">{{registerForm.alert.msg.user?registerForm.alert.msg.user:registerForm.alert.msg.upwd?registerForm.alert.msg.upwd:registerForm.alert.msg.againUpwd?registerForm.alert.msg.againUpwd:""}}&nbsp;</small>
                 </p>
                 <!-- 注册表单start -->
                 <div id="form-register" class="row pt-0 pb-0 pl-4 pr-4 m-0 my-form" :class="status=='register'?'':'d-none'">
                     <input type="text" name="uname" id="uname-reg" class="form-control p-2 mb-2" :class="registerForm.userVerifyStyle" placeholder="邮箱/手机号" v-model="registerForm.user" @blur="verifyUser">
-                    <input type="password" name="upwd" id="upwd-reg" class="form-control p-2 mb-2" :class="registerForm.upwdVerifyStyle" placeholder="密码" v-model="registerForm.upwd" @blur="verifyUpwd">
+                    <input type="password" name="upwd" id="upwd-reg" class="form-control p-2 mb-2" :class="registerForm.upwdVerifyStyle" placeholder="密码" v-model="registerForm.upwd" @blur="verifyUpwd"> 
                     <input type="password" id="upwd-again" class="form-control p-2 mb-2" :class="registerForm.againUpwdVerifyStyle" placeholder="确认密码" v-model="registerForm.againUpwd" @blur="verifyAgainUpwd">
                     <p class="w-100 text-center m-0" >
                         <small>密码为6~14位数字、字母或下划线！</small>
@@ -73,17 +74,19 @@
                     checked:false,
                     alert:{
                         show:false,
-                        msg:""
+                        msg:{
+                            user:"",
+                            upwd:"",
+                            againUpwd:""
+                        }
                     },
                     user:"",
+                    upwd:"",
+                    againUpwd:"",
                     userVerifyStyle:"",
                     upwdVerifyStyle:"",
                     againUpwdVerifyStyle:"",
-                    userVerifyStatus:false,
-                    upwdVerifyStatus:false,
-                    againUpwdVerifyStatus:false,
-                    upwd:"",
-                    againUpwd:""
+                    verifyStatus:false
                 },
                 loginForm:{
                     alert:{
@@ -95,6 +98,12 @@
                     upwd:""
                 }
             }
+        },
+        watch:{
+           'registerForm.upwd':function(){
+               this.registerForm.againUpwd = "";
+               this.registerForm.againUpwdVerifyStyle = "";
+           }
         },
         methods:{
             changeStatus(){
@@ -112,95 +121,99 @@
                 var phoneReg = /^1[3-8]\d{9}$/;//手机号验证
                 var emailReg = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;//邮箱验证
                 if(!this.registerForm.user){
+                    this.registerForm.alert.msg.user = "请输入手机号或者邮箱进行注册！"
                     this.registerForm.alert.show = true;
-                    this.registerForm.alert.msg = "请输入手机号或者邮箱进行注册！"
                     this.registerForm.userVerifyStyle = "border-danger";
-                    this.registerForm.userVerifyStatus = false;
                     return;
                 }
                 if(!phoneReg.test(this.registerForm.user) && !emailReg.test(this.registerForm.user)){
+                    this.registerForm.alert.msg.user = "手机号或者邮箱格式错误！"
                     this.registerForm.alert.show = true;
-                    this.registerForm.alert.msg = "手机号或者邮箱格式错误！"
                     this.registerForm.userVerifyStyle = "border-danger";
-                    this.registerForm.userVerifyStatus = false;
                     return;
                 }
                 this.axios.get("http://127.0.0.1:3001/user",{params:{user:this.registerForm.user}}).then(res=>{
                     if(res.data.code==1){
+                        this.registerForm.alert.msg.user = "您输入的手机号或者邮箱已被使用！";
                         this.registerForm.alert.show = true;
-                        this.registerForm.alert.msg = "您输入的手机号或者邮箱已被使用！";
                         this.registerForm.userVerifyStyle = "border-danger";
-                        this.registerForm.userVerifyStatus = false;
                         return;
+                        
                     }
                     if(res.data.code==-1){
+                        this.registerForm.alert.msg.user = "";
                         this.registerForm.alert.show = false;
-                        this.registerForm.alert.msg = "";
                         this.registerForm.userVerifyStyle = "border-success";
-                        this.registerForm.userVerifyStatus = true;
                         return;
                     }
                 })
             },
             verifyUpwd(){
-                if(!this.registerForm.userVerifyStatus){
-                    return;
-                }
                 var upwdReg = /^\w{6,14}$/; //密码验证
                 if(!this.registerForm.upwd){
+                    this.registerForm.alert.msg.upwd = "请设置密码！";
                     this.registerForm.alert.show = true;
-                    this.registerForm.alert.msg = "请设置密码！";
                     this.registerForm.upwdVerifyStyle = "border-danger";
-                    this.registerForm.upwdVerifyStatus = false;
                     return;
                 }
                 if(!upwdReg.test(this.registerForm.upwd)){
                     this.registerForm.alert.show = true;
-                    this.registerForm.alert.msg = "密码为6~14位数字、字母或下划线！";
+                    this.registerForm.alert.msg.upwd = "密码为6~14位数字、字母或下划线！";
                     this.registerForm.upwdVerifyStyle = "border-danger";
-                    this.registerForm.upwdVerifyStatus = false;
                     return;
                 }
                 this.registerForm.alert.show = false;
-                this.registerForm.alert.msg = "";
+                this.registerForm.alert.msg.upwd = "";
                 this.registerForm.upwdVerifyStyle = "border-success";
-                this.registerForm.upwdVerifyStatus = true;
                 return;
             },
             verifyAgainUpwd(){
-                if(!this.registerForm.upwdVerifyStatus){
-                    return;
-                }
                 if(!this.registerForm.againUpwd){
                     this.registerForm.alert.show = true;
-                    this.registerForm.alert.msg = "请确认密码！";
+                    this.registerForm.alert.msg.againUpwd = "请确认密码！";
                     this.registerForm.againUpwdVerifyStyle = "border-danger";
-                    this.registerForm.againUpwdVerifyStatus = false;
                     return;
                 }
                 if(this.registerForm.againUpwd!==this.registerForm.upwd){
                     this.registerForm.alert.show = true;
-                    this.registerForm.alert.msg = "您设置的密码和确认密码不一致！";
+                    this.registerForm.alert.msg.againUpwd = "您设置的密码和确认密码不一致！";
                     this.registerForm.upwdVerifyStyle = "border-danger";
                     this.registerForm.againUpwdVerifyStyle = "border-danger";
-                    this.registerForm.againUpwdVerifyStatus = false;
                     return;
                 }
                 this.registerForm.alert.show = false;
-                this.registerForm.alert.msg = "";
+                this.registerForm.alert.msg.againUpwd = "";
                 this.registerForm.upwdVerifyStyle = "border-success";
                 this.registerForm.againUpwdVerifyStyle = "border-success";
-                this.registerForm.againUpwdVerifyStatus = true;
                 return;
             },
             register(){
-                if(this.registerForm.userVerifyStatus && this.registerForm.upwdVerifyStatus && this.registerForm.againUpwdVerifyStatus && this.registerForm.checked){
+                for(var key in this.registerForm.alert.msg){
+                    if(this.registerForm.alert.msg[key]){
+                        console.log(this.registerForm.alert.msg[key]);
+                        return;
+                    }
+                }
+                if(this.registerForm.userVerifyStyle == "border-success" && this.registerForm.upwdVerifyStyle == "border-success" && this.registerForm.againUpwdVerifyStyle == "border-success" && this.registerForm.checked){
                     this.axios.post("http://127.0.0.1:3001/user/register",`user=${this.registerForm.user}&upwd=${this.registerForm.upwd}`).then(res=>{
                         if(res.data.code===1){
                             this.loginForm.alert.show = true;
                             this.loginForm.alert.style = "text-info";
                             this.loginForm.alert.msg = "注册成功，请登录！";
                             this.status="login";
+                            
+                            this.registerForm.checked=false;                                
+                            this.registerForm.alert.show=false;                                   
+                            this.registerForm.alert.msg.user="";
+                            this.registerForm.alert.msg.upwd="";
+                            this.registerForm.alert.msg.againUpwd="";      
+                            this.registerForm.user="";
+                            this.registerForm.upwd="";
+                            this.registerForm.againUpwd="";
+                            this.registerForm.userVerifyStyle="";
+                            this.registerForm.upwdVerifyStyle="";
+                            this.registerForm.againUpwdVerifyStyle="";
+                            this.registerForm.verifyStatus=false;
                         }else{
                             console.log(res);
                         }
@@ -257,6 +270,7 @@
             }
             
         }
+        
     }
 </script>
 <style>
