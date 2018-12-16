@@ -32,3 +32,7 @@
 .info .deleteMe small:hover{
   color: #FF9800 !important;
 }
+.info .profile .tips{
+  color: #f00;
+  font-size: 0.8rem;
+}
