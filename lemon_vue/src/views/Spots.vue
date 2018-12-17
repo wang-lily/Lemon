@@ -70,20 +70,9 @@
                 <div class="pl-1 pr-1 mt-3">
                     <div class="row w-100 m-0 p-1 flex-nowrap justify-content-center" data-trigger="tab">
                         <span class="col d-none d-md-block p-0 pt-1 pb-1"></span>
-                        <span class="col d-md-none iconfont icon-arrow_l  p-0 pt-1 pb-1 m-0 text-center"></span>
-                        <span class="col-auto pt-1 pb-1 pr-3 pl-3 pl-md-2 pr-md-2 pl-lg-3 pr-lg-3">1月</span>
-                        <span class="col-auto pt-1 pb-1 pl-3 pr-3 pl-md-2 pr-md-2 pl-lg-3 pr-lg-3 active">2月</span>
-                        <span class="col-auto pt-1 pb-1 pl-3 pr-3 pl-md-2 pr-md-2 pl-lg-3 pr-lg-3">3月</span>
-                        <span class="col-auto pt-1 pb-1 pl-3 pr-3 pl-md-2 pr-md-2 pl-lg-3 pr-lg-3 ">4月</span>
-                        <span class="col-auto pt-1 pb-1 pl-3 pr-3 pl-md-2 pr-md-2 pl-lg-3 pr-lg-3 d-none d-md-block">5月</span>
-                        <span class="col-auto pt-1 pb-1 pl-3 pr-3 pl-md-2 pr-md-2 pl-lg-3 pr-lg-3 d-none d-md-block">6月</span>
-                        <span class="col-auto pt-1 pb-1 pl-3 pr-3 pl-md-2 pr-md-2 pl-lg-3 pr-lg-3 d-none d-md-block">7月</span>
-                        <span class="col-auto pt-1 pb-1 pl-3 pr-3 pl-md-2 pr-md-2 pl-lg-3 pr-lg-3 d-none d-md-block">8月</span>
-                        <span class="col-auto pt-1 pb-1 pl-3 pr-3 pl-md-2 pr-md-2 pl-lg-3 pr-lg-3 d-none d-md-block">9月</span>
-                        <span class="col-auto pt-1 pb-1 pl-3 pr-3 pl-md-2 pr-md-2 pl-lg-3 pr-lg-3 d-none d-md-block">10月</span>
-                        <span class="col-auto pt-1 pb-1 pl-3 pr-3 pl-md-2 pr-md-2 pl-lg-3 pr-lg-3 d-none d-md-block">11月</span>
-                        <span class="col-auto pt-1 pb-1 pl-3 pr-3 pl-md-2 pr-md-2 pl-lg-3 pr-lg-3 d-none d-md-block">12月</span>
-                        <span class="col d-md-none iconfont icon-arrow-r  p-0 pt-1 pb-1 m-0 text-center"></span>
+                        <span class="col d-md-none iconfont icon-arrow_l  p-0 pt-1 pb-1 m-0 text-center" :disabled="spots01.lastHideMonth==-1"></span>
+                        <span v-for="(item,i) of spots01.months" :key="i" class="col-auto pt-1 pb-1 pr-3 pl-3 pl-md-2 pr-md-2 pl-lg-3 pr-lg-3" :class="item.style">{{i+1}}月</span>
+                        <span class="col d-md-none iconfont icon-arrow-r  p-0 pt-1 pb-1 m-0 text-center" :disabled="spots01.lastHideMonth==12" @click="next"></span>
                         <span class="col d-none d-md-block p-0 pt-1 pb-1"></span>
                     </div>
                     <div class="clearfix p-0">
@@ -135,7 +124,7 @@
     export default {
         data(){
             return {
-                background:"background: url(`../img/tab/tab01.png`) no-repeat center center;",
+                // background:"background: url(`../img/tab/tab01.png`) no-repeat center center;",
                 // -------------------------------轮播数据start---------------------------------------------------
                 carousel:{
                     timer:null,
@@ -144,6 +133,8 @@
                     i:0
                 },
                 // --------------------------------轮播数据end--------------------------------------------
+
+                // --------------------------------全部景点start--------------------------------------------
                 allSpotsList:{
                     home:{
                         style:"active",
@@ -154,7 +145,17 @@
                         list:[]    
                     },//国外
                     activeItem:null,
+                },
+                // --------------------------------全部景点end--------------------------------------------
+
+                // --------------------------------当季景点推荐start--------------------------------------------
+                spots01:{
+                    months:[],
+                    presentMonth:(new Date()).getMonth(),
+                    firstHideMonth:0,
+                    lastHideMonth:0
                 }
+                // --------------------------------当季景点推荐end--------------------------------------------
             }
         },
         methods:{
@@ -178,6 +179,9 @@
                 clearInterval(this.timer);
             },
             // -----------------------------------轮播方法end--------------------------------------------------
+
+            // -----------------------------------全部景点start--------------------------------------------------
+
             loadAllSpotsList(){
                 console.log(this.$store.state);
                 this.allSpotsList.activeItem = this.allSpotsList.home;
@@ -196,12 +200,65 @@
                     this.allSpotsList.activeItem.style = "";
                     this.allSpotsList.activeItem = obj;
                     this.allSpotsList.activeItem.style = "active";
+            },
+            // -----------------------------------全部景点end--------------------------------------------------
+
+            loadSpots01(){
+                // this.axios.get()
+                this.spots01.firstHideMonth = this.spots01.presentMonth-1;
+                
+                for(var i=0; i<12; i++){
+                    if(this.spots01.presentMonth<8){
+                        this.spots01.lastHideMonth = this.spots01.presentMonth+4;
+                        if(i<this.spots01.presentMonth || i>this.spots01.presentMonth+3){
+                            this.spots01.months.push({
+                                style:"d-none d-md-block",
+                                imgList:[]
+                            })
+                        }else if(i==this.spots01.presentMonth){
+                            this.spots01.months.push({
+                                style:"active",
+                                imgList:[]
+                            })
+                        }else{
+                            this.spots01.months.push({
+                                style:"",
+                                imgList:[]
+                            })
+                        }
+                    }
+                    else{
+                        this.spots01.lastHideMonth = 12;
+                        if(i<8){
+                            this.spots01.months.push({
+                                style:"d-none d-md-block",
+                                imgList:[]
+                            })
+                        }else if(i==this.spots01.presentMonth){
+                            this.spots01.months.push({
+                                style:"active",
+                                imgList:[]
+                            })
+                        }else{
+                            this.spots01.months.push({
+                                style:"",
+                                imgList:[]
+                            })
+                        }
+                    }
+                }
+                // this.spots01.months[this.spots01.presentMonth].style = "active";
+            },
+            next(){
+                this.months.lastHideMonth++;
             }
+
         },
         created() {
             this.loadCarousel();
             this.startCarousel();
             this.loadAllSpotsList();
+            this.loadSpots01();
         },
         mounted() {
             
