@@ -6,7 +6,7 @@
                     <h4>个人中心</h4>
                     <ul class="pointer_nav_right mt-3 list-unstyled text-left">
                         <li class="mt-2  p-2 col-sm-12 col-5 mr-0" :class="staticSty.ind==index?'active':''"
-                         v-for='(item,index) in staticSty.titleList' @click='staticSty.ind=index;staticSty.ifShow=false;'>
+                         v-for='(item,index) in staticSty.titleList' @click='tabChange(index)'>
                             <i class="iconfont pr-2" :class='item.icon'></i><b>{{item.title}}</b>
                         </li>
                     </ul>
@@ -170,6 +170,17 @@
             }
         },
         methods:{
+            tabChange(index){
+                this.staticSty.ind=index;
+                this.staticSty.ifShow=false;
+                this.unameAck.flag=false;
+                this.phoneAck.flag=false;
+                this.emailAck.flag=false;
+                this.profileAck.flag=false;
+                this.subAck.flag=false;
+                this.upwdAck.flag=false;
+                this.upwdAgainAck.flag=false;
+            },
             //基本信息修改
         //    getInfo(){
         //          this.axios.get("http://127.0.0.1:3001/personal/getinfo",
@@ -178,6 +189,31 @@
         //            console.log(this.info.infoList);
         //         })
         //    },
+
+        //  ackEvent(reg,cur,tip,flag,text1,text2,text3){
+        //           if(!cur){
+        //              tip=text1;
+        //              flag=true;
+        //              this.ackAllFlag=false; 
+        //              console.log(1)
+        //            }else if(reg.test(cur)){
+        //                tip=text2;
+        //                flag=true;
+        //                this.ackAllFlag=true; 
+        //                 console.log(2)
+        //           }else{
+        //              tip=text3;
+        //              flag=true;
+        //              this.ackAllFlag=true;
+        //              console.log(this.unameAck.tip);
+        //               console.log(3)
+        //           }
+        //      },
+        //      ackUname(){
+        //         var text=['昵称不能为空！','昵称可用！','昵称为4到16位（字母，数字，下划线，减号）！'];
+        //         this.ackEvent(/^[a-zA-Z0-9_-]{4,16}$/,this.info.infoList.uname,
+        //            this.unameAck.tip,this.unameAck.flag,text[0],text[1],text[2]);  
+        //      },
              ackUname(){
                    var reg=/^[a-zA-Z0-9_-]{4,16}$/;
                    if(!this.info.infoList.uname){
@@ -185,7 +221,6 @@
                       this.unameAck.flag=true;
                       this.ackAllFlag=false;
                    }else if(reg.test(this.info.infoList.uname)){
-                    //    this.unameAck.tip='昵称可用！';
                        this.unameAck.flag=false;
                        this.ackAllFlag=true;
                   }else{
