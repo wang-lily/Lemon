@@ -6,18 +6,23 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state:{
         islogin:false,
-        user:sessionStorage.getItem('user')||""
+        userMsg:sessionStorage.getItem('userMsg')||null
+        ,
+        // userMsg:null,//存放用户uid和用户名或者登陆账号
+        // uid:""
     },
     mutations:{
-        signin(state,user){
+        signin(state,userMsg){
             state.islogin = true;
-            state.user = user;
-            window.sessionStorage.setItem('user', state.user);
+            state.userMsg = userMsg;
+            // state.uid = uid;
+            window.sessionStorage.setItem('userMsg', state.userMsg);
         },
         signout(){
             this.state.islogin = false;
-            this.state.user = "";
-            window.sessionStorage.removeItem('user');
+            this.state.userMsg = null;
+            // this.state.uid = "",
+            window.sessionStorage.removeItem('userMsg');
         }
     },
     actions:{

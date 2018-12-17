@@ -224,7 +224,7 @@
             // -----------------------------------------------------------------------------------------------------------------------------------
             // ------------------------------------loginForm---start---------------------------------------------------------------------------
             login(){
-                console.log(this.loginForm);
+                // console.log(this.loginForm);
                 var phoneReg = /^1[3-8]\d{9}$/;//手机号验证
                 var emailReg = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;//邮箱验证
                 if(!this.loginForm.user){
@@ -255,7 +255,7 @@
                         }
                         if(res.data.code===1){
                             //登录成功
-                            this.$store.commit("signin",res.data.user);
+                            this.$store.commit("signin",res.data.userMsg);
                             this.loginForm.alert.show = false;
                             this.loginForm.alert.style = "";
                             this.loginForm.alert.msg = "";
