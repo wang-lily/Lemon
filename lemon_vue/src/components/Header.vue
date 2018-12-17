@@ -126,7 +126,6 @@
                 this.axios.get("http://127.0.0.1:3001/user/signout");
                 this.$store.commit("signout");
                 this.$router.push('/index');
-                // history.go(-1);
             }
         },
         created() {

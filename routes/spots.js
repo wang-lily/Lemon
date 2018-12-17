@@ -17,4 +17,12 @@ router.get("/carousel",(req,res)=>{
   })
 })
 
+router.get("/allSpotsList",(req,res)=>{
+  var sql = `SELECT country,spot,sid FROM spot ORDER BY sid`;
+  pool.query(sql,(err,result)=>{
+    if(err) throw (err);
+    res.send(result);
+  })
+  
+})
 module.exports=router;
