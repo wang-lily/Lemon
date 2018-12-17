@@ -57,7 +57,7 @@ import {init} from '../../src/assets/js/pics.js'
                   }
                   this.imgList=[].concat(this.bigList,this.midList,this.midList);
                   this.imgList.sort(this.randomsort); 
-                  console.log(this.imgList)
+                //   console.log(this.imgList)
                 })
         }
     }

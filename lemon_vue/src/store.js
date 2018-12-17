@@ -5,19 +5,20 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state:{
-        islogin:false,
-        user:sessionStorage.getItem('user')||""
+        islogin: false,
+        userMsg: sessionStorage.getItem('userMsg')?
+        JSON.parse(sessionStorage.getItem('userMsg')):null
     },
     mutations:{
-        signin(state,user){
+        signin(state,userMsg){
             state.islogin = true;
-            state.user = user;
-            window.sessionStorage.setItem('user', state.user);
+            state.userMsg = userMsg;
+            window.sessionStorage.setItem('userMsg', JSON.stringify(state.userMsg));
         },
         signout(){
             this.state.islogin = false;
-            this.state.user = "";
-            window.sessionStorage.removeItem('user');
+            this.state.userMsg = null;
+            window.sessionStorage.removeItem('userMsg');
         }
     },
     actions:{

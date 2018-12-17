@@ -37,49 +37,85 @@
         <!--主体start-->
         <div id="body" class="container pl-0 pr-0">
             <!--全部目的地start-->
-    <div id="all-spots">
-        <h6 class="pt-4 pb-3 pl-2 m-0 border-bottom">
-            <span class="d-inline-block iconfont icon-mudedi1"></span>
-            <span>全部景点</span>
-        </h6>
-        <div class="pl-1 pr-1 mt-3">
-            <div class="row w-100 pl-1 pr-1 m-0" data-trigger="tab">
-                <!--<span class="col"></span>-->
-                <span class="col-auto pr-3 pl-3 pt-1 pb-1">境内</span>
-                <span class="col-auto pl-3 pr-3 pt-1 pb-1 active">境外</span>
-                <span class="col"></span>
-            </div>
-            <div class=" pl-1 pr-1 m-auto">
-                <div class="row justify-content-center justify-content-md-start w-100 m-0 pt-1 pb-2" data-target="tabItem">
-                    <a href="javascript:;" class="pt-1 pl-1 col-3 col-md-2 text-center text-md-left">台湾</a>
-                    <a href="javascript:;" class="pt-1 pl-1 col-3 col-md-2 text-center text-md-left">西藏</a>
-                    <a href="javascript:;" class="pt-1 pl-1 col-3 col-md-2 text-center text-md-left">峨眉山</a>
-                    <a href="javascript:;" class="pt-1 pl-1 col-3 col-md-2 text-center text-md-left">九寨沟</a>
-                    <a href="javascript:;" class="pt-1 pl-1 col-3 col-md-2 text-center text-md-left">台湾</a>
-                    <a href="javascript:;" class="pt-1 pl-1 col-3 col-md-2 text-center text-md-left">西藏</a>
-                    <a href="javascript:;" class="pt-1 pl-1 col-3 col-md-2 text-center text-md-left">峨眉山</a>
-                    <a href="javascript:;" class="pt-1 pl-1 col-3 col-md-2 text-center text-md-left">九寨沟</a>
-                    <a href="javascript:;" class="pt-1 pl-1 col-3 col-md-2 text-center text-md-left">台湾</a>
-                    <a href="javascript:;" class="pt-1 pl-1 col-3 col-md-2 text-center text-md-left">西藏</a>
-                    <a href="javascript:;" class="pt-1 pl-1 col-3 col-md-2 text-center text-md-left">峨眉山</a>
-                    <a href="javascript:;" class="pt-1 pl-1 col-3 col-md-2 text-center text-md-left">九寨沟</a>
-                    <a href="javascript:;" class="pt-1 pl-1 col-3 col-md-2 text-center text-md-left">台湾</a>
-                    <a href="javascript:;" class="pt-1 pl-1 col-3 col-md-2 text-center text-md-left">西藏</a>
-                    <a href="javascript:;" class="pt-1 pl-1 col-3 col-md-2 text-center text-md-left">峨眉山</a>
-                    <a href="javascript:;" class="pt-1 pl-1 col-3 col-md-2 text-center text-md-left">九寨沟</a>
-                    <a href="javascript:;" class="pt-1 pl-1 col-3 col-md-2 text-center text-md-left">台湾</a>
-                    <a href="javascript:;" class="pt-1 pl-1 col-3 col-md-2 text-center text-md-left">西藏</a>
-                    <a href="javascript:;" class="pt-1 pl-1 col-3 col-md-2 text-center text-md-left">峨眉山</a>
-                    <a href="javascript:;" class="pt-1 pl-1 col-3 col-md-2 text-center text-md-left">九寨沟</a>
-                    <a href="javascript:;" class="pt-1 pl-1 col-3 col-md-2 text-center text-md-left">台湾</a>
-                    <a href="javascript:;" class="pt-1 pl-1 col-3 col-md-2 text-center text-md-left">西藏</a>
-                    <a href="javascript:;" class="pt-1 pl-1 col-3 col-md-2 text-center text-md-left">峨眉山</a>
-                    <a href="javascript:;" class="pt-1 pl-1 col-3 col-md-2 text-center text-md-left">九寨沟</a>
+            <div id="all-spots">
+                <h6 class="pt-4 pb-3 pl-2 m-0 border-bottom">
+                    <span class="d-inline-block iconfont icon-mudedi1"></span>
+                    <span>全部景点</span>
+                </h6>
+                <div class="pl-1 pr-1 mt-3">
+                    <div class="row w-100 pl-1 pr-1 m-0" >
+                        <span class="col-auto pr-3 pl-3 pt-1 pb-1" :class="allSpotsList.home.style" @mouseenter="activateStyle(allSpotsList.home)">国内</span>
+                        <span class="col-auto pl-3 pr-3 pt-1 pb-1" :class="allSpotsList.abroad.style" @mouseenter="activateStyle(allSpotsList.abroad)">国外</span>
+                        <span class="col"></span>
+                    </div>
+                    <div class=" pl-1 pr-1 m-auto" v-show="allSpotsList.abroad.style">
+                        <div class="row justify-content-start w-100 m-0 pt-1 pb-2">
+                            <a v-for="(item,i) of allSpotsList.abroad.list" :key="i" href="javascript:;" class="pt-1 pl-1 col-4 col-md-2 text-center text-md-left">{{item}}</a>
+                        </div>
+                    </div>
+                    <div class=" pl-1 pr-1 m-auto" v-show="allSpotsList.home.style">
+                        <div class="row justify-content-start w-100 m-0 pt-1 pb-2">
+                            <a v-for="(item,i) of allSpotsList.home.list" :key="i" href="javascript:;" class="pt-1 pl-1 col-4 col-md-2 text-center text-md-left">{{item}}</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!--全部目的地end-->
+            <!--全部目的地end-->
+            <!--当季目的地推荐start-->
+            <div id="spots01">
+                <h6 class="pt-4 pb-3 pl-2 m-0 border-bottom">
+                    <span class="d-inline-block iconfont icon-mudedi1"></span>
+                    <span>当季景点推荐</span>
+                </h6>
+                <div class="pl-1 pr-1 mt-3">
+                    <div class="row w-100 m-0 p-1 flex-nowrap justify-content-center" data-trigger="tab">
+                        <span class="col d-none d-md-block p-0 pt-1 pb-1"></span>
+                        <span class="col d-md-none iconfont icon-arrow_l  p-0 pt-1 pb-1 m-0 text-center" :disabled="spots01.lastHideMonth==-1"></span>
+                        <span v-for="(item,i) of spots01.months" :key="i" class="col-auto pt-1 pb-1 pr-3 pl-3 pl-md-2 pr-md-2 pl-lg-3 pr-lg-3" :class="item.style">{{i+1}}月</span>
+                        <span class="col d-md-none iconfont icon-arrow-r  p-0 pt-1 pb-1 m-0 text-center" :disabled="spots01.lastHideMonth==12" @click="next"></span>
+                        <span class="col d-none d-md-block p-0 pt-1 pb-1"></span>
+                    </div>
+                    <div class="clearfix p-0">
+                        <div class="col-6 p-1 col-md-4   float-left">
+                            <img class="img-fluid" src="" alt="">
+                            <div class="position-absolute p-3 " >
+                                <p>印度尼西亚</p>
+                            </div>
+                        </div>
+                        <div class="col-6 p-1 col-md-4   float-left">
+                            <img class="img-fluid" src="" alt="">
+                            <div class="position-absolute p-3 " >
+                                <p>峨眉山</p>
+                            </div>
+                        </div>
+                        <div class="col-6 p-1 col-md-4   float-left">
+                            <img class="img-fluid" src="" alt="">
+                            <div class="position-absolute p-3 " >
+                                <p>峨眉山</p>
+                            </div>
+                        </div>
+                        <div class="col-6 p-1 col-md-4   float-left">
+                            <img class="img-fluid" src="" alt="">
+                            <div class="position-absolute p-3 " >
+                                <p>峨眉山</p>
+                            </div>
+                        </div>
+                        <div class="col-6 p-1 col-md-4   float-left">
+                            <img class="img-fluid" src="" alt="">
+                            <div class="position-absolute p-3 " >
+                                <p>峨眉山</p>
+                            </div>
+                        </div>
+                        <div class="col-6 p-1 col-md-4   float-left">
+                            <img class="img-fluid" src="" alt="">
+                            <div class="position-absolute p-3 " >
+                                <p>峨眉山</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--当季目的地推荐end-->
         </div>
     </section>
 </template>
@@ -88,15 +124,38 @@
     export default {
         data(){
             return {
-                background:"background: url(`../img/tab/tab01.png`) no-repeat center center;",
+                // background:"background: url(`../img/tab/tab01.png`) no-repeat center center;",
                 // -------------------------------轮播数据start---------------------------------------------------
                 carousel:{
                     timer:null,
                     Imgs:["","","",""],
                     cid:14,
                     i:0
-                }
+                },
                 // --------------------------------轮播数据end--------------------------------------------
+
+                // --------------------------------全部景点start--------------------------------------------
+                allSpotsList:{
+                    home:{
+                        style:"active",
+                        list:[]
+                    },//国内
+                    abroad:{
+                        style:"",
+                        list:[]    
+                    },//国外
+                    activeItem:null,
+                },
+                // --------------------------------全部景点end--------------------------------------------
+
+                // --------------------------------当季景点推荐start--------------------------------------------
+                spots01:{
+                    months:[],
+                    presentMonth:(new Date()).getMonth(),
+                    firstHideMonth:0,
+                    lastHideMonth:0
+                }
+                // --------------------------------当季景点推荐end--------------------------------------------
             }
         },
         methods:{
@@ -118,12 +177,88 @@
             },
             pauseCarousel(){
                 clearInterval(this.timer);
-            }
+            },
             // -----------------------------------轮播方法end--------------------------------------------------
+
+            // -----------------------------------全部景点start--------------------------------------------------
+
+            loadAllSpotsList(){
+                console.log(this.$store.state);
+                this.allSpotsList.activeItem = this.allSpotsList.home;
+                this.axios.get("http://127.0.0.1:3001/spots/allSpotsList").then(res=>{
+                    var spotsList = res.data;
+                    for(var spot of spotsList){
+                        if(spot.country=="中国"){
+                            this.allSpotsList.home.list.push(spot.spot);
+                        }else{
+                            this.allSpotsList.abroad.list.push(spot.spot || spot.country);
+                        }
+                    }
+                })
+            },
+            activateStyle(obj){
+                    this.allSpotsList.activeItem.style = "";
+                    this.allSpotsList.activeItem = obj;
+                    this.allSpotsList.activeItem.style = "active";
+            },
+            // -----------------------------------全部景点end--------------------------------------------------
+
+            loadSpots01(){
+                // this.axios.get()
+                this.spots01.firstHideMonth = this.spots01.presentMonth-1;
+                
+                for(var i=0; i<12; i++){
+                    if(this.spots01.presentMonth<8){
+                        this.spots01.lastHideMonth = this.spots01.presentMonth+4;
+                        if(i<this.spots01.presentMonth || i>this.spots01.presentMonth+3){
+                            this.spots01.months.push({
+                                style:"d-none d-md-block",
+                                imgList:[]
+                            })
+                        }else if(i==this.spots01.presentMonth){
+                            this.spots01.months.push({
+                                style:"active",
+                                imgList:[]
+                            })
+                        }else{
+                            this.spots01.months.push({
+                                style:"",
+                                imgList:[]
+                            })
+                        }
+                    }
+                    else{
+                        this.spots01.lastHideMonth = 12;
+                        if(i<8){
+                            this.spots01.months.push({
+                                style:"d-none d-md-block",
+                                imgList:[]
+                            })
+                        }else if(i==this.spots01.presentMonth){
+                            this.spots01.months.push({
+                                style:"active",
+                                imgList:[]
+                            })
+                        }else{
+                            this.spots01.months.push({
+                                style:"",
+                                imgList:[]
+                            })
+                        }
+                    }
+                }
+                // this.spots01.months[this.spots01.presentMonth].style = "active";
+            },
+            next(){
+                this.months.lastHideMonth++;
+            }
+
         },
         created() {
             this.loadCarousel();
             this.startCarousel();
+            this.loadAllSpotsList();
+            this.loadSpots01();
         },
         mounted() {
             

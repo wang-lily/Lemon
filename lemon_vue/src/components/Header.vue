@@ -15,11 +15,11 @@
                   <img id="brand" src="../assets/logo/lemon_logo_black.png">
               </a>
               <!--个人中心-->
-              <div v-if="this.$store.state.user!==''" class="col col-md-auto order-md-4 position-relative iconfont icon-login1_1 text-right p-md-0 personal" data-trigger="toggle">
+              <div v-if="this.$store.state.userMsg" class="col col-md-auto order-md-4 position-relative iconfont icon-login1_1 text-right p-md-0 personal" data-trigger="toggle">
                   <div class="position-absolute flex-column pr-3 p-md-0 d-none" data-target="toggleItem">
                       <div class="align-self-end mr-2"></div>
                       <ul class="pl-3 pr-3 speed">
-                          <li class="text-left border-bottom">{{this.$store.state.user}}</li>
+                          <li class="text-left border-bottom">{{this.$store.state.userMsg?this.$store.state.userMsg.user:''}}</li>
                           <li class="text-left border-bottom"><router-link to="/personal" class="iconfont icon-touxiang">&nbsp;个人中心</router-link> </li>
                           <li class="text-left border-bottom"><a href="/views/add_travel.html" class="iconfont icon-fabiaoyouji">&nbsp;发表游记</a></li>
                           <li class="text-left border-bottom"><a  class="iconfont icon-tuichu" @click="signout">&nbsp;退出</a></li>
@@ -125,8 +125,11 @@
             signout(){
                 this.axios.get("http://127.0.0.1:3001/user/signout");
                 this.$store.commit("signout");
-                this.$router.push('/');
+                this.$router.push('/index');
             }
+        },
+        created() {
+            
         },
         mounted() {
             getHeaderEffect();

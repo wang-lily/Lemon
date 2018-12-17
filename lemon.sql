@@ -120,6 +120,22 @@ INSERT INTO spot VALUES(25,"泰国","清迈",4);
 INSERT INTO spot VALUES(26,"泰国","东芭乐园",1);
 INSERT INTO spot VALUES(27,"泰国","暹罗广场",2);
 INSERT INTO spot VALUES(28,"泰国","芭提雅",3);
+#其他景点
+INSERT INTO spot VALUES(DEFAULT,"中国","苏州",5);
+INSERT INTO spot VALUES(DEFAULT,"中国","杭州",5);
+INSERT INTO spot VALUES(DEFAULT,"中国","重庆",5);
+INSERT INTO spot VALUES(DEFAULT,"中国","香港",5);
+INSERT INTO spot VALUES(DEFAULT,"中国","成都",5);
+INSERT INTO spot VALUES(DEFAULT,"中国","呼伦贝尔",5);
+INSERT INTO spot VALUES(DEFAULT,"中国","哈尔滨",5);
+INSERT INTO spot VALUES(DEFAULT,"中国","青岛",5);
+INSERT INTO spot VALUES(DEFAULT,"中国","大连",5);
+INSERT INTO spot VALUES(DEFAULT,"中国","云南",5);
+INSERT INTO spot VALUES(DEFAULT,"中国","桂林",5);
+INSERT INTO spot VALUES(DEFAULT,"中国","贵州",5);
+INSERT INTO spot VALUES(DEFAULT,"中国","四姑娘山",5);
+INSERT INTO spot VALUES(DEFAULT,"中国","泸沽湖",5);
+INSERT INTO spot VALUES(DEFAULT,"中国","上海",5);
 
 
 #图片总表
