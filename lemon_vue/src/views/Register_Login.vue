@@ -190,18 +190,17 @@
             register(){
                 for(var key in this.registerForm.alert.msg){
                     if(this.registerForm.alert.msg[key]){
-                        console.log(this.registerForm.alert.msg[key]);
                         return;
                     }
                 }
                 if(this.registerForm.userVerifyStyle == "border-success" && this.registerForm.upwdVerifyStyle == "border-success" && this.registerForm.againUpwdVerifyStyle == "border-success" && this.registerForm.checked){
                     this.axios.post("http://127.0.0.1:3001/user/register",`user=${this.registerForm.user}&upwd=${this.registerForm.upwd}`).then(res=>{
-                        if(res.data.code===1){
+                        if(res && res.data && res.data.code===1){
                             this.loginForm.alert.show = true;
                             this.loginForm.alert.style = "text-info";
                             this.loginForm.alert.msg = "注册成功，请登录！";
                             this.status="login";
-                            
+                            //registerFrom清空
                             this.registerForm.checked=false;                                
                             this.registerForm.alert.show=false;                                   
                             this.registerForm.alert.msg.user="";
@@ -215,7 +214,7 @@
                             this.registerForm.againUpwdVerifyStyle="";
                             this.registerForm.verifyStatus=false;
                         }else{
-                            console.log(res);
+                            console.log("服务器响应:" + res);
                         }
                     })    
                 }
@@ -246,7 +245,7 @@
                     return;
                 }
                 this.axios.post("http://127.0.0.1:3001/user/login",`user=${this.loginForm.user}&upwd=${this.loginForm.upwd}`).then(res=>{
-                    if(res.data){
+                    if(res && res.data){
                         if(res.data.code===-1){
                         this.loginForm.alert.show = true;
                         this.loginForm.alert.style = "text-danger";
@@ -262,7 +261,7 @@
                             history.go(-1);
                         }
                     }else{
-                        console.log(res);
+                        console.log("服务器响应:" + res);
                     }
                     
                 })

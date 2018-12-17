@@ -1,6 +1,7 @@
 * {
   margin: 0;
-  padding: 0; }
+  padding: 0; 
+}
 
 section a {
   color: rgba(0, 0, 0, 0.5); }
@@ -54,17 +55,17 @@ section a {
 #body > div > div:nth-child(2) > div:nth-child(1) > span {
   color: white;
   background-color: rgba(40, 167, 69, 0.5);
-  border-bottom: 0; }
+  border-bottom: 1px solid rgba(40, 167, 69, 0.7); }
   #body > div > div:nth-child(2) > div:nth-child(1) > span.active {
     border-radius: 5px 5px 0 0;
     background-color: transparent !important;
     color: #28a745;
-    border-top: 1px solid rgba(40, 167, 69, 0.5);
-    border-left: 1px solid rgba(40, 167, 69, 0.5);
-    border-right: 1px solid rgba(40, 167, 69, 0.5);
+    border-top: 1px solid rgba(40, 167, 69, 0.7);
+    border-left: 1px solid rgba(40, 167, 69, 0.7);
+    border-right: 1px solid rgba(40, 167, 69, 0.7);
     border-bottom: 0; }
 
-#body #all-spots > div > div:nth-child(2) > div {
+#body #all-spots > div > div:not(:first-child) > div {
   border-left: 1px solid rgba(40, 167, 69, 0.7);
   border-right: 1px solid rgba(40, 167, 69, 0.7);
   border-bottom: 1px solid rgba(40, 167, 69, 0.7); }
@@ -95,7 +96,7 @@ section a {
     font-size: 1.2rem; }
     #body > div > h6 + div > div:nth-child(1) {
       font-size: 1rem !important; }
-  #body #all-spots > div > div:nth-child(2) > div a {
+  #body #all-spots > div > div:not(:first-child) > div a {
     padding-left: 1.5rem !important; }
   #body #all-spots img + div, #body #spots01 img + div, #body #spots02 img + div {
     /* background: url("../img/tab/tab01.png") no-repeat center center; */
