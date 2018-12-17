@@ -71,7 +71,10 @@ router.post("/login",(req,res)=>{
             req.session.uid = result[0]['uid'];
             res.send({
                 code:1,
-                user:result[0]['uname']?result[0]['uname']:user
+                userMsg:{
+                    uid:result[0]['uid'],
+                    user:result[0]['uname'] || user
+                }
             });
         }else{
             res.send({
