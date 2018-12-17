@@ -108,7 +108,7 @@
                              <div class="row mt-3 mb-5 pb-5">
                                 <div class="col-12 text-center">
                                    <input type="submit" value="确认修改" class=" btn btn-danger"  
-                                   :disabled="(upwdAck.flag||upwdAgainAck.flag)">
+                                   :disabled="(upwdAck.flag||upwdAgainAck.flag)" @click="modifyPwd">
                                 </div>
                             </div>
                     </form>
@@ -131,7 +131,8 @@
                       ind:0,
                }, 
                info:{
-                   infoList:{uname:'',sex:'',phone:'',email:'',profile:'',upwd:''},
+                   infoList:{uname:'',sex:'',phone:'',email:'',profile:''},
+                   originInfoList:{uname:'',sex:'',phone:'',email:'',profile:''},
                    count:0
                },
                unameAck:{
@@ -170,6 +171,9 @@
                againPwd:'',
             }
         },
+         created() {
+            this.getInfo();
+        },
         methods:{
             tabChange(index){
                 this.staticSty.ind=index;
@@ -180,17 +184,21 @@
                 this.profileAck.flag=false;
                 this.subAck.flag=false;
                 this.upwdAck.flag=false;
-                this.upwdAgainAck.flag=false;
+                this.upwdAgainAck.flag=false;      
             },
            //基本信息修改
-        //    getInfo(){
-        //        console.log(sessionStorage.getItem('userMsg').uid);
-        //          this.axios.get("http://127.0.0.1:3001/personal/getinfo",
-        //         {params:{uid:sessionStorage.getItem('userMsg').uid}}).then(res=>{
-        //         //    this.info.infoList=res.data[0];
-        //            console.log(res);
-        //         })
-        //    },
+           getInfo(){
+                 this.axios.get("http://127.0.0.1:3001/personal/getinfo",
+                {params:{uid:this.$store.state.userMsg.uid}}).then(res=>{
+                //记录原始值看是否被改变    
+                this.info.originInfoList.uname=res.data[0].uname;
+                this.info.originInfoList.phone=res.data[0].phone;
+                this.info.originInfoList.email=res.data[0].email;
+                this.info.originInfoList.sex=res.data[0].sex;
+                this.info.originInfoList.profile=res.data[0].profile;
+                this.info.infoList=res.data[0];
+                })
+           },
 
         //  ackEvent(reg,cur,tip,flag,text1,text2,text3){
         //           if(!cur){
@@ -217,6 +225,7 @@
         //            this.unameAck.tip,this.unameAck.flag,text[0],text[1],text[2]);  
         //      },
              ackUname(){
+                   this.subAck.flag = false;
                    var reg=/^[a-zA-Z0-9_-]{4,16}$/;
                    if(!this.info.infoList.uname){
                       this.unameAck.tip='昵称不能为空！';
@@ -231,7 +240,7 @@
                       this.ackAllFlag=true;
                   }
 
-                   if(!this.unameAck.flag){
+                     if((!this.unameAck.flag)&&(!(this.info.infoList.uname=== this.info.originInfoList.uname))){
                         //查询昵称是否被占用
                         this.axios.get("http://127.0.0.1:3001/personal/ackuname",
                         {params:{uname:this.info.infoList.uname}}).then(res=>{
@@ -247,9 +256,9 @@
                                 }
                         })
                     }  
-                 
              },
               ackPhone(){
+                  this.subAck.flag = false;
                    var reg=/^1[3-8]\d{9}$/;
                    if(!this.info.infoList.phone){
                       this.phoneAck.tip='手机号不能为空！';
@@ -264,7 +273,7 @@
                       this.phoneAck.flag=true;
                       this.ackAllFlag=true;
                   }
-                  if(!this.phoneAck.flag){
+                  if(!this.phoneAck.flag&&(!(this.info.infoList.phone=== this.info.originInfoList.phone))){
                        //查询手机是否被占用
                         this.axios.get("http://127.0.0.1:3001/personal/ackphone",
                         {params:{phone:this.info.infoList.phone}}).then(res=>{
@@ -278,6 +287,7 @@
                   
              },
              ackEmail(){
+                 this.subAck.flag = false;
                    var reg=/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;
                    if(!this.info.infoList.email){
                       this.emailAck.tip='邮箱不能为空！';
@@ -292,8 +302,7 @@
                       this.emailAck.flag=true;
                       this.ackAllFlag=true;
                   }
-
-                    if(!this.emailAck.flag){ 
+                    if(!this.emailAck.flag&&(!(this.info.infoList.email=== this.info.originInfoList.email))){ 
                         //查询邮箱是否被占用
                         this.axios.get("http://127.0.0.1:3001/personal/ackemail",
                         {params:{email:this.info.infoList.email}}).then(res=>{
@@ -306,6 +315,7 @@
                    }
              },
              ackProfile(){
+                 this.subAck.flag = false;
                    var len=this.info.infoList.profile.length;
                    if(len>200){
                       this.profileAck.tip='个人简历字数请保持在200以内哦！';
@@ -313,15 +323,15 @@
                       this.ackAllFlag=false;
                    }
              },
-             submitInfo(){
-                 console.log(this.info.infoList.uid,this.info.infoList.uname,
-                 this.info.infoList.email,_profile)
+            
+             submitInfo(){  
+                 console.log(this.info.infoList)
                  if(this.ackAllFlag){
                       this.axios({
                           method:'post',
                           url:"http://127.0.0.1:3001/personal/submitInfo",
                           params:{
-                               uid:this.info.infoList.uid,
+                               uid:this.$store.state.userMsg.uid,
                                uname:this.info.infoList.uname,
                                phone:this.info.infoList.phone,
                                sex:this.info.infoList.sex,
@@ -332,6 +342,7 @@
                             if(res.data.code===1){
                                 this.subAck.flag = true;
                                 this.subAck.tip = res.data.msg;
+                                this.$store.commit("signin",this.info.infoList.uname);
                             }else{
                                 this.subAck.flag = true;
                                 this.subAck.tip = res.data.msg;
@@ -363,14 +374,28 @@
                      this.ackAllFlag=true;
                 }
              },
-
-        created() {
-            //  this.getInfo();
-        },
-        mounted() {
-           
-        },
-      
+             modifyPwd(){
+                  if(this.ackAllFlag){
+                      this.axios({
+                          method:'post',
+                          url:"http://127.0.0.1:3001/personal/submitInfo",
+                          params:{
+                               uid:this.$store.state.userMsg.uid,
+                               uname:this.info.infoList.uname,
+                          }
+                      }).then(res=>{
+                            if(res.data.code===1){
+                                this.subAck.flag = true;
+                                this.subAck.tip = res.data.msg;
+                                this.$store.commit("signin",this.info.infoList.uname);
+                            }else{
+                                this.subAck.flag = true;
+                                this.subAck.tip = res.data.msg;
+                            }
+                        })  
+                }
+             }
+            
       }
     }
 </script>
