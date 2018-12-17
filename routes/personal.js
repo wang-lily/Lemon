@@ -3,16 +3,29 @@ const router=express.Router();
 const pool=require("../pool");
 
 //测试: http://localhost:3001/personal/getinfo
-//个人中心
+//获得个人信息
+// router.get('/getinfo',(req,res)=>{
+//     var uid = req.query.uid;
+//     var sql=`SELECT uid,uname,phone,sex,email,profile,vid FROM user 
+//     WHERE uid=?`;
+//     pool.query(sql,uid,(err,result)=>{
+//         if(err) throw (err);
+//         res.send(result);
+//     })
+// });
+
 router.get('/getinfo',(req,res)=>{
-    var user = req.query.user;
-    var sql=`SELECT uid,uname,phone,sex,email,profile,vid FROM user 
-    WHERE phone=?`;
-    pool.query(sql,user,(err,result)=>{
-        if(err) throw (err);
-        res.send(result);
-    })
+    var uid = req.query.uid;
+    console.log(uid)
+    var sql=`SELECT * FROM user 
+        WHERE uid=?`;
+        pool.query(sql,uid,(err,result)=>{
+            if(err) throw err;
+            res.send(result);
+        })
 })
+
+//信息格式验证
 router.get('/ackuname',(req,res)=>{
     var uname = req.query.uname;
     var sql=`SELECT uid FROM user 
@@ -23,6 +36,11 @@ router.get('/ackuname',(req,res)=>{
             res.send({
                 code:1,
                 msg:"昵称已被占用！"
+            });
+        }else{
+            res.send({
+                code:-1,
+                msg:"昵称可用！"
             });
         }
        
@@ -60,6 +78,7 @@ router.get('/ackemail',(req,res)=>{
     })
 })
 
+//信息修改提交
 router.post('/submitInfo',(req,res)=>{
     var _uid = req.body.uid,
     _uname = req.body.uname,

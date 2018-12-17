@@ -22,7 +22,8 @@
             </div>
             <div class="col-sm-9" v-show='staticSty.ind==0'>
                 <div class="profile ">
-                    <p><span class="title pr-4">我的消息</span><span>资料完善度</span><b>{{progress}}%</b></p>
+          
+                    <p><span class="title pr-4">我的信息</span><span>资料完善度</span><b>{{progress}}%</b></p>
                     <form class="form-group">
                         <div class="unameDiv">
                             <div class="row m-2 mt-3">
@@ -166,7 +167,7 @@
                progressackAllFlag:0,
                ackAllFlag:false,  //当为true时才可提交
                progress:0,
-               againPwd:''
+               againPwd:'',
             }
         },
         methods:{
@@ -181,12 +182,13 @@
                 this.upwdAck.flag=false;
                 this.upwdAgainAck.flag=false;
             },
-            //基本信息修改
+           //基本信息修改
         //    getInfo(){
+        //        console.log(sessionStorage.getItem('userMsg').uid);
         //          this.axios.get("http://127.0.0.1:3001/personal/getinfo",
-        //         {params:{user:this.$store.state.user}}).then(res=>{
-        //            this.info.infoList=res.data[0];
-        //            console.log(this.info.infoList);
+        //         {params:{uid:sessionStorage.getItem('userMsg').uid}}).then(res=>{
+        //         //    this.info.infoList=res.data[0];
+        //            console.log(res);
         //         })
         //    },
 
@@ -229,7 +231,7 @@
                       this.ackAllFlag=true;
                   }
 
-                   if(!this.emailAck.flag){
+                   if(!this.unameAck.flag){
                         //查询昵称是否被占用
                         this.axios.get("http://127.0.0.1:3001/personal/ackuname",
                         {params:{uname:this.info.infoList.uname}}).then(res=>{
@@ -238,8 +240,14 @@
                                     this.unameAck.flag=true;
                                     this.ackAllFlag=false;
                                 }
+                                if(res.data.code==-1){
+                                    this.unameAck.tip='';
+                                    this.unameAck.flag=false;
+                                    this.ackAllFlag=true;
+                                }
                         })
-                    }               
+                    }  
+                 
              },
               ackPhone(){
                    var reg=/^1[3-8]\d{9}$/;
@@ -361,7 +369,7 @@
         },
         mounted() {
            
-        }
+        },
       
       }
     }
