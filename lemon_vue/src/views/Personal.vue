@@ -23,7 +23,7 @@
             <div class="col-sm-9" v-show='staticSty.ind==0'>
                 <div class="profile ">
           
-                    <p><span class="title pr-4">我的信息</span><span>资料完善度</span><b>{{progress}}%</b></p>
+                    <p><span class="title pr-4">我的信息</span><span>资料完善度</span><b>{{comProgress}}%</b></p>
                     <form class="form-group">
                         <div class="unameDiv">
                             <div class="row m-2 mt-3">
@@ -68,9 +68,9 @@
 
                             <div class="row mt-3 mb-5 pb-5">
                                     <div class="col-12 text-center">
-                                            <input type="submit" value="保存" class=" btn  btn-danger"
+                                            <button  class=" btn  btn-danger"
                                              @click='submitInfo' 
-                                             :disabled="(unameAck.flag||phoneAck.flag||emailAck.flag||profileAck.flag)">
+                                             :disabled="(unameAck.flag||phoneAck.flag||emailAck.flag||profileAck.flag)">保存</button>
                                              <p class="tips" v-show='subAck.flag' >{{subAck.tip}}</p>
                                     </div>
                             </div>
@@ -82,12 +82,12 @@
           
             <div class="col-sm-9" v-show='staticSty.ind==1'>
                 <div class="profile ">
-                    <p><span class="title pr-4">账号安全</span><span>资料完善度</span><b>{{progress}}%</b></p>
+                    <p><span class="title pr-4">账号安全</span><span>资料完善度</span><b>{{comProgress}}%</b></p>
                     <form class="form-group">
                          <div class="row m-2 mt-2">
                                 <label for='password' class="col-2 control-label p-0 col-2">新密码：</label>
                                 <div class="col-6 col-10">
-                                    <input type="password" class="form-control" id="password" @blur='ackUpwd' v-model='info.infoList.upwd' >
+                                    <input type="password" class="form-control" id="password" @blur='ackUpwd' v-model='newPwd' >
                                     <p class="tips" v-show='upwdAck.flag' >{{upwdAck.tip}}</p>
                                 </div>
                             </div>
@@ -102,13 +102,14 @@
                             </div>
 
                               <div class="row m-2 mt-2 deleteMe" @mouseover='deleteUser=true' @mouseleave='deleteUser=false'>
-                                <small class='text-muted '>注销账户？</small><small class='text-muted' v-show='deleteUser'>确定</small>
+                                <small class='text-muted '>注销账户？</small><small class='text-muted' v-show='deleteUser' >确定</small>
                             </div>
 
                              <div class="row mt-3 mb-5 pb-5">
                                 <div class="col-12 text-center">
-                                   <input type="submit" value="确认修改" class=" btn btn-danger"  
-                                   :disabled="(upwdAck.flag||upwdAgainAck.flag)" @click="modifyPwd">
+                                   <button  class=" btn btn-danger"  
+                                   :disabled="(upwdAck.flag||upwdAgainAck.flag)" @click="modifyPwd">确认修改</button>
+                                     <p class="tips" v-show='pwdSubAck.flag' >{{pwdSubAck.tip}}</p>
                                 </div>
                             </div>
                     </form>
@@ -131,8 +132,8 @@
                       ind:0,
                }, 
                info:{
-                   infoList:{uname:'',sex:'',phone:'',email:'',profile:''},
-                   originInfoList:{uname:'',sex:'',phone:'',email:'',profile:''},
+                   infoList:{uname:'',sex:'',phone:'',email:'',profile:'',upwd:''},
+                   originInfoList:{uname:'',sex:'',phone:'',email:'',profile:'',upwd:''},
                    count:0
                },
                unameAck:{
@@ -164,16 +165,33 @@
                    tip:'',
                    flag:false
                },
+               pwdSubAck:{
+                   tip:'',
+                   flag:false
+               },
                deleteUser:false,
-               progressackAllFlag:0,
-               ackAllFlag:false,  //当为true时才可提交
-               progress:0,
+               ackAllFlag:false,  //当为true时才可提交信息
+            //    progress:0,   //信息修改完成度
+               newPwd:'',
                againPwd:'',
+               pwdAckAllFlag:false  ////当为true时才可提交密码
             }
         },
          created() {
             this.getInfo();
         },
+        computed:{
+                comProgress: function(){
+                     var i=0,j=0;
+                     for(var item in this.info.infoList){
+                         i++;
+                         if(this.info.infoList[item]!==''){
+                             j++;
+                         }
+                     }
+                     return (((j-2)/i)*100).toFixed(2);
+                 }
+             },
         methods:{
             tabChange(index){
                 this.staticSty.ind=index;
@@ -185,6 +203,9 @@
                 this.subAck.flag=false;
                 this.upwdAck.flag=false;
                 this.upwdAgainAck.flag=false;      
+                this.ackAllFlag=false; 
+                this. pwdAckAllFlag=false;
+               
             },
            //基本信息修改
            getInfo(){
@@ -342,60 +363,66 @@
                             if(res.data.code===1){
                                 this.subAck.flag = true;
                                 this.subAck.tip = res.data.msg;
-                                this.$store.commit("signin",this.info.infoList.uname);
+                                var obj={user:this.info.infoList.uname,uid:this.$store.state.userMsg.uid}
+                                this.$store.commit("signin",obj);
                             }else{
                                 this.subAck.flag = true;
                                 this.subAck.tip = res.data.msg;
                             }
                         })  
                 }
-             
              },
 
              //修改密码
              ackUpwd(){
+                 console.log(this.newPwd)
                    var reg=/^\w{6,14}$/;
-                   if(reg.test(this.info.infoList.upwd)){
-                       this. upwdAck.flag=false;
-                       this.ackAllFlag=true;
+                   if(reg.test(this.newPwd)){
+                       this.upwdAck.flag=false;
+                       this.pwdAckAllFlag=true;
                   }else{
                       this.upwdAck.tip='密码为6~14位数字、字母或下划线！';
-                      this. upwdAck.flag=true;
-                      this.ackAllFlag=false;
+                      this.upwdAck.flag=true;
+                      this.pwdAckAllFlag=false;
                   }              
              },
              ackUpwdAgain(){
-                if(!(this.againPwd===this.info.infoList.upwd)) {
+                if(!(this.againPwd===this.newPwd)) {
                      this.upwdAgainAck.tip='两次密码请保持一致!';     
-                     this. upwdAgainAck.flag=true;
-                     this.ackAllFlag=false;
+                     this.upwdAgainAck.flag=true;
+                     this.pwdAckAllFlag=false;
                 }else{
-                     this. upwdAgainAck.flag=false;
-                     this.ackAllFlag=true;
+                     this.upwdAgainAck.flag=false;
+                     this.pwdAckAllFlag=true;
                 }
              },
              modifyPwd(){
-                  if(this.ackAllFlag){
+                 console.log(this.newPwd)
+                  if(this.pwdAckAllFlag){
                       this.axios({
                           method:'post',
-                          url:"http://127.0.0.1:3001/personal/submitInfo",
+                          url:"http://127.0.0.1:3001/personal/modifyPwd",
                           params:{
                                uid:this.$store.state.userMsg.uid,
-                               uname:this.info.infoList.uname,
+                               upwd:this.newPwd,
                           }
                       }).then(res=>{
                             if(res.data.code===1){
-                                this.subAck.flag = true;
-                                this.subAck.tip = res.data.msg;
-                                this.$store.commit("signin",this.info.infoList.uname);
+                                this.pwdSubAck.flag = true;
+                                this.pwdSubAck.tip = res.data.msg; 
+                                // this.$store.commit("signout"); 
+                                 this.$router.push('/index');
+                                // this.axios.get("http://127.0.0.1:3001/user/signout");
                             }else{
-                                this.subAck.flag = true;
-                                this.subAck.tip = res.data.msg;
-                            }
+                                this.pwdSubAck.flag = true;
+                                this.pwdSubAck.tip = res.data.msg;
+                            }  
+                           
                         })  
                 }
-             }
-            
+             },
+             
+
       }
     }
 </script>

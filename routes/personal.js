@@ -6,7 +6,7 @@ const pool=require("../pool");
 //获得个人信息
 router.get('/getinfo',(req,res)=>{
     var uid = req.query.uid;
-    var sql=`SELECT uname,phone,sex,email,profile,vid FROM user 
+    var sql=`SELECT uname,phone,sex,email,profile,vid,upwd FROM user 
     WHERE uid=?`;
     pool.query(sql,uid,(err,result)=>{
         if(err) throw (err);
@@ -86,7 +86,7 @@ router.post('/submitInfo',(req,res)=>{
     _sex = req.query.sex,
     _email = req.query.email,
     _profile = req.query.profile;
-    console.log(_uid,_uname,_phone,_sex,_email,_profile)
+    console.log(_uid,_uname,_phone,_sex,_email,_profile);
     var sql=`UPDATE user SET uname=?,phone=?,sex=?,email=?,profile=?
     WHERE uid=?`;
     pool.query(sql,[_uname,_phone,_sex,_email,_profile,_uid],(err,result)=>{
@@ -109,7 +109,7 @@ router.post('/submitInfo',(req,res)=>{
 //修改密码
 router.post('/modifyPwd',(req,res)=>{
     var _uid = req.query.uid,
-    _upwd = req.query.uname,
+        _upwd = req.query.upwd;
     var sql=`UPDATE user SET upwd=?
     WHERE uid=?`;
     pool.query(sql,[_upwd,_uid],(err,result)=>{
@@ -117,7 +117,7 @@ router.post('/modifyPwd',(req,res)=>{
         if(result.affectedRows>0){
             res.send({
                 code:1,
-                msg:"密码修改成功！"
+                msg:"密码修改成功,请重新登录！"
             });
         }else{
             res.send({
