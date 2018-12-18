@@ -25,4 +25,13 @@ router.get("/allSpotsList",(req,res)=>{
   })
   
 })
+// select season,iimg_380_220,country,spot from img i inner join spot s on i.sid=s.sid order by season
+router.get("/spots01",(req,res)=>{
+  var sql = `select season,iimg_380_220,country,spot from img i inner join spot s on i.sid=s.sid order by season`;
+  pool.query(sql,(err,result)=>{
+    if(err) throw (err);
+    res.send(result);
+  })
+  
+})
 module.exports=router;

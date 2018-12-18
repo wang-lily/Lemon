@@ -54,11 +54,16 @@ section a {
 
 #body > div > div:nth-child(2) > div:nth-child(1) > span {
   color: white;
-  background-color: rgba(40, 167, 69, 0.5);
+  background: -moz-linear-gradient(top, rgba(40, 167, 69, 0.5) 0%, rgba(40, 167, 69, 0.7) 100%);
+  background: -webkit-linear-gradient(top, rgba(40, 167, 69, 0.5) 0%,rgba(40, 167, 69, 0.7) 100%);
+  background: -o-linear-gradient(top, rgba(40, 167, 69, 0.5) 0%,rgba(40, 167, 69, 0.7) 100%);
+  background: -ms-linear-gradient(top,rgba(40, 167, 69, 0.5) 0%,rgba(40, 167, 69, 0.7) 100%);
+  background: linear-gradient(to bottom, rgba(40, 167, 69, 0.5) 0%,rgba(40, 167, 69, 0.7) 100%);
+  /* background-color: rgba(40, 167, 69, 0.5); */
   border-bottom: 1px solid rgba(40, 167, 69, 0.7); }
   #body > div > div:nth-child(2) > div:nth-child(1) > span.active {
     border-radius: 5px 5px 0 0;
-    background-color: transparent !important;
+    background: transparent !important;
     color: #28a745;
     border-top: 1px solid rgba(40, 167, 69, 0.7);
     border-left: 1px solid rgba(40, 167, 69, 0.7);
