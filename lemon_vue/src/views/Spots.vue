@@ -75,7 +75,7 @@
                         <span class="col d-md-none  p-0 pt-1 pb-1 m-0 text-center"  ><button class="text-white border-0 bg-transparent iconfont icon-arrow-r" @click="showNextTab(spots01)" :disabled="spots01.nextHideTab==12"></button></span>
                         <span class="col d-none d-md-block p-0 pt-1 pb-1"></span>
                     </div>
-                    <div v-for="(item,i) of spots01.tabs" :key="i" v-show="spots01.tabs[i].style[1]" class="clearfix p-0">
+                    <div v-for="(item,i) of spots01.tabs" :key="i" v-show="item.style[1]" class="clearfix p-0">
                         <div v-for="(spot,j) of spots01.tabs[i].imgsList" :key="j" class="col-6 p-1 col-md-4   float-left">
                             <img class="img-fluid" :src="spot.iimg_380_220" alt="">
                             <div class="position-absolute p-3 " >
@@ -100,43 +100,49 @@
                         <span class="col d-md-none  p-0 pt-1 pb-1 m-0 text-center"  ><button class="text-white border-0 bg-transparent iconfont icon-arrow-r" @click="showNextTab(spots02)" :disabled="spots02.nextHideTab==5"></button></span>
                         <span class="col d-none d-md-block p-0 pt-1 pb-1"></span>
                     </div>
-                    <div class="p-0">
+                    <div v-for="(item,i) of spots02.tabs" :key="i" class="p-0" v-show="item.style[1]">
                         <div class="position-relative p-1">
-                            <img class="img-fluid" src="" alt="">
+                            <img class="img-fluid" :src="item.imgsList[0] ? item.imgsList[0][0].lg_url :''"  alt="">
                             <div class="position-absolute p-3 " >
-                                <p>峨眉山</p>
+                                <p>{{item.imgsList[0] ? (item.imgsList[0][0].spot || item.imgsList[0][0].country) : ''}}</p>
                             </div>
                         </div>
                         <div class="row p-0 m-0">
-                            <div class="col p-1 ">
-                                <img class="img-fluid" src="" alt="">
+                            <!-- <div v-if="item.imgsList[1]" v-for="(spot,j) in item.imgsList[1]" :key="j" class="col p-1 ">
+                                <img v-if="spot[j]" class="img-fluid" :src="spot[j].iimg_390_552"  alt="">
                                 <div class="position-absolute p-3 " >
-                                    <p>峨眉山</p>
+                                    <p v-if="spot[j]">{{spot[j].spot || spot[j].country}}</p>
+                                </div>
+                            </div> -->
+                            <div class="col p-1 ">
+                                <img class="img-fluid" :src="item.imgsList[1] ? item.imgsList[1][0].iimg_390_552 :''"  alt="">
+                                <div class="position-absolute p-3 " >
+                                    <p>{{item.imgsList[1] ? (item.imgsList[1][0].spot || item.imgsList[1][0].country) : ''}}</p>
                                 </div>
                             </div>
                             <div class="col p-1 ">
-                                <img class="img-fluid" src="" alt="">
+                                <img class="img-fluid" :src="item.imgsList[1] ? item.imgsList[1][1].iimg_390_552 :''" alt="">
                                 <div class="position-absolute p-3 " >
-                                    <p>峨眉山</p>
+                                    <p>{{item.imgsList[1] ? (item.imgsList[1][1].spot || item.imgsList[1][1].country) : ''}}</p>
                                 </div>
                             </div>
                             <div class="col d-none d-md-block p-1 ">
-                                <img class="img-fluid" src="" alt="">
+                                <img class="img-fluid" :src="item.imgsList[1] ? item.imgsList[1][2].iimg_390_552 :''" alt="">
                                 <div class="position-absolute p-3 " >
-                                    <p>峨眉山</p>
+                                    <p>{{item.imgsList[1] ? (item.imgsList[1][2].spot || item.imgsList[1][2].country) : ''}}</p>
                                 </div>
                             </div>
                             <div class="col d-none d-md-block p-1 ">
-                                <img class="img-fluid" src="" alt="">
+                                <img class="img-fluid" :src="item.imgsList[1] ? item.imgsList[1][3].iimg_390_552 :''" alt="">
                                 <div class="position-absolute p-3 " >
-                                    <p>峨眉山</p>
+                                    <p>{{item.imgsList[1] ? (item.imgsList[1][3].spot || item.imgsList[1][3].country) : ''}}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="position-relative p-1 d-md-none">
-                            <img class="img-fluid" src="" alt="">
+                            <img class="img-fluid" :src="item.imgsList[0] ? item.imgsList[0][1].lg_url :''" alt="">
                             <div class="position-absolute p-3 " >
-                                <p>峨眉山</p>
+                                <p>{{item.imgsList[0] ? (item.imgsList[0][1].spot || item.imgsList[0][1].country) : ''}}</p>
                             </div>
                         </div>
                     </div>
@@ -311,30 +317,45 @@
                     var lgImgs = res.data.lgImgs;
                     var mdImgs = res.data.mdImgs;
                     for(var i=0; i<5; i++){
-                        this.spots02.tabs[i].imgsList.push({"lgImgs":[]},{"mdImgs":[]});
+                        this.spots02.tabs[i].imgsList=[[],[]];
                     }
                     function getImgs(spotsObj,imgs,index,count,property){
                         for(var item of imgs){
-                            if(item.theme=="人文" && spotsObj.tabs[0].imgsList[index].length<count){
-                                spotsObj.tabs[0].imgsList[index][property].push(item);   
-                            }
-                            else if(item.theme=="山水" && spotsObj.tabs[1].imgsList[index].length<count){
-                                spotsObj.tabs[1].imgsList[index][property].push(item);
-                            }
-                            else if(item.theme=="美食" && spotsObj.tabs[2].imgsList[index].length<count){
-                                spotsObj.tabs[2].imgsList[index][property].push(item);
-                            }
-                            else if(item.theme=="海岛" && spotsObj.tabs[3].imgsList[index].length<count){
-                                spotsObj.tabs[3].imgsList[index][property].push(item);
-                            }
-                            else if(item.theme=="休闲" && spotsObj.tabs[4].imgsList[index].length<count){
-                                spotsObj.tabs[4].imgsList[index][property].push(item);
+                            // console.log(spotsObj.tabs[0].imgsList[1][property]);
+                            switch(item.theme){
+                                case "人文":
+                                    if(spotsObj.tabs[0].imgsList[index].length<count){
+                                        spotsObj.tabs[0].imgsList[index].push(item);   
+                                    }
+                                    break;
+                                case "山水":
+                                    if(spotsObj.tabs[1].imgsList[index].length<count){
+                                        spotsObj.tabs[1].imgsList[index].push(item);   
+                                    }
+                                    break;
+                                case "美食":
+                                    if(spotsObj.tabs[2].imgsList[index].length<count){
+                                        spotsObj.tabs[2].imgsList[index].push(item);   
+                                    }
+                                    break;
+                                case "海岛":
+                                    if(spotsObj.tabs[3].imgsList[index].length<count){
+                                        spotsObj.tabs[3].imgsList[index].push(item);   
+                                    }
+                                    break;
+                                case "休闲":
+                                    if(spotsObj.tabs[4].imgsList[index].length<count){
+                                        spotsObj.tabs[4].imgsList[index].push(item);   
+                                    }
+                                    break;
+                                default: continue;
+                                    break;
                             }
                         }
                     }
-                    getImgs(this.spots02,lgImgs,0,2,"lgImgs");
-                    getImgs(this.spots02,mdImgs,1,4,"mdImgs");
-                    console.log(this.spots02.tabs);
+                    getImgs(this.spots02,lgImgs,0,2,0);
+                    getImgs(this.spots02,mdImgs,1,4,1);
+                    console.log(this.spots02.tabs[0].imgsList[0][1]);
                 })
             }
 
