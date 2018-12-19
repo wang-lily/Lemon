@@ -104,7 +104,7 @@ section a {
   #body #all-spots > div > div:not(:first-child) > div a {
     padding-left: 1.5rem !important; }
   #body #all-spots img + div, #body #spots01 img + div, #body #spots02 img + div {
-    /* background: url("../img/tab/tab01.png") no-repeat center center; */
+    background: url("../background/tab01.png") no-repeat center center;
     background-size: contain; }
     #body #all-spots img + div > p, #body #spots01 img + div > p, #body #spots02 img + div > p {
       color: #fff;

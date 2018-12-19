@@ -70,43 +70,70 @@
                 <div class="pl-1 pr-1 mt-3">
                     <div class="row w-100 m-0 p-1 flex-nowrap justify-content-center" data-trigger="tab">
                         <span class="col d-none d-md-block p-0 pt-1 pb-1"></span>
-                        <span class="col d-md-none  p-0 pt-1 pb-1 m-0 text-center" ><button class="text-white border-0 bg-transparent  iconfont icon-arrow_l" :disabled="spots01.prevHideMonth==-1" @click="showPrevMonth"></button></span>
-                        <span v-for="(item,i) of spots01.months" :key="i" class="col-auto pt-1 pb-1 pr-3 pl-3 pl-md-2 pr-md-2 pl-lg-3 pr-lg-3" :class="item.style" @mouseenter="activateStyle(spots01,spots01.months[i])">{{i+1}}月</span>
-                        <span class="col d-md-none  p-0 pt-1 pb-1 m-0 text-center"  ><button class="text-white border-0 bg-transparent iconfont icon-arrow-r" @click="showNextMonth" :disabled="spots01.nextHideMonth==12"></button></span>
+                        <span class="col d-md-none  p-0 pt-1 pb-1 m-0 text-center" ><button class="text-white border-0 bg-transparent  iconfont icon-arrow_l" :disabled="spots01.prevHideTab==-1" @click="showPrevTab(spots01)"></button></span>
+                        <span v-for="(item,i) of spots01.tabs" :key="i" class="col-auto pt-1 pb-1 pr-3 pl-3 pl-md-2 pr-md-2 pl-lg-3 pr-lg-3" :class="item.style" @mouseenter="activateStyle(spots01,spots01.tabs[i])">{{i+1}}月</span>
+                        <span class="col d-md-none  p-0 pt-1 pb-1 m-0 text-center"  ><button class="text-white border-0 bg-transparent iconfont icon-arrow-r" @click="showNextTab(spots01)" :disabled="spots01.nextHideTab==12"></button></span>
                         <span class="col d-none d-md-block p-0 pt-1 pb-1"></span>
                     </div>
-                    <div class="clearfix p-0">
-                        <div class="col-6 p-1 col-md-4   float-left">
-                            <img class="img-fluid" src="" alt="">
+                    <div v-for="(item,i) of spots01.tabs" :key="i" v-show="spots01.tabs[i].style[1]" class="clearfix p-0">
+                        <div v-for="(spot,j) of spots01.tabs[i].imgsList" :key="j" class="col-6 p-1 col-md-4   float-left">
+                            <img class="img-fluid" :src="spot.iimg_380_220" alt="">
                             <div class="position-absolute p-3 " >
-                                <p>印度尼西亚</p>
+                                <p>{{spot.spot || spot.country}}</p>
                             </div>
                         </div>
-                        <div class="col-6 p-1 col-md-4   float-left">
+                    </div>
+                </div>
+            </div>
+            <!--当季目的地推荐end-->
+            <!--主题游推荐start-->
+            <div id="spots02">
+                <h6 class="pt-4 pb-3 pl-2 m-0 border-bottom">
+                    <span class="d-inline-block iconfont icon-mudedi1"></span>
+                    <span>主题游推荐</span>
+                </h6>
+                <div class="pl-1 pr-1 mt-3">
+                    <div class="row w-100 m-0 p-1 flex-nowrap justify-content-center" data-trigger="tab">
+                        <span class="col d-none d-md-block p-0 pt-1 pb-1"></span>
+                        <span class="col d-md-none  p-0 pt-1 pb-1 m-0 text-center"><button class="text-white border-0 bg-transparent  iconfont icon-arrow_l" :disabled="spots02.prevHideTab==-1" @click="showPrevTab(spots02)"></button></span>
+                        <span v-for="(item,i) of spots02.tabs" :key="i" class="col-auto pt-1 pb-1 pr-3 pl-3 pl-md-2 pr-md-2 pl-lg-3 pr-lg-3" :class="item.style" @mouseenter="activateStyle(spots02,spots02.tabs[i])">{{spots02.tabDetails[i]}}</span>
+                        <span class="col d-md-none  p-0 pt-1 pb-1 m-0 text-center"  ><button class="text-white border-0 bg-transparent iconfont icon-arrow-r" @click="showNextTab(spots02)" :disabled="spots02.nextHideTab==5"></button></span>
+                        <span class="col d-none d-md-block p-0 pt-1 pb-1"></span>
+                    </div>
+                    <div class="p-0">
+                        <div class="position-relative p-1">
                             <img class="img-fluid" src="" alt="">
                             <div class="position-absolute p-3 " >
                                 <p>峨眉山</p>
                             </div>
                         </div>
-                        <div class="col-6 p-1 col-md-4   float-left">
-                            <img class="img-fluid" src="" alt="">
-                            <div class="position-absolute p-3 " >
-                                <p>峨眉山</p>
+                        <div class="row p-0 m-0">
+                            <div class="col p-1 ">
+                                <img class="img-fluid" src="" alt="">
+                                <div class="position-absolute p-3 " >
+                                    <p>峨眉山</p>
+                                </div>
+                            </div>
+                            <div class="col p-1 ">
+                                <img class="img-fluid" src="" alt="">
+                                <div class="position-absolute p-3 " >
+                                    <p>峨眉山</p>
+                                </div>
+                            </div>
+                            <div class="col d-none d-md-block p-1 ">
+                                <img class="img-fluid" src="" alt="">
+                                <div class="position-absolute p-3 " >
+                                    <p>峨眉山</p>
+                                </div>
+                            </div>
+                            <div class="col d-none d-md-block p-1 ">
+                                <img class="img-fluid" src="" alt="">
+                                <div class="position-absolute p-3 " >
+                                    <p>峨眉山</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-6 p-1 col-md-4   float-left">
-                            <img class="img-fluid" src="" alt="">
-                            <div class="position-absolute p-3 " >
-                                <p>峨眉山</p>
-                            </div>
-                        </div>
-                        <div class="col-6 p-1 col-md-4   float-left">
-                            <img class="img-fluid" src="" alt="">
-                            <div class="position-absolute p-3 " >
-                                <p>峨眉山</p>
-                            </div>
-                        </div>
-                        <div class="col-6 p-1 col-md-4   float-left">
+                        <div class="position-relative p-1 d-md-none">
                             <img class="img-fluid" src="" alt="">
                             <div class="position-absolute p-3 " >
                                 <p>峨眉山</p>
@@ -115,7 +142,7 @@
                     </div>
                 </div>
             </div>
-            <!--当季目的地推荐end-->
+            <!--主题游推荐end-->
         </div>
     </section>
 </template>
@@ -150,13 +177,22 @@
 
                 // --------------------------------当季景点推荐start--------------------------------------------
                 spots01:{
-                    months:[],
-                    presentMonth:(new Date()).getMonth(),
-                    prevHideMonth:0,
-                    nextHideMonth:0,
+                    tabs:[],
+                    presentTab:(new Date()).getMonth(),
+                    prevHideTab:0,
+                    nextHideTab:0,
+                    activeItem:null,
+                },
+                // --------------------------------当季景点推荐end--------------------------------------------
+                spots02:{
+                    tabDetails:["人文","山水","美食","海岛","休闲"],
+                    tabs:[],
+                    presentTab:2,
+                    prevHideTab:0,
+                    nextHideTab:0,
                     activeItem:null,
                 }
-                // --------------------------------当季景点推荐end--------------------------------------------
+                
             }
         },
         methods:{
@@ -196,80 +232,110 @@
                     }
                 })
             },
-            activateStyle(flag,item){
-                this.$set(flag.activeItem.style,1,"");
-                flag.activeItem = item;
-                this.$set(flag.activeItem.style,1,"active");
-            },
             // -----------------------------------全部景点end--------------------------------------------------
-
-            loadSpots01(){
-                for(var i=0; i<12; i++){
-                    if(this.spots01.presentMonth<8){
-                        this.spots01.prevHideMonth = this.spots01.presentMonth-1;
-                        this.spots01.nextHideMonth = this.spots01.presentMonth+4;
-                        if(i<this.spots01.presentMonth || i>this.spots01.presentMonth+3){
-                            this.spots01.months.push({
+            activateStyle(spotsObj,item){
+                this.$set(spotsObj.activeItem.style,1,"");
+                spotsObj.activeItem = item;
+                this.$set(spotsObj.activeItem.style,1,"active");
+            },
+            showNextTab(spotsObj){
+                spotsObj.prevHideTab++;
+                spotsObj.tabs[spotsObj.prevHideTab].style[0]="d-none d-md-block";
+                spotsObj.tabs[spotsObj.nextHideTab].style[0]="";
+                spotsObj.nextHideTab++;
+            },
+            showPrevTab(spotsObj){
+                spotsObj.tabs[spotsObj.prevHideTab].style[0] = "";
+                spotsObj.prevHideTab--;
+                spotsObj.nextHideTab--;
+                spotsObj.tabs[spotsObj.nextHideTab].style[0] = "d-none d-md-block";
+            },
+            loadSpotsTabs(spotsObj,tabTotal,showTabCount){
+                for(var i=0; i<tabTotal; i++){
+                    if(spotsObj.presentTab < tabTotal-showTabCount){
+                        spotsObj.prevHideTab = spotsObj.presentTab-1;
+                        spotsObj.nextHideTab = spotsObj.presentTab+showTabCount;
+                        if(i < spotsObj.presentTab || i > spotsObj.presentTab+showTabCount-1){
+                            spotsObj.tabs.push({
                                 style:["d-none d-md-block",""],
                                 imgsList:[]
                             })
-                        }else if(i==this.spots01.presentMonth){
-                            this.spots01.months.push({
+                        }else if(i==spotsObj.presentTab){
+                            spotsObj.tabs.push({
                                 style:["","active"],
                                 imgsList:[]
                             })
                         }else{
-                            this.spots01.months.push({
+                            spotsObj.tabs.push({
                                 style:["",""],
                                 imgsList:[]
                             })
                         }
                     }
                     else{
-                        this.spots01.prevHideMonth = 7;
-                        this.spots01.nextHideMonth = 12;
-                        if(i<8){
-                            this.spots01.months.push({
+                        spotsObj.prevHideTab = tabTotal-showTabCount-1;
+                        spotsObj.nextHideTab = tabTotal;
+                        if(i<tabTotal-showTabCount){
+                            spotsObj.tabs.push({
                                 style:["d-none d-md-block",""],
                                 imgsList:[]
                             })
-                        }else if(i==this.spots01.presentMonth){
-                            this.spots01.months.push({
+                        }else if(i==spotsObj.presentTab){
+                            spotsObj.tabs.push({
                                 style:["","active"],
                                 imgsList:[]
                             })
                         }else{
-                            this.spots01.months.push({
+                            spotsObj.tabs.push({
                                 style:["",""],
                                 imgsList:[]
                             })
                         }
                     }
                 }
-                this.spots01.activeItem = this.spots01.months[this.spots01.presentMonth];
+                spotsObj.activeItem = spotsObj.tabs[spotsObj.presentTab];
+            },
+            loadSpots01Imgs(){
                 this.axios.get("http://127.0.0.1:3001/spots/spots01").then(res=>{
-                    // console.log(res.data);
                     var list = res.data;
                     for(var item of list){
-                        if(this.spots01.months[item.season].imgsList.length==6){
+                        if(this.spots01.tabs[item.season].imgsList.length==6){
                             continue;
                         }
-                        this.spots01.months[item.season].imgsList.push(item);
+                        this.spots01.tabs[item.season].imgsList.push(item);
                     }
-                    console.log(this.spots01.months);
                 })
             },
-            showNextMonth(){
-                this.spots01.prevHideMonth++;
-                this.spots01.months[this.spots01.prevHideMonth].style[0]="d-none d-md-block";
-                this.spots01.months[this.spots01.nextHideMonth].style[0]="";
-                this.spots01.nextHideMonth++;
-            },
-            showPrevMonth(){
-                this.spots01.months[this.spots01.prevHideMonth].style[0] = "";
-                this.spots01.prevHideMonth--;
-                this.spots01.nextHideMonth--;
-                this.spots01.months[this.spots01.nextHideMonth].style[0] = "d-none d-md-block";
+            loadSpots02Imgs(){
+                this.axios.get("http://127.0.0.1:3001/spots/spots02").then(res=>{
+                    var lgImgs = res.data.lgImgs;
+                    var mdImgs = res.data.mdImgs;
+                    for(var i=0; i<5; i++){
+                        this.spots02.tabs[i].imgsList.push({"lgImgs":[]},{"mdImgs":[]});
+                    }
+                    function getImgs(spotsObj,imgs,index,count,property){
+                        for(var item of imgs){
+                            if(item.theme=="人文" && spotsObj.tabs[0].imgsList[index].length<count){
+                                spotsObj.tabs[0].imgsList[index][property].push(item);   
+                            }
+                            else if(item.theme=="山水" && spotsObj.tabs[1].imgsList[index].length<count){
+                                spotsObj.tabs[1].imgsList[index][property].push(item);
+                            }
+                            else if(item.theme=="美食" && spotsObj.tabs[2].imgsList[index].length<count){
+                                spotsObj.tabs[2].imgsList[index][property].push(item);
+                            }
+                            else if(item.theme=="海岛" && spotsObj.tabs[3].imgsList[index].length<count){
+                                spotsObj.tabs[3].imgsList[index][property].push(item);
+                            }
+                            else if(item.theme=="休闲" && spotsObj.tabs[4].imgsList[index].length<count){
+                                spotsObj.tabs[4].imgsList[index][property].push(item);
+                            }
+                        }
+                    }
+                    getImgs(this.spots02,lgImgs,0,2,"lgImgs");
+                    getImgs(this.spots02,mdImgs,1,4,"mdImgs");
+                    console.log(this.spots02.tabs);
+                })
             }
 
         },
@@ -277,7 +343,10 @@
             this.loadCarousel();
             this.startCarousel();
             this.loadAllSpotsList();
-            this.loadSpots01();
+            this.loadSpotsTabs(this.spots01,12,4);
+            this.loadSpots01Imgs();
+            this.loadSpotsTabs(this.spots02,5,4);
+            this.loadSpots02Imgs();
         },
         mounted() {
             

@@ -34,4 +34,20 @@ router.get("/spots01",(req,res)=>{
   })
   
 })
+
+router.get("/spots02",(req,res)=>{
+  var data = {lgImgs:[],mdImgs:[]};
+  var sql1 = `select theme,lg_url,country,spot from carousel order by theme`;
+  var sql2 = `select theme,iimg_390_552,country,spot from img i inner join spot s on i.sid=s.sid order by theme`;
+  pool.query(sql1,(err,result)=>{
+    if(err) throw (err);
+    data.lgImgs = result;
+    pool.query(sql2,(err,result)=>{
+      if(err) throw (err);
+    data.mdImgs = result;
+      res.send(data);
+    })
+  })
+  
+})
 module.exports=router;
