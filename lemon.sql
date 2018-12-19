@@ -85,7 +85,8 @@ CREATE TABLE spot(
 	sid INT PRIMARY KEY AUTO_INCREMENT,
 	country VARCHAR(48),
 	spot VARCHAR(48),
-	hot INT
+	hot INT,
+	
 );
 #中国
 INSERT INTO spot VALUES(1,"中国","峨眉山",3);
@@ -152,7 +153,8 @@ CREATE TABLE img(
 	#所属季节0~11
 	season INT,
 	#所属主题
-	theme VARCHAR(10)
+	theme VARCHAR(10),
+
 );
 #峨眉山
 INSERT INTO img VALUES(null,1,"http://127.0.0.1:3001/img/170-240/china-emeishan01.png",

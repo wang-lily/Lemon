@@ -68,9 +68,9 @@
 
                             <div class="row mt-3 mb-5 pb-5">
                                     <div class="col-12 text-center">
-                                            <button  class=" btn  btn-danger"
+                                            <p  class=" btn  btn-danger"
                                              @click='submitInfo' 
-                                             :disabled="(unameAck.flag||phoneAck.flag||emailAck.flag||profileAck.flag)">保存</button>
+                                             :disabled="(unameAck.flag||phoneAck.flag||emailAck.flag||profileAck.flag)">保存</p>
                                              <p class="tips" v-show='subAck.flag' >{{subAck.tip}}</p>
                                     </div>
                             </div>
@@ -136,38 +136,15 @@
                    originInfoList:{uname:'',sex:'',phone:'',email:'',profile:'',upwd:''},
                    count:0
                },
-               unameAck:{
-                   tip:'',
-                   flag:false
-               },
-               phoneAck:{
-                   tip:'',
-                   flag:false,
-               },
-               emailAck:{
-                   tip:'',
-                   flag:false
-               },
-               profileAck:{
-                   tip:'',
-                   flag:false
-               },
+               unameAck:{tip:'',flag:false},
+               phoneAck:{tip:'',flag:false,},
+               emailAck:{tip:'',flag:false},
+               profileAck:{tip:'',flag:false},
                //提交按钮
-               subAck:{
-                   tip:'',
-                   flag:false
-               },
-                upwdAck:{
-                   tip:'',
-                   flag:false
-               },
-                upwdAgainAck:{
-                   tip:'',
-                   flag:false
-               },
-               pwdSubAck:{
-                   tip:'',
-                   flag:false
+               subAck:{tip:'',flag:false},
+                upwdAck:{tip:'',flag:false},
+                upwdAgainAck:{tip:'',flag:false},
+               pwdSubAck:{tip:'',flag:false
                },
                deleteUser:false,
                ackAllFlag:false,  //当为true时才可提交信息
@@ -189,7 +166,7 @@
                              j++;
                          }
                      }
-                     return (((j-2)/i)*100).toFixed(2);
+                     return Math.floor(((j-2)/i)*100);
                  }
              },
         methods:{
@@ -337,7 +314,8 @@
              },
              ackProfile(){
                  this.subAck.flag = false;
-                   var len=this.info.infoList.profile.length;
+                 console.log(this.info.infoList.profile)
+                   var len=this.info.infoList.profile==null?0:this.info.infoList.profile.length;
                    if(len>200){
                       this.profileAck.tip='个人简历字数请保持在200以内哦！';
                       this.profileAck.flag=true;
@@ -346,12 +324,13 @@
              },
             
              submitInfo(){  
-                 console.log(this.info.infoList)
+                //  console.log(this.ackAllFlag)
+                //  console.log(this.info.infoList)
                  if(this.ackAllFlag){
                       this.axios({
                           method:'post',
                           url:"http://127.0.0.1:3001/personal/submitInfo",
-                          params:{
+                          data:{
                                uid:this.$store.state.userMsg.uid,
                                uname:this.info.infoList.uname,
                                phone:this.info.infoList.phone,
@@ -402,7 +381,7 @@
                       this.axios({
                           method:'post',
                           url:"http://127.0.0.1:3001/personal/modifyPwd",
-                          params:{
+                          data:{
                                uid:this.$store.state.userMsg.uid,
                                upwd:this.newPwd,
                           }
