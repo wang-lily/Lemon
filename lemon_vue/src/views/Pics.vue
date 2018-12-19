@@ -32,34 +32,37 @@ import {init} from '../../src/assets/js/pics.js'
             return{
                   imgList:[],
                   bigList:[],
-                  midList:[],
-                  smaList:[]
+                  midList:[]
             }
         },
-        method:{
-              randomsort(a,b){
-                  return Math.random()>.5?-1:1;
-              }
-        },
-        created() {
+         created() {
+          
             this.axios.get('http://localhost:3001/pics/pics'
                 ).then(res=>{
                     this.imgList=res.data;
                    var len=this.imgList.length;
+                   console.log(len)
                   for(var i=0;i<len;i++){
                       if(i%5==0){
-                          this.smaList.push(this.imgList[i].iimg_170_240);
-                      }else if(i%5<3){
-                          this.midList.push(this.imgList[i].iimg_270_165);
-                      }else{
                           this.bigList.push(this.imgList[i].iimg_390_552);
+                      }else{
+                          this.midList.push(this.imgList[i].iimg_380_220);
                       }
                   }
-                  this.imgList=[].concat(this.bigList,this.midList,this.midList);
+                  this.imgList=[].concat(this.midList,this.bigList);
                   this.imgList.sort(this.randomsort); 
-                //   console.log(this.imgList)
                 })
-        }
+        },
+        method:{ 
+            
+              randomsort(a,b){
+                  return Math.random()>.5?-1:1;
+              }
+        },
+        mounted() {
+              init();
+        },
+       
     }
 </script>
 <style>

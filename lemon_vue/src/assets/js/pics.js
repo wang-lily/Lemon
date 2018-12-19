@@ -1,5 +1,5 @@
 $(function(){
-    init();
+    // init();
     $(window).on('resize',function(){//重新加载
         init();
     });
@@ -47,3 +47,4 @@ function init(){
            $('.pics  .pics_wall').height(maxBoxHeight);
     });
 };
+export {init};

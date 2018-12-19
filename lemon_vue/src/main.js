@@ -7,8 +7,9 @@ import store from './store'
 import axios from 'axios'
 
 axios.defaults.withCredentials = true;
+// axios.defaults.baseURL = '';
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 Vue.prototype.axios = axios;
-
 
 Vue.config.productionTip = false;//阻止 vue 在启动时生成生产提示
 /* eslint-disable no-new */
