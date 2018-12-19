@@ -314,7 +314,8 @@
              },
              ackProfile(){
                  this.subAck.flag = false;
-                   var len=this.info.infoList.profile.length?this.info.infoList.profile.length:0;
+                 console.log(this.info.infoList.profile)
+                   var len=this.info.infoList.profile==null?0:this.info.infoList.profile.length;
                    if(len>200){
                       this.profileAck.tip='个人简历字数请保持在200以内哦！';
                       this.profileAck.flag=true;
