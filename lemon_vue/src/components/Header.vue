@@ -39,7 +39,7 @@
                           </form>
                       </div>
                       <ul id="nav-items" class="d-md-inline-flex justify-content-md-around m-0">
-                          <li><router-link class="iconfont icon-shouyefill" to="/index"></router-link></li>
+                          <li><router-link class="iconfont icon-shouyefill" to="/index" data-target="item"></router-link></li>
                           <!--<li><a href="#">目的地</a></li>-->
                           <li><router-link to="/spots" data-target="item">景点</router-link></li>
                           <li><a href="/views/travels.html" data-target="item">游记</a></li>

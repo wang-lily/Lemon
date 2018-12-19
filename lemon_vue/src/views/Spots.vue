@@ -44,16 +44,16 @@
                 </h6>
                 <div class="pl-1 pr-1 mt-3">
                     <div class="row w-100 pl-1 pr-1 m-0" >
-                        <span class="col-auto pr-3 pl-3 pt-1 pb-1" :class="allSpotsList.home.style" @mouseenter="activateStyle(allSpotsList.home)">国内</span>
-                        <span class="col-auto pl-3 pr-3 pt-1 pb-1" :class="allSpotsList.abroad.style" @mouseenter="activateStyle(allSpotsList.abroad)">国外</span>
+                        <span class="col-auto pr-3 pl-3 pt-1 pb-1" :class="allSpotsList.home.style" @mouseenter="activateStyle(allSpotsList,allSpotsList.home)">国内</span>
+                        <span class="col-auto pl-3 pr-3 pt-1 pb-1" :class="allSpotsList.abroad.style" @mouseenter="activateStyle(allSpotsList,allSpotsList.abroad)">国外</span>
                         <span class="col"></span>
                     </div>
-                    <div class=" pl-1 pr-1 m-auto" v-show="allSpotsList.abroad.style">
+                    <div class=" pl-1 pr-1 m-auto" v-show="allSpotsList.abroad.style[1]">
                         <div class="row justify-content-start w-100 m-0 pt-1 pb-2">
-                            <a v-for="(item,i) of allSpotsList.abroad.list" :key="i" href="javascript:;" class="pt-1 pl-1 col-4 col-md-2 text-center text-md-left">{{item}}</a>
+                            <a v-for="(item,i) of allSpotsList.abroad.list" :key="i" href="javascript:;" class="pt-1 pl-1 col-4 col-md-2 text-center text-md-left" >{{item}}</a>
                         </div>
                     </div>
-                    <div class=" pl-1 pr-1 m-auto" v-show="allSpotsList.home.style">
+                    <div class=" pl-1 pr-1 m-auto" v-show="allSpotsList.home.style[1]">
                         <div class="row justify-content-start w-100 m-0 pt-1 pb-2">
                             <a v-for="(item,i) of allSpotsList.home.list" :key="i" href="javascript:;" class="pt-1 pl-1 col-4 col-md-2 text-center text-md-left">{{item}}</a>
                         </div>
@@ -70,9 +70,9 @@
                 <div class="pl-1 pr-1 mt-3">
                     <div class="row w-100 m-0 p-1 flex-nowrap justify-content-center" data-trigger="tab">
                         <span class="col d-none d-md-block p-0 pt-1 pb-1"></span>
-                        <span class="col d-md-none iconfont icon-arrow_l  p-0 pt-1 pb-1 m-0 text-center" :disabled="spots01.lastHideMonth==-1"></span>
-                        <span v-for="(item,i) of spots01.months" :key="i" class="col-auto pt-1 pb-1 pr-3 pl-3 pl-md-2 pr-md-2 pl-lg-3 pr-lg-3" :class="item.style">{{i+1}}月</span>
-                        <span class="col d-md-none iconfont icon-arrow-r  p-0 pt-1 pb-1 m-0 text-center" :disabled="spots01.lastHideMonth==12" @click="next"></span>
+                        <span class="col d-md-none  p-0 pt-1 pb-1 m-0 text-center" ><button class="text-white border-0 bg-transparent  iconfont icon-arrow_l" :disabled="spots01.prevHideMonth==-1" @click="showPrevMonth"></button></span>
+                        <span v-for="(item,i) of spots01.months" :key="i" class="col-auto pt-1 pb-1 pr-3 pl-3 pl-md-2 pr-md-2 pl-lg-3 pr-lg-3" :class="item.style" @mouseenter="activateStyle(spots01,spots01.months[i])">{{i+1}}月</span>
+                        <span class="col d-md-none  p-0 pt-1 pb-1 m-0 text-center"  ><button class="text-white border-0 bg-transparent iconfont icon-arrow-r" @click="showNextMonth" :disabled="spots01.nextHideMonth==12"></button></span>
                         <span class="col d-none d-md-block p-0 pt-1 pb-1"></span>
                     </div>
                     <div class="clearfix p-0">
@@ -137,11 +137,11 @@
                 // --------------------------------全部景点start--------------------------------------------
                 allSpotsList:{
                     home:{
-                        style:"active",
+                        style:["","active"],
                         list:[]
                     },//国内
                     abroad:{
-                        style:"",
+                        style:["",""],
                         list:[]    
                     },//国外
                     activeItem:null,
@@ -152,8 +152,9 @@
                 spots01:{
                     months:[],
                     presentMonth:(new Date()).getMonth(),
-                    firstHideMonth:0,
-                    lastHideMonth:0
+                    prevHideMonth:0,
+                    nextHideMonth:0,
+                    activeItem:null,
                 }
                 // --------------------------------当季景点推荐end--------------------------------------------
             }
@@ -183,7 +184,6 @@
             // -----------------------------------全部景点start--------------------------------------------------
 
             loadAllSpotsList(){
-                console.log(this.$store.state);
                 this.allSpotsList.activeItem = this.allSpotsList.home;
                 this.axios.get("http://127.0.0.1:3001/spots/allSpotsList").then(res=>{
                     var spotsList = res.data;
@@ -196,61 +196,80 @@
                     }
                 })
             },
-            activateStyle(obj){
-                    this.allSpotsList.activeItem.style = "";
-                    this.allSpotsList.activeItem = obj;
-                    this.allSpotsList.activeItem.style = "active";
+            activateStyle(flag,item){
+                this.$set(flag.activeItem.style,1,"");
+                flag.activeItem = item;
+                this.$set(flag.activeItem.style,1,"active");
             },
             // -----------------------------------全部景点end--------------------------------------------------
 
             loadSpots01(){
-                // this.axios.get()
-                this.spots01.firstHideMonth = this.spots01.presentMonth-1;
-                
                 for(var i=0; i<12; i++){
                     if(this.spots01.presentMonth<8){
-                        this.spots01.lastHideMonth = this.spots01.presentMonth+4;
+                        this.spots01.prevHideMonth = this.spots01.presentMonth-1;
+                        this.spots01.nextHideMonth = this.spots01.presentMonth+4;
                         if(i<this.spots01.presentMonth || i>this.spots01.presentMonth+3){
                             this.spots01.months.push({
-                                style:"d-none d-md-block",
-                                imgList:[]
+                                style:["d-none d-md-block",""],
+                                imgsList:[]
                             })
                         }else if(i==this.spots01.presentMonth){
                             this.spots01.months.push({
-                                style:"active",
-                                imgList:[]
+                                style:["","active"],
+                                imgsList:[]
                             })
                         }else{
                             this.spots01.months.push({
-                                style:"",
-                                imgList:[]
+                                style:["",""],
+                                imgsList:[]
                             })
                         }
                     }
                     else{
-                        this.spots01.lastHideMonth = 12;
+                        this.spots01.prevHideMonth = 7;
+                        this.spots01.nextHideMonth = 12;
                         if(i<8){
                             this.spots01.months.push({
-                                style:"d-none d-md-block",
-                                imgList:[]
+                                style:["d-none d-md-block",""],
+                                imgsList:[]
                             })
                         }else if(i==this.spots01.presentMonth){
                             this.spots01.months.push({
-                                style:"active",
-                                imgList:[]
+                                style:["","active"],
+                                imgsList:[]
                             })
                         }else{
                             this.spots01.months.push({
-                                style:"",
-                                imgList:[]
+                                style:["",""],
+                                imgsList:[]
                             })
                         }
                     }
                 }
-                // this.spots01.months[this.spots01.presentMonth].style = "active";
+                this.spots01.activeItem = this.spots01.months[this.spots01.presentMonth];
+                this.axios.get("http://127.0.0.1:3001/spots/spots01").then(res=>{
+                    // console.log(res.data);
+                    var list = res.data;
+                    for(var item of list){
+                        if(this.spots01.months[item.season].imgsList.length==6){
+                            continue;
+                        }
+                        this.spots01.months[item.season].imgsList.push(item);
+                    }
+                    console.log(this.spots01.months);
+                })
             },
-            next(){
-                this.months.lastHideMonth++;
+            showNextMonth(){
+                this.spots01.prevHideMonth++;
+                this.spots01.months[this.spots01.prevHideMonth].style[0]="d-none d-md-block";
+                this.spots01.months[this.spots01.nextHideMonth].style[0]="";
+                this.spots01.nextHideMonth++;
+            },
+            showPrevMonth(){
+                this.spots01.months[this.spots01.prevHideMonth].style[0] = "";
+                this.spots01.prevHideMonth--;
+                this.spots01.nextHideMonth--;
+                this.spots01.months[this.spots01.nextHideMonth].style[0] = "d-none d-md-block";
             }
 
         },
