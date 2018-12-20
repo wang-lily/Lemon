@@ -44,7 +44,7 @@
                           <li><router-link to="/spots" data-target="item">景点</router-link></li>
                           <li><a href="/views/travels.html" data-target="item">游记</a></li>
                           <li><a href="#" data-target="item">美食</a></li>
-                          <li><a href="/views/strategy.html" data-target="item">指南</a></li>
+                          <li><router-link to="/strategy"  data-target="item">指南</router-link></li>
                           <li><a class="iconfont icon-some" href="#" data-target="item"></a></li>
                       </ul>
                   </div>

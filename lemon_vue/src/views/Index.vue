@@ -3,7 +3,6 @@
        <!-- 轮播 -->
        <div class="container-fluid pr-0 pl-0 mr-0">
           <div class="row carouselBox border position-relative mr-0 ml-0"> 
-               
                 <div class="col-sm-12 imgLg p-0">
                     <div class="box" :class="carousel.ind==index?'first':''"  v-for="(item,index) in carousel.carouselList">
                         <picture>
@@ -59,8 +58,12 @@
                                                 <div class="btn btn-info btn-sm p-0"><small>指南</small></div>
                                             </span>
                                         </div>
-                                        <p class="float-right mt-2">
-                                           <small>热度 <i class="iconfont icon-xingxing1" v-for="i in item.hot"></i></small>
+                                        <p class="d-flex justify-content-between align-items-center flex-wrap mt-2">
+                                            <span class="text-muted">热度</span>
+                                            <span class="flex-end">
+                                                <i class="iconfont icon-xingxing1" v-for="i in item.hot"></i>
+                                            </span>
+                                           <!-- <small>热度 <i class="iconfont icon-xingxing1" v-for="i in item.hot"></i></small> -->
                                         </p>
                                     </div>
                                 </div>
@@ -75,7 +78,7 @@
                     </div>
                 </div>
                 <div class="btn btn-light p-2 bordered w-100">
-                    <a href="#" class="text-center">查看全部目的地&gt;</a>
+                    <router-link class="text-center" to="/Spots"> 查看全部目的地&gt;</router-link> 
                 </div>
             </div>
         </div>
@@ -88,21 +91,19 @@
                         <span class="pop_title">人气指南</span>
                         <a href='#' class="ml-1">更多&gt;</a>
                     </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6 bordered mb-2">
+                    <div class="col-lg-2 col-md-3 col-sm-6 col-6 bordered mb-2" v-for="item in  guide.imgList">
                         <div class="card ">
                             <div class="card-head">
-                                <!-- <img src="img/170-240/Singapore10.png" alt="" class="w-100"> -->
+                               <img :src="item.iimg_170_240" alt="" class="w-100"> 
                             </div>
                             <div class="card-body pl-0 ml-1 pt-0 pb-0">
-                                <p class="mb-0">新加坡</p>
-                                <span class="views text_muted">浏览量
-                                    <b>1134</b>次</span>
+                                <p class="mb-0">{{item.country}}</p>
+                                <span class="views text-muted">浏览量
+                                    <b>{{item.click_rate}}</b>次</span>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
                 </div>
             </div>
         </div>
@@ -160,6 +161,10 @@
                     barList:['亚洲','欧洲','美洲','全球'],
                     ind:0,
                     imgList:[]
+                },
+                guide:{
+                    imgList:['','','','','','']
+
                 }
                
                 
@@ -181,6 +186,7 @@
                     this.carousel.carouselList=res.data;
                 })
              },
+             
 
              //http://localhost:3001/index/tab
                loadTab(){
@@ -190,11 +196,18 @@
 
                 })
              },
+              loadGuide(){
+                 this.axios.get('http://localhost:3001/index/guide',
+                ).then(res=>{
+                    this.guide.imgList=res.data;
+                })
+             },
         },
         created() {
             this.loadCarousel();
             this.carouselTask();
-            this. loadTab()
+            this. loadTab();
+            this.loadGuide();
             
         },
         mounted(){

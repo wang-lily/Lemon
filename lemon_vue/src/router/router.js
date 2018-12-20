@@ -7,6 +7,7 @@ import Index from '../views/Index.vue'
 import NotFound from '../views/NotFound.vue'
 import Register_Login from '../views/Register_Login.vue'
 import Pics from '../views/Pics.vue'
+import Strategy from '../views/Strategy.vue'
 
 
 Vue.use(Router);
@@ -19,6 +20,7 @@ export default new Router({
       {path: '/personal', component: Personal},
       {path: '/spots', component: Spots},
       {path: '/pics', component: Pics},
+      {path: '/strategy', component: Strategy}
     ]},
     {path:'/login_register',component:Register_Login},
     {path: '**', component: NotFound}

@@ -1,9 +1,13 @@
 body{
     position: relative;
 }
-.text_muted{
+/* .text_muted{
     font-size: 0.8rem;
     color:#b4b4b4;
+} */
+.pop_title{
+    font-size: 24px;
+    font-weight: bold;
 }
 /* 轮播 */
 .carouselBox{
@@ -79,12 +83,14 @@ body{
     display: none;
 }
 
-.destination .pop_title{
-    font-size: 24px;
-    font-weight: bold;
-}
-.destination small i{
+.destination  i{
     color: #FF9800;
+}
+.destination .card:hover img{
+    transform: scale(1.1);
+}
+.destination  .card-head{
+     box-sizing: border-box;
 }
 /* 指南 */
 .views{
