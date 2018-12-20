@@ -22,4 +22,11 @@ router.get('/tab',(req,res)=>{
     })
 })
 
+router.get('/guide',(req,res)=>{
+  var sql= `select click_rate,iimg_170_240,country,spot from img i inner join spot s on i.sid=s.sid GROUP by click_rate order by click_rate DESC LIMIT 0,6`;
+  pool.query(sql,(err,result)=>{
+    if(err) throw (err);
+    res.send(result);
+  })
+})
 module.exports=router;
