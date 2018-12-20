@@ -8,6 +8,7 @@ const index = require("./routes/index");
 const user = require("./routes/user");
 const  pics= require("./routes/pics");
 const  personal= require("./routes/personal");
+const addTravel = require("./routes/add_travel");
 
 
 var app = express();
@@ -36,3 +37,4 @@ app.use("/user",user);
 app.use("/pics",pics);
 app.use('/personal',personal);
 app.use("/spots",spots);
+app.use("/add_travel",addTravel);

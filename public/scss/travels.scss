@@ -140,6 +140,7 @@ section{
               line-height: 1.4;
               height:50%;
               font-size: $font1r;
+              // white-space: nowrap;
               overflow: hidden;
               text-overflow:ellipsis;
             }

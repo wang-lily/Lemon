@@ -2,7 +2,9 @@
   margin: 0;
   padding: 0; 
 }
-
+section img:not(.no-shadow):hover{
+  box-shadow: 0 0 10px 3px #151515ab;
+}
 section a {
   color: rgba(0, 0, 0, 0.5); }
   section a:hover {

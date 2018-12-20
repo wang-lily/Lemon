@@ -22,17 +22,16 @@ router.get("/allSpotsList",(req,res)=>{
   pool.query(sql,(err,result)=>{
     if(err) throw (err);
     res.send(result);
-  })
-  
+  })  
 })
 // select season,iimg_380_220,country,spot from img i inner join spot s on i.sid=s.sid order by season
+
 router.get("/spots01",(req,res)=>{
   var sql = `select season,iimg_380_220,country,spot from img i inner join spot s on i.sid=s.sid order by season`;
   pool.query(sql,(err,result)=>{
     if(err) throw (err);
     res.send(result);
-  })
-  
+  })  
 })
 
 router.get("/spots02",(req,res)=>{
@@ -47,7 +46,15 @@ router.get("/spots02",(req,res)=>{
     data.mdImgs = result;
       res.send(data);
     })
-  })
-  
+  }) 
 })
+
+router.get("/spots03",(req,res)=>{
+  var sql = `select click_rate,iimg_270_165,country,spot from img i inner join spot s on i.sid=s.sid GROUP by click_rate order by click_rate DESC LIMIT 0,4`;
+  pool.query(sql,(err,result)=>{
+    if(err) throw (err);
+    res.send(result);
+  })  
+})
+
 module.exports=router;

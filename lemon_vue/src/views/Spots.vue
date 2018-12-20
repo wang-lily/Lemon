@@ -149,6 +149,26 @@
                 </div>
             </div>
             <!--主题游推荐end-->
+            <!-- 热门景点start -->
+            <div id="spots03">
+                <h6 class="pt-4 pb-3 pl-2 m-0 border-bottom">
+                    <span class="d-inline-block iconfont icon-mudedi1"></span>
+                    <span>热门景点</span>
+                </h6>
+                <div class="pl-1 pr-1 mt-3">
+                    <div class="row w-100 m-0 p-0">
+                        <div v-for="(item,i) of spots03.imgs" :key="i" class="col-6 col-md-3 p-1 card border-0 position-relative">
+                            <img class="card-img" :src="item.iimg_270_165"/>
+                            <div class="card-footer m-0 p-1">
+                                <p class="m-0">{{item.spot || item.country}}</p>
+                                <p class="m-0">人气指数：{{item.click_rate}}</p>
+                            </div>
+                            <img class="no-shadow" src="../assets/background/hot.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 热门个景点end -->
         </div>
     </section>
 </template>
@@ -193,10 +213,13 @@
                 spots02:{
                     tabDetails:["人文","山水","美食","海岛","休闲"],
                     tabs:[],
-                    presentTab:2,
+                    presentTab:3,
                     prevHideTab:0,
                     nextHideTab:0,
                     activeItem:null,
+                },
+                spots03:{
+                    imgs:["","","",""]
                 }
                 
             }
@@ -314,8 +337,8 @@
             },
             loadSpots02Imgs(){
                 this.axios.get("http://127.0.0.1:3001/spots/spots02").then(res=>{
-                    var lgImgs = res.data.lgImgs;
-                    var mdImgs = res.data.mdImgs;
+                    // var lgImgs = res.data.lgImgs;
+                    // var mdImgs = res.data.mdImgs;
                     for(var i=0; i<5; i++){
                         this.spots02.tabs[i].imgsList=[[],[]];
                     }
@@ -353,9 +376,15 @@
                             }
                         }
                     }
-                    getImgs(this.spots02,lgImgs,0,2,0);
-                    getImgs(this.spots02,mdImgs,1,4,1);
-                    console.log(this.spots02.tabs[0].imgsList[0][1]);
+                    getImgs(this.spots02,res.data.lgImgs,0,2,0);
+                    getImgs(this.spots02,res.data.mdImgs,1,4,1);
+                    // console.log(this.spots02.tabs[0].imgsList[0][1]);
+                })
+            },
+            loadSpots03Imgs(){
+                this.axios.get("http://127.0.0.1:3001/spots/spots03").then(res=>{
+                    // console.log(res.data);
+                    this.spots03.imgs = res.data;
                 })
             }
 
@@ -368,6 +397,7 @@
             this.loadSpots01Imgs();
             this.loadSpotsTabs(this.spots02,5,4);
             this.loadSpots02Imgs();
+            this.loadSpots03Imgs();
         },
         mounted() {
             

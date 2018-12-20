@@ -85,61 +85,62 @@ CREATE TABLE spot(
 	sid INT PRIMARY KEY AUTO_INCREMENT,
 	country VARCHAR(48),
 	spot VARCHAR(48),
-	hot INT
+	hot INT,
+	click_rate INT
 	
 );
 #中国
-INSERT INTO spot VALUES(1,"中国","峨眉山",3);
-INSERT INTO spot VALUES(2,"中国","黄山",4);
-INSERT INTO spot VALUES(3,"中国","九寨沟",3);
-INSERT INTO spot VALUES(4,"中国","青海湖",2);
-INSERT INTO spot VALUES(5,"中国","西藏",5);
-INSERT INTO spot VALUES(6,"中国","台湾",5);
+INSERT INTO spot VALUES(1,"中国","峨眉山",3,1111);
+INSERT INTO spot VALUES(2,"中国","黄山",4,1112);
+INSERT INTO spot VALUES(3,"中国","九寨沟",3,1113);
+INSERT INTO spot VALUES(4,"中国","青海湖",2,1114);
+INSERT INTO spot VALUES(5,"中国","西藏",5,1115);
+INSERT INTO spot VALUES(6,"中国","台湾",5,1114);
 #韩国
-INSERT INTO spot VALUES(7,"韩国","釜山",4);
-INSERT INTO spot VALUES(8,"韩国","京畿道",1);
-INSERT INTO spot VALUES(9,"韩国","江原道",2);
-INSERT INTO spot VALUES(10,"韩国","济州岛",3);
-INSERT INTO spot VALUES(11,"韩国","仁川",5);
-INSERT INTO spot VALUES(12,"韩国","长岛",4);
+INSERT INTO spot VALUES(7,"韩国","釜山",4,1114);
+INSERT INTO spot VALUES(8,"韩国","京畿道",1,1114);
+INSERT INTO spot VALUES(9,"韩国","江原道",2,1114);
+INSERT INTO spot VALUES(10,"韩国","济州岛",3,1118);
+INSERT INTO spot VALUES(11,"韩国","仁川",5,1114);
+INSERT INTO spot VALUES(12,"韩国","长岛",4,1119);
 #马来西亚
-INSERT INTO spot VALUES(13,"马来西亚",null,1);
+INSERT INTO spot VALUES(13,"马来西亚",null,1,1120);
 #尼泊尔
-INSERT INTO spot VALUES(14,"尼泊尔",null,2);
+INSERT INTO spot VALUES(14,"尼泊尔",null,2,1114);
 #菲律宾
-INSERT INTO spot VALUES(15,"菲律宾",null,2);
+INSERT INTO spot VALUES(15,"菲律宾",null,2,1114);
 #日本
-INSERT INTO spot VALUES(16,"日本","北海道",1);
-INSERT INTO spot VALUES(17,"日本","大阪",5);
-INSERT INTO spot VALUES(18,"日本","金阁寺",1);
-INSERT INTO spot VALUES(19,"日本","奈良",4);
-INSERT INTO spot VALUES(20,"日本","宇和岛城",3);
-INSERT INTO spot VALUES(21,"日本","富士山",4);
+INSERT INTO spot VALUES(16,"日本","北海道",1,1114);
+INSERT INTO spot VALUES(17,"日本","大阪",5,1114);
+INSERT INTO spot VALUES(18,"日本","金阁寺",1,1114);
+INSERT INTO spot VALUES(19,"日本","奈良",4,1114);
+INSERT INTO spot VALUES(20,"日本","宇和岛城",3,1121);
+INSERT INTO spot VALUES(21,"日本","富士山",4,1114);
 #新加坡
-INSERT INTO spot VALUES(22,"新加坡",null,3);
+INSERT INTO spot VALUES(22,"新加坡",null,3,1122);
 #泰国
-INSERT INTO spot VALUES(23,"泰国","曼谷",5);
-INSERT INTO spot VALUES(24,"泰国","普吉岛",2);
-INSERT INTO spot VALUES(25,"泰国","清迈",4);
-INSERT INTO spot VALUES(26,"泰国","东芭乐园",1);
-INSERT INTO spot VALUES(27,"泰国","暹罗广场",2);
-INSERT INTO spot VALUES(28,"泰国","芭提雅",3);
+INSERT INTO spot VALUES(23,"泰国","曼谷",5,1114);
+INSERT INTO spot VALUES(24,"泰国","普吉岛",2,1123);
+INSERT INTO spot VALUES(25,"泰国","清迈",4,1114);
+INSERT INTO spot VALUES(26,"泰国","东芭乐园",1,1114);
+INSERT INTO spot VALUES(27,"泰国","暹罗广场",2,1114);
+INSERT INTO spot VALUES(28,"泰国","芭提雅",3,1114);
 #其他景点
-INSERT INTO spot VALUES(DEFAULT,"中国","苏州",5);
-INSERT INTO spot VALUES(DEFAULT,"中国","杭州",5);
-INSERT INTO spot VALUES(DEFAULT,"中国","重庆",5);
-INSERT INTO spot VALUES(DEFAULT,"中国","香港",5);
-INSERT INTO spot VALUES(DEFAULT,"中国","成都",5);
-INSERT INTO spot VALUES(DEFAULT,"中国","呼伦贝尔",5);
-INSERT INTO spot VALUES(DEFAULT,"中国","哈尔滨",5);
-INSERT INTO spot VALUES(DEFAULT,"中国","青岛",5);
-INSERT INTO spot VALUES(DEFAULT,"中国","大连",5);
-INSERT INTO spot VALUES(DEFAULT,"中国","云南",5);
-INSERT INTO spot VALUES(DEFAULT,"中国","桂林",5);
-INSERT INTO spot VALUES(DEFAULT,"中国","贵州",5);
-INSERT INTO spot VALUES(DEFAULT,"中国","四姑娘山",5);
-INSERT INTO spot VALUES(DEFAULT,"中国","泸沽湖",5);
-INSERT INTO spot VALUES(DEFAULT,"中国","上海",5);
+INSERT INTO spot VALUES(DEFAULT,"中国","苏州",5,1110);
+INSERT INTO spot VALUES(DEFAULT,"中国","杭州",5,1110);
+INSERT INTO spot VALUES(DEFAULT,"中国","重庆",5,1110);
+INSERT INTO spot VALUES(DEFAULT,"中国","香港",5,1110);
+INSERT INTO spot VALUES(DEFAULT,"中国","成都",5,1110);
+INSERT INTO spot VALUES(DEFAULT,"中国","呼伦贝尔",5,1110);
+INSERT INTO spot VALUES(DEFAULT,"中国","哈尔滨",5,1110);
+INSERT INTO spot VALUES(DEFAULT,"中国","青岛",5,1110);
+INSERT INTO spot VALUES(DEFAULT,"中国","大连",5,1110);
+INSERT INTO spot VALUES(DEFAULT,"中国","云南",5,1110);
+INSERT INTO spot VALUES(DEFAULT,"中国","桂林",5,1110);
+INSERT INTO spot VALUES(DEFAULT,"中国","贵州",5,1110);
+INSERT INTO spot VALUES(DEFAULT,"中国","四姑娘山",5,1110);
+INSERT INTO spot VALUES(DEFAULT,"中国","泸沽湖",5,1110);
+INSERT INTO spot VALUES(DEFAULT,"中国","上海",5,1110);
 
 
 #图片总表
