@@ -22,14 +22,17 @@ function addTravel(){
         }
     }
     // img预加载
-    function imgPreview(url,callback){
-        var imgPreview = `<img src="${url}" style="opacity:0"/>`;
+    function previewImg(url,callback){
+        // var imgPreview = `<img src="${url}" style="opacity:0"/>`;
+        var imgPreview = new Image();
+        imgPreview.src = url;
+        imgPreview.style  = "opacity:0";
         var img = `<img src="${url}" alt="" />`;
         $("#preview").append(imgPreview);
         var imgPreviewWidth = "";
         var imgPreviewHeight = "";
         var imgObj = null;
-        $(imgPreview).load(function(){
+        $(imgPreview).on("load",function(){
             imgPreviewWidth = $("#preview>img").css("width");
             imgPreviewHeight = $("#preview>img").css("height");
             if (imgPreviewWidth.slice(0,-2)>=100 && imgPreviewHeight.slice(0,-2)>=50){
@@ -206,7 +209,7 @@ function addTravel(){
         if(this.files.length==1){
             var url = window.URL.createObjectURL(this.files[0]);
             var keyWords = "图片";
-                imgPreview(url,function(imgObj){
+                previewImg(url,function(imgObj){
                     if(!imgObj){
                         $("#pop-mask").toggleClass("d-none");
                         $("#preview").html("");
