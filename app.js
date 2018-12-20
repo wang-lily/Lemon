@@ -9,6 +9,8 @@ const user = require("./routes/user");
 const  pics= require("./routes/pics");
 const  personal= require("./routes/personal");
 const  strategy= require("./routes/strategy");
+const addTravel = require("./routes/add_travel");
+
 
 var app = express();
 app.listen(3001);
@@ -36,4 +38,8 @@ app.use("/user",user);
 app.use("/pics",pics);
 app.use('/personal',personal);
 app.use("/spots",spots);
+<<<<<<< HEAD
 app.use("/strategy",strategy);
+=======
+app.use("/add_travel",addTravel);
+>>>>>>> 38b172efd87bd6e2224fa9297fe5b0b853e653e2

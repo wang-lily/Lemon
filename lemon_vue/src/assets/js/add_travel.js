@@ -1,4 +1,6 @@
-$(function(){
+import $ from 'jquery'
+import autosize from 'autosize'
+function addTravel(){
     var focusedEles = {
         "editable": document.querySelector("#section>textarea:last-child"),//存放#section中获得焦点的可文本编辑的元素,默认为最后一个textarea；
         "prev":null,//存放#section中前一个获得焦点的元素
@@ -158,17 +160,17 @@ $(function(){
     $("#section").click(function(e){
         // 删除添加的img及相关无用信息
         if(e.target.title=="删除"){
-            var $divImg = $(e.target).parent().parent().parent().parent();
-            if($divImg.prev()[0] && $divImg.prev()[0].tagName=="TEXTAREA" && $divImg.next()[0] && $divImg.next()[0].tagName=="TEXTAREA"){
-                var prevVal = $divImg.prev().val();
-                $divImg.prev().remove();
-                $divImg.next().val(`${prevVal + $divImg.next().val()}`);
+            var $imgOrVideoDiv = $(e.target).parent().parent().parent().parent();
+            if($imgOrVideoDiv.prev()[0] && $imgOrVideoDiv.prev()[0].tagName=="TEXTAREA" && $imgOrVideoDiv.next()[0] && $imgOrVideoDiv.next()[0].tagName=="TEXTAREA"){
+                var prevVal = $imgOrVideoDiv.prev().val();
+                $imgOrVideoDiv.prev().remove();
+                $imgOrVideoDiv.next().val(`${prevVal + $imgOrVideoDiv.next().val()}`);
                 autosize.update($("textarea"));
             }
-            // if (!$divImg.next().val()){
-            //     $divImg.next().remove();
+            // if (!$imgOrVideoDiv.next().val()){
+            //     $imgOrVideoDiv.next().remove();
             // }
-            $divImg.remove();
+            $imgOrVideoDiv.remove();
             return;
         }
         // 重置img
@@ -411,4 +413,6 @@ $(function(){
     
     
     
-  })
+  }
+
+export {addTravel}

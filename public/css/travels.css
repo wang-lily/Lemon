@@ -109,6 +109,7 @@ section #page-nav > p > button {
       line-height: 1.4;
       height: 50%;
       font-size: 0.8rem;
+      /* white-space: nowrap; */
       overflow: hidden;
       text-overflow: ellipsis; }
     section #content > div.item > div:nth-child(2) > div {
