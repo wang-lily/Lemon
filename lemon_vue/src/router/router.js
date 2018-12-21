@@ -21,11 +21,8 @@ export default new Router({
       {path: '/personal', component: Personal},
       {path: '/spots', component: Spots},
       {path: '/pics', component: Pics},
-<<<<<<< HEAD
-      {path: '/strategy', component: Strategy}
-=======
+      {path: '/strategy', component: Strategy},
       {path: '/add_travel', component: Add_travel}
->>>>>>> 38b172efd87bd6e2224fa9297fe5b0b853e653e2
     ]},
     {path:'/login_register',component:Register_Login},
     {path: '**', component: NotFound}
