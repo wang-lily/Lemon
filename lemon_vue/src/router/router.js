@@ -20,6 +20,7 @@ export default new Router({
       {path: '/personal', component: Personal},
       {path: '/spots', component: Spots},
       {path: '/pics', component: Pics},
+      {path: '/strategy', component: Strategy},
       {path: '/add_travel', component: Add_travel}
     ]},
     {path:'/login_register',component:Register_Login},

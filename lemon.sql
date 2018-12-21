@@ -544,20 +544,84 @@ CREATE TABLE pointer(
 	pid INT PRIMARY KEY AUTO_INCREMENT,
 	#景点id
 	sid INT,
-	#图片id
-	iid INT,
-	txt TEXT,
-	#浏览量
-	pview INT,
-	Ttime DATETIME,
+	#图片
+	img VARCHAR(255),
+	#内容
+	#发表时间
+	Ttime VARCHAR(50),
 	#浏览量
 	tview INT,
 	#点赞
 	zan INT,
-	btitle VARCHAR(50),
-	mtitle VARCHAR(50),
-	stitle VARCHAR(50)
+	totaltitle VARCHAR(50),
+	subtitle VARCHAR(50)
 );
+INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&http://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg&
+http://127.0.0.1:3001/img/chongqing_strategy/nanbinglu.png&
+http://127.0.0.1:3001/img/chongqing_strategy/cq_route3.png&
+http://127.0.0.1:3001/img/chongqing_strategy/xh.png&
+http://127.0.0.1:3001/img/chongqing_strategy/hg.png&http://127.0.0.1:3001/img/chongqing_strategy/jym1.png",
+'2018-5-8',355316,2331,"重庆48h｜网红、艺术、市井全体验，山城这样玩才地道！",null);
+
+INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/HongKong1.jpg&http://127.0.0.1:3001/img/chongqing_strategy/HongKong12.png&http://127.0.0.1:3001/img/chongqing_strategy/HongKong3.jpg",
+'2018-5-8',355316,2331,"我的2017# 二刷香港——“打个飞的去红馆看杨小姐演唱会！",null);
+
+INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/Disney1.jpg&http://127.0.0.1:3001/img/chongqing_strategy/Disney2.png&
+http://127.0.0.1:3001/img/chongqing_strategy/Disney3.png",
+'2018-5-8',355316,2331,"上海迪士尼最全攻略！好吃好玩带娃必备！",null);
+
+INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/db1.jpg&http://127.0.0.1:3001/img/chongqing_strategy/db2.png&http://127.0.0.1:3001/img/chongqing_strategy/db3.jpg",
+'2018-5-8',355316,2331,"大阪经典2日玩法（含购物攻略）！",null);
+
+INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&http://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg",
+'2018-5-8',355316,2331,"没有樱花没有雪 秋天的北海道也挺美！",null);
+
+INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/America1.jpg&http://127.0.0.1:3001/img/chongqing_strategy/America2.png&http://127.0.0.1:3001/img/chongqing_strategy/America3.jpg",
+'2018-5-8',355316,2331,"美国大峡谷环线自驾：住宿优选！",null);
+
+INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&http://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg",
+'2018-5-8',355316,2331,"天堂大佛石全海景玻璃栈道，开启三亚新体验！",null);
+
+INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/HongKong1.jpg&http://127.0.0.1:3001/img/chongqing_strategy/HongKong12.png&http://127.0.0.1:3001/img/chongqing_strategy/HongKong3.jpg",
+'2018-5-8',355316,2331,"香港美食地图，惊艳了味蕾的9家店！",null);
+
+INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/yunnan1.jpg&http://127.0.0.1:3001/img/chongqing_strategy/yunnan2.png&http://127.0.0.1:3001/img/chongqing_strategy/yunnan3.jpg",
+'2018-5-8',355316,2331,"云南的天空，开出漫天的花（大理、丽江、泸沽湖、昆明）！",null);
+
+INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&http://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg&
+http://127.0.0.1:3001/img/chongqing_strategy/nanbinglu.png&
+http://127.0.0.1:3001/img/chongqing_strategy/cq_route3.png&
+http://127.0.0.1:3001/img/chongqing_strategy/xh.png&
+http://127.0.0.1:3001/img/chongqing_strategy/hg.png&http://127.0.0.1:3001/img/chongqing_strategy/jym1.png",
+'2018-5-8',355316,2331,"重庆48h｜网红、艺术、市井全体验，山城这样玩才地道！",null);
+
+INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/HongKong1.jpg&http://127.0.0.1:3001/img/chongqing_strategy/HongKong12.png&http://127.0.0.1:3001/img/chongqing_strategy/HongKong3.jpg",
+'2018-5-8',355316,2331,"我的2017# 二刷香港——“打个飞的去红馆看杨小姐演唱会！",null);
+
+INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/Disney1.jpg&http://127.0.0.1:3001/img/chongqing_strategy/Disney2.png&
+http://127.0.0.1:3001/img/chongqing_strategy/Disney3.png",
+'2018-5-8',355316,2331,"上海迪士尼最全攻略！好吃好玩带娃必备！",null);
+
+INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/db1.jpg&http://127.0.0.1:3001/img/chongqing_strategy/db2.png&http://127.0.0.1:3001/img/chongqing_strategy/db3.jpg",
+'2018-5-8',355316,2331,"大阪经典2日玩法（含购物攻略）！",null);
+
+INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&http://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg",
+'2018-5-8',355316,2331,"没有樱花没有雪 秋天的北海道也挺美！",null);
+
+INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/America1.jpg&http://127.0.0.1:3001/img/chongqing_strategy/America2.png&http://127.0.0.1:3001/img/chongqing_strategy/America3.jpg",
+'2018-5-8',355316,2331,"美国大峡谷环线自驾：住宿优选！",null);
+
+INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&http://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg",
+'2018-5-8',355316,2331,"天堂大佛石全海景玻璃栈道，开启三亚新体验！",null);
+
+INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/HongKong1.jpg&http://127.0.0.1:3001/img/chongqing_strategy/HongKong12.png&http://127.0.0.1:3001/img/chongqing_strategy/HongKong3.jpg",
+'2018-5-8',355316,2331,"香港美食地图，惊艳了味蕾的9家店！",null);
+
+INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/yunnan1.jpg&http://127.0.0.1:3001/img/chongqing_strategy/yunnan2.png&http://127.0.0.1:3001/img/chongqing_strategy/yunnan3.jpg",
+'2018-5-8',355316,2331,"云南的天空，开出漫天的花（大理、丽江、泸沽湖、昆明）！",null);
+
+
+
 #logo
 CREATE TABLE logo_img(
 	logo_pid INT PRIMARY KEY AUTO_INCREMENT,

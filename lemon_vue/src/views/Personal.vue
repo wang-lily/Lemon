@@ -198,29 +198,26 @@
                 })
            },
 
-        //  ackEvent(reg,cur,tip,flag,text1,text2,text3){
+            //  ackEvent(reg,cur,obj,text){
         //           if(!cur){
-        //              tip=text1;
-        //              flag=true;
+        //              obj.tip=text[0];         
+        //              obj.flag=true;
         //              this.ackAllFlag=false; 
-        //              console.log(1)
         //            }else if(reg.test(cur)){
-        //                tip=text2;
-        //                flag=true;
-        //                this.ackAllFlag=true; 
-        //                 console.log(2)
+        //              obj.tip=text[1];
+        //              obj.flag=true;
+        //              this.ackAllFlag=true; 
         //           }else{
-        //              tip=text3;
-        //              flag=true;
+        //              obj.tip=text[2];
+        //              obj.flag=true;
         //              this.ackAllFlag=true;
-        //              console.log(this.unameAck.tip);
-        //               console.log(3)
         //           }
         //      },
         //      ackUname(){
         //         var text=['昵称不能为空！','昵称可用！','昵称为4到16位（字母，数字，下划线，减号）！'];
         //         this.ackEvent(/^[a-zA-Z0-9_-]{4,16}$/,this.info.infoList.uname,
-        //            this.unameAck.tip,this.unameAck.flag,text[0],text[1],text[2]);  
+        //            this.unameAck,text);  
+        //      }, this.unameAck.tip,this.unameAck.flag,text[0],text[1],text[2]);  
         //      },
              ackUname(){
                    this.subAck.flag = false;
