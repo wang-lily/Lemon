@@ -206,7 +206,7 @@ $(function(){
             var keyWords = "图片";
                 imgPreview(url,function(imgObj){
                     if(!imgObj){
-                        $("#pop-mask").toggleClass("d-none");
+                        $("#pop-alert").toggleClass("d-none");
                         $("#preview").html("");
                         fileImg.value = "";
                         return;
@@ -403,8 +403,13 @@ $(function(){
     })
     
     
-    $("#pop-mask button").click(function(){
-        $("#pop-mask").toggleClass("d-none");
+    $("#pop-alert button").click(function(){
+        $("#pop-alert").toggleClass("d-none");
+    })
+
+    $("#headerImg-icon").click(function(){
+        console.log($("#headerImg-btn"));
+        $("#headerImg-btn").trigger("click");
     })
     
     

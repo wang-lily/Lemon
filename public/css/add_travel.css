@@ -8,23 +8,20 @@
 a:hover {
   text-decoration: none; }
 
-#top > p {
-  width: 100%;
-  text-align: center;
-  text-shadow: 0 0 0.2em #8F7;
-  letter-spacing: 0.5rem;
-  top: 30%;
-  left: 50%;
-  transform: translateX(-50%); }
-
-#top > div {
-  bottom: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-  box-shadow: 3px 3px 31px 0px #000; }
-  #top > div > input {
+#top {
+  overflow: hidden; }
+  #top img {
+    filter: blur(10px); }
+  #top > .headerImg {
     width: 100%;
-    border-radius: 5px; }
+    text-align: center;
+    top: 50%;
+    left: 50%; }
+    #top > .headerImg > div.title {
+      margin: 0 auto; }
+      #top > .headerImg > div.title > input {
+        width: 100%;
+        border-radius: 5px; }
 
 #content .hide-input {
   margin-left: 100px; }
@@ -100,10 +97,10 @@ a:hover {
   #content .my-btn button:last-child:hover {
     box-shadow: inset inset 0px -1px 6px 3px rgba(0, 0, 0, 0.5); }
 
-#pop-mask {
+.pop-mask {
   z-index: 300;
   background: rgba(0, 0, 0, 0.5); }
-  #pop-mask div.size-alert {
+  .pop-mask div.size-alert {
     z-index: 301;
     top: 50%;
     left: 50%;
@@ -112,14 +109,33 @@ a:hover {
     height: 165px;
     box-shadow: 0px 0px 31px 0px #000;
     border-radius: 5px; }
+  .pop-mask div.load-img {
+    z-index: 302;
+    margin: 0 auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent; }
+    .pop-mask div.load-img .img-box {
+      max-width: 1500px;
+      box-shadow: 0px 0px 31px 0px #000;
+      border-radius: 5px; }
 
 @media screen and (min-width: 768px) {
-  #top > p {
+  #top > .headerImg {
+    transform: translate(-50%, -43%);
     font-size: 2rem; }
-  #top > div {
-    width: 50%; }
-    #top > div > input {
-      height: 4rem; }
+    #top > .headerImg > p > a.icon-tupian {
+      font-size: 3rem; }
+    #top > .headerImg > div > p:first-child {
+      font-size: 1.5rem; }
+    #top > .headerImg > div > p:last-child {
+      font-size: 1rem; }
+  #top div.title {
+    width: 500px; }
+    #top div.title > input {
+      height: 3rem;
+      font-size: 1rem; }
   #content .aside {
     height: 800px; }
   #content .section {
@@ -137,12 +153,22 @@ a:hover {
     border-radius: 1.5rem; } }
 
 @media screen and (max-width: 767px) {
-  #top > p {
-    font-size: 1.3rem; }
-  #top > div {
+  #top > .headerImg {
+    transform: translate(-50%, -35%);
+    font-size: 2rem; }
+    #top > .headerImg > p > a.icon-tupian {
+      font-size: 2rem; }
+    #top > .headerImg > div {
+      margin-bottom: -0.5rem; }
+      #top > .headerImg > div > p:first-child {
+        font-size: 1rem; }
+      #top > .headerImg > div > p:last-child {
+        font-size: 0.8rem; }
+  #top div.title {
     width: 75%; }
-    #top > div > input {
-      height: 2rem; }
+    #top div.title > input {
+      height: 1.5rem;
+      font-size: 1rem; }
   #content .aside {
     height: 500px; }
   #content .section {

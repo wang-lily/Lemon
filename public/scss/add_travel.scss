@@ -23,25 +23,36 @@ a:hover{
 }
 
 #top{
-    &>p{
+    overflow: hidden;
+    img{
+        filter: blur(10px);
+    }
+    &>.headerImg{
         width: 100%;
         text-align: center;
-        text-shadow: 0 0 0.2em #8F7;
-        letter-spacing: 0.5rem;
-        top:30%;
+        top:50%;
         left: 50%;
-        transform: translateX(-50%);
-    }
-    &>div{
-        bottom:10%;
-        left: 50%;
-        transform: translateX(-50%);
-        box-shadow: 3px 3px 31px 0px #000;
-        &>input{
-            width: 100%;
-            border-radius:5px;
+        
+        &>div.title{
+            // width: 50%;
+            margin: 0 auto;
+            // box-shadow: 3px 3px 31px 0px #000;
+            &>input{
+                width: 100%;
+                border-radius:5px;
+            }
         }
     }
+    // &>div.title{
+    //     bottom:10%;
+    //     left: 50%;
+    //     transform: translateX(-50%);
+    //     box-shadow: 3px 3px 31px 0px #000;
+    //     &>input{
+    //         width: 100%;
+    //         border-radius:5px;
+    //     }
+    // }
 }
 #content{
     .hide-input{
@@ -155,7 +166,7 @@ a:hover{
         }
     }
 }
-#pop-mask{
+.pop-mask{
     z-index:300; 
     background: rgba(0,0,0,0.5);
     div.size-alert{
@@ -167,19 +178,47 @@ a:hover{
         box-shadow: 0px 0px 31px 0px #000;
         border-radius: 5px;
     }
+    div.load-img{
+        z-index:302;
+        margin: 0 auto;
+        top:50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background: transparent;
+        // width:270px;height:165px;
+        .img-box{
+            max-width: 1500px;
+            box-shadow: 0px 0px 31px 0px #000;
+            border-radius: 5px;
+        }
+    }
 }
 
 
 //大屏幕
 @media screen and (min-width:768px){
     #top{
-        &>p{
+        &>.headerImg{
+            transform: translate(-50%,-43%);
+            &>p>a.icon-tupian{
+                font-size: 3rem;
+            }
+            &>div{
+                &>p:first-child{
+                    font-size: 1.5rem;
+                }
+                &>p:last-child{
+                    font-size: 1rem;
+                }
+            }
             font-size: $font2r;
         }
-        &>div{
-            width: 50%;
+        div.title{
+            width: 500px;
+            // height:3rem;
             &>input{
-                height: 4rem;
+                height: 3rem;
+                font-size: 1rem;
             }
         }
     }
@@ -214,13 +253,29 @@ a:hover{
 //小屏幕
 @media screen and (max-width:767px){
     #top{
-        &>p{
-            font-size: $font1_3r;
+        
+        &>.headerImg{
+            transform: translate(-50%,-35%);
+            &>p>a.icon-tupian{
+                font-size: 2rem;
+            }
+            &>div{
+                margin-bottom:-0.5rem;
+                &>p:first-child{
+                    font-size: 1rem;
+                }
+                &>p:last-child{
+                    font-size: 0.8rem;
+                }
+            }
+            font-size: $font2r;
         }
-        &>div{
+        div.title{
             width: 75%;
             &>input{
-                height: 2rem;
+                // margin-bottom:-1.5rem;
+                height: 1.5rem;
+                font-size: 1rem;
             }
         }
     }

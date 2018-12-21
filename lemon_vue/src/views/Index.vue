@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="position-absolute link">
-                    <a href="" class="pt-1 pb-1 ml-1"> <i class="iconfont icon-dianping"></i>写游记</a>
+                    <router-link to="/add_travel" class="pt-1 pb-1 ml-1"> <i class="iconfont icon-dianping"></i>写游记</router-link>
                     <router-link to='/pics' class="pt-1 pb-1  ml-1">历历在目</i></router-link> 
                 </div> 
             </div>

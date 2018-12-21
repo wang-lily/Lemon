@@ -35,10 +35,28 @@
           />
           <img class=" w-100" src="../img/carousel/picture.png" />
         </picture>
-        <p class="position-absolute text-white">-记录精彩瞬间-</p>
-        <div class="position-absolute">
-          <input class="p-3" type="text" placeholder="填写游记标题" autofocus/>
+        <!-- <p class="position-absolute text-white headerImg">-记录精彩瞬间-</p> -->
+        <!-- 上传头图 -->
+        <div class="position-absolute d-flex flex-column justify-content-center headerImg">
+          <p>
+            <a id="headerImg-icon" href="javascript:;" class="iconfont icon-tupian text-warning">
+            </a>
+          </p>
+          <input id="headerImg-btn" style="width: 0; height: 0; opacity: 0;" id="fileImg"
+                    accept="image/*"
+                    type="file"
+                  />
+          <div>
+            <p class="text-white mb-0">设置游记头图</p>
+            <p class="text-white mb-1 d-none d-sm-block">请选择尺寸大于270px*165px的高清图片上传</p>
+          </div>
+          <div class="title">
+            <input class="p-3" type="text" placeholder="填写游记标题" autofocus/>
+          </div>
         </div>
+        <!-- <div class="position-absolute title">
+          <input class="p-3" type="text" placeholder="填写游记标题" autofocus/>
+        </div> -->
       </div>
       <div class="container p-0">
         <div id="content" class="position-relative">
@@ -132,8 +150,8 @@
 
 
     <!-- 插入图片尺寸不合适时弹出提示 start -->
-    <div id="pop-mask" class="fixed-top w-100 h-100 d-none" style="z-index:300; background: rgba(0,0,0,0.5)">
-      <div class="fixed-top bg-light d-flex flex-column justify-content-center" style="z-index:301;top:50%;left: 50%;transform: translate(-50%,-50%);width:270px;height:165px;box-shadow: 0px 0px 31px 0px #000;border-radius: 5px;">
+    <div id="pop-alert" class="fixed-top w-100 h-100 d-none pop-mask">
+      <div class="fixed-top bg-light d-flex flex-column justify-content-center size-alert" >
           <div class="h6 p-4">您选择的图片尺寸太小，请选择尺寸大于100px*50px的图片</div>
           <div class="text-center">
               <button class="btn btn-warning w-25">确定</button>
@@ -141,6 +159,20 @@
         </div>
     </div>
     <!--插入图片后弹出提示 end-->
+    <!-- 弹出设置头图 start -->
+    <div id="pop-alert" class="fixed-top w-100 h-100 pop-mask">
+      <div class="load-img position-absolute" >
+         
+          <img class="img-box" src="../img/carousel/lb01.png">
+        
+        <div class="d-flex justify-content-center mt-3">
+            <button class="btn btn-dark mr-5 pl-4 pr-4">取消</button>   
+            <button class="btn btn-dark ml-5 pl-4 pr-4">确定</button>
+        </div>
+      </div>
+      
+    </div>
+    <!-- 弹出设置头图 start -->
     <script src="../js/jquery-1.11.3.js"></script>
     <script src="../js/autosize.js"></script>
     <script src="../js/header.js"></script>

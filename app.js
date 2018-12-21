@@ -38,8 +38,5 @@ app.use("/user",user);
 app.use("/pics",pics);
 app.use('/personal',personal);
 app.use("/spots",spots);
-<<<<<<< HEAD
 app.use("/strategy",strategy);
-=======
 app.use("/add_travel",addTravel);
->>>>>>> 38b172efd87bd6e2224fa9297fe5b0b853e653e2
