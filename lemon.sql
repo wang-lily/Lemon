@@ -543,7 +543,7 @@ CREATE TABLE travel(
 CREATE TABLE pointer(
 	pid INT PRIMARY KEY AUTO_INCREMENT,
 	#景点id
-	sid INT,
+	spot VARCHAR(50),
 	#图片
 	img VARCHAR(255),
 	#内容
@@ -556,69 +556,125 @@ CREATE TABLE pointer(
 	totaltitle VARCHAR(50),
 	subtitle VARCHAR(50)
 );
-INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&http://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg&
+INSERT INTO pointer VALUES(null,"重庆","http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg
+&http://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg&
 http://127.0.0.1:3001/img/chongqing_strategy/nanbinglu.png&
 http://127.0.0.1:3001/img/chongqing_strategy/cq_route3.png&
 http://127.0.0.1:3001/img/chongqing_strategy/xh.png&
 http://127.0.0.1:3001/img/chongqing_strategy/hg.png&http://127.0.0.1:3001/img/chongqing_strategy/jym1.png",
 '2018-5-8',355316,2331,"重庆48h｜网红、艺术、市井全体验，山城这样玩才地道！",null);
 
-INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/HongKong1.jpg&http://127.0.0.1:3001/img/chongqing_strategy/HongKong12.png&http://127.0.0.1:3001/img/chongqing_strategy/HongKong3.jpg",
+INSERT INTO pointer VALUES(null,"香港","http://127.0.0.1:3001/img/chongqing_strategy/HongKong1.jpg
+&http://127.0.0.1:3001/img/chongqing_strategy/HongKong2.jpg
+&http://127.0.0.1:3001/img/chongqing_strategy/HongKong3.jpg",
 '2018-5-8',355316,2331,"我的2017# 二刷香港——“打个飞的去红馆看杨小姐演唱会！",null);
 
-INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/Disney1.jpg&http://127.0.0.1:3001/img/chongqing_strategy/Disney2.png&
-http://127.0.0.1:3001/img/chongqing_strategy/Disney3.png",
+INSERT INTO pointer VALUES(null,"上海","http://127.0.0.1:3001/img/chongqing_strategy/Disney1.jpg
+&http://127.0.0.1:3001/img/chongqing_strategy/Disney2.jpg&
+http://127.0.0.1:3001/img/chongqing_strategy/Disney3.jpg",
 '2018-5-8',355316,2331,"上海迪士尼最全攻略！好吃好玩带娃必备！",null);
 
-INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/db1.jpg&http://127.0.0.1:3001/img/chongqing_strategy/db2.png&http://127.0.0.1:3001/img/chongqing_strategy/db3.jpg",
+INSERT INTO pointer VALUES(null,"大阪","http://127.0.0.1:3001/img/chongqing_strategy/db1.jpg&
+http://127.0.0.1:3001/img/chongqing_strategy/db2.png&http://127.0.0.1:3001/img/chongqing_strategy/db3.jpg",
 '2018-5-8',355316,2331,"大阪经典2日玩法（含购物攻略）！",null);
 
-INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&http://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg",
+INSERT INTO pointer VALUES(null,"北海道","http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&
+http://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg",
 '2018-5-8',355316,2331,"没有樱花没有雪 秋天的北海道也挺美！",null);
 
-INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/America1.jpg&http://127.0.0.1:3001/img/chongqing_strategy/America2.png&http://127.0.0.1:3001/img/chongqing_strategy/America3.jpg",
+INSERT INTO pointer VALUES(null,"美国大峡谷","http://127.0.0.1:3001/img/chongqing_strategy/America1.jpg
+&http://127.0.0.1:3001/img/chongqing_strategy/America2.jpg&http://127.0.0.1:3001/img/chongqing_strategy/America3.jpg",
 '2018-5-8',355316,2331,"美国大峡谷环线自驾：住宿优选！",null);
 
-INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&http://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg",
+INSERT INTO pointer VALUES(null,"三亚","http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&
+http://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg",
 '2018-5-8',355316,2331,"天堂大佛石全海景玻璃栈道，开启三亚新体验！",null);
 
-INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/HongKong1.jpg&http://127.0.0.1:3001/img/chongqing_strategy/HongKong12.png&http://127.0.0.1:3001/img/chongqing_strategy/HongKong3.jpg",
+INSERT INTO pointer VALUES(null,"香港","http://127.0.0.1:3001/img/chongqing_strategy/HongKong1.jpg&
+http://127.0.0.1:3001/img/chongqing_strategy/HongKong2.jpg&http://127.0.0.1:3001/img/chongqing_strategy/HongKong3.jpg",
 '2018-5-8',355316,2331,"香港美食地图，惊艳了味蕾的9家店！",null);
 
-INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/yunnan1.jpg&http://127.0.0.1:3001/img/chongqing_strategy/yunnan2.png&http://127.0.0.1:3001/img/chongqing_strategy/yunnan3.jpg",
+INSERT INTO pointer VALUES(null,"云南","http://127.0.0.1:3001/img/chongqing_strategy/yunnan1.jpg&
+http://127.0.0.1:3001/img/chongqing_strategy/yunnan2.jpg&http://127.0.0.1:3001/img/chongqing_strategy/yunnan3.jpg",
 '2018-5-8',355316,2331,"云南的天空，开出漫天的花（大理、丽江、泸沽湖、昆明）！",null);
 
-INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&http://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg&
+INSERT INTO pointer VALUES(null,"重庆","http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&
+http://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg&
 http://127.0.0.1:3001/img/chongqing_strategy/nanbinglu.png&
 http://127.0.0.1:3001/img/chongqing_strategy/cq_route3.png&
 http://127.0.0.1:3001/img/chongqing_strategy/xh.png&
 http://127.0.0.1:3001/img/chongqing_strategy/hg.png&http://127.0.0.1:3001/img/chongqing_strategy/jym1.png",
 '2018-5-8',355316,2331,"重庆48h｜网红、艺术、市井全体验，山城这样玩才地道！",null);
 
-INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/HongKong1.jpg&http://127.0.0.1:3001/img/chongqing_strategy/HongKong12.png&http://127.0.0.1:3001/img/chongqing_strategy/HongKong3.jpg",
+INSERT INTO pointer VALUES(null,"香港","http://127.0.0.1:3001/img/chongqing_strategy/HongKong1.jpg&
+http://127.0.0.1:3001/img/chongqing_strategy/HongKong2.jpg&http://127.0.0.1:3001/img/chongqing_strategy/HongKong3.jpg",
 '2018-5-8',355316,2331,"我的2017# 二刷香港——“打个飞的去红馆看杨小姐演唱会！",null);
 
-INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/Disney1.jpg&http://127.0.0.1:3001/img/chongqing_strategy/Disney2.png&
-http://127.0.0.1:3001/img/chongqing_strategy/Disney3.png",
+INSERT INTO pointer VALUES(null,"上海","http://127.0.0.1:3001/img/chongqing_strategy/Disney1.jpg&
+http://127.0.0.1:3001/img/chongqing_strategy/Disney2.jpg&
+http://127.0.0.1:3001/img/chongqing_strategy/Disney3.jpg",
 '2018-5-8',355316,2331,"上海迪士尼最全攻略！好吃好玩带娃必备！",null);
 
-INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/db1.jpg&http://127.0.0.1:3001/img/chongqing_strategy/db2.png&http://127.0.0.1:3001/img/chongqing_strategy/db3.jpg",
+INSERT INTO pointer VALUES(null,"大阪","http://127.0.0.1:3001/img/chongqing_strategy/db1.jpg&
+http://127.0.0.1:3001/img/chongqing_strategy/db2.png&http://127.0.0.1:3001/img/chongqing_strategy/db3.jpg",
 '2018-5-8',355316,2331,"大阪经典2日玩法（含购物攻略）！",null);
 
-INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&http://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg",
+INSERT INTO pointer VALUES(null,"北海道","http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&
+http://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg",
 '2018-5-8',355316,2331,"没有樱花没有雪 秋天的北海道也挺美！",null);
 
-INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/America1.jpg&http://127.0.0.1:3001/img/chongqing_strategy/America2.png&http://127.0.0.1:3001/img/chongqing_strategy/America3.jpg",
+INSERT INTO pointer VALUES(null,"美国大峡谷","http://127.0.0.1:3001/img/chongqing_strategy/America1.jpg
+&http://127.0.0.1:3001/img/chongqing_strategy/America2.jpg
+&http://127.0.0.1:3001/img/chongqing_strategy/America3.jpg",
 '2018-5-8',355316,2331,"美国大峡谷环线自驾：住宿优选！",null);
 
-INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&http://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg",
+INSERT INTO pointer VALUES(null,"三亚大佛石","http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&
+http://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg",
 '2018-5-8',355316,2331,"天堂大佛石全海景玻璃栈道，开启三亚新体验！",null);
 
-INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/HongKong1.jpg&http://127.0.0.1:3001/img/chongqing_strategy/HongKong12.png&http://127.0.0.1:3001/img/chongqing_strategy/HongKong3.jpg",
+INSERT INTO pointer VALUES(null,"香港","http://127.0.0.1:3001/img/chongqing_strategy/HongKong1.jpg&
+http://127.0.0.1:3001/img/chongqing_strategy/HongKong2.jpg&http://127.0.0.1:3001/img/chongqing_strategy/HongKong3.jpg",
 '2018-5-8',355316,2331,"香港美食地图，惊艳了味蕾的9家店！",null);
 
-INSERT INTO pointer VALUES(null,1,"http://127.0.0.1:3001/img/chongqing_strategy/yunnan1.jpg&http://127.0.0.1:3001/img/chongqing_strategy/yunnan2.png&http://127.0.0.1:3001/img/chongqing_strategy/yunnan3.jpg",
+INSERT INTO pointer VALUES(null,"云南","http://127.0.0.1:3001/img/chongqing_strategy/yunnan1.jpg&
+http://127.0.0.1:3001/img/chongqing_strategy/yunnan2.jpg&http://127.0.0.1:3001/img/chongqing_strategy/yunnan3.jpg",
 '2018-5-8',355316,2331,"云南的天空，开出漫天的花（大理、丽江、泸沽湖、昆明）！",null);
+
+#攻略评论表
+CREATE TABLE strategycomm(
+	cid INT PRIMARY KEY AUTO_INCREMENT,
+	#景点id
+	sid INT,
+	#用户名
+	user_name VARCHAR(25),
+	#发表时间
+	ctime DATETIME,
+	#内容
+	content VARCHAR(255),
+	#点赞
+	zan INT,
+	#踩
+	cai INT
+);
+INSERT INTO strategycomm VALUES(null,1,'dd',now(),'111',0,0);
+INSERT INTO strategycomm VALUES(null,1,'dd',now(),'112',0,0);
+INSERT INTO strategycomm VALUES(null,1,'dd',now(),'113',0,0);
+INSERT INTO strategycomm VALUES(null,1,'dd',now(),'114',0,0);
+INSERT INTO strategycomm VALUES(null,1,'dd',now(),'111',0,0);
+INSERT INTO strategycomm VALUES(null,1,'dd',now(),'112',0,0);
+INSERT INTO strategycomm VALUES(null,1,'dd',now(),'113',0,0);
+INSERT INTO strategycomm VALUES(null,1,'dd',now(),'114',0,0);
+INSERT INTO strategycomm VALUES(null,1,'dd',now(),'111',0,0);
+INSERT INTO strategycomm VALUES(null,1,'dd',now(),'112',0,0);
+INSERT INTO strategycomm VALUES(null,1,'dd',now(),'113',0,0);
+INSERT INTO strategycomm VALUES(null,1,'dd',now(),'114',0,0);
+INSERT INTO strategycomm VALUES(null,1,'dd',now(),'113',0,0);
+INSERT INTO strategycomm VALUES(null,1,'dd',now(),'114',0,0);
+INSERT INTO strategycomm VALUES(null,1,'dd',now(),'111',0,0);
+INSERT INTO strategycomm VALUES(null,1,'dd',now(),'112',0,0);
+INSERT INTO strategycomm VALUES(null,1,'dd',now(),'113',0,0);
+INSERT INTO strategycomm VALUES(null,1,'dd',now(),'114',0,0);
+
 
 
 

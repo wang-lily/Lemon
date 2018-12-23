@@ -29,26 +29,31 @@
 
                 <div class="col-md-9 content_right">
                     <h3 class="mb-3 p-2 text-muted">推荐攻略</h3>
-                    <div class="recommend p-4 mb-2">
+                    <div class="recommend p-4 mb-2" v-for='(item,index) in strategyList' @click='jumpToDetails(item.pid)'>
                         <div class="box-top w-100 d-flex justify-content-between align-items-center">
-                            <p><i class="iconfont icon-zhongzhuan"></i>来自 <span class="text-warning">自由行攻略</span></p>
-                            <p><span class="ml-1">{{strategyList.zan}}</span>柠檬赞<i class="iconfont icon-zan text-warning pl-3"></i></p>
+                            <p><i class="iconfont icon-zhongzhuan"></i>来自{{item.pid}} <span class="text-warning">自由行攻略</span></p>
+                            <p><span class="ml-1">{{item.zan}}</span>柠檬赞<i class="iconfont icon-zan text-warning pl-3"></i></p>
                         </div>
-                        <p class="box-title p-2"><a href="/views/strategy_details.html">{{strategyList.totaltitle}}</a></p>
+                        <p class="box-title p-2">
+                            <router-link :to="'/strategy_details?pid='+item.pid"> 
+                                {{item.totaltitle}}
+                            </router-link>
+                        </p>
                         <div class="row box-bottom">
                             <ul class="row col-sm-10 box-bottom list-unstyled">
                                 <li class="col-sm-4 col-4 pr-0">
-                                    <!-- <img src="../img/carousel/lb01.png" class="w-100" alt=""> -->
+                                    <img :src="item.img[0]" class="w-100" alt="">
+                             
                                 </li>
                                 <li class="col-sm-4 col-4 pr-0">
-                                    <!-- <img src="../img/270-165/Malaysia06.png" class="w-100" alt=""> -->
+                                    <img :src="item.img[1]" class="w-100" alt="">
                                 </li>
                                 <li class="col-sm-4 col-4 pr-0">
-                                    <!-- <img src="../img/270-165/Malaysia09.png" class="w-100" alt=""> -->
+                                    <img :src="item.img[2]" class="w-100" alt="">
                                 </li>
                             </ul>
                             <p class="col-sm-2 d-flex  justify-content-around    
-                                 align-items-center pr-1 text-muted">23654浏览</p>
+                                 align-items-center pr-1 text-muted">{{item.tview}}浏览</p>
                         </div>
                     </div>
                  
@@ -56,11 +61,15 @@
                     <h6 class="mb-3 p-2 text-muted small">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination mb-0 justify-content-end">
-                                <li class="page-item  disabled"><a class="page-link bg-transparent" href="#">上一页</a></li>
-                                <li class="page-item"><a class="page-link bg-transparent" href="#">1</a></li>
-                                <li class="page-item active"><a class="page-link border" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link bg-transparent" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link bg-transparent" href="#">下一页</a></li>
+                                <li class="page-item" :class="pno==1?'disabled':''"  >
+                                    <p class="page-link bg-transparent" href="#" @click='prePage'>上一页</p>
+                                </li>
+                                <li class="page-item" :class="pno==i?'active':''" v-for='i in pageCount' >
+                                    <p class="page-link" :class="pno!=i?'bg-transparent':'border'" href="#" @click='curPage(i)'>{{i}}</p>
+                                </li>
+                                <li class="page-item" :class="pno==pageCount?'disabled':''" >
+                                    <p class="page-link bg-transparent" href="#" @click='nextPage'>下一页</p>
+                                </li>
                             </ul>
                         </nav>
                     </h6>
@@ -81,38 +90,57 @@
                pageIndex:0,   //页码
                pageSize:6, //页大小
                pageCount:0,
-               img:[]
+               pno:1
             }
         },
         methods: {
+            // 大图
               loadCarousel(){
                   this.axios.get('http://localhost:3001/strategy/bigimg',{params:{num:10}}).then(res=>{
                    this.carousel=res.data[0];
-                    // console.log(res.data)
                   })
               },
+            //   获取排行数据
               loadTab(){
                    this.axios.get('http://localhost:3001/strategy/tab').then(res=>{
                    this.spot=res.data;
-                    // console.log( this.spot)
                   })
               },
+            //   获取分页数据
               loadStrategy(){
                     this.axios.get('http://localhost:3001/strategy/getStrategy',{params:{pno:this.pno,pageSize:this.pageSize}}).then(res=>{
                      this.strategyList=res.data.data;
-                    // console.log(obj);
+                    //  console.log(res.data);
+                    this.pageCount=res.data.pageCount;
                      for(var item of this.strategyList){
-                        //  this.img.push()
-                        console.log(item)
+                        item.img=item.img.split('&');
+                      
                      }
                   })
+              },
+            //   分页切换
+              prePage(){
+                  this.pno--;
+                  this.loadStrategy();
+
+              },
+              curPage(i){
+                  this.pno=i;
+                  this.loadStrategy();                 
+              },
+              nextPage(){
+                  this.pno++;
+                  this.loadStrategy();            
+              },
+              jumpToDetails(id){
+                   this.$router.push("/strategy_details?pid="+id);   //跳转至strategy_details.vue
               }
         },
         created() {
             this.loadCarousel();
             this.loadTab();
             this.loadStrategy();
-        },
+        }
     }
 </script>
 <style>
