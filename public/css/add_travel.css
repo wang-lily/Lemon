@@ -121,6 +121,30 @@ a:hover {
       box-shadow: 0px 0px 31px 0px #000;
       border-radius: 5px; }
 
+#headerImg-btn {
+  width: 0;
+  height: 0;
+  opacity: 0; }
+
+#selected-area {
+  transform: translate(-50%, -50%);
+  /* width: 270px; */
+  /* height: 165px; */
+  min-width: 270px;
+  min-height: 165px;
+  top: 50%;
+  left: 50%;
+  z-index: 305;
+  resize: both;
+  overflow: hidden;
+  opacity: 0; }
+
+#my-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 303; }
+
 @media screen and (min-width: 768px) {
   #top > .headerImg {
     transform: translate(-50%, -43%);

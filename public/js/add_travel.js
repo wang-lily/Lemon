@@ -5,6 +5,16 @@ $(function(){
         "now":null//存放#section中当前获得焦点对象的元素
     };
     var btnA = null;//存放#section中被点击的title为“重置”的a元素
+    // 存放选区数据
+    var selectedAreaData = {
+        canMove:false,
+        canDown:false,
+        canUp:false,
+        canLeft:false,
+        canRight:false,
+        mouseX:0,
+        mouseY:0
+    }
     //初始化#section的顶部
     function initSection(){
         if($("#section").children().length < 2){
@@ -20,7 +30,7 @@ $(function(){
         }
     }
     // img预加载
-    function imgPreview(url,callback){
+    function imgPreview(url,width,height,callback){
         var imgPreview = `<img src="${url}" style="opacity:0"/>`;
         var img = `<img src="${url}" alt="" />`;
         $("#preview").append(imgPreview);
@@ -30,8 +40,8 @@ $(function(){
         $(imgPreview).load(function(){
             imgPreviewWidth = $("#preview>img").css("width");
             imgPreviewHeight = $("#preview>img").css("height");
-            if (imgPreviewWidth.slice(0,-2)>=100 && imgPreviewHeight.slice(0,-2)>=50){
-                imgObj = {img,imgPreviewWidth};
+            if (imgPreviewWidth.slice(0,-2)>=width && imgPreviewHeight.slice(0,-2)>=height){
+                imgObj = {img,imgPreviewWidth,imgPreviewHeight};
             }
             callback(imgObj);
         });
@@ -104,6 +114,32 @@ $(function(){
             autosize($("textarea"));
         }
     }
+    //绘制选区
+    function drawSelected(selectedX,selectedY,selectedWidth,selectedHeight){
+        var myCanvas = $("#my-canvas")[0];
+        var context = myCanvas.getContext("2d");
+        context.clearRect(0,0,myCanvas.width,myCanvas.height);
+        context.fillStyle='rgba(0,0,0,0.4)';
+        context.fillRect(0,0,myCanvas.width,myCanvas.height);
+        context.globalCompositeOperation='destination-out';
+        context.fillStyle='#fff';
+        context.fillRect(selectedX,selectedY,selectedWidth,selectedHeight);
+        context.globalCompositeOperation='source-over';
+        context.strokeStyle='#fff';
+        context.strokeRect(selectedX,selectedY,selectedWidth,selectedHeight);
+    }
+    //对选区创建监听
+    function createSelectedAreaListener(callback){
+        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+        var observer = new MutationObserver(callback);
+        observer.observe($("#selected-area")[0],{
+            attributes:true,
+            childList:false,
+            characterData:false
+        })
+        return observer;
+    }
+
     //使textarea尺寸自适应
     autosize($("textarea"));
 
@@ -204,8 +240,9 @@ $(function(){
         if(this.files.length==1){
             var url = window.URL.createObjectURL(this.files[0]);
             var keyWords = "图片";
-                imgPreview(url,function(imgObj){
+                imgPreview(url,100,50,function(imgObj){
                     if(!imgObj){
+                        $("#alert1").toggleClass("d-none");
                         $("#pop-alert").toggleClass("d-none");
                         $("#preview").html("");
                         fileImg.value = "";
@@ -405,12 +442,169 @@ $(function(){
     
     $("#pop-alert button").click(function(){
         $("#pop-alert").toggleClass("d-none");
+        if(!$("#alert1").hasClass("d-none")){
+            $("#alert1").addClass("d-none");
+        }
+        if(!$("#alert2").hasClass("d-none")){
+            $("#alert2").addClass("d-none");
+        }
+        
     })
 
     $("#headerImg-icon").click(function(){
-        console.log($("#headerImg-btn"));
         $("#headerImg-btn").trigger("click");
     })
+    //添加游记头图
+    $("#headerImg-btn").change(function(){
+        if(this.files.length==1){
+            var url = window.URL.createObjectURL(this.files[0]);
+            imgPreview(url,270,165,(imgObj)=>{
+                //图片大小不符合弹出提示
+                if(!imgObj){
+                    $("#alert2").toggleClass("d-none");
+                    $("#pop-alert").toggleClass("d-none");
+                    $("#preview").html("");
+                    this.value = null;
+                    return;
+                }
+                //图片大小合适时加载显示图片和选区
+                var img = $("#pop-img img")[0];
+                $("#pop-img img").attr("src",`${url}`).parent().parent().parent().toggleClass("d-none");
+                $("#preview").html("");
+                this.value = null;
+                //设置选区最大尺寸
+                if(img.width/img.height > 270/165){
+                    $("#selected-area").css("max-width",`${Math.floor(img.height*270/165)}px`);
+                    $("#selected-area").css("max-height",`${img.height}px`);
+                }else{
+                    $("#selected-area").css("max-width",`${img.width}px`);
+                    $("#selected-area").css("max-height",`${Math.floor(img.width*165/270)}px`);
+                }
+                //设置画布尺寸
+                $("#my-canvas").prop("width",img.width).prop("height",img.height);
+                //绘制选区
+                var sy = $("#selected-area")[0].offsetTop-165/2;
+                var sx = $("#selected-area")[0].offsetLeft-270/2;
+                drawSelected(sx,sy,270,165);
+
+                //对selected-area选区创建监听
+                var observer = createSelectedAreaListener(function(){
+                    var width = $("#selected-area")[0].offsetWidth;
+                    var height = width*165/270;
+                    $("#selected-area").css("height",`${height}px`);
+                    var sy = $("#selected-area")[0].offsetTop-height/2;
+                    var sx = $("#selected-area")[0].offsetLeft-width/2;
+                    drawSelected(sx,sy,width,height);
+                });
+                console.log(observer);
+                //点确定或取消 取消监听
+                function drawImage(e){
+                    console.log(observer)
+                    observer.disconnect();
+                    if($(e.target).attr("data-target")==="sure"){
+                        var scale = imgObj.imgPreviewWidth.slice(0,-2)/1500;
+                        scale = (scale>1) ? scale : 1;
+                        var width = $("#selected-area")[0].offsetWidth;
+                        var height = $("#selected-area")[0].offsetHeight;
+                        var sy = $("#selected-area")[0].offsetTop-height/2;
+                        var sx = $("#selected-area")[0].offsetLeft-width/2;
+                        var myCanvas = $("#my-canvas")[0];
+                        
+                        var context = myCanvas.getContext("2d");
+                        context.clearRect(0,0,myCanvas.width,myCanvas.height);
+                        var obj = context.drawImage(img,sx*scale,sy*scale,width*scale,height*scale,sx,sy,width,height);
+                        context.strokeStyle='#fff';
+                        context.strokeRect(sx,sy,width,height);
+                        // $("#selected-area").attr("style",null);
+                        
+                    }
+                    
+                    $("#selected-area").attr("style",null);
+                    observer = null;
+                }
+                $("#pop-img button").on("click",drawImage);
+                $("#selected-area").mousedown(function(e){
+                    //移动选框
+                    if(e.offsetX<this.offsetWidth-20 && e.offsetY<this.offsetHeight-20){                      
+                        selectedAreaData.canMove = true;                 
+                        selectedAreaData.mouseX = e.clientX;
+                        selectedAreaData.mouseY = e.clientY;        
+                    }else{
+                        //改变选框大小
+                    }
+                    $("#pop-img button").off("click",drawImage);
+                })
+                $("#selected-area").mousemove(function(e){
+                    var realTop = this.offsetTop-this.offsetHeight/2;
+                    var realLeft = this.offsetLeft-this.offsetWidth/2;
+                    var realright = img.width - this.offsetLeft-this.offsetWidth/2;
+                    var realbottom = img.height -this.offsetTop-this.offsetHeight/2;
+                    if (selectedAreaData.canMove) {
+                        var deltaX = e.clientX-selectedAreaData.mouseX;
+                        var deltaY = e.clientY-selectedAreaData.mouseY;
+                        // 鼠标右移
+                        if(deltaX>0){
+                            if(realright>0){
+                                selectedAreaData.canRight = true;
+                            }else{
+                                selectedAreaData.canRight = false;
+                            }
+                        }
+                        // 鼠标左移
+                        if(deltaX<0){
+                            if(realLeft>0){
+                                selectedAreaData.canLeft = true;
+                            }else{
+                                selectedAreaData.canLeft = false;
+                            }
+                        }
+                        //鼠标下移
+                        if(deltaY>0){
+                            if(realbottom>0){
+                                selectedAreaData.canDown = true;
+                            }else{
+                                selectedAreaData.canDown = false;
+                            }
+                        }
+                        //鼠标上移
+                        if(deltaY<0){
+                            if(realTop>0){
+                                selectedAreaData.canUp = true;
+                            }else{
+                                selectedAreaData.canUp = false;
+                            }
+                        }
+                        //选区位置变化
+                        if((deltaX>0 && selectedAreaData.canRight) || (deltaX<0 && selectedAreaData.canLeft)){
+                            $(this).css("left",`${deltaX+this.offsetLeft}px`);
+                        }    
+                        if((deltaY>0 && selectedAreaData.canDown) || (deltaY<0 && selectedAreaData.canUp)){
+                            $(this).css("top",`${deltaY+this.offsetTop}px`);
+                        }           
+                        selectedAreaData.mouseX = e.clientX;
+                        selectedAreaData.mouseY = e.clientY;               
+                    }
+                    
+                })
+                //selectedAreaData数据恢复初始值
+                $("#pop-img").mouseup(function(e){
+                    selectedAreaData.canMove = false;
+                    selectedAreaData.canDown = false;
+                    selectedAreaData.canLeft = false;
+                    selectedAreaData.canRight = false;
+                    selectedAreaData.canUp = false;
+                })
+
+            });
+        }     
+    })
+    $("#pop-img button").on("click",function(e){
+        if($(e.target).attr("data-target")==="cancel"){ 
+            $("#pop-img img").attr("src","");
+        } 
+        $("#pop-img").toggleClass("d-none");
+    })
+    
     
     
     
