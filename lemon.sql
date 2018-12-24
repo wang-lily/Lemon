@@ -640,44 +640,6 @@ INSERT INTO pointer VALUES(null,"云南","http://127.0.0.1:3001/img/chongqing_st
 http://127.0.0.1:3001/img/chongqing_strategy/yunnan2.jpg&http://127.0.0.1:3001/img/chongqing_strategy/yunnan3.jpg",
 '2018-5-8',355316,2331,"云南的天空，开出漫天的花（大理、丽江、泸沽湖、昆明）！",null);
 
-#攻略评论表
-CREATE TABLE strategycomm(
-	cid INT PRIMARY KEY AUTO_INCREMENT,
-	#景点id
-	sid INT,
-	#用户名
-	user_name VARCHAR(25),
-	#发表时间
-	ctime DATETIME,
-	#内容
-	content VARCHAR(255),
-	#点赞
-	zan INT,
-	#踩
-	cai INT
-);
-INSERT INTO strategycomm VALUES(null,1,'dd',now(),'111',0,0);
-INSERT INTO strategycomm VALUES(null,1,'dd',now(),'112',0,0);
-INSERT INTO strategycomm VALUES(null,1,'dd',now(),'113',0,0);
-INSERT INTO strategycomm VALUES(null,1,'dd',now(),'114',0,0);
-INSERT INTO strategycomm VALUES(null,1,'dd',now(),'111',0,0);
-INSERT INTO strategycomm VALUES(null,1,'dd',now(),'112',0,0);
-INSERT INTO strategycomm VALUES(null,1,'dd',now(),'113',0,0);
-INSERT INTO strategycomm VALUES(null,1,'dd',now(),'114',0,0);
-INSERT INTO strategycomm VALUES(null,1,'dd',now(),'111',0,0);
-INSERT INTO strategycomm VALUES(null,1,'dd',now(),'112',0,0);
-INSERT INTO strategycomm VALUES(null,1,'dd',now(),'113',0,0);
-INSERT INTO strategycomm VALUES(null,1,'dd',now(),'114',0,0);
-INSERT INTO strategycomm VALUES(null,1,'dd',now(),'113',0,0);
-INSERT INTO strategycomm VALUES(null,1,'dd',now(),'114',0,0);
-INSERT INTO strategycomm VALUES(null,1,'dd',now(),'111',0,0);
-INSERT INTO strategycomm VALUES(null,1,'dd',now(),'112',0,0);
-INSERT INTO strategycomm VALUES(null,1,'dd',now(),'113',0,0);
-INSERT INTO strategycomm VALUES(null,1,'dd',now(),'114',0,0);
-
-
-
-
 #logo
 CREATE TABLE logo_img(
 	logo_pid INT PRIMARY KEY AUTO_INCREMENT,

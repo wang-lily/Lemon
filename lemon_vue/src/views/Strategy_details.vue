@@ -93,32 +93,27 @@
             <h3 class="mb-1  pl-0 text-h3"><i class="iconfont icon-mudedi1"></i> 攻略目录</h3>
             <ul class="pointer_nav_right row">
                 <li class="mt-1 p-2 col-md-12 col-sm-3 col-4">
-                  <a href="#day1"><h4>Day1：初见重庆→洪崖洞→解放碑</h4></a> 
+                  <a href="#"><h4>Day1：初见重庆→洪崖洞→解放碑</h4></a> 
                 </li>
-                <li class="mt-1 p-2 col-md-12 col-sm-3 col-4"> <a href="#ind1">磁器口——寻找景点里的静谧</a></li>
-                <li class="mt-1 p-2 col-md-12 col-sm-3 col-4"> <a href="#night"><h5>重庆夜，更精彩</h5></a></li>
-                <li class="mt-1 p-2 col-md-12 col-sm-3 col-4"> <a href="#night1">南滨路——老重庆心中的城市名片</a></li>
-                <li class="mt-1 p-2 col-md-12 col-sm-3 col-4">  <a href="#art"> <h4>Day2：寻梦艺术重庆</h4></a></li>
-                <li class="mt-1 p-2 col-md-12 col-sm-3 col-4"> <a href="#art1">下浩老街——不知还能伴你到何时</a></li>
-                <li class="mt-1 p-2 col-md-12 col-sm-3 col-4"> <a href="#food"><h5>美食推荐</h5></a>
+                <li class="mt-1 p-2 col-md-12 col-sm-3 col-4"> <a href="#">磁器口——寻找景点里的静谧</a></li>
+                <li class="mt-1 p-2 col-md-12 col-sm-3 col-4"> <a href="#"><h5>重庆夜，更精彩</h5></a></li>
+                <li class="mt-1 p-2 col-md-12 col-sm-3 col-4"> <a href="#">南滨路——老重庆心中的城市名片</a></li>
+                <li class="mt-1 p-2 col-md-12 col-sm-3 col-4">  <a href="#"> <h4>Day2：寻梦艺术重庆</h4></a></li>
+                <li class="mt-1 p-2 col-md-12 col-sm-3 col-4"> <a href="#">下浩老街——不知还能伴你到何时</a></li>
+                <li class="mt-1 p-2 col-md-12 col-sm-3 col-4"> <a href="#"><h5>美食推荐</h5></a>
                 </li>
-                <li class="mt-1 p-2 col-md-12 col-sm-3 col-4"> <a href="#food1">冬生老火锅</a>
+                <li class="mt-1 p-2 col-md-12 col-sm-3 col-4"> <a href="#">冬生老火锅</a>
                 </li>
-                <li class="mt-1 p-2 col-md-12 col-sm-3 col-4"> <a href="#food2">慕儿姜鸭面</a>
+                <li class="mt-1 p-2 col-md-12 col-sm-3 col-4"> <a href="#">慕儿姜鸭面</a>
                 </li>
                 <li class="mt-1 p-2 col-md-12 col-sm-3 col-4">
-                    <a href="#way"><h4>结语</h4></a>
+                    <a href="#"><h4>结语</h4></a>
                 </li>
 
             </ul>
         </div>
 
     </div>
-
-
-    <!-- 评论区 -->
-    <StrategyComment :pid='pid'/>
-
 </section>
 
 
@@ -149,10 +144,8 @@ export default{
                          for(var item of this.StrategyDetails){
                              item.img=item.img.split('&');
                          }
-
-                           console.log(this.StrategyDetails)
                   })
-              },
+              }
     },
     created() {
         this.loadStrategyDetails();
