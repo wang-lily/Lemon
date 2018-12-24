@@ -13,6 +13,12 @@ function rightCategory(){
         }
         
     })
+
+    var a=document.getElementsByTagName('a');
+    a.onclick=function(e){
+        e.preventDefault();
+        
+    }
 }
 
 export {rightCategory};
