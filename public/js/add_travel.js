@@ -507,30 +507,30 @@ $(function(){
                         var sy = $("#selected-area")[0].offsetTop-height/2;
                         var sx = $("#selected-area")[0].offsetLeft-width/2;
                         var myCanvas = $("#my-canvas")[0];
-                        
+                        myCanvas.setAttribute("width",270);
+                        myCanvas.setAttribute("height",160);
                         var context = myCanvas.getContext("2d");
                         context.clearRect(0,0,myCanvas.width,myCanvas.height);
-                        var obj = context.drawImage(img,sx*scale,sy*scale,width*scale,height*scale,sx,sy,width,height);
-                        context.strokeStyle='#fff';
-                        context.strokeRect(sx,sy,width,height);
+                        context.drawImage(img,sx*scale,sy*scale,width*scale,height*scale,0,0,270,165);
+                        var dataURL = myCanvas.toDataURL("image/png");
+                        $("#headerImg-icon").html(`<img src="${dataURL}"/>`);
                         
                         $("#selected-area").attr("style",null);
                         observer = null;
+                        $("#pop-img img").attr("src","");
+                        $("#pop-img").toggleClass("d-none");
                         return; 
                     }
                     if($(e.target).attr("data-target")==="cancel"){
                         observer && observer.disconnect();
                         $("#selected-area").attr("style",null);
                         observer = null;
+                        $("#pop-img img").attr("src","");
+                        $("#pop-img").toggleClass("d-none");
                         return;
                     }                    
                 }   
                 $("#pop-img [data-target='btn']").one("click",btnClickEvent);
-
-                
-
-
-
 
                 $("#selected-area").mousedown(function(e){
                     //移动选框
@@ -606,13 +606,7 @@ $(function(){
             })
         }     
     })
-    $("#pop-img button").click(function(e){
-        if($(e.target).attr("data-target")==="cancel"){ 
-            $("#pop-img img").attr("src","");
-        } 
-        // $("#pop-img").toggleClass("d-none");
-        
-    })
+    
     
     
     

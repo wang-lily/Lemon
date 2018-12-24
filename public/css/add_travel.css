@@ -10,13 +10,15 @@ a:hover {
 
 #top {
   overflow: hidden; }
-  #top img {
+  #top img.bigImg {
     filter: blur(10px); }
   #top > .headerImg {
     width: 100%;
     text-align: center;
     top: 50%;
     left: 50%; }
+    #top > .headerImg img {
+      width: 50px; }
     #top > .headerImg > div.title {
       margin: 0 auto; }
       #top > .headerImg > div.title > input {
@@ -128,8 +130,8 @@ a:hover {
 
 #selected-area {
   transform: translate(-50%, -50%);
-  /* width: 270px; */
-  /* height: 165px; */
+  width: 270px;
+  height: 165px;
   min-width: 270px;
   min-height: 165px;
   top: 50%;

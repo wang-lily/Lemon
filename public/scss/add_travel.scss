@@ -24,10 +24,13 @@ a:hover{
 
 #top{
     overflow: hidden;
-    img{
+    img.bigImg{
         filter: blur(10px);
     }
     &>.headerImg{
+        img{
+            width: 50px;
+        }
         width: 100%;
         text-align: center;
         top:50%;

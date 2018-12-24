@@ -22,6 +22,7 @@
 
   <body>
     <header></header>
+    <!-- <img id="test" src=""/> -->
     <!-- 暂存图片用户不可见start -->
     <div id="preview" class="position-absolute">
     </div>
@@ -37,13 +38,13 @@
             media="(max-width:999px)"
             srcset="../img/carousel/lb08_500x250.png"
           />
-          <img class=" w-100" src="../img/carousel/picture.png" />
+          <img class="w-100 bigImg" src="../img/carousel/picture.png" />
         </picture>
-        <!-- <p class="position-absolute text-white headerImg">-记录精彩瞬间-</p> -->
         <!-- 上传头图 -->
         <div class="position-absolute d-flex flex-column justify-content-center headerImg">
           <p class="mb-0">
-            <a id="headerImg-icon" href="javascript:;" class="iconfont icon-tupian text-warning">
+            <a id="headerImg-icon" href="javascript:;" >
+              <span class="iconfont icon-tupian text-warning"></span>
             </a>
           </p>
           <input id="headerImg-btn" accept="image/*" type="file"/>
@@ -160,14 +161,15 @@
       <div class="load-img position-absolute" > 
           <div class="position-relative">
             <img class="img-box" src="">
-            <div id="selected-area" style="border:2px solid #f00" class="position-absolute"></div>
-            <canvas id="my-canvas"></canvas>
+            <div id="selected-area" class="position-absolute"></div>
+            <canvas id="my-canvas" ></canvas>
           </div> 
         <div class="d-flex justify-content-center mt-3" data-target="btn">
             <button class="btn btn-dark mr-5 pl-4 pr-4" data-target="cancel">取消</button>   
             <button class="btn btn-dark ml-5 pl-4 pr-4" data-target="sure">确定</button>
         </div>
       </div> 
+      
     </div>
     <!-- 弹出设置头图 end -->
     <script src="../js/jquery-1.11.3.js"></script>
