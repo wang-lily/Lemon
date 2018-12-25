@@ -22,12 +22,13 @@
 
   <body>
     <header></header>
-    <!-- <img id="test" src=""/> -->
     <!-- 暂存图片用户不可见start -->
     <div id="preview" class="position-absolute">
     </div>
     <!-- 暂存图片用户不可见end -->
+
     <form action="post" enctype="multipart/form-data">
+
       <div id="top" class="container-fluid position-relative w-100 p-0 m-0">
         <picture>
           <source
@@ -57,16 +58,20 @@
           </div>
         </div>
       </div>
+
       <div class="container p-0">
+        <!-- 添加区域主体start -->
         <div id="content" class="position-relative">
           <div id="section" class="position-relative border p-0 pt-2 section">
-            <div></div>
+            <!-- <div></div> -->
             <textarea
               class="w-100 p-3 pr-5"
               rows="1" 
               placeholder="从这里开始，记录旅程的点点滴滴..."
             ></textarea>
           </div>
+          <!-- 添加区域主体end -->
+
           <!-- 侧边栏aside start -->
           <div
             id="aside"
@@ -137,7 +142,7 @@
           </div>
           <!-- 侧边栏aside end -->
           <div class="my-btn w-100 text-center mb-3">
-            <button class="m-2">预览</button> <button class="m-2">发表</button>
+            <button class="m-2" type="button">预览</button> <button id="submit" class="m-2" type="button">发表</button>
           </div>
         </div>
       </div>

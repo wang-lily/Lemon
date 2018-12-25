@@ -18,7 +18,7 @@ $(function(){
     //初始化#section的顶部
     function initSection(){
         if($("#section").children().length < 2){
-            var textareaHtml = `<textarea id="fjdk"
+            var textareaHtml = `<textarea 
                                 class="w-100 pl-3 pt-0 pb-0 pr-5"
                                 rows="1"
                               ></textarea>`;
@@ -238,9 +238,16 @@ $(function(){
     $("#fileImg").change(function(){
         var fileImg = this;
         if(this.files.length==1){
-            var url = window.URL.createObjectURL(this.files[0]);
-            var keyWords = "图片";
+            // var url = window.URL.createObjectURL(this.files[0]);
+            var url = "";
+            var reader = new FileReader();
+            reader.readAsDataURL(this.files[0]);
+            reader.onload = function(e){
+                // console.log(e.target.result);
+                url = e.target.result;
+                var keyWords = "图片";
                 imgPreview(url,100,50,function(imgObj){
+                    // console.log("url"+url);
                     if(!imgObj){
                         $("#alert1").toggleClass("d-none");
                         $("#pop-alert").toggleClass("d-none");
@@ -310,6 +317,11 @@ $(function(){
                         } 
                     }
                 });
+            }
+            
+            // console.log(123)
+            // console.log("64base"+ new FileReader().readAsDataURL(this.files[0]).result);
+            
                 
 //-----------------------------------------------------------------------------
 
@@ -322,8 +334,14 @@ $(function(){
     $("#fileVideo").change(function(){
         var fileVideo = this;
         if(this.files.length==1){
-            var url = window.URL.createObjectURL(this.files[0]);
-            var keyWords = "视频";
+            // var url = window.URL.createObjectURL(this.files[0]);
+            var url = "";
+            var reader = new FileReader();
+            reader.readAsDataURL(this.files[0]);
+            reader.onload = function(e){
+                // console.log(e.target.result);
+                url = e.target.result;
+                var keyWords = "视频";
             var video = `<video src="${url}" controls webkit-playsinline="true" playsinline="true" x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portraint" style="width:${window.innerWidth}px;max-width:500px;" /></video>`;
             var maxWidth = "500px";
             
@@ -377,6 +395,8 @@ $(function(){
                 fileVideo.value = "";
                 return;
             }
+            }
+            
             // $("#section").append(div);
             // autosize($("textarea"));
             // document.documentElement.scrollTop = 10000;
@@ -607,7 +627,28 @@ $(function(){
         }     
     })
     
-    
+    $("#submit").click(function(){
+        var headerImg = $("#headerImg-icon img")[0];
+        if(!headerImg){
+            alert("请上传头图！");
+            return;
+        }
+        var headerImgURL = headerImg.src;
+        console.log(headerImgURL);
+        var $imgs = $("#section img");
+        // console.log($imgs.length);
+        var imgURLs = [];
+        for(var i=0; i<$imgs.length; i++){
+            imgURLs.push($imgs[i].src);
+        }
+        console.log(imgURLs);
+        var $videos = $("#section video");
+        var videoURLs = [];
+        for(var i=0; i<$videos.length; i++){
+            videoURLs.push($videos[i].src);
+        }
+        console.log(videoURLs);
+    }) 
     
     
     
