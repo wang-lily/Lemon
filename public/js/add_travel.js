@@ -21,7 +21,7 @@ $(function(){
             var textareaHtml = `<textarea 
                                 class="w-100 pl-3 pt-0 pb-0 pr-5"
                                 rows="1"
-                              ></textarea>`;
+                                data-type="parag"></textarea>`;
             $("#section").append(textareaHtml);
         }
         var firstTa = $("#section").children()[1];
@@ -91,7 +91,7 @@ $(function(){
                 var html = (target.nodeName=="TEXTAREA" ? `<textarea
                 class="w-100 pl-3 pt-0 pb-0 pr-5"
                 rows="1"
-            >${prevAndNext.prevTxt}</textarea>`:`<input type="text" class="w-100 h5 pl-3" value="${prevAndNext.prevTxt}" placeholder="添加标题" style="font-weight:bold;"/>`)
+                data-type="parag">${prevAndNext.prevTxt}</textarea>`:`<input type="text" class="w-100 h5 pl-3" value="${prevAndNext.prevTxt}" placeholder="添加标题" style="font-weight:bold;" data-type="sm-title"/>`)
                 $(html).insertBefore(target);
             }
             autosize($("textarea"));
@@ -108,7 +108,7 @@ $(function(){
                 var html = (target.nodeName=="TEXTAREA" ? `<textarea
                 class="w-100 pl-3 pt-0 pb-0 pr-5"
                 rows="1"
-            >${prevAndNext.nextTxt}</textarea>`:`<input type="text" class="w-100 h5 pl-3" value="${prevAndNext.nextTxt}" placeholder="添加标题" style="font-weight:bold;"/>`)
+                data-type="parag">${prevAndNext.nextTxt}</textarea>`:`<input type="text" class="w-100 h5 pl-3" value="${prevAndNext.nextTxt}" placeholder="添加标题" style="font-weight:bold;" data-type="sm-title"/>`)
                 $(html).insertAfter(target);
             }
             autosize($("textarea"));
@@ -267,7 +267,7 @@ $(function(){
                                 imgHtml += `<textarea
                                 class="w-100 pl-3 pt-0 pb-0 pr-5"
                                 rows="1"
-                              ></textarea>`;
+                                data-type="parag"></textarea>`;
                             }
                             imgHtml += `<div>
                     <div class=" d-flex flex-column justify-content-center item">
@@ -281,7 +281,7 @@ $(function(){
                         </div>
                         <div class="m-auto border-bottom">
                             <span class="text-info p-2 iconfont icon-tubiao"></span>
-                            <input class="p-2"  type="text" placeholder="为${keyWords}添加地点"/>
+                            <input class="p-2"  type="text" placeholder="为${keyWords}添加地点" data-type="spot"/>
                         </div> 
                         <!-- <div class="position-absolute w-100 h-100 border master" style="top:0;left:0;background: rgba(0,0,0,0.3)">
                           123
@@ -293,7 +293,7 @@ $(function(){
                                 imgHtml += `<textarea
                                 class="w-100 pl-3 pt-0 pb-0 pr-5"
                                 rows="1"
-                              ></textarea>`;
+                                data-type="parag"></textarea>`;
                             }
                             var $imgHtml = $(imgHtml).replaceAll(target);
                             if($imgHtml[$imgHtml.length-1].tagName=="TEXTAREA" && !$imgHtml[$imgHtml.length-1].nextElementSibling){
@@ -356,7 +356,7 @@ $(function(){
                     videoHtml += `<textarea
                     class="w-100 pl-3 pt-0 pb-0 pr-5"
                     rows="1"
-                ></textarea>`;
+                    data-type="parag"></textarea>`;
                 }
                 videoHtml += `<div>
             <div class=" d-flex flex-column justify-content-center item">
@@ -370,7 +370,7 @@ $(function(){
                 </div>
                 <div class="m-auto border-bottom">
                     <span class="text-info p-2 iconfont icon-tubiao"></span>
-                    <input class="p-2"  type="text" placeholder="为${keyWords}添加地点"/>
+                    <input class="p-2"  type="text" placeholder="为${keyWords}添加地点" data-type="spot"/>
                 </div> 
                 <!-- <div class="position-absolute w-100 h-100 border master" style="top:0;left:0;background: rgba(0,0,0,0.3)">
                   123
@@ -381,7 +381,7 @@ $(function(){
                     videoHtml += `<textarea
                     class="w-100 pl-3 pt-0 pb-0 pr-5"
                     rows="1"
-                    ></textarea>`;
+                    data-type="parag"></textarea>`;
                 }
                 var $videoHtml = $(videoHtml).replaceAll(target);
                 if($videoHtml[$videoHtml.length-1].tagName=="TEXTAREA" && !$videoHtml[$videoHtml.length-1].nextElementSibling){
@@ -409,7 +409,7 @@ $(function(){
         var target = focusedEles.editable;
         mergeTxt(prevAndNext,target);
         // 替换目标原素
-        var inputHtml = `<input type="text" class="w-100 h5 pl-3" placeholder="添加标题" style="font-weight:bold;"/>`;
+        var inputHtml = `<input type="text" class="w-100 h5 pl-3" placeholder="添加标题" style="font-weight:bold;" data-type="sm-title"/>`;
         $(inputHtml).replaceAll(target)[0].focus();
         autosize($("textarea"));
         return;  
@@ -423,7 +423,7 @@ $(function(){
         var textareaHtml = `<textarea
         class="w-100 pl-3 pt-0 pb-0 pr-5"
         rows="1"
-        placeholder="添加内容……"
+        placeholder="添加内容……" data-type="parag"
         ></textarea>`;
         $(textareaHtml).replaceAll(target)[0].focus();
         autosize($("textarea"));
@@ -633,21 +633,54 @@ $(function(){
             alert("请上传头图！");
             return;
         }
-        var headerImgURL = headerImg.src;
-        console.log(headerImgURL);
-        var $imgs = $("#section img");
-        // console.log($imgs.length);
-        var imgURLs = [];
-        for(var i=0; i<$imgs.length; i++){
-            imgURLs.push($imgs[i].src);
+        // var headerImgURL = headerImg.src;
+        // console.log(headerImgURL);
+        // var $imgs = $("#section img");
+        // // console.log($imgs.length);
+        // var imgURLs = [];
+        // for(var i=0; i<$imgs.length; i++){
+        //     imgURLs.push($imgs[i].src);
+        // }
+        // console.log(imgURLs);
+        // var $videos = $("#section video");
+        // var videoURLs = [];
+        // for(var i=0; i<$videos.length; i++){
+        //     videoURLs.push($videos[i].src);
+        // }
+        // console.log(videoURLs);
+        //标签替换
+        var spots = $("#section [data-type='spot']");
+        for(var i=0;i<spots.length;i++){
+            var value = spots[i].value;
+            $(spots[i]).replaceWith(`<span class="p-2" style="height:24px">${value}</span>`);
         }
-        console.log(imgURLs);
-        var $videos = $("#section video");
-        var videoURLs = [];
-        for(var i=0; i<$videos.length; i++){
-            videoURLs.push($videos[i].src);
+        var smTitles = $("#section [data-type='sm-title']");
+        for(var i=0;i<smTitles.length;i++){
+            var value = smTitles[i].value;
+            $(smTitles[i]).replaceWith(`<p class="h5 pl-3" style="font-weight:bold;">${value}</p>`);
         }
-        console.log(videoURLs);
+        var parags = $("#section [data-type='parag']");
+        for(var i=0;i<parags.length;i++){
+            var value = parags[i].value;
+            $(parags[i]).replaceWith(`<p class="pl-3" >${value}</p>`);
+        }
+        var html = $("#section").html();
+        html = html.replace(/\&/g,"%26");
+        html = html.replace(/\+/g,"%2B");
+        console.log(html);
+        $.ajax({
+            type:"post",
+            url:"http://127.0.0.1:3001/add_travel/add",
+            data:"html=" + html,
+            //contentType:"text/html; charset=utf-8",
+            success: function(res) {
+
+                // console.log("***********************add travel response begin************************");
+                // console.log(res);
+                // console.log("***********************add travel response end************************");
+            
+            }
+        })
     }) 
     
     

@@ -1,6 +1,7 @@
 const express=require("express");
 const router=express.Router();
 const pool=require("../pool");
+const fs=require("fs");
 
 //测试: http://localhost:3001/spots/carousel
 router.get("/top",(req,res)=>{
@@ -10,6 +11,19 @@ router.get("/top",(req,res)=>{
     if(err) throw (err);
     res.send(result[0]);
   })
+})
+router.post("/add",(req,res)=>{
+  console.log(req.body);
+  var json = req.body;
+  // var str = JSON.stringify(req.body);
+  fs.writeFile("test.html",json.html,"utf8",function(error){
+    if(error){
+      console.log(error);
+    } else {
+      console.log("写入成功！");
+    }
+  })
+  res.send(json.html);
 })
 
 // //功能:上传头像
