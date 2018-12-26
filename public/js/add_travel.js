@@ -307,14 +307,14 @@ $(function(){
                                     if($imgHtml[$imgHtml.length-1].tagName=="TEXTAREA" && !$imgHtml[$imgHtml.length-1].nextElementSibling){
                                         $imgHtml[$imgHtml.length-1].focus();
                                     }
-                                    autosize($("textarea"));
+                                    
 
                                     $(imgHtml).on("load",'div[data-target="inserted"]',function(){
                                         $(this).css("width",`${imgObj.imgPreviewWidth}`);
                                     })
                                     $("#preview").html("");
                                     fileImg.value = "";
-                                    return;
+                                    autosize($("textarea"));
                                 }
                                 else if(btnA.title=="重置"){
                                     $(btnA).parent().prev().replaceWith(`${imgObj.img}`).parent().width(`${imgObj.imgPreviewWidth}`);
@@ -725,6 +725,7 @@ $(function(){
         }else{
             submitObj.desc = firstParag.slice(0,50);
         }
+        $("#section div.mask").remove();
         //表单标签更改
         var $spots = $("#section [data-type='spot']");
         for(var i=0;i<$spots.length;i++){
@@ -765,6 +766,8 @@ $(function(){
         $.ajax({
             type:"post",
             url:"http://127.0.0.1:3001/add_travel/submit_text",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
             data:JSON.stringify(submitObj),
             success: function(res) {
                 console.log(res);

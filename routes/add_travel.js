@@ -123,17 +123,18 @@ router.post("/upload_img",upload.single("fileImg"),
 
 //-------------------------------------------------------提交游记-----start-------------------------------------
 router.post("/submit_text",(req,res)=>{
-  var data = JSON.parse(req.body);
+  var data = req.body;
   var spot = req.body.spot;
   var title = req.body.title; //字符串 游记标题
   var headerImg = req.body.headerImg; //字符串url 游记头图
   var desc = req.body.desc; //字符串 游记描述
   var text = req.body.html;//字符串 游记主体html片段
-  var imgURLs = req.body.imgURLs;//json字符串
-  var videoURLs = req.body.videoURLs;//json字符串
-  console.log(spot);
+  var imgURLsJson = req.body.imgURLsJson;//json数组
+  var videoURLsJson = req.body.videoURLsJson;//json数组
+  // console.log(imgURLsJson);
+  // console.log(videoURLsJson);
   // 存数据库
-  res.send(data);
+  // res.send(data);
 })
 //-------------------------------------------------------提交游记-----end-------------------------------------
 
