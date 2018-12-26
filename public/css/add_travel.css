@@ -7,6 +7,9 @@
 
 a:hover {
   text-decoration: none; }
+input:disabled,textarea:disabled{
+  background: #fff;
+}
 
 #top {
   overflow: hidden; }

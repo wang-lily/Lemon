@@ -15,6 +15,7 @@ $(function(){
         mouseX:0,
         mouseY:0
     }
+    
     //初始化#section的顶部
     function initSection(){
         if($("#section").children().length < 2){
@@ -236,171 +237,173 @@ $(function(){
         $(this).toggleClass("icon-arrow_l").toggleClass("icon-arrow-r").parent().next().toggleClass("spread");
     })
     $("#fileImg").change(function(){
-        var fileImg = this;
+        // var fileImg = this;
         if(this.files.length==1){
-            // var url = window.URL.createObjectURL(this.files[0]);
-            var url = "";
-            var reader = new FileReader();
-            reader.readAsDataURL(this.files[0]);
-            reader.onload = function(e){
-                // console.log(e.target.result);
-                url = e.target.result;
-                var keyWords = "图片";
-                imgPreview(url,100,50,function(imgObj){
-                    // console.log("url"+url);
-                    if(!imgObj){
-                        $("#alert1").toggleClass("d-none");
-                        $("#pop-alert").toggleClass("d-none");
-                        $("#preview").html("");
-                        fileImg.value = "";
-                        return;
-                    }
-                    if(imgObj){
+            var url = window.URL.createObjectURL(this.files[0]);
+            var keyWords = "图片";
+            imgPreview(url,100,50,(imgObj)=>{
+                console.log(this);
+                if(!imgObj){
+                    $("#alert1").toggleClass("d-none");
+                    $("#pop-alert").toggleClass("d-none");
+                    $("#preview").html("");
+                    fileImg.value = "";
+                    return;
+                }
+                if(imgObj){
+                        var img = this.files[0];
+                        var formData = new FormData();
+                        formData.append("fileImg", img); 
+                        //上传video到服务器
+                        $.ajax({
+                            type:"post",
+                            url:"http://localhost:3001/add_travel/upload_img",
+                            data: formData,
+                            contentType: false,//必须false才会自动加上正确的Content-Type
+                            processData: false,//必须false才会避开jQuery对 formdata 的默认处理 XMLHttpRequest会对 formdata 进行正确的处理
+                            success:function(res){
+                                console.log(res);
+                                var url = res.url;
+                                if(!btnA){
+                                    var prevAndNext = getPrevAndNext();
+                                    // console.log(prevAndNext);
+                                    var target = focusedEles.editable;
+                                    mergeTxt(prevAndNext,target);
+                                    // 替换目标原素
+                                    var imgHtml = "";
+                                    if(!prevAndNext.prevTxt || !$(target).prev()[0] || ($(target).prev()[0].tagName!=="TEXTAREA" && $(target).prev()[0].tagName!=="INPUT")){
+                                        imgHtml += `<textarea
+                                        class="w-100 pl-3 pt-0 pb-0 pr-5"
+                                        rows="1"
+                                        data-type="parag"></textarea>`;
+                                    }
+                                    imgHtml += `<div>
+                            <div class=" d-flex flex-column justify-content-center item">
+                                <div class="position-relative text-center mb-3 m-auto"  data-target="inserted">
+                                <img src=${url} alt="" />
+                                    <div class="position-absolute p-2 text-left mask">
+                                    <a href="javascript:;" class="iconfont icon-delete2 text-warning p-2 m-0" title="删除"></a>
+                                    <a href="javascript:;" class="position-relative iconfont icon-reset text-warning p-2 m-0" title="重置">
+                                </a>
+                                    </div>
+                                </div>
+                                <div class="m-auto border-bottom">
+                                    <span class="text-info p-2 iconfont icon-tubiao"></span>
+                                    <input class="p-2"  type="text" placeholder="为${keyWords}添加地点" data-type="spot"/>
+                                </div> 
+                                <!-- <div class="position-absolute w-100 h-100 border master" style="top:0;left:0;background: rgba(0,0,0,0.3)">
+                                    123
+                                </div> -->
+                            </div>
+                        </div>
+                        `;
+                                    if(!prevAndNext.nextTxt || !$(target).next()[0] || ($(target).next()[0].tagName!="TEXTAREA" && $(target).next()[0].tagName!="INPUT")){
+                                        imgHtml += `<textarea
+                                        class="w-100 pl-3 pt-0 pb-0 pr-5"
+                                        rows="1"
+                                        data-type="parag"></textarea>`;
+                                    }
+                                    var $imgHtml = $(imgHtml).replaceAll(target);
+                                    if($imgHtml[$imgHtml.length-1].tagName=="TEXTAREA" && !$imgHtml[$imgHtml.length-1].nextElementSibling){
+                                        $imgHtml[$imgHtml.length-1].focus();
+                                    }
+                                    autosize($("textarea"));
+
+                                    $(imgHtml).on("load",'div[data-target="inserted"]',function(){
+                                        $(this).css("width",`${imgObj.imgPreviewWidth}`);
+                                    })
+                                    $("#preview").html("");
+                                    fileImg.value = "";
+                                    return;
+                                }
+                                else if(btnA.title=="重置"){
+                                    $(btnA).parent().prev().replaceWith(`${imgObj.img}`).parent().width(`${imgObj.imgPreviewWidth}`);
+                                    btnA = null;
+                                    $("#preview").html("");
+                                    fileImg.value = "";
+                                    return;
+                                } 
+                            }
+                        })
+                }
+            });
+               
+        }
+    })
+    $("#fileVideo").change(function(){
+        var fileVideo = this;
+        if(this.files.length==1){
+            var video = this.files[0];
+            var formData = new FormData();
+            formData.append("fileVideo", video); 
+            //上传video到服务器
+            $.ajax({
+                type:"post",
+                url:"http://localhost:3001/add_travel/upload_video",
+                data: formData,
+                contentType: false,//必须false才会自动加上正确的Content-Type
+                processData: false,//必须false才会避开jQuery对 formdata 的默认处理 XMLHttpRequest会对 formdata 进行正确的处理
+                success:function(res){
+                    if(res){
+                        var url = res.url;   
+                        var keyWords = "视频";
+                        var video = `<video src=${url} controls webkit-playsinline="true" playsinline="true" x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portraint" style="width:${window.innerWidth}px;max-width:500px;" /></video>`;
+                        var maxWidth = "500px";
+                        
                         if(!btnA){
                             var prevAndNext = getPrevAndNext();
                             // console.log(prevAndNext);
                             var target = focusedEles.editable;
                             mergeTxt(prevAndNext,target);
                             // 替换目标原素
-                            var imgHtml = "";
+                            var videoHtml = "";
                             if(!prevAndNext.prevTxt || !$(target).prev()[0] || ($(target).prev()[0].tagName!=="TEXTAREA" && $(target).prev()[0].tagName!=="INPUT")){
-                                imgHtml += `<textarea
+                                videoHtml += `<textarea
                                 class="w-100 pl-3 pt-0 pb-0 pr-5"
                                 rows="1"
                                 data-type="parag"></textarea>`;
                             }
-                            imgHtml += `<div>
-                    <div class=" d-flex flex-column justify-content-center item">
-                        <div class="position-relative text-center mb-3 m-auto"  data-target="inserted">
-                          ${imgObj.img}
-                          <div class="position-absolute p-2 text-left mask">
-                          <a href="javascript:;" class="iconfont icon-delete2 text-warning p-2 m-0" title="删除"></a>
-                          <a href="javascript:;" class="position-relative iconfont icon-reset text-warning p-2 m-0" title="重置">
-                        </a>
-                          </div>
+                            videoHtml += `<div>
+                        <div class=" d-flex flex-column justify-content-center item">
+                            <div class="position-relative text-center mb-3 m-auto" style="width:${window.innerWidth}px;max-width:${maxWidth};" data-target="inserted">
+                            ${video}
+                            <div class="position-absolute p-2 text-left mask">
+                                <a href="javascript:;" class="iconfont icon-delete2 text-warning p-2 m-0" title="删除"></a>
+                                <a href="javascript:;" class="position-relative iconfont icon-reset text-warning p-2 m-0" title="重置">
+                            </a>
+                            </div>
+                            </div>
+                            <div class="m-auto border-bottom">
+                                <span class="text-info p-2 iconfont icon-tubiao"></span>
+                                <input class="p-2"  type="text" placeholder="为${keyWords}添加地点" data-type="spot"/>
+                            </div> 
+                            <!-- <div class="position-absolute w-100 h-100 border master" style="top:0;left:0;background: rgba(0,0,0,0.3)">
+                            123
+                            </div> -->
                         </div>
-                        <div class="m-auto border-bottom">
-                            <span class="text-info p-2 iconfont icon-tubiao"></span>
-                            <input class="p-2"  type="text" placeholder="为${keyWords}添加地点" data-type="spot"/>
-                        </div> 
-                        <!-- <div class="position-absolute w-100 h-100 border master" style="top:0;left:0;background: rgba(0,0,0,0.3)">
-                          123
-                        </div> -->
-                    </div>
-                </div>
-                `;
+                    </div>`;
                             if(!prevAndNext.nextTxt || !$(target).next()[0] || ($(target).next()[0].tagName!="TEXTAREA" && $(target).next()[0].tagName!="INPUT")){
-                                imgHtml += `<textarea
+                                videoHtml += `<textarea
                                 class="w-100 pl-3 pt-0 pb-0 pr-5"
                                 rows="1"
                                 data-type="parag"></textarea>`;
                             }
-                            var $imgHtml = $(imgHtml).replaceAll(target);
-                            if($imgHtml[$imgHtml.length-1].tagName=="TEXTAREA" && !$imgHtml[$imgHtml.length-1].nextElementSibling){
-                                $imgHtml[$imgHtml.length-1].focus();
+                            var $videoHtml = $(videoHtml).replaceAll(target);
+                            if($videoHtml[$videoHtml.length-1].tagName=="TEXTAREA" && !$videoHtml[$videoHtml.length-1].nextElementSibling){
+                                $videoHtml[$videoHtml.length-1].focus();
                             }
                             autosize($("textarea"));
-
-                            $(imgHtml).on("load",'div[data-target="inserted"]',function(){
-                                $(this).css("width",`${imgObj.imgPreviewWidth}`);
-                            })
-                            $("#preview").html("");
-                            fileImg.value = "";
+                            fileVideo.value = "";
+                        }else if(btnA.title=="重置"){
+                            $(btnA).parent().prev().replaceWith(`${video}`);
+                            btnA = null;
+                            fileVideo.value = "";
                             return;
                         }
-                        else if(btnA.title=="重置"){
-                            $(btnA).parent().prev().replaceWith(`${imgObj.img}`).parent().width(`${imgObj.imgPreviewWidth}`);
-                            btnA = null;
-                            $("#preview").html("");
-                            fileImg.value = "";
-                            return;
-                        } 
                     }
-                });
-            }
-            
-            // console.log(123)
-            // console.log("64base"+ new FileReader().readAsDataURL(this.files[0]).result);
-            
-                
-//-----------------------------------------------------------------------------
-
-            //         document.documentElement.scrollTop = 10000;
-            //         $("#section").scrollTop(10000);
-            //      }
-            // });    
-        }
-    })
-    $("#fileVideo").change(function(){
-        var fileVideo = this;
-        if(this.files.length==1){
-            // var url = window.URL.createObjectURL(this.files[0]);
-            var url = "";
-            var reader = new FileReader();
-            reader.readAsDataURL(this.files[0]);
-            reader.onload = function(e){
-                // console.log(e.target.result);
-                url = e.target.result;
-                var keyWords = "视频";
-            var video = `<video src="${url}" controls webkit-playsinline="true" playsinline="true" x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-video-orientation="portraint" style="width:${window.innerWidth}px;max-width:500px;" /></video>`;
-            var maxWidth = "500px";
-            
-            if(!btnA){
-                var prevAndNext = getPrevAndNext();
-                // console.log(prevAndNext);
-                var target = focusedEles.editable;
-                mergeTxt(prevAndNext,target);
-                // 替换目标原素
-                var videoHtml = "";
-                if(!prevAndNext.prevTxt || !$(target).prev()[0] || ($(target).prev()[0].tagName!=="TEXTAREA" && $(target).prev()[0].tagName!=="INPUT")){
-                    videoHtml += `<textarea
-                    class="w-100 pl-3 pt-0 pb-0 pr-5"
-                    rows="1"
-                    data-type="parag"></textarea>`;
+                        
                 }
-                videoHtml += `<div>
-            <div class=" d-flex flex-column justify-content-center item">
-                <div class="position-relative text-center mb-3 m-auto" style="width:${window.innerWidth}px;max-width:${maxWidth};" data-target="inserted">
-                ${video}
-                  <div class="position-absolute p-2 text-left mask">
-                    <a href="javascript:;" class="iconfont icon-delete2 text-warning p-2 m-0" title="删除"></a>
-                    <a href="javascript:;" class="position-relative iconfont icon-reset text-warning p-2 m-0" title="重置">
-                </a>
-                  </div>
-                </div>
-                <div class="m-auto border-bottom">
-                    <span class="text-info p-2 iconfont icon-tubiao"></span>
-                    <input class="p-2"  type="text" placeholder="为${keyWords}添加地点" data-type="spot"/>
-                </div> 
-                <!-- <div class="position-absolute w-100 h-100 border master" style="top:0;left:0;background: rgba(0,0,0,0.3)">
-                  123
-                </div> -->
-            </div>
-        </div>`;
-                if(!prevAndNext.nextTxt || !$(target).next()[0] || ($(target).next()[0].tagName!="TEXTAREA" && $(target).next()[0].tagName!="INPUT")){
-                    videoHtml += `<textarea
-                    class="w-100 pl-3 pt-0 pb-0 pr-5"
-                    rows="1"
-                    data-type="parag"></textarea>`;
-                }
-                var $videoHtml = $(videoHtml).replaceAll(target);
-                if($videoHtml[$videoHtml.length-1].tagName=="TEXTAREA" && !$videoHtml[$videoHtml.length-1].nextElementSibling){
-                    $videoHtml[$videoHtml.length-1].focus();
-                }
-                autosize($("textarea"));
-                fileVideo.value = "";
-            }else if(btnA.title=="重置"){
-                $(btnA).parent().prev().replaceWith(`${video}`);
-                btnA = null;
-                fileVideo.value = "";
-                return;
-            }
-            }
-            
-            // $("#section").append(div);
-            // autosize($("textarea"));
-            // document.documentElement.scrollTop = 10000;
-            // $("#section").scrollTop(10000);   
+            })                     
         }
     })
     $("#btnTitle").click(function(){
@@ -528,12 +531,26 @@ $(function(){
                         var sx = $("#selected-area")[0].offsetLeft-width/2;
                         var myCanvas = $("#my-canvas")[0];
                         myCanvas.setAttribute("width",270);
-                        myCanvas.setAttribute("height",160);
+                        myCanvas.setAttribute("height",165);
                         var context = myCanvas.getContext("2d");
                         context.clearRect(0,0,myCanvas.width,myCanvas.height);
                         context.drawImage(img,sx*scale,sy*scale,width*scale,height*scale,0,0,270,165);
-                        var dataURL = myCanvas.toDataURL("image/png");
-                        $("#headerImg-icon").html(`<img src="${dataURL}"/>`);
+                        //上传头图
+                        var src = myCanvas.toDataURL("image/png");
+                        src = src.replace(/\&/g,"%26");
+                        src = src.replace(/\+/g,"%2B");
+                        $.ajax({
+                            type:"post",
+                            url:"http://127.0.0.1:3001/add_travel/add_img",
+                            data:"img=" + src,
+                            success:function(res){
+                                // console.log(res);
+                                if(res){
+                                    $("#headerImg-icon").html(`<img src="${res.url}"/>`);
+                                }
+                            }
+                        })
+                        
                         
                         $("#selected-area").attr("style",null);
                         observer = null;
@@ -627,62 +644,130 @@ $(function(){
         }     
     })
     
-    $("#submit").click(function(){
-        var headerImg = $("#headerImg-icon img")[0];
-        if(!headerImg){
-            alert("请上传头图！");
-            return;
+    $("#preview-btn").click(function(){
+        //表单disable更改为true
+        var spots = $("#section [data-type='spot']");
+        for(var i=0;i<spots.length;i++){           
+            $(spots[i]).attr("disabled",true);
         }
-        // var headerImgURL = headerImg.src;
-        // console.log(headerImgURL);
-        // var $imgs = $("#section img");
-        // // console.log($imgs.length);
-        // var imgURLs = [];
-        // for(var i=0; i<$imgs.length; i++){
-        //     imgURLs.push($imgs[i].src);
-        // }
-        // console.log(imgURLs);
-        // var $videos = $("#section video");
-        // var videoURLs = [];
-        // for(var i=0; i<$videos.length; i++){
-        //     videoURLs.push($videos[i].src);
-        // }
-        // console.log(videoURLs);
-        //标签替换
+        var smTitles = $("#section [data-type='sm-title']");
+        for(var i=0;i<smTitles.length;i++){         
+            $(smTitles[i]).attr("disabled",true);
+        }
+        var parags = $("#section [data-type='parag']");
+        for(var i=0;i<parags.length;i++){            
+            $(parags[i]).attr("disabled",true);
+        }
+        $(this).toggleClass("d-none");
+        $("#modify-btn").toggleClass("d-none");
+    }) 
+    
+    $("#modify-btn").click(function(){
+        //表单disable更改为false
         var spots = $("#section [data-type='spot']");
         for(var i=0;i<spots.length;i++){
-            var value = spots[i].value;
-            $(spots[i]).replaceWith(`<span class="p-2" style="height:24px">${value}</span>`);
+            $(spots[i]).attr("disabled",false);
         }
         var smTitles = $("#section [data-type='sm-title']");
         for(var i=0;i<smTitles.length;i++){
-            var value = smTitles[i].value;
-            $(smTitles[i]).replaceWith(`<p class="h5 pl-3" style="font-weight:bold;">${value}</p>`);
+            $(smTitles[i]).attr("disabled",false);
         }
         var parags = $("#section [data-type='parag']");
         for(var i=0;i<parags.length;i++){
-            var value = parags[i].value;
-            $(parags[i]).replaceWith(`<p class="pl-3" >${value}</p>`);
+            $(parags[i]).attr("disabled",false);
         }
-        var html = $("#section").html();
-        html = html.replace(/\&/g,"%26");
-        html = html.replace(/\+/g,"%2B");
-        console.log(html);
-        $.ajax({
-            type:"post",
-            url:"http://127.0.0.1:3001/add_travel/add",
-            data:"html=" + html,
-            //contentType:"text/html; charset=utf-8",
-            success: function(res) {
+        $(this).toggleClass("d-none");
+        $("#preview-btn").toggleClass("d-none");
+    })
 
-                // console.log("***********************add travel response begin************************");
-                // console.log(res);
-                // console.log("***********************add travel response end************************");
-            
+    $("#submit-btn").click(function(){
+        var submitObj = {
+            // 需要传入服务器的接口
+            title : "", //字符串 游记标题
+            headerImg : "", //字符串url 游记头图
+            desc : "", //字符串 游记描述
+            text : "",//字符串 游记主体html片段
+            imgURLsJson : "",//json字符串
+            videoURLsJson : "",//json字符串
+        }
+        var imgURLs = [];
+        var videoURLs = [];
+        //判断是否上传头图
+        var headerImgEle = $("#headerImg-icon img")[0];
+        if(!headerImgEle){
+            alert("请上传头图！");
+            return;
+        }else{
+            submitObj.headerImg = headerImgEle.src;
+        }
+        //判断是否填写标题
+        var titleEle = $("#title")[0];
+        if(!titleEle.value){
+            alert("请填写标题！");
+            return;
+        }else{
+            submitObj.title = titleEle.value;
+        }
+        //判断是否填写景点名称
+        //判断第一个段落内容
+        var firstParag = document.querySelector("textarea").value;
+        if(firstParag.length<50){
+            alert("第一个段落内容请多于50个字！以获得更好的展示体验");
+            return;
+        }else{
+            submitObj.desc = firstParag.slice(0,50);
+        }
+        //表单标签更改
+        var $spots = $("#section [data-type='spot']");
+        for(var i=0;i<$spots.length;i++){
+            var value = $spots[i].value;
+            $($spots[i]).replaceWith(`<span class="p-2" style="height:24px">${value}</span>`);        
+        }
+        var $smTitles = $("#section [data-type='sm-title']");
+        for(var i=0;i<$smTitles.length;i++){
+            var value = $smTitles[i].value;
+            $($smTitles[i]).replaceWith(`<h5 class="h5 pl-3" style="font-weight:bold;">${value}</h5>`);
+        }
+        var $parags = $("#section [data-type='parag']");
+        for(var i=0;i<$parags.length;i++){
+            var value = $parags[i].value;
+            $($parags[i]).replaceWith(`<p class="pl-3" >${value}</p>`);
+        }
+        // textHTML获取
+        submitObj.text = $("#section").html();
+        submitObj.text = submitObj.text.replace(/\&/g,"%26");
+        submitObj.text = submitObj.text.replace(/\+/g,"%2B");
+        // console.log("textHTML:"+submitObj.text);
+        //imgURL获取
+        var $imgURLEles = $("#section img");
+        if($imgURLEles.length>0){
+            for(var i=0; i<$imgURLEles.length; i++){
+                imgURLs.push($imgURLEles[i].src);
             }
-        })
-    }) 
-    
+        }
+        submitObj.imgURLsJson = JSON.stringify(imgURLs);
+        //videoURL获取
+        var $videoURLEles = $("#section img");
+        if($videoURLEles.length>0){
+            for(var i=0; i<$videoURLEles.length; i++){
+                videoURLs.push($videoURLEles[i].src);
+            }
+        }
+        submitObj.videoURLsJson = JSON.stringify(videoURLs);
+        // console.log("submitObj.imgURLsJson:"+submitObj.imgURLsJson);
+        // console.log("submitObj.videoURLsJson"+submitObj.videoURLsJson);
+        console.log(submitObj);
+        // $.ajax({
+        //     type:"post",
+        //     url:"http://127.0.0.1:3001/add_travel/submit_text",
+        //     data:"html=" + text,
+        //     success: function(res) {
+
+              
+            
+        //     }
+        // })
+    })
     
     
     

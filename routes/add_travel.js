@@ -2,8 +2,54 @@ const express=require("express");
 const router=express.Router();
 const pool=require("../pool");
 const fs=require("fs");
+const multer=require("multer");
 
-//测试: http://localhost:3001/spots/carousel
+//测试: http://localhost:3001/add_travel/add_video
+
+// -------------------------------------单个video文件上传--start-------------------------------------------------
+//3:创建multer对象指定上传文件目录
+//指定上传文件目录
+var upload = multer({dest:"public/upload/"});
+//4:创建处理上传请求 /upload 上传单个文件
+//upload.single() 一次上传一张图片
+//mypic           指定上传文件表单 name="mypic"
+router.post("/upload_video",upload.single("fileVideo"),
+(req,res)=>{
+ //5:获取上传文件大小  拒绝超过20MB文件 (字节)
+ var size = req.file.size/1000/1000;
+ if(size > 20){
+  res.send({code:-1,msg:"上传视频过大 超过20MB"});
+  return;
+ }
+ //6:获取上传文件类型  视频
+ //image/gif image/png image/jpg  text/css 
+ var type = req.file.mimetype;
+ var i2 = type.indexOf("video");
+ if(i2==-1){
+   res.send({code:-2,msg:"上传只能是视频"});
+   return;
+ }
+ //7:创建新文件名 1.jpg  191283874393.jpg
+ var src = req.file.originalname;
+ var fTime = new Date().getTime();
+ var fRand = Math.floor(Math.random()*9999);
+ var i3 = src.lastIndexOf(".");
+ var suff = src.substring(i3,src.length);
+ var des = "./public/upload/"+fTime+fRand+suff;
+ var url = "http://127.0.0.1:3001/upload/"+fTime+fRand+suff;
+ console.log(des);
+ //8:将临时文件移动upload目录下
+ fs.renameSync(req.file.path,des);
+ //9:返回上传成功信息
+ res.send({
+   code:1,
+   msg:"视频上传成功",
+   url:url
+  });
+});
+// -------------------------------------------单个video文件上传--end--------------------------------------------------------------
+
+//-------------------------------------------- 获得页面top大图---start-----------------------------------------------------------
 router.get("/top",(req,res)=>{
   var sql=`SELECT * FROM carousel 
     WHERE cid=?`;
@@ -12,71 +58,80 @@ router.get("/top",(req,res)=>{
     res.send(result[0]);
   })
 })
-router.post("/add",(req,res)=>{
-  console.log(req.body);
-  var json = req.body;
-  // var str = JSON.stringify(req.body);
-  fs.writeFile("test.html",json.html,"utf8",function(error){
-    if(error){
-      console.log(error);
-    } else {
-      console.log("写入成功！");
-    }
-  })
-  res.send(json.html);
-})
+//-------------------------------------------- 获得页面top大图---end-----------------------------------------------------------
 
-// //功能:上传头像
-// //1:加载所需模块 express;fs;multer
-// const express = require("express");
-// //fs fileSystem 文件系统模块
-// //操作文件:创建/删除/移动文件
-// const fs = require("fs");
-// const multer = require("multer");
-// //2:创建express对象监听端口3000
-// var app = express();
-// app.use(express.static(__dirname+"/public"));
-// app.use(express.static(__dirname+"/upload"));
-// app.listen(3002);
-// console.log(3002);
-// //3:创建multer对象指定上传文件目录
-// //指定上传文件目录
-// var upload = multer({dest:"upload/"});
-// //4:创建处理上传请求 /upload 上传单个文件
-// //upload.single() 一次上传一张图片
-// //mypic           指定上传文件表单 name="mypic"
-// app.post("/upload",upload.single("mypic"),
-// (req,res)=>{
-//  //5:获取上传文件大小  拒绝超过2MB文件 (字节)
-//  var size = req.file.size/1000/1000;
-//  if(size > 2){
-//   res.send({code:-1,msg:"上传图片过大 超过2MB"});
-//   return;
-//  }
-//  //6:获取上传文件类型  图片
-//  //image/gif image/png image/jpg  text/css 
-//  var type = req.file.mimetype;
-//  var i2 = type.indexOf("image");
-//  if(i2==-1){
-//    res.send({code:-2,msg:"上传只能是图片"});
-//    return;
-//  }
-//  //7:创建新文件名 1.jpg  191283874393.jpg
-//  var src = req.file.originalname;
-//  var fTime = new Date().getTime();
-//  var fRand = Math.floor(Math.random()*9999);
-//  var i3 = src.lastIndexOf(".");
-//  var suff = src.substring(i3,src.length);
-//  var des = "./upload/"+fTime+fRand+suff;
-//  console.log(des);
-//  //8:将临时文件移动upload目录下
-//  fs.renameSync(req.file.path,des);
-//  //9:返回上传成功信息
-//  res.send({
-//    code:1,
-//    msg:"图片上传成功",
-//    url:des
-//   });
-// });
+//-----------------------------------------------base64格式上传图片---start------------------------------------------------------
+router.post("/add_img",(req,res)=>{
+  var data = req.body.img;
+  var imgName = Date.now() + ".png";
+  var path = 'public/upload/'+ imgName;//相对路径
+  var url = "http://127.0.0.1:3001/upload/" + imgName;//绝对路径
+  var base64 = data.replace(/^data:image\/\w+;base64,/, "");//去掉图片base64码前面部分data:image/png;base64
+  var dataBuffer = new Buffer(base64, 'base64'); //把base64码转成buffer对象，
+  console.log('dataBuffer是否是Buffer对象：'+Buffer.isBuffer(dataBuffer));
+  fs.writeFile(path,dataBuffer,function(err){//用fs写入文件
+      if(err){
+          console.log(err);
+      }else{
+        res.send({
+          code:1,
+          msg:"图片上传成功",
+          url:url
+        });
+      }
+  }) 
+})
+//-----------------------------------------------base64格式上传图片---end------------------------------------------------------
+
+//-------------------------------------------------------单个图片文件上传-----start-------------------------------------
+router.post("/upload_img",upload.single("fileImg"),
+(req,res)=>{
+ //5:获取上传文件大小  拒绝超过20MB文件 (字节)
+ var size = req.file.size/1000/1000;
+ if(size > 20){
+  res.send({code:-1,msg:"上传图片过大 超过20MB"});
+  return;
+ }
+ //6:获取上传文件类型  视频
+ //image/gif image/png image/jpg  text/css 
+ var type = req.file.mimetype;
+ var i2 = type.indexOf("image");
+ if(i2==-1){
+   res.send({code:-2,msg:"上传只能是图片"});
+   return;
+ }
+ //7:创建新文件名 1.jpg  191283874393.jpg
+ var src = req.file.originalname;
+ var fTime = new Date().getTime();
+ var fRand = Math.floor(Math.random()*9999);
+ var i3 = src.lastIndexOf(".");
+ var suff = src.substring(i3,src.length);
+ var des = "./public/upload/"+fTime+fRand+suff;
+ var url = "http://127.0.0.1:3001/upload/"+fTime+fRand+suff;
+ console.log(des);
+ //8:将临时文件移动upload目录下
+ fs.renameSync(req.file.path,des);
+ //9:返回上传成功信息
+ res.send({
+   code:1,
+   msg:"图片上传成功",
+   url:url
+  });
+});
+//-------------------------------------------------------单个图片文件上传-----end-------------------------------------
+
+
+//-------------------------------------------------------提交游记-----start-------------------------------------
+router.post("/submit_text",(req,res)=>{
+  var title = req.body.title; //字符串 游记标题
+  var headerImg = req.body.headerImg; //字符串url 游记头图
+  var desc = req.body.desc; //字符串 游记描述
+  var text = req.body.html;//字符串 游记主体html片段
+  var imgURLs = req.body.imgURLs;//json字符串
+  var videoURLs = req.body.videoURLs;//json字符串
+  // 存数据库
+})
+//-------------------------------------------------------提交游记-----end-------------------------------------
+
 
 module.exports=router;
