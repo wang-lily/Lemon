@@ -36,7 +36,7 @@ a:hover{
         top:50%;
         left: 50%;
         
-        &>div.title{
+        &>div.spot{
             // width: 50%;
             margin: 0 auto;
             // box-shadow: 3px 3px 31px 0px #000;
@@ -46,7 +46,7 @@ a:hover{
             }
         }
     }
-    // &>div.title{
+    // &>div.spot{
     //     bottom:10%;
     //     left: 50%;
     //     transform: translateX(-50%);
@@ -240,7 +240,7 @@ a:hover{
             }
             font-size: $font2r;
         }
-        div.title{
+        div.spot{
             width: 500px;
             // height:3rem;
             &>input{
@@ -297,7 +297,7 @@ a:hover{
             }
             font-size: $font2r;
         }
-        div.title{
+        div.spot{
             width: 75%;
             &>input{
                 // margin-bottom:-1.5rem;

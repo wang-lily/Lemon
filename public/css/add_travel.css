@@ -7,9 +7,6 @@
 
 a:hover {
   text-decoration: none; }
-input:disabled,textarea:disabled{
-  background: #fff;
-}
 
 #top {
   overflow: hidden; }
@@ -22,9 +19,9 @@ input:disabled,textarea:disabled{
     left: 50%; }
     #top > .headerImg img {
       width: 50px; }
-    #top > .headerImg > div.title {
+    #top > .headerImg > div.spot {
       margin: 0 auto; }
-      #top > .headerImg > div.title > input {
+      #top > .headerImg > div.spot > input {
         width: 100%;
         border-radius: 5px; }
 
@@ -160,9 +157,9 @@ input:disabled,textarea:disabled{
       font-size: 1.5rem; }
     #top > .headerImg > div > p:last-child {
       font-size: 1rem; }
-  #top div.title {
+  #top div.spot {
     width: 500px; }
-    #top div.title > input {
+    #top div.spot > input {
       height: 3rem;
       font-size: 1rem; }
   #content .aside {
@@ -193,9 +190,9 @@ input:disabled,textarea:disabled{
         font-size: 1rem; }
       #top > .headerImg > div > p:last-child {
         font-size: 0.8rem; }
-  #top div.title {
+  #top div.spot {
     width: 75%; }
-    #top div.title > input {
+    #top div.spot > input {
       height: 1.5rem;
       font-size: 1rem; }
   #content .aside {

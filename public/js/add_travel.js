@@ -683,6 +683,7 @@ $(function(){
     $("#submit-btn").click(function(){
         var submitObj = {
             // 需要传入服务器的接口
+            spot : "",//字符串 景点标题
             title : "", //字符串 游记标题
             headerImg : "", //字符串url 游记头图
             desc : "", //字符串 游记描述
@@ -703,12 +704,19 @@ $(function(){
         //判断是否填写标题
         var titleEle = $("#title")[0];
         if(!titleEle.value){
-            alert("请填写标题！");
+            alert("请填写游记标题！");
             return;
         }else{
             submitObj.title = titleEle.value;
         }
         //判断是否填写景点名称
+        var spot = $("#spot")[0];
+        if(!spot.value){
+            alert("请填写景点名称！");
+            return;
+        }else{
+            submitObj.spot = spot.value;
+        }
         //判断第一个段落内容
         var firstParag = document.querySelector("textarea").value;
         if(firstParag.length<50){
@@ -736,8 +744,7 @@ $(function(){
         // textHTML获取
         submitObj.text = $("#section").html();
         submitObj.text = submitObj.text.replace(/\&/g,"%26");
-        submitObj.text = submitObj.text.replace(/\+/g,"%2B");
-        // console.log("textHTML:"+submitObj.text);
+        submitObj.text = (""+submitObj.text.replace(/\+/g,"%2B"));
         //imgURL获取
         var $imgURLEles = $("#section img");
         if($imgURLEles.length>0){
@@ -754,19 +761,17 @@ $(function(){
             }
         }
         submitObj.videoURLsJson = JSON.stringify(videoURLs);
-        // console.log("submitObj.imgURLsJson:"+submitObj.imgURLsJson);
-        // console.log("submitObj.videoURLsJson"+submitObj.videoURLsJson);
-        console.log(submitObj);
-        // $.ajax({
-        //     type:"post",
-        //     url:"http://127.0.0.1:3001/add_travel/submit_text",
-        //     data:"html=" + text,
-        //     success: function(res) {
-
+        // console.log(submitObj);
+        $.ajax({
+            type:"post",
+            url:"http://127.0.0.1:3001/add_travel/submit_text",
+            data:JSON.stringify(submitObj),
+            success: function(res) {
+                console.log(res);
               
             
-        //     }
-        // })
+            }
+        })
     })
     
     
