@@ -42,8 +42,8 @@
                           <li><router-link class="iconfont icon-shouyefill" to="/index" data-target="item"></router-link></li>
                           <!--<li><a href="#">目的地</a></li>-->
                           <li><router-link to="/spots" data-target="item">景点</router-link></li>
-                          <li><a href="/views/travels.html" data-target="item">游记</a></li>
-                          <li><a href="#" data-target="item">美食</a></li>
+                          <li><router-link to="/hot_travel" data-target="item">游记</router-link></li>
+                          <li><router-link to="/" data-target="item">美食</router-link></li>
                           <li><router-link to="/strategy"  data-target="item">指南</router-link></li>
                           <li><a class="iconfont icon-some" href="#" data-target="item"></a></li>
                       </ul>

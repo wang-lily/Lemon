@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex justify-content-between align-items-center w-100 h-100 login">
+    <section class="d-flex justify-content-between align-items-center w-100 h-100 login">
         <div class="position-relative m-auto">
             <div class="bg-white">
                 <p v-show="status==='register'" class="pl-4 pt-2 m-0 text-danger">
@@ -63,7 +63,7 @@
                 <a href="javascript:history.go(-1);" class="iconfont icon-guanbi text-success"></a>
             </p>
         </div>
-    </div>
+    </section>
 </template>
 <script>
     export default {

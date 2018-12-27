@@ -523,21 +523,24 @@ INSERT INTO img VALUES(null,28,"http://127.0.0.1:3001/img/170-240/tg_bty.png",
 #游记表
 CREATE TABLE travel(
 	tid INT PRIMARY KEY AUTO_INCREMENT,
-	txt TEXT,
 	#用户id
 	uid INT,
-	#图片id
-	iid INT,
-	Ttime DATETIME,
+	spot VARCHAR(50),
+	#游记标题
+	title VARCHAR(50),
+	#url 游记头图
+	headerImg VARCHAR(100),
+	#游记描述
+	describle VARCHAR(100),
+	#游记主体html片段
+	txt TEXT,
+	#创建时间
+	Ttime BIGINT(15),
 	#浏览量
 	tview INT,
 	#点赞
 	zan INT,
-	btitle VARCHAR(50),
-	mtitle VARCHAR(50),
-	stitle VARCHAR(50),
-	comment VARCHAR(200),
-	video_path VARCHAR(60)
+	comment VARCHAR(200)
 );
 #攻略表
 CREATE TABLE pointer(

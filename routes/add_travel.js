@@ -37,7 +37,6 @@ router.post("/upload_video",upload.single("fileVideo"),
  var suff = src.substring(i3,src.length);
  var des = "./public/upload/"+fTime+fRand+suff;
  var url = "http://127.0.0.1:3001/upload/"+fTime+fRand+suff;
- console.log(des);
  //8:将临时文件移动upload目录下
  fs.renameSync(req.file.path,des);
  //9:返回上传成功信息
@@ -68,7 +67,6 @@ router.post("/add_img",(req,res)=>{
   var url = "http://127.0.0.1:3001/upload/" + imgName;//绝对路径
   var base64 = data.replace(/^data:image\/\w+;base64,/, "");//去掉图片base64码前面部分data:image/png;base64
   var dataBuffer = new Buffer(base64, 'base64'); //把base64码转成buffer对象，
-  console.log('dataBuffer是否是Buffer对象：'+Buffer.isBuffer(dataBuffer));
   fs.writeFile(path,dataBuffer,function(err){//用fs写入文件
       if(err){
           console.log(err);
@@ -108,7 +106,6 @@ router.post("/upload_img",upload.single("fileImg"),
  var suff = src.substring(i3,src.length);
  var des = "./public/upload/"+fTime+fRand+suff;
  var url = "http://127.0.0.1:3001/upload/"+fTime+fRand+suff;
- console.log(des);
  //8:将临时文件移动upload目录下
  fs.renameSync(req.file.path,des);
  //9:返回上传成功信息
@@ -123,18 +120,29 @@ router.post("/upload_img",upload.single("fileImg"),
 
 //-------------------------------------------------------提交游记-----start-------------------------------------
 router.post("/submit_text",(req,res)=>{
-  var data = req.body;
+  // var data = req.body;
+  var uid = req.body.uid;
   var spot = req.body.spot;
   var title = req.body.title; //字符串 游记标题
   var headerImg = req.body.headerImg; //字符串url 游记头图
   var desc = req.body.desc; //字符串 游记描述
-  var text = req.body.html;//字符串 游记主体html片段
-  var imgURLsJson = req.body.imgURLsJson;//json数组
-  var videoURLsJson = req.body.videoURLsJson;//json数组
-  // console.log(imgURLsJson);
-  // console.log(videoURLsJson);
-  // 存数据库
-  // res.send(data);
+  var text = req.body.text;//字符串 游记主体html片段
+  var time = new Date().getTime();
+  var sql = `INSERT INTO travel VALUES(DEFAULT,?,?,?,?,?,?,?,123,456,NULL)`
+  pool.query(sql,[uid,spot,title,headerImg,desc,text,time,],(err,result)=>{
+    if(err) throw (err);
+        if(result.affectedRows>0){
+            res.send({
+                code:1,
+                msg:"游记发表成功！"
+            });
+        }else{
+            res.send({
+                code:-1,
+                msg:"游记发表失败！"
+            })
+        }
+  })
 })
 //-------------------------------------------------------提交游记-----end-------------------------------------
 

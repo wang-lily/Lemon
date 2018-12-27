@@ -11,6 +11,7 @@ const  pics= require("./routes/pics");
 const  personal= require("./routes/personal");
 const  strategy= require("./routes/strategy");
 const addTravel = require("./routes/add_travel");
+const travels = require("./routes/travels");
 
 
 var app = express();
@@ -44,3 +45,4 @@ app.use('/personal',personal);
 app.use("/spots",spots);
 app.use("/strategy",strategy);
 app.use("/add_travel",addTravel);
+app.use("/travels",travels);

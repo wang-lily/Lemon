@@ -32,8 +32,8 @@ $(function(){
     }
     // img预加载
     function imgPreview(url,width,height,callback){
-        var imgPreview = `<img src="${url}" style="opacity:0"/>`;
-        var img = `<img src="${url}" alt="" />`;
+        var imgPreview = `<img src="${url}" style="opacity:0;max-width:100%"/>`;
+        var img = `<img src="${url}" style="max-width:100%" alt="" />`;
         $("#preview").append(imgPreview);
         var imgPreviewWidth = "";
         var imgPreviewHeight = "";
@@ -280,7 +280,7 @@ $(function(){
                                     imgHtml += `<div>
                             <div class=" d-flex flex-column justify-content-center item">
                                 <div class="position-relative text-center mb-3 m-auto"  data-target="inserted">
-                                <img src=${url} alt="" />
+                                <img src=${url} alt="" style="max-width:100%" />
                                     <div class="position-absolute p-2 text-left mask">
                                     <a href="javascript:;" class="iconfont icon-delete2 text-warning p-2 m-0" title="删除"></a>
                                     <a href="javascript:;" class="position-relative iconfont icon-reset text-warning p-2 m-0" title="重置">
@@ -546,7 +546,7 @@ $(function(){
                             success:function(res){
                                 // console.log(res);
                                 if(res){
-                                    $("#headerImg-icon").html(`<img src="${res.url}"/>`);
+                                    $("#headerImg-icon").html(`<img src="${res.url}" style="max-width:100%"/>`);
                                 }
                             }
                         })
@@ -742,17 +742,17 @@ $(function(){
             var value = $parags[i].value;
             $($parags[i]).replaceWith(`<p class="pl-3" >${value}</p>`);
         }
-        // textHTML获取
-        submitObj.text = $("#section").html();
-        submitObj.text = submitObj.text.replace(/\&/g,"%26");
-        submitObj.text = (""+submitObj.text.replace(/\+/g,"%2B"));
-        //imgURL获取
-        var $imgURLEles = $("#section img");
-        if($imgURLEles.length>0){
-            for(var i=0; i<$imgURLEles.length; i++){
-                imgURLs.push($imgURLEles[i].src);
-            }
-        }
+        // // textHTML获取
+        // submitObj.text = $("#section").html();
+        // submitObj.text = submitObj.text.replace(/\&/g,"%26");
+        // submitObj.text = (""+submitObj.text.replace(/\+/g,"%2B"));
+        // //imgURL获取
+        // var $imgURLEles = $("#section img");
+        // if($imgURLEles.length>0){
+        //     for(var i=0; i<$imgURLEles.length; i++){
+        //         imgURLs.push($imgURLEles[i].src);
+        //     }
+        // }
         submitObj.imgURLsJson = JSON.stringify(imgURLs);
         //videoURL获取
         var $videoURLEles = $("#section img");
