@@ -27,7 +27,9 @@ SET time_zone = "+00:00";
 --
 -- 表的结构 `carousel`
 --
-
+DROP DATABASE IF EXISTS lemon;
+CREATE DATABASE lemon;
+use lemon;
 CREATE TABLE `carousel` (
   `cid` int(11) NOT NULL,
   `country` varchar(50) DEFAULT NULL,

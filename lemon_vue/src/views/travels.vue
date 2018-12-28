@@ -24,11 +24,11 @@
         <div id="page-nav" class="row w-100 m-0">
             <ul class="col-12 col-md d-flex justify-content-center justify-content-md-start align-items-center mb-1 p-0" @click="changActive($event)">
                 
-                <li><button class="iconfont icon-arrow_prev" href="javascript:;" data-num="prev" :disabled="tempNum===1"></button></li>
-                <li :class="activeEle==0?'active':''"><a href="javascript:;" data-num=0>{{tempNum}}</a></li>
-                <li :class="activeEle==1?'active':''"><a href="javascript:;" data-num=1>{{tempNum+1}}</a></li>
-                <li :class="activeEle==2?'active':''"><a href="javascript:;" data-num=2>{{tempNum+2}}</a></li>
-                <li><button class="iconfont icon-arrow_next" href="javascript:;" data-num="next" :disabled="tempNum===pageCount-2"></button></li>
+                <li class="p-0 m-0" ><button class=" btn iconfont icon-arrow_prev" href="javascript:;" data-num="prev" :disabled="state.pno==1"></button></li>
+                <li  class="p-0 m-0"  :class="activeEle==0?'active':''"><button class="btn bg-transparent" data-num=0>{{tempNum}}</button></li>
+                <li  class="p-0 m-0"  :class="activeEle==1?'active':''"><button class="btn bg-transparent" data-num=1>{{tempNum+1}}</button></li>
+                <li  class="p-0 m-0"  :class="activeEle==2?'active':''"><button class="btn bg-transparent" data-num=2>{{tempNum+2}}</button></li>
+                <li  class="p-0 m-0" ><button class="btn bg-dark text-white iconfont icon-arrow_next" href="javascript:;" data-num="next" :disabled="state.pno==pageCount"></button></li>
                 
             </ul>
             <p class="col-12 col-md-auto d-flex justify-content-center align-items-center mb-1 mr-2 p-0">
@@ -72,6 +72,10 @@ export default {
         },
         activeEle(){
             this.state.pno = Number(this.activeEle) + Number(this.tempNum);
+        },
+        "state.tab"(){
+           this.tempNum = 1;
+            this.activeEle = 0;
         }
     },
     methods: {
@@ -89,7 +93,9 @@ export default {
             })
         },
         changeState(e){
-            this.state.tab = e.target.dataset.tab;
+            if(e.target.nodeName === "SPAN"){
+                this.state.tab = e.target.dataset.tab;
+            }    
         },
         changePno(e){
             if(parseInt(Number(this.inputPno))==this.pageCount){
@@ -106,11 +112,19 @@ export default {
         changActive(e){
             if(e.target.nodeName==="A" || e.target.nodeName==="BUTTON"){
                 if(e.target.dataset.num==="next"){
-                    this.tempNum++;
+                    if(this.activeEle==2){
+                        this.tempNum++;
+                    }else{
+                        this.activeEle++;
+                    }    
                     return;
                 }
                 if(e.target.dataset.num==="prev"){
-                    this.tempNum--;
+                    if(this.activeEle==0){
+                        this.tempNum--;
+                    }else{
+                        this.activeEle--;
+                    }
                     return;
                 }   
                 this.activeEle = e.target.dataset.num;

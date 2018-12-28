@@ -16,15 +16,7 @@ router.get("/top",(req,res)=>{
   //-------------------------------------------- 获得页面top大图---end-----------------------------------------------------------
 
 
-// ----------------------------热门游记-----start----------------------------------------------
-router.get("/hot_travels",(req,res)=>{
-    var sql=`select uname,Ttime,describle,headerImg,title,tview,zan from user i inner join travel s on i.uid=s.uid ORDER BY zan DESC LIMIT 0,6`;
-    pool.query(sql,req.query.num,(err,result)=>{
-      if(err) throw (err);
-      res.send(result);
-    })
-})
-// ----------------------------热门游记-----end----------------------------------------------
+
 
 
 // ----------------------------全部游记-----start----------------------------------------------
@@ -65,10 +57,11 @@ router.get("/all_travels",(req,res)=>{
     //6:创建sql2 查询当前页内容 严格区分大小写
     if(tab==="hot"){
       var sql =`select uname,Ttime,describle,headerImg,title,tview,zan from user i inner join travel s on i.uid=s.uid ORDER BY zan DESC LIMIT ?,?`; 
+    }else if(tab==="latest"){
+      var sql =`select uname,Ttime,describle,headerImg,title,tview,zan from user i inner join travel s on i.uid=s.uid ORDER BY Ttime DESC LIMIT ?,?`; 
+    }else if(tab==="all"){
+      var sql =`select uname,Ttime,describle,headerImg,title,tview,zan from user i inner join travel s on i.uid=s.uid ORDER BY tid LIMIT ?,?`; 
     }
-    if(tab==="latest"){
-      var sql =`select uname,Ttime,describle,headerImg,title,tview,zan from user i inner join travel s on i.uid=s.uid ORDER BY zan DESC LIMIT ?,?`; 
-    }  
     var offset = parseInt((pno-1)*pageSize);
         pageSize = parseInt(pageSize);
     pool.query(sql,[offset,pageSize],(err,result)=>{
@@ -83,7 +76,6 @@ router.get("/all_travels",(req,res)=>{
    }); 
 
 // -------------------------------全部游记-- -----end-----------------------------------------
-
 
 
 //获取单个游记详细信息和作者
