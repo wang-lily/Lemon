@@ -19,7 +19,7 @@
                   <div class="position-absolute flex-column pr-3 p-md-0 d-none" data-target="toggleItem">
                       <div class="align-self-end mr-2"></div>
                       <ul class="pl-3 pr-3 speed">
-                          <li class="text-left border-bottom">{{this.$store.state.userMsg?this.$store.state.userMsg.user:''}}</li>
+                          <li class="text-left border-bottom" v-cloak>{{this.$store.state.userMsg?this.$store.state.userMsg.user:''}}</li>
                           <li class="text-left border-bottom"><router-link to="/personal" class="iconfont icon-touxiang">&nbsp;个人中心</router-link> </li>
                           <li class="text-left border-bottom"><router-link to="/add_travel" class="iconfont icon-fabiaoyouji">&nbsp;发表游记</router-link></li>
                           <li class="text-left border-bottom"><a  class="iconfont icon-tuichu" @click="signout">&nbsp;退出</a></li>
@@ -40,12 +40,11 @@
                       </div>
                       <ul id="nav-items" class="d-md-inline-flex justify-content-md-around m-0">
                           <li><router-link class="iconfont icon-shouyefill" to="/index" data-target="item"></router-link></li>
-                          <!--<li><a href="#">目的地</a></li>-->
                           <li><router-link to="/spots" data-target="item">景点</router-link></li>
-                          <li><router-link to="/hot_travel" data-target="item">游记</router-link></li>
+                          <li><router-link to="/travels" data-target="item">游记</router-link></li>
                           <li><router-link to="/" data-target="item">美食</router-link></li>
                           <li><router-link to="/strategy"  data-target="item">指南</router-link></li>
-                          <li><a class="iconfont icon-some" href="#" data-target="item"></a></li>
+                          <li><router-link class="iconfont icon-some" to="/" data-target="item"></router-link></li>
                       </ul>
                   </div>
               </div>
@@ -118,18 +117,17 @@
     export default {
         data(){
             return {
-               
+                activeTab:"index",
+               message:"header的生命周期："
             }
         },
+        props:[],//接收来自父子件的数据
         methods:{
             signout(){
                 this.axios.get("http://127.0.0.1:3001/user/signout");
                 this.$store.commit("signout");
                 this.$router.push('/index');
-            }
-        },
-        created() {
-            
+            },
         },
         mounted() {
             getHeaderEffect();
@@ -138,5 +136,8 @@
 </script>
 <style>
   @import '../assets/css/header.css';
+  [v-cloak] {
+display: none;
+}
 </style>
     

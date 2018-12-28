@@ -29,9 +29,35 @@
 export default {
     data(){
         return{
-
+            data1:{
+                tab:"hot",
+                pno:1,
+                pageSize:6
+            },
         }
-    }
+    },
+    props:{
+        state:Object
+    },
+    methods: {
+        loadTravelBox(a){
+            
+        }
+    },
+    watch: {
+        state:{
+           handler: function(a){
+               this.axios.get("http://127.0.0.1:3001/travels/all_travels",{params:a}).then((res=>{
+                console.log(res.data);
+            }))
+           },
+            deep: true
+        }
+    },
+    created() {
+       
+    },
+    
 }
 </script>
 <style>

@@ -9,36 +9,38 @@
     </div>
     <div class="container p-0">
         <div id="navigation" class="row border-bottom m-auto pt-2">
-            <div class="col-12 col-md order-2 order-md-0 d-flex pt-2 m-0 align-items-end justify-content-around justify-content-md-start">
-                <span class="pb-2 pb-md-0 mb-0 ml-sm-4  h-100" :class="state==='hot'?'active':''" @click="jumpToHot()">热门游记</span>
-                <span class="pb-2 pb-md-0 mb-0 ml-sm-4  h-100" :class="state==='latest'?'active':''" @click="jumpToLatest()">最近发布</span>
-                <span class="pb-2 pb-md-0 mb-0 ml-sm-4 mr-0 h-100" :class="state==='all'?'active':''"  @click="jumpToAll()">全部游记</span>
+            <div class="col-12 col-md order-2 order-md-0 d-flex pt-2 m-0 align-items-end justify-content-around justify-content-md-start" @click="changeState($event)">
+                <span class="pb-2 pb-md-0 mb-0 ml-sm-4  h-100" :class="state.tab==='hot'?'active':''" data-tab="hot">热门游记</span>
+                <span class="pb-2 pb-md-0 mb-0 ml-sm-4  h-100" :class="state.tab==='latest'?'active':''" data-tab="latest">最近发布</span>
+                <span class="pb-2 pb-md-0 mb-0 ml-sm-4 mr-0 h-100" :class="state.tab==='all'?'active':''" data-tab="all">全部游记</span>
             </div>
             <div class="co-12 col-md-auto order-0 order-md-2 text-center text-md-right">
                 <button class="btn btn-group-sm btn-warning mr-1 mb-2 mt-4 mt-md-2" type="button"><router-link to="/" class="iconfont icon-youji1">我的游记</router-link></button>
                 <button class="btn btn-group-sm btn-warning ml-1 mb-2 mt-4 mt-md-2" type="button"><router-link to="/add_travel" class="iconfont icon-fabiaoyouji">发表游记</router-link></button>
             </div>
         </div>
-        <router-view></router-view>
+        <!-- 加载travelbox组件 -->
+        <TravelBox :state="state"></TravelBox>
         <div id="page-nav" class="row w-100 m-0">
-            <ul class="col-12 col-md d-flex justify-content-center justify-content-md-start align-items-center mb-1 p-0">
-                <li><a href="#">首页</a></li>
-                <li><a class="iconfont icon-arrow_prev" href="#"></a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a class="iconfont icon-arrow_next" href="#"></a></li>
-                <li><a href="#">尾页</a></li>
+            <ul class="col-12 col-md d-flex justify-content-center justify-content-md-start align-items-center mb-1 p-0" @click="changActive($event)">
+                
+                <li><button class="iconfont icon-arrow_prev" href="javascript:;" data-num="prev" :disabled="tempNum===1"></button></li>
+                <li :class="activeEle==0?'active':''"><a href="javascript:;" data-num=0>{{tempNum}}</a></li>
+                <li :class="activeEle==1?'active':''"><a href="javascript:;" data-num=1>{{tempNum+1}}</a></li>
+                <li :class="activeEle==2?'active':''"><a href="javascript:;" data-num=2>{{tempNum+2}}</a></li>
+                <li><button class="iconfont icon-arrow_next" href="javascript:;" data-num="next" :disabled="tempNum===pageCount-2"></button></li>
+                
             </ul>
             <p class="col-12 col-md-auto d-flex justify-content-center align-items-center mb-1 mr-2 p-0">
-                第<input type="number" class="text-center" >页/共<span>{{pageCount}}</span>页
-                <button class="btn btn-sm">确定</button>  
+                第<input type="text" class="text-center" v-model="inputPno">页/共<span>{{pageCount}}</span>页
+                <button type="text" class="btn btn-sm" :disabled="Number(inputPno)<=0 || Number(inputPno)>pageCount" @click="changePno($event)">确定</button>  
             </p>
         </div> 
     </div>   
 </section>
 </template>
 <script>
+import TravelBox from "@/views/travel_box/Travel_box.vue"
 export default {
     data(){
         return {
@@ -47,9 +49,29 @@ export default {
                 md_url:"",
                 src:""
             },
-            state:"hot",
-            pageCount:0
+            tempNum:1,
+            activeEle:0,
+            inputPno:"",
+            //传到travel_box
+            state:{
+                tab:"hot",
+                pno:1,//用户需要显示的页码，默认为1
+                pageSize:6
+            },
+            pageCount:0//总页数，由travel_box传入
             // list:[]
+        }
+    },
+    components:{
+        TravelBox
+    },
+    watch: {
+        tempNum(){
+            console.log("activeEle"+this.activeEle);
+            this.state.pno = Number(this.activeEle) + Number(this.tempNum);
+        },
+        activeEle(){
+            this.state.pno = Number(this.activeEle) + Number(this.tempNum);
         }
     },
     methods: {
@@ -66,19 +88,36 @@ export default {
                 this.pageCount = res.data.pageCount;
             })
         },
-        jumpToHot(){
-            this.state = "hot";
-            this.$router.push("/hot_travel");
+        changeState(e){
+            this.state.tab = e.target.dataset.tab;
         },
-        jumpToLatest(){
-            this.state = "latest";
-            this.$router.push("/latest_travel");
-        },
-        jumpToAll(){
-            this.state = "all";
-            this.$router.push("/all_travel");
+        changePno(e){
+            if(parseInt(Number(this.inputPno))==this.pageCount){
+                this.tempNum = this.pageCount-2;
+                this.activeEle = 2;
+            }else if(parseInt(Number(this.inputPno))==this.pageCount-1){
+                this.tempNum = this.pageCount-2;
+                this.activeEle = 1;
+            }else{
+                this.tempNum = parseInt(Number(this.inputPno));
+                this.activeEle = 0;
+            }                                  
+        },        
+        changActive(e){
+            if(e.target.nodeName==="A" || e.target.nodeName==="BUTTON"){
+                if(e.target.dataset.num==="next"){
+                    this.tempNum++;
+                    return;
+                }
+                if(e.target.dataset.num==="prev"){
+                    this.tempNum--;
+                    return;
+                }   
+                this.activeEle = e.target.dataset.num;
+                }
         }
     },
+    
     created() {
         this.loadBigImg();
         this.loadHotTravels();

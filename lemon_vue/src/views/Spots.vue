@@ -18,8 +18,8 @@
                     </picture>
                     <p class="w-100 pr-5 pl-5 mb-1 text-center">
                         <span class="iconfont icon-tubiao"></span>&nbsp;&gt;
-                        <a herf="javascript:;">{{img.country}}</a>&nbsp;&gt;
-                        <a herf="javascript:;">{{img.spot}}</a>
+                        <a herf="javascript:;" v-cloak>{{img.country}}</a>&nbsp;&gt;
+                        <a herf="javascript:;" v-cloak>{{img.spot}}</a>
                     </p>
                 </div>
             </div>
@@ -50,12 +50,12 @@
                     </div>
                     <div class=" pl-1 pr-1 m-auto" v-show="allSpotsList.abroad.style[1]">
                         <div class="row justify-content-start w-100 m-0 pt-1 pb-2">
-                            <a v-for="(item,i) of allSpotsList.abroad.list" :key="i" href="javascript:;" class="pt-1 pl-1 col-4 col-md-2 text-center text-md-left" >{{item}}</a>
+                            <a v-for="(item,i) of allSpotsList.abroad.list" :key="i" href="javascript:;" class="pt-1 pl-1 col-4 col-md-2 text-center text-md-left" v-cloak>{{item}}</a>
                         </div>
                     </div>
                     <div class=" pl-1 pr-1 m-auto" v-show="allSpotsList.home.style[1]">
                         <div class="row justify-content-start w-100 m-0 pt-1 pb-2">
-                            <a v-for="(item,i) of allSpotsList.home.list" :key="i" href="javascript:;" class="pt-1 pl-1 col-4 col-md-2 text-center text-md-left">{{item}}</a>
+                            <a v-for="(item,i) of allSpotsList.home.list" :key="i" href="javascript:;" class="pt-1 pl-1 col-4 col-md-2 text-center text-md-left" v-cloak>{{item}}</a>
                         </div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                     <div class="row w-100 m-0 p-1 flex-nowrap justify-content-center" data-trigger="tab">
                         <span class="col d-none d-md-block p-0 pt-1 pb-1"></span>
                         <span class="col d-md-none  p-0 pt-1 pb-1 m-0 text-center" ><button class="text-white border-0 bg-transparent  iconfont icon-arrow_l" :disabled="spots01.prevHideTab==-1" @click="showPrevTab(spots01)"></button></span>
-                        <span v-for="(item,i) of spots01.tabs" :key="i" class="col-auto pt-1 pb-1 pr-3 pl-3 pl-md-2 pr-md-2 pl-lg-3 pr-lg-3" :class="item.style" @mouseenter="activateStyle(spots01,spots01.tabs[i])">{{i+1}}月</span>
+                        <span v-for="(item,i) of spots01.tabs" :key="i" class="col-auto pt-1 pb-1 pr-3 pl-3 pl-md-2 pr-md-2 pl-lg-3 pr-lg-3" :class="item.style" @mouseenter="activateStyle(spots01,spots01.tabs[i])" v-cloak>{{i+1}}月</span>
                         <span class="col d-md-none  p-0 pt-1 pb-1 m-0 text-center"  ><button class="text-white border-0 bg-transparent iconfont icon-arrow-r" @click="showNextTab(spots01)" :disabled="spots01.nextHideTab==12"></button></span>
                         <span class="col d-none d-md-block p-0 pt-1 pb-1"></span>
                     </div>
@@ -79,7 +79,7 @@
                         <div v-for="(spot,j) of spots01.tabs[i].imgsList" :key="j" class="col-6 p-1 col-md-4   float-left">
                             <img class="img-fluid" :src="spot.iimg_380_220" alt="">
                             <div class="position-absolute p-3 " >
-                                <p>{{spot.spot || spot.country}}</p>
+                                <p v-cloak>{{spot.spot || spot.country}}</p>
                             </div>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                     <div class="row w-100 m-0 p-1 flex-nowrap justify-content-center" data-trigger="tab">
                         <span class="col d-none d-md-block p-0 pt-1 pb-1"></span>
                         <span class="col d-md-none  p-0 pt-1 pb-1 m-0 text-center"><button class="text-white border-0 bg-transparent  iconfont icon-arrow_l" :disabled="spots02.prevHideTab==-1" @click="showPrevTab(spots02)"></button></span>
-                        <span v-for="(item,i) of spots02.tabs" :key="i" class="col-auto pt-1 pb-1 pr-3 pl-3 pl-md-2 pr-md-2 pl-lg-3 pr-lg-3" :class="item.style" @mouseenter="activateStyle(spots02,spots02.tabs[i])">{{spots02.tabDetails[i]}}</span>
+                        <span v-for="(item,i) of spots02.tabs" :key="i" class="col-auto pt-1 pb-1 pr-3 pl-3 pl-md-2 pr-md-2 pl-lg-3 pr-lg-3" :class="item.style" @mouseenter="activateStyle(spots02,spots02.tabs[i])" v-cloak>{{spots02.tabDetails[i]}}</span>
                         <span class="col d-md-none  p-0 pt-1 pb-1 m-0 text-center"  ><button class="text-white border-0 bg-transparent iconfont icon-arrow-r" @click="showNextTab(spots02)" :disabled="spots02.nextHideTab==5"></button></span>
                         <span class="col d-none d-md-block p-0 pt-1 pb-1"></span>
                     </div>
@@ -104,45 +104,45 @@
                         <div class="position-relative p-1">
                             <img class="img-fluid" :src="item.imgsList[0] ? item.imgsList[0][0].lg_url :''"  alt="">
                             <div class="position-absolute p-3 " >
-                                <p>{{item.imgsList[0] ? (item.imgsList[0][0].spot || item.imgsList[0][0].country) : ''}}</p>
+                                <p v-cloak>{{item.imgsList[0] ? (item.imgsList[0][0].spot || item.imgsList[0][0].country) : ''}}</p>
                             </div>
                         </div>
                         <div class="row p-0 m-0">
                             <!-- <div v-if="item.imgsList[1]" v-for="(spot,j) in item.imgsList[1]" :key="j" class="col p-1 ">
                                 <img v-if="spot[j]" class="img-fluid" :src="spot[j].iimg_390_552"  alt="">
                                 <div class="position-absolute p-3 " >
-                                    <p v-if="spot[j]">{{spot[j].spot || spot[j].country}}</p>
+                                    <p v-if="spot[j]" v-cloak>{{spot[j].spot || spot[j].country}}</p>
                                 </div>
                             </div> -->
                             <div class="col p-1 ">
                                 <img class="img-fluid" :src="item.imgsList[1] ? item.imgsList[1][0].iimg_390_552 :''"  alt="">
                                 <div class="position-absolute p-3 " >
-                                    <p>{{item.imgsList[1] ? (item.imgsList[1][0].spot || item.imgsList[1][0].country) : ''}}</p>
+                                    <p v-cloak>{{item.imgsList[1] ? (item.imgsList[1][0].spot || item.imgsList[1][0].country) : ''}}</p>
                                 </div>
                             </div>
                             <div class="col p-1 ">
                                 <img class="img-fluid" :src="item.imgsList[1] ? item.imgsList[1][1].iimg_390_552 :''" alt="">
                                 <div class="position-absolute p-3 " >
-                                    <p>{{item.imgsList[1] ? (item.imgsList[1][1].spot || item.imgsList[1][1].country) : ''}}</p>
+                                    <p v-cloak>{{item.imgsList[1] ? (item.imgsList[1][1].spot || item.imgsList[1][1].country) : ''}}</p>
                                 </div>
                             </div>
                             <div class="col d-none d-md-block p-1 ">
                                 <img class="img-fluid" :src="item.imgsList[1] ? item.imgsList[1][2].iimg_390_552 :''" alt="">
                                 <div class="position-absolute p-3 " >
-                                    <p>{{item.imgsList[1] ? (item.imgsList[1][2].spot || item.imgsList[1][2].country) : ''}}</p>
+                                    <p v-cloak>{{item.imgsList[1] ? (item.imgsList[1][2].spot || item.imgsList[1][2].country) : ''}}</p>
                                 </div>
                             </div>
                             <div class="col d-none d-md-block p-1 ">
                                 <img class="img-fluid" :src="item.imgsList[1] ? item.imgsList[1][3].iimg_390_552 :''" alt="">
                                 <div class="position-absolute p-3 " >
-                                    <p>{{item.imgsList[1] ? (item.imgsList[1][3].spot || item.imgsList[1][3].country) : ''}}</p>
+                                    <p v-cloak>{{item.imgsList[1] ? (item.imgsList[1][3].spot || item.imgsList[1][3].country) : ''}}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="position-relative p-1 d-md-none">
                             <img class="img-fluid" :src="item.imgsList[0] ? item.imgsList[0][1].lg_url :''" alt="">
                             <div class="position-absolute p-3 " >
-                                <p>{{item.imgsList[0] ? (item.imgsList[0][1].spot || item.imgsList[0][1].country) : ''}}</p>
+                                <p v-cloak>{{item.imgsList[0] ? (item.imgsList[0][1].spot || item.imgsList[0][1].country) : ''}}</p>
                             </div>
                         </div>
                     </div>
@@ -160,8 +160,8 @@
                         <div v-for="(item,i) of spots03.imgs" :key="i" class="col-6 col-md-3 p-1 card border-0 position-relative">
                             <img class="card-img" :src="item.iimg_270_165"/>
                             <div class="card-footer m-0 p-1">
-                                <p class="m-0">{{item.spot || item.country}}</p>
-                                <p class="m-0">人气指数：{{item.click_rate}}</p>
+                                <p class="m-0" v-cloak>{{item.spot || item.country}}</p>
+                                <p class="m-0" v-cloak>人气指数：{{item.click_rate}}</p>
                             </div>
                             <img class="no-shadow" src="../assets/background/hot.png">
                         </div>
@@ -398,12 +398,12 @@
             this.loadSpotsTabs(this.spots02,5,4);
             this.loadSpots02Imgs();
             this.loadSpots03Imgs();
-        },
-        mounted() {
-            
         }
     }
 </script>
 <style>
     @import '../assets/css/spots.css';
+    [v-cloak] {
+    display: none;
+    }
 </style>

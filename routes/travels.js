@@ -31,6 +31,7 @@ router.get("/hot_travels",(req,res)=>{
 //功能二:新闻分页显示
 router.get("/all_travels",(req,res)=>{
     //1:获取参数
+    var tab = req.query.tab;
     var pno = req.query.pno;
     var pageSize = req.query.pageSize;
     //2:设置默认值 1 6
@@ -62,7 +63,12 @@ router.get("/all_travels",(req,res)=>{
       }
     });
     //6:创建sql2 查询当前页内容 严格区分大小写
-    var sql =`select uname,Ttime,describle,headerImg,title,tview,zan from user i inner join travel s on i.uid=s.uid ORDER BY zan DESC LIMIT ?,?`;   
+    if(tab==="hot"){
+      var sql =`select uname,Ttime,describle,headerImg,title,tview,zan from user i inner join travel s on i.uid=s.uid ORDER BY zan DESC LIMIT ?,?`; 
+    }
+    if(tab==="latest"){
+      var sql =`select uname,Ttime,describle,headerImg,title,tview,zan from user i inner join travel s on i.uid=s.uid ORDER BY zan DESC LIMIT ?,?`; 
+    }  
     var offset = parseInt((pno-1)*pageSize);
         pageSize = parseInt(pageSize);
     pool.query(sql,[offset,pageSize],(err,result)=>{

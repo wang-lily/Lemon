@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div  v-cloak>
     <Header></Header>
-    <router-view v-if="isReload"></router-view>
+    <router-view v-if="reloadable"></router-view>
     <toTop></toTop>
     <Footer></Footer>
 
@@ -22,16 +22,16 @@ export default {
   },
   data(){
     return {
-      isReload:true
+      reloadable:true,
     }
   },
   methods: {
     reload() {
-			this.isReload = false;
+			this.reloadable = false;
 			this.$nextTick(function(){
-				this.isReload = true;
+				this.reloadable = true;
 			})
-		}
+    }
   },
   components: {
     Header,
@@ -41,5 +41,7 @@ export default {
 }
 </script>
 <style>
-
+[v-cloak] {
+display: none;
+}
 </style>

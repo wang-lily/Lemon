@@ -136,7 +136,7 @@
             <div class="fixed-top bg-light d-flex flex-column justify-content-center size-alert" >
                 <div id="alert1" class="h6 p-4 d-none">您选择的图片尺寸太小，请选择尺寸大于100px*50px的图片</div>
                 <div id="alert2" class="h6 p-4 d-none">您选择的图片尺寸太小，请选择尺寸大于270px*165px的图片</div>
-                <div id="alert2" class="h6 p-4 text-center d-none" :class="alert.style">{{alert.msg}}</div>
+                <div id="alert2" class="h6 p-4 text-center d-none" :class="alert.style" v-cloak>{{alert.msg}}</div>
                 <div class="text-center">
                     <button class="btn btn-warning pl-4 pr-4" @click="closeAlert()">确定</button>
                 </div>
@@ -174,6 +174,7 @@
 </template>
 <script>
 import {addTravel} from "../assets/js/add_travel.js"
+import autosize from "autosize"
     export default {
         inject:['reload'],
         data(){
@@ -197,6 +198,19 @@ import {addTravel} from "../assets/js/add_travel.js"
                     this.topImg.md_url = res.data.md_url;
                     this.topImg.src = res.data.src;
                 })
+            },
+            // 创建section监听
+            createSectionObserver(){                               
+                    var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+                    var observer = new MutationObserver(function(){
+                        autosize($("#section textarea"));
+                        autosize.update($("#section textarea"))
+                    });
+                    observer.observe($("#section")[0],{
+                        attributes:false,
+                        childList:true,
+                        characterData:false
+                    });
             },
             submit(){
                 if(!this.$store.state.userMsg){
@@ -310,9 +324,13 @@ import {addTravel} from "../assets/js/add_travel.js"
         },
         mounted() {
             addTravel();
+            this.createSectionObserver();
         }
     }
 </script>
 <style>
 @import '../assets/css/add_travel.css';
+[v-cloak] {
+display: none;
+}
 </style>

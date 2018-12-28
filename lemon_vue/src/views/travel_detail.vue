@@ -2,8 +2,8 @@
     <div>
         <div class="border-bottom" style="height:70px"></div>
         <div class="container">
-            <h3 class="text-center h2 p-3" style="font-weight:bold;">{{details.title}}</h3>
-            <span>{{details.time}}</span>
+            <h3 class="text-center h2 p-3" style="font-weight:bold;" v-cloak>{{details.title}}</h3>
+            <span v-cloak>{{details.time}}</span>
             <div v-html="details.html"></div>
         </div>
     </div>
@@ -36,5 +36,7 @@ export default {
 }
 </script>
 <style>
-
+    [v-cloak] {
+        display: none;
+    }
 </style>

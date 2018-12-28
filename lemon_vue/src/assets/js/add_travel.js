@@ -35,7 +35,7 @@ function addTravel(){
     // img预加载
     function imgPreview(url,width,height,callback){
         var imgPreview = `<img src="${url}" style="opacity:0"/>`;
-        var img = `<img src="${url}" alt="" />`;
+        var img = `<img src="${url}" alt="" style="max-width:100%;"/>`;
         $("#preview").append(imgPreview);
         var imgPreviewWidth = "";
         var imgPreviewHeight = "";
@@ -97,7 +97,6 @@ function addTravel(){
                 data-type="parag">${prevAndNext.prevTxt}</textarea>`:`<input type="text" class="w-100 h5 pl-3" value="${prevAndNext.prevTxt}" placeholder="添加标题" style="font-weight:bold;" data-type="sm-title"/>`)
                 $(html).insertBefore(target);
             }
-            autosize($("textarea"));
         }
         
         // 合并后面的文本
@@ -107,14 +106,12 @@ function addTravel(){
                     return prevAndNext.nextTxt + this.value;
                 });    
             }else{
-                // console.log(target);
                 var html = (target.nodeName=="TEXTAREA" ? `<textarea
                 class="w-100 pl-3 pt-0 pb-0 pr-5"
                 rows="1"
                 data-type="parag">${prevAndNext.nextTxt}</textarea>`:`<input type="text" class="w-100 h5 pl-3" value="${prevAndNext.nextTxt}" placeholder="添加标题" style="font-weight:bold;" data-type="sm-title"/>`)
                 $(html).insertAfter(target);
             }
-            autosize($("textarea"));
         }
     }
     //绘制选区
@@ -131,15 +128,10 @@ function addTravel(){
         context.strokeStyle='#fff';
         context.strokeRect(selectedX,selectedY,selectedWidth,selectedHeight);
     }
-    //对选区创建监听
-    function createSelectedAreaListener(callback){
+    //创建监听
+    function createObserver(callback){
         var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
         var observer = new MutationObserver(callback);
-        observer.observe($("#selected-area")[0],{
-            attributes:true,
-            childList:false,
-            characterData:false
-        })
         return observer;
     }
 
@@ -160,7 +152,6 @@ function addTravel(){
             if($(e.target).prev()[0] && $(e.target).prev()[0].tagName==e.target.tagName && e.target.selectionEnd == 0){
                 $(e.target).val(`${$(e.target).prev().val()}${$(e.target).val()}`);
                 $(e.target).prev().remove();
-                autosize.update($(e.target));
             }
         }
     })
@@ -207,11 +198,9 @@ function addTravel(){
                 var prevVal = $divImg.prev().val();
                 $divImg.prev().remove();
                 $divImg.next().val(`${prevVal + $divImg.next().val()}`);
-                autosize.update($("textarea"));
+
             }
-            // if (!$divImg.next().val()){
-            //     $divImg.next().remove();
-            // }
+           
             $divImg.remove();
             return;
         }
@@ -282,10 +271,11 @@ function addTravel(){
                                         rows="1"
                                         data-type="parag"></textarea>`;
                                     }
+
                                     imgHtml += `<div>
                             <div class=" d-flex flex-column justify-content-center item">
                                 <div class="position-relative text-center mb-3 m-auto"  data-target="inserted">
-                                <img src=${url} alt="" />
+                                ${imgObj.img}
                                     <div class="position-absolute p-2 text-left mask">
                                     <a href="javascript:;" class="iconfont icon-delete2 text-warning p-2 m-0" title="删除"></a>
                                     <a href="javascript:;" class="position-relative iconfont icon-reset text-warning p-2 m-0" title="重置">
@@ -313,13 +303,8 @@ function addTravel(){
                                         $imgHtml[$imgHtml.length-1].focus();
                                     }
                                     
-
-                                    $(imgHtml).on("load",'div[data-target="inserted"]',function(){
-                                        $(this).css("width",`${imgObj.imgPreviewWidth}`);
-                                    })
                                     $("#preview").html("");
                                     fileImg.value = "";
-                                    autosize($("textarea"));
                                 }
                                 else if(btnA.title=="重置"){
                                     $(btnA).parent().prev().replaceWith(`${imgObj.img}`).parent().width(`${imgObj.imgPreviewWidth}`);
@@ -397,7 +382,6 @@ function addTravel(){
                             if($videoHtml[$videoHtml.length-1].tagName=="TEXTAREA" && !$videoHtml[$videoHtml.length-1].nextElementSibling){
                                 $videoHtml[$videoHtml.length-1].focus();
                             }
-                            autosize($("textarea"));
                             fileVideo.value = "";
                         }else if(btnA.title=="重置"){
                             $(btnA).parent().prev().replaceWith(`${video}`);
@@ -419,7 +403,6 @@ function addTravel(){
         // 替换目标原素
         var inputHtml = `<input type="text" class="w-100 h5 pl-3" placeholder="添加标题" style="font-weight:bold;" data-type="sm-title"/>`;
         $(inputHtml).replaceAll(target)[0].focus();
-        autosize($("textarea"));
         return;  
     })
     $("#btnTxt").click(function(){
@@ -434,7 +417,6 @@ function addTravel(){
         placeholder="添加内容……" data-type="parag"
         ></textarea>`;
         $(textareaHtml).replaceAll(target)[0].focus();
-        autosize($("textarea"));
         return;
     })
 
@@ -514,7 +496,7 @@ function addTravel(){
                 drawSelected(sx,sy,270,165);
 
                 //对selected-area选区创建监听
-                var observer = createSelectedAreaListener(function(){
+                var observer = createObserver(function(){
                     var width = $("#selected-area")[0].offsetWidth;
                     var height = width*165/270;
                     $("#selected-area").css("height",`${height}px`);
@@ -522,6 +504,11 @@ function addTravel(){
                     var sx = $("#selected-area")[0].offsetLeft-width/2;
                     drawSelected(sx,sy,width,height);
                 });
+                observer.observe($("#selected-area")[0],{
+                    attributes:true,
+                    childList:false,
+                    characterData:false
+                })
                 // console.log(observer);
                 //点确定或取消 取消监听
                 function btnClickEvent(e){   
@@ -684,11 +671,6 @@ function addTravel(){
         $(this).toggleClass("d-none");
         $("#preview-btn").toggleClass("d-none");
     })
-
-    
-    
-    
-    
-    
+        
 }
 export {addTravel} 
