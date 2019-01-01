@@ -8973,7 +8973,7 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
-/************intel ×Ô¶¨ÒåµÄÑùÊ½************/
+/************intel ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½************/
 .my-main {
   background: #0062a9;
   color: #fff;
@@ -8988,7 +8988,7 @@ a.text-dark:hover, a.text-dark:focus {
   display: inline-block;
   width: 63px;
   height: 42px;
-  background: url('../img/hdr-spr.png') 0 -512px no-repeat;
+  /* background: url('../img/hdr-spr.png') 0 -512px no-repeat; */
   margin-top: 3px;
 }
 

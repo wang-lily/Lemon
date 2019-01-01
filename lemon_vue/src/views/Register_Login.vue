@@ -1,5 +1,5 @@
 <template>
-    <section class="d-flex justify-content-between align-items-center w-100 h-100 login">
+    <section class="login d-flex justify-content-between align-items-center w-100 h-100">
         <div class="position-relative m-auto">
             <div class="bg-white">
                 <p v-show="status==='register'" class="pl-4 pt-2 m-0 text-danger">
@@ -272,6 +272,7 @@
         
     }
 </script>
-<style>
-    @import '../assets/css/login_register.css';
+<style lang="scss">
+    //  @import '../assets/css/login_register.css'; 
+    @import '../assets/scss/login_register.scss';
 </style>

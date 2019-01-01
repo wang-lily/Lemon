@@ -1,0 +1,363 @@
+
+$iconNormalColor:rgba(40, 167, 69, 1);
+$iconHoverColor:rgba(40, 167, 69, 0.7);
+$divHoverColor:rgba(0,0,0,0.1);
+$fontNormalColor:rgba(0,0,0,1);
+$fontHoverColor:rgba(0,0,0,0.7);
+$inputBgColor0:rgba(0,0,0,0.1);
+$inputBgColor1:rgba(0,0,0,0);
+$font08r:0.8rem;
+$font1_2r:1.2rem;
+
+//基础样式start
+*{margin:0;padding: 0}
+ul,li,ol{
+  list-style: none;
+}
+.header{
+  z-index: 200;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255,0.5) 50%, rgba(227, 248, 232,0.5) 100%);
+  border-bottom:0.5px solid rgba(0,0,0,0.3);
+  box-shadow: 0px 1px 1px rgba(0,0,0,0.3);
+  a{
+    color: $fontNormalColor;
+    text-decoration: none;
+    &:hover{
+      cursor: pointer;
+      color: $fontHoverColor;
+      text-decoration: none;
+    }
+  }
+  input:focus{
+    box-shadow: none !important;
+    outline: none !important;
+  }
+  //基础样式end
+
+  // 导航栏样式-start
+  #header-nav{
+    //导航图标样式start
+    .nav-icon{
+      width: 24px;
+      height: 16px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-around;
+      align-items: center;
+      &:hover{
+        li{
+          background-color:$iconHoverColor;
+        }
+      }
+      li{
+        width: 24px;
+        height: 2px;
+        background: $iconNormalColor;
+      }
+    }
+    //导航图标样式end
+    img{
+      height: 33px;
+    }
+    //个人中心样式
+    .icon-login1_0,.icon-login1_1,.icon-login2_0,.icon-login2_1,.icon-sousuo,.icon-dizhi{
+      font-size: 1.7rem;
+      font-weight: 550;
+      color:$iconNormalColor;
+      &:hover{
+        color:$iconHoverColor;
+      }
+    }
+    .personal{
+      &>div{
+        top:37px;
+        right:0px;
+        &>div{
+          width:10px;
+          height: 10px; 
+          background:rgba(255,255,255,1);
+          transform:translateY(50%) rotate(45deg);border-top:0.5px solid #999;
+          border-left:0.5px solid #999;
+        }
+        &>ul{
+          &.speed{
+            width:200px;
+            transition:all 0.3s linear;
+          }
+          &.fold{
+            overflow: hidden;
+            padding:0 !important;
+            width:0px;
+            height:0px;
+            transition:all 0.3s linear;
+          }
+          background:rgba(255,255,255,1); 
+          border:0.5px solid #999;
+          border-radius:3px;
+          &>li{
+            font-weight: normal;
+            font-size: $font08r;
+            padding:12px;
+            color:$fontNormalColor;
+            &:first-child{
+              width: 100%;
+              white-space: nowrap;
+              overflow:hidden;
+              text-overflow:ellipsis;
+              -ms-text-overflow: ellipsis;
+              
+              color:$iconNormalColor;
+              font-size: $font1_2r;
+            }
+            &:last-child{
+              margin-bottom: 1rem;
+            }
+            &:not(:first-child):hover{
+              background: $inputBgColor0;
+              color:$fontHoverColor;
+              transition: background 0.3s linear;
+            }
+          }
+        }
+      }
+    }
+    // 下拉选项样式
+    .collapse-navbar{
+      overflow: hidden;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      justify-content: start;
+      &>div:first-child{
+        width: 100%;
+        &>form{
+          display: flex;
+          align-items: center;
+          padding: 0;
+          background-color: $inputBgColor0;
+          border-radius: 5px;
+          line-height: 2rem;
+          span{
+            display:inline-block;
+            width: 40px;
+            height: 40px;
+            line-height:40px;
+            text-align: center;
+            font-size:1.5rem;
+          }
+          input{
+            vertical-align: middle;
+            font-size: 1rem;
+            width:75%;
+            border:0;
+            background-color: $inputBgColor1;
+            &:focus{
+              border:0;
+            }
+          }
+        }
+      }
+      &>ul>li{
+        &>a:hover{
+
+          transform:  scale(1.2,1.2);
+        }
+      }
+    }
+  }
+  // 导航栏样式-end
+
+  //搜索栏样式-start
+  #search-page{
+    z-index: 201;
+    display: none;
+    .icon-sousuo,.icon-dizhi {
+      padding-right:5px;
+      font-size: 1.5rem;
+      color: $iconNormalColor;
+      font-weight: bold;
+    }
+    h5.icon-dizhi{
+      font-weight: normal;
+    }
+    p{
+      margin:0;
+      text-align:right;
+      button.icon-guanbi{
+        position:relative;
+        font-size: 1rem;
+        font-weight: bolder;
+        color:$iconNormalColor;
+      }
+    }
+    .card-header{
+      margin-bottom: 0.75rem;
+      padding:inherit;
+      background: transparent;
+      border: 1px solid rgba(0,0,0,0.3);
+    }
+    .card{
+      border: 0;
+      .card-body{
+        overflow: hidden;
+        padding:0;
+        &>div{
+          padding: 0.75rem 1.25rem;
+          &:hover{
+            background: $divHoverColor;
+          }
+          &>div{
+            opacity: 0.8;
+            &:hover{
+              opacity: 1;
+              transform: translateX(2%);
+              transition:all 0.2s linear;
+            }
+          }
+        }
+      }
+    }
+    #search-btn{
+      color: rgba(0,0,0,0.7);
+      &:hover{
+        background: $iconHoverColor;
+      }
+      &:focus{
+        box-shadow: none !important;
+      }
+    }
+
+  }
+  //搜索栏样式-end
+}
+
+
+
+
+//大屏幕
+@media screen and (min-width:768px){
+  .header{
+    #header-nav {
+      height: 45px;
+      .collapse-navbar {
+        width: 100%;
+        ul {
+          li {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 1em;
+            padding-right:1em;
+          }
+        }
+      }
+    }
+    #user-center{
+      width: 15%;
+
+    }
+  }
+}
+
+//小屏幕
+@media screen and (max-width:767px){
+  .header{
+    //导航图标动画start
+    @keyframes topChange0 {
+      0% {
+        transform: translateY(0) rotate(0);
+      }
+      50% {
+        transform: translateY(4px) rotate(0);
+      }
+      100% {
+        transform: translateY(4px) rotate(45deg);
+      }
+    }
+    @keyframes topChange1 {
+      0% {
+        transform: translateY(4px) rotate(45deg);
+      }
+      50% {
+        transform: translateY(4px) rotate(0);
+      }
+      100% {
+        transform: translateY(0) rotate(0);
+      }
+    }
+    @keyframes bottomChange0 {
+      0% {
+        transform: translateY(0) rotate(0);
+      }
+      50% {
+        transform: translateY(-4px) rotate(0);
+      }
+      100% {
+        transform: translateY(-4px) rotate(-45deg);
+      }
+    }
+    @keyframes bottomChange1 {
+      0% {
+        transform: translateY(-4px) rotate(-45deg);
+      }
+      50% {
+        transform: translateY(-4px) rotate(0);
+      }
+      100% {
+        transform: translateY(0) rotate(0);
+      }
+    }
+    //导航图标动画end
+    #header-nav{
+      .collapse-navbar-0{
+        opacity: 0;
+        line-height: 0;
+        height:0px;
+        transition: all 0.5s linear;
+      }
+      .collapse-navbar-1{
+        opacity: 1;
+        line-height: 2;
+        height:800px;
+        transition: all 0.5s linear;
+      }
+      .collapse-navbar {
+        &>div:first-child {
+          padding: 10px;
+        }
+        border-top: 1px solid rgba(0,0,0,0.6);
+        padding: 10px;
+        ul{
+          width:75%;
+          &>li {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            padding:10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

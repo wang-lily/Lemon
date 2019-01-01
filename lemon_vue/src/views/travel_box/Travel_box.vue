@@ -1,6 +1,6 @@
 <template>
     <div id="content" class="pt-4 pl-2 pr-2 container">
-        <div class="row ml-0 mr-0 mb-3 item"  v-for="(item,i) of list" :key="i" @mouseenter="changeActiveIndex(i)" @mouseleave="changeActiveIndex('')">
+        <div class="row ml-0 mr-0 mb-3 item"  v-for="(item,i) of list" :key="i" @mouseenter="changeActiveIndex(i)" @mouseleave="changeActiveIndex('')" @click="jumpToDetail(item.tid,$event)">
             <div class="col-auto h-100 pr-1 pl-0">
                 <img class="img-fluid h-100 p-0" :src="item.headerImg" >
             </div>
@@ -44,6 +44,11 @@ export default {
         },
         changeActiveIndex(i){
             this.activeIndex = i;
+        },
+        jumpToDetail(tid,e){
+            e.preventDefault();
+            
+            this.$router.push({path:"/travel_detail",query:{tid:tid}});
         }
     },
     watch: {
@@ -61,6 +66,7 @@ export default {
                 pageSize:6
             }); 
     },
+    
     
 }
 </script>

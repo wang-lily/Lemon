@@ -60,9 +60,9 @@ section #page-nav > p > button {
   padding-right: 1rem;
   margin-left: 1rem;
   color: rgba(0, 0, 0, 0.7); }
-  section #page-nav > p > button:hover:hover {
+  section #page-nav > p > button:hover {
     background: rgba(40, 167, 69, 0.7); }
-  section #page-nav > p > button:hover:focus {
+  section #page-nav > p > button:focus {
     box-shadow: none !important; }
 
 @media screen and (min-width: 768px) {

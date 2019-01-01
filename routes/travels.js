@@ -20,7 +20,7 @@ router.get("/top",(req,res)=>{
 
 
 // ----------------------------全部游记-----start----------------------------------------------
-//功能二:新闻分页显示
+//功能二:游记分页显示
 router.get("/all_travels",(req,res)=>{
     //1:获取参数
     var tab = req.query.tab;
@@ -56,11 +56,11 @@ router.get("/all_travels",(req,res)=>{
     });
     //6:创建sql2 查询当前页内容 严格区分大小写
     if(tab==="hot"){
-      var sql =`select uname,Ttime,describle,headerImg,title,tview,zan from user i inner join travel s on i.uid=s.uid ORDER BY zan DESC LIMIT ?,?`; 
+      var sql =`select tid,uname,Ttime,describle,headerImg,title,tview,zan from user i inner join travel s on i.uid=s.uid ORDER BY zan DESC LIMIT ?,?`; 
     }else if(tab==="latest"){
-      var sql =`select uname,Ttime,describle,headerImg,title,tview,zan from user i inner join travel s on i.uid=s.uid ORDER BY Ttime DESC LIMIT ?,?`; 
+      var sql =`select tid,uname,Ttime,describle,headerImg,title,tview,zan from user i inner join travel s on i.uid=s.uid ORDER BY Ttime DESC LIMIT ?,?`; 
     }else if(tab==="all"){
-      var sql =`select uname,Ttime,describle,headerImg,title,tview,zan from user i inner join travel s on i.uid=s.uid ORDER BY tid LIMIT ?,?`; 
+      var sql =`select tid,uname,Ttime,describle,headerImg,title,tview,zan from user i inner join travel s on i.uid=s.uid ORDER BY tid LIMIT ?,?`; 
     }
     var offset = parseInt((pno-1)*pageSize);
         pageSize = parseInt(pageSize);
@@ -78,14 +78,128 @@ router.get("/all_travels",(req,res)=>{
 // -------------------------------全部游记-- -----end-----------------------------------------
 
 
-//获取单个游记详细信息和作者
+//-------------获取某个游记详细信息和作者--start----------------------
 router.get("/get_travel_details",(req,res)=>{
     var tid = req.query.tid;
-    var sql = `select uname,phone,email,Ttime,describle,headerImg,spot,title,tview,txt,zan from user i inner join travel s on i.uid=s.uid WHERE tid=?`;
-    pool.query(sql,tid,(err,result)=>{
+    var obj = {code:1};
+    var progress = 0;
+    var sql1 = `select tid,uname,phone,email,Ttime,describle,headerImg,spot,title,tview,txt,zan from user i inner join travel s on i.uid=s.uid WHERE tid=?`;
+    pool.query(sql1,tid,(err,result)=>{
       if(err) throw (err);
-      res.send(result[0]);
+      if(result.length>0){
+        progress += 50;
+        obj.details = result[0];
+      }
+      if(progress==150){
+        res.send(obj);
+      }
     }) 
+    var sql2 = `select count(tid) as c from comments where tid=?`;
+    pool.query(sql2,tid,(err,result)=>{
+      if(err) throw (err);
+      if(result.length>0){
+        progress += 50;
+        obj.commentsTotal = result[0].c;
+      }
+      if(progress==150){
+        res.send(obj);
+      }
+    }) 
+    var sql3 = `select uname,txt,time from comments c inner join user u on c.uid=u.uid  where tid=?`;
+    pool.query(sql3,tid,(err,result)=>{
+      if(err) throw (err);
+      if(result.length>0){
+        progress += 50;
+        obj.comments = result;
+      }
+      if(progress==150){
+        res.send(obj);
+      }
+    })
 })
+//-------------获取某个游记详细信息和作者--end----------------------
 
+//-------------获取某个游记是否被用户赞过--start----------------------
+router.get("/get_zan",(req,res)=>{
+  var uid = parseInt(req.query.uid);
+  var tid = parseInt(req.query.tid);
+  var sql = `select * from zan where uid=? and tid=?`;
+  pool.query(sql,[uid,tid],(err,result)=>{
+    if(err) throw (err);
+    if(result.length>0){
+      res.send({
+        code:1,
+        msg:"用户已经赞过此游记！"
+      })
+    }else{
+      res.send({
+        code:-1,
+        msg:"用户没有赞过此游记！"
+      })
+    }
+  })
+})
+//-------------获取某个游记是否被用户赞过-end----------------------
+
+// ----------------------更改数据库中的赞的数量--start----------------
+router.post("/changZan",(req,res)=>{
+  var deltaZan = req.body.params.deltaZan;
+  var uid = req.body.params.uid;
+  var tid = req.body.params.tid;
+  if(deltaZan==-1){
+    var sql1 = "delete from zan where uid=? and tid=?";
+    pool.query(sql1,[uid,tid],(err,result)=>{
+      if(err) throw err;
+      if(result.affectedRows>0){
+        var sql2 = "update travel set zan=zan-1 where tid=?";
+        pool.query(sql2,tid,(err,result)=>{
+          if(result.affectedRows>0){
+            res.send({
+              code:1,
+              msg:"成功取消用户点赞！"
+            })
+          }else{
+            res.send({
+              code:-1,
+              msg:"取消用户点赞失败！"
+            })
+          }
+        })
+      }else{
+        res.send({
+          code:-1,
+          msg:"取消用户点赞失败！"
+        })
+      }
+    })  
+  }else if(deltaZan==1){
+    var sql1 = "insert into zan set uid=?,tid=?";
+    pool.query(sql1,[uid,tid],(err,result)=>{
+      if(err) throw err;
+      if(result.affectedRows>0){
+        var sql2 = "update travel set zan=zan+1 where tid=?";
+        pool.query(sql2,tid,(err,result)=>{
+          if(err) throw err;
+          if(result.affectedRows>0){
+            res.send({
+              code:1,
+              msg:"成功添加用户点赞！"
+            })
+          }else{
+            res.send({
+              code:-1,
+              msg:"添加用户点赞失败！"
+            })
+          }
+        })
+      }else{
+        res.send({
+          code:-1,
+          msg:"取消用户点赞失败！"
+        })
+      }
+    })
+  }
+})
+// ----------------------更改数据库中的赞的数量--end----------------
 module.exports=router;

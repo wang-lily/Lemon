@@ -1,5 +1,5 @@
 <template>
-    <header class="fixed-top  pb-md-2 bg-white">
+    <header class="header fixed-top  pb-md-2 bg-white">
       <div class="container">
           <!--导航栏start-->
           <nav id="header-nav" class="row align-items-center pt-md-2">
@@ -12,7 +12,7 @@
               </div>
               <!--logo-->
               <a href="/">
-                  <img id="brand" src="../assets/logo/lemon_logo_black.png">
+                  <img id="brand" src="http://127.0.0.1:3001/img/logo/lemon_logo_black.png">
               </a>
               <!--个人中心-->
               <div v-if="this.$store.state.userMsg" class="col col-md-auto order-md-4 position-relative iconfont icon-login1_1 text-right p-md-0 personal" data-trigger="toggle">
@@ -134,8 +134,9 @@
         }
     }
 </script>
-<style>
-  @import '../assets/css/header.css';
+<style lang="scss">
+//   @import '../assets/css/header.css';
+  @import '../assets/scss/header.scss';
   [v-cloak] {
 display: none;
 }

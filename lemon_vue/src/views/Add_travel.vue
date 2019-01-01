@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div
+    class="app-add-travel">
         <!-- 暂存图片用户不可见start -->
         <div id="preview" class="position-absolute">
         </div>
@@ -24,7 +25,7 @@
                     <span class="iconfont icon-tupian text-warning"></span>
                     </a>
                 </p>
-                <input id="headerImg-btn" accept="image/*" type="file"/>
+                <input id="headerImg-btn" accept="image/*" type="file" class="d-none"/>
                 <div>
                     <p class="text-white mb-0">设置游记头图</p>
                     <p class="text-white mb-1 d-none d-sm-block">请选择尺寸大于270px*165px的高清图片上传</p>
@@ -73,7 +74,7 @@
                   <span>&nbsp;&nbsp;插入图片</span>
                   <input id="fileImg"
                     accept="image/*"
-                    class="hide-input"
+                    class="d-none"
                     type="file"
                     
                   />
@@ -85,7 +86,7 @@
                   <span>&nbsp;&nbsp;插入视频</span>                
                   <input id="fileVideo"
                     accept="video/*"
-                    class="hide-input"
+                    class="d-none"
                     type="file"
                     
                   />
@@ -95,14 +96,14 @@
                   class="iconfont icon-biaoti text-warning h4"
                   ></span>
                   <span>&nbsp;&nbsp;插入段落标题</span>                  
-                  <input id="btnTitle" class="hide-input" type="button" />
+                  <input id="btnTitle" class="d-none" type="button" />
                 </li>
                 <li  id="insertTxt" class="position-relative mr-1 btn-shadow">     
                   <span                  
                   class="iconfont icon-txt text-warning h4"
                   ></span>
                   <span>&nbsp;&nbsp;插入文本</span>
-                  <input id="btnTxt" class="hide-input" type="button"/>
+                  <input id="btnTxt" class="d-none" type="button"/>
                 </li>
                 <li class="position-relative d-flex flex-column p-0 mr-1 text-muted">
                   <small class="text-center pt-2">16:41:11</small>
@@ -173,7 +174,7 @@
     </div>
 </template>
 <script>
-import {addTravel} from "../assets/js/add_travel.js"
+import {addTravel,handleKeydown,fixAside}  from "../assets/js/add_travel.js"
 import autosize from "autosize"
     export default {
         inject:['reload'],
@@ -320,16 +321,25 @@ import autosize from "autosize"
 
         },
         created() {
+            
             this.loadTopImg();
         },
         mounted() {
             addTravel();
             this.createSectionObserver();
-        }
+        },
+        beforeDestroy() {
+            $("#section").off("keydown",handleKeydown);
+            $(document).off("scroll",fixAside);
+        },
+        destroyed() {
+            
+        },
     }
 </script>
-<style>
-@import '../assets/css/add_travel.css';
+<style lang="scss">
+/* @import '../assets/css/add_travel.css'; */
+@import '../assets/scss/add_travel.scss';
 [v-cloak] {
 display: none;
 }

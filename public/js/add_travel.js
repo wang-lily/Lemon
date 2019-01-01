@@ -317,7 +317,7 @@ $(function(){
                                     autosize($("textarea"));
                                 }
                                 else if(btnA.title=="重置"){
-                                    $(btnA).parent().prev().replaceWith(`${imgObj.img}`).parent().width(`${imgObj.imgPreviewWidth}`);
+                                    $(btnA).parent().prev().attr('src',`${url}`).parent().width(`${imgObj.imgPreviewWidth}`);
                                     btnA = null;
                                     $("#preview").html("");
                                     fileImg.value = "";

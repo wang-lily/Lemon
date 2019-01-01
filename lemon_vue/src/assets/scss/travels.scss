@@ -1,0 +1,202 @@
+$iconNormalColor:rgba(40, 167, 69, 1);
+$iconHoverColor:rgba(40, 167, 69, 0.7);
+$divHoverColor:rgba(0,0,0,0.1);
+$fontNormalColor:rgba(0,0,0,1);
+$fontHoverColor:rgba(0,0,0,0.7);
+$inputBgColor0:rgba(0,0,0,0.1);
+$inputBgColor1:rgba(0,0,0,0);
+$bgColor01:rgba(40, 167, 69, 0.5);
+$bgColor02:rgba(40, 167, 69, 0.3);
+$font2r:2rem;
+$font1_5r:1.5rem;
+$font1_3r:1.3rem;
+$font1_2r:1.2rem;
+$font08r:0.8rem;
+$font1r:1rem;
+$lineBg:rgba(0,0,0,0.5);
+$borderColor:#ffc107;
+
+
+*{margin:0;padding:0;border:0;
+  outline:0;}
+ul>li{
+  list-style: none;
+}
+
+.app-travels{
+  a{
+    color:#000;
+    &:hover{
+      color:#000;
+      text-decoration: none;
+    }
+  }
+  .line{
+      background:$lineBg;
+      height: 1px;
+      width:100px;
+  }
+  .icon-love{
+    color:pink;
+  }
+  #navigation{
+    .active{
+      color:$iconNormalColor;
+      border-bottom:2px solid $iconNormalColor;
+    }
+  }
+  #content{
+    &>div.item{
+      &:hover{
+        box-shadow: 0px 0px 15px 2px $borderColor;
+        transition:all .3s linear;
+      }
+    }
+  }
+  #page-nav{
+    &>ul>li{
+      background: #fff;
+      &>button{
+        border:0.5px solid $inputBgColor0;
+        padding-left:24px;
+        padding-right:24px;
+        border-radius: 0;
+        background-color:#fff;
+        &:focus{
+          box-shadow: none;
+        }
+      }
+      &:not(:last-child)>button{
+        border-right:0;
+      }
+      &:first-child,&:last-child{
+        margin:0.5rem;
+      }
+      &.active{
+        color:#fff !important;
+        background:$iconHoverColor;
+      }
+      
+    }
+    &>p{
+      &>input{
+        display: inline-block;
+        width: 3rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        border:0.5px solid $inputBgColor0;
+      }
+      &>button{
+        border-radius: 0;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin-left: 1rem;
+        color: rgba(0,0,0,0.7);
+        &:hover{
+          &:hover{
+            background: $iconHoverColor;
+          }
+          &:focus{
+            box-shadow: none !important;
+          }
+        }
+      }
+    }
+  }
+}
+  //大屏幕
+  @media screen and (min-width:768px) {
+    .app-travels{
+      #navigation{
+        &>div:first-child{
+          &>span{
+            font-size: $font1_3r;
+          }
+        }
+        &>form{
+          &>div{
+            box-shadow: inset 0px 0px 19px 2px rgba(0,0,0,0.3);
+            font-size:1.3rem; 
+            width:2rem; 
+            height:2rem; 
+            border-radius:1rem;
+            &>input{
+              opacity: 0;
+            }
+            &:hover{
+              padding-left:1.2rem;
+              width:16rem;
+              transition:width 0.5s linear;
+            }
+          }
+        }
+      }
+      #content{
+        &>div.item{
+          height:165px;
+          &>div:nth-child(2){
+            &>p.title{
+              font-size: $font1_2r;
+              height: 25%;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+            &>p.desc{
+              font-size: $font1r;
+              line-height: 1.4;
+              height: 50%;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+            &>div{
+              height: 25%;
+              font-size: $font08r;
+            }
+          }
+        }
+
+      }
+      #page-nav{
+        font-size:$font1_2r;
+      }
+    } 
+  }
+  //小屏幕
+  @media screen and (max-width: 767px) {
+    .app-travels{
+      #navigation{
+        &>div:first-child{
+          &>span{
+            font-size: $font08r;
+          }
+        }
+      }
+      #content{
+        &>div.item{
+          height:80px;
+          &>div:nth-child(2){
+            &>p.title{
+              font-weight: bolder;
+              padding: 0 !important;
+              height: 25%;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              font-size: $font08r;
+            }
+            &>p.desc{
+              font-size: $font08r;
+              line-height: 1.4;
+              height: 50%;
+              overflow: hidden;
+              text-overflow: ellipsis; 
+            }
+            &>div{
+              height: 25%;
+              font-size: $font08r;
+            }
+          }
+        }
+
+      }
+    }
+  }

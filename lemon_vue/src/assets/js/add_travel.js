@@ -7,6 +7,7 @@ function addTravel(){
         "now":null//存放#section中当前获得焦点对象的元素
     };
     var btnA = null;//存放#section中被点击的title为“重置”的a元素
+    var sectionScrollTop = 0;
     // 存放选区数据
     var selectedAreaData = {
         canMove:false,
@@ -134,45 +135,13 @@ function addTravel(){
         var observer = new MutationObserver(callback);
         return observer;
     }
-
+    
     //使textarea尺寸自适应
     autosize($("textarea"));
 
-    $(window).keydown(function(e){
-        if(e.keyCode===8 && (e.target.nodeName=="INPUT" || e.target.nodeName=="TEXTAREA")){
-            if(!$(e.target).val()){
-                if(($(e.target).next()[0] && ($(e.target).next()[0].tagName=="INPUT" || $(e.target).next()[0].tagName=="TEXTAREA")) || ($(e.target).prev()[0] && ($(e.target).prev()[0].tagName=="INPUT" || $(e.target).prev()[0].tagName=="TEXTAREA"))){
-                    $(e.target).remove();
-                    
-                }else{
-                    $(e.target).removeAttr("placeholder");
-                }
-                return;
-            }
-            if($(e.target).prev()[0] && $(e.target).prev()[0].tagName==e.target.tagName && e.target.selectionEnd == 0){
-                $(e.target).val(`${$(e.target).prev().val()}${$(e.target).val()}`);
-                $(e.target).prev().remove();
-            }
-        }
-    })
+    $("#section").on("keydown",handleKeydown);
     // 鼠标滚动事件
-    $(document).scroll(function(){
-        // var temp = $("#top").css("height").slice(0,-2);
-        var temp = $("#top")[0]? $("#top")[0].offsetHeight:null;
-        if(!temp){
-            return;
-        }
-        temp += 56;
-        var scrollTopNew = $(this).scrollTop();
-        var translateY = scrollTopNew -temp+43;
-        if(translateY<=0){
-            $("#alert-insert").css("transform",`translateY(0)`);
-            return;
-        }
-        if(translateY>0){
-            $("#alert-insert").css("transform",`translateY(${translateY}px)`);
-        }
-    })
+    $(document).on("scroll",fixAside);
 
     $("body").on("focus","input,textarea",function(){
         focusedEles["prev"] = focusedEles["now"];
@@ -184,11 +153,9 @@ function addTravel(){
     $("#section").on("load", "#section textarea",function(){
         this.focus();
     })
-    $("#section").on("focus","textarea,input",function(){
-        // $(".aside input").toggleClass("d-none").parent().toggleClass("btn-shadow");
-        // console.log(this);
+    $("#section").on("focus","textarea,input",function(){ 
         focusedEles["editable"] = this;
-        // console.log("获得焦点的可编辑元素"+focusedEles["editable"].selectionEnd);
+        sectionScrollTop = $("#section").scrollTop();
     })
     $("#section").click(function(e){
         // 删除添加的img及相关无用信息
@@ -275,7 +242,7 @@ function addTravel(){
                                     imgHtml += `<div>
                             <div class=" d-flex flex-column justify-content-center item">
                                 <div class="position-relative text-center mb-3 m-auto"  data-target="inserted">
-                                ${imgObj.img}
+                                <img src=${url} style="max-width:100%;"/>
                                     <div class="position-absolute p-2 text-left mask">
                                     <a href="javascript:;" class="iconfont icon-delete2 text-warning p-2 m-0" title="删除"></a>
                                     <a href="javascript:;" class="position-relative iconfont icon-reset text-warning p-2 m-0" title="重置">
@@ -286,9 +253,6 @@ function addTravel(){
                                     <span class="text-info p-2 iconfont icon-tubiao"></span>
                                     <input class="p-2"  type="text" placeholder="为${keyWords}添加地点" data-type="spot"/>
                                 </div> 
-                                <!-- <div class="position-absolute w-100 h-100 border master" style="top:0;left:0;background: rgba(0,0,0,0.3)">
-                                    123
-                                </div> -->
                             </div>
                         </div>
                         `;
@@ -301,13 +265,19 @@ function addTravel(){
                                     var $imgHtml = $(imgHtml).replaceAll(target);
                                     if($imgHtml[$imgHtml.length-1].tagName=="TEXTAREA" && !$imgHtml[$imgHtml.length-1].nextElementSibling){
                                         $imgHtml[$imgHtml.length-1].focus();
+                                    }else{
+                                        // console.log(sectionScrollTop)
+                                        $("#section").scrollTop(sectionScrollTop+parseInt(imgObj.imgPreviewHeight));
+                                        // console.log(sectionScrollTop+parseInt(imgObj.imgPreviewHeight))
+                                        $imgHtml[$imgHtml.length-1].nextElementSibling.focus();
+                                        $imgHtml[$imgHtml.length-1].nextElementSibling.selectionEnd = 0;
                                     }
                                     
                                     $("#preview").html("");
                                     fileImg.value = "";
                                 }
                                 else if(btnA.title=="重置"){
-                                    $(btnA).parent().prev().replaceWith(`${imgObj.img}`).parent().width(`${imgObj.imgPreviewWidth}`);
+                                    $(btnA).parent().prev().attr("src",`${url}`).parent().width(`${imgObj.imgPreviewWidth}`);
                                     btnA = null;
                                     $("#preview").html("");
                                     fileImg.value = "";
@@ -673,4 +643,37 @@ function addTravel(){
     })
         
 }
-export {addTravel} 
+function handleKeydown(e){
+    if(e.keyCode===8 && (e.target.nodeName=="INPUT" || e.target.nodeName=="TEXTAREA")){
+        if(!$(e.target).val()){
+            if(($(e.target).next()[0] && ($(e.target).next()[0].tagName=="INPUT" || $(e.target).next()[0].tagName=="TEXTAREA")) || ($(e.target).prev()[0] && ($(e.target).prev()[0].tagName=="INPUT" || $(e.target).prev()[0].tagName=="TEXTAREA"))){
+                $(e.target).remove();
+                
+            }else{
+                $(e.target).removeAttr("placeholder");
+            }
+            return;
+        }
+        if($(e.target).prev()[0] && $(e.target).prev()[0].tagName==e.target.tagName && e.target.selectionEnd == 0){
+            $(e.target).val(`${$(e.target).prev().val()}${$(e.target).val()}`);
+            $(e.target).prev().remove();
+        }
+    }
+}
+function fixAside(){
+    var temp = $("#top")[0]? $("#top")[0].offsetHeight:null;
+    if(!temp){
+        return;
+    }
+    temp += 56;
+    var scrollTopNew = $(this).scrollTop();
+    var translateY = scrollTopNew -temp+43;
+    if(translateY<=0){
+        $("#alert-insert").css("transform",`translateY(0)`);
+        return;
+    }
+    if(translateY>0){
+        $("#alert-insert").css("transform",`translateY(${translateY}px)`);
+    }
+}
+export {addTravel,handleKeydown,fixAside} 

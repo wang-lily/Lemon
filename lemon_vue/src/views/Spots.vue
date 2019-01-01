@@ -1,5 +1,5 @@
 <template>
-    <section class="mb-5">
+    <section class="app-spots mb-5">
         <!--轮播start-->
         <div id="header" class="container-fluid position-relative p-0" @mouseover="pauseCarousel" @mouseout="startCarousel">
             <div class="w-100 position-relative">
@@ -75,7 +75,7 @@
                         <span class="col d-md-none  p-0 pt-1 pb-1 m-0 text-center"  ><button class="text-white border-0 bg-transparent iconfont icon-arrow-r" @click="showNextTab(spots01)" :disabled="spots01.nextHideTab==12"></button></span>
                         <span class="col d-none d-md-block p-0 pt-1 pb-1"></span>
                     </div>
-                    <div v-for="(item,i) of spots01.tabs" :key="i" v-show="item.style[1]" class="clearfix p-0">
+                    <div v-for="(item,i) of spots01.tabs" :key="i" v-if="item.style[1]" class="clearfix p-0">
                         <div v-for="(spot,j) of spots01.tabs[i].imgsList" :key="j" class="col-6 p-1 col-md-4   float-left">
                             <img class="img-fluid" :src="spot.iimg_380_220" alt="">
                             <div class="position-absolute p-3 " >
@@ -108,12 +108,6 @@
                             </div>
                         </div>
                         <div class="row p-0 m-0">
-                            <!-- <div v-if="item.imgsList[1]" v-for="(spot,j) in item.imgsList[1]" :key="j" class="col p-1 ">
-                                <img v-if="spot[j]" class="img-fluid" :src="spot[j].iimg_390_552"  alt="">
-                                <div class="position-absolute p-3 " >
-                                    <p v-if="spot[j]" v-cloak>{{spot[j].spot || spot[j].country}}</p>
-                                </div>
-                            </div> -->
                             <div class="col p-1 ">
                                 <img class="img-fluid" :src="item.imgsList[1] ? item.imgsList[1][0].iimg_390_552 :''"  alt="">
                                 <div class="position-absolute p-3 " >
@@ -163,7 +157,7 @@
                                 <p class="m-0" v-cloak>{{item.spot || item.country}}</p>
                                 <p class="m-0" v-cloak>人气指数：{{item.click_rate}}</p>
                             </div>
-                            <img class="no-shadow" src="../assets/background/hot.png">
+                            <img class="no-shadow" src="http://127.0.0.1:3001/img/tab/hot.png">
                         </div>
                     </div>
                 </div>
@@ -398,11 +392,17 @@
             this.loadSpotsTabs(this.spots02,5,4);
             this.loadSpots02Imgs();
             this.loadSpots03Imgs();
+        },
+        destroyed() {
+            if(this.carousel.timer){
+                clearInterval(this.carousel.timer);
+            }    
         }
     }
 </script>
-<style>
-    @import '../assets/css/spots.css';
+<style lang="scss" >
+    // @import '../assets/css/spots.css';
+    @import '../assets/scss/spots.scss';
     [v-cloak] {
     display: none;
     }
