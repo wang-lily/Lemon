@@ -16,7 +16,7 @@
                         <source media="(max-width:999px)" :srcset="img.md_url">
                         <img class="w-100" :src="img.src">
                     </picture>
-                    <p class="w-100 pr-5 pl-5 mb-1 text-center">
+                    <p class="w-100 pr-5 pl-5 mb-1 text-center" @click="jumpToDetails(img.cid)">
                         <span class="iconfont icon-tubiao"></span>&nbsp;&gt;
                         <a herf="javascript:;" v-cloak>{{img.country}}</a>&nbsp;&gt;
                         <a herf="javascript:;" v-cloak>{{img.spot}}</a>
@@ -77,7 +77,7 @@
                     </div>
                     <div v-for="(item,i) of spots01.tabs" :key="i" v-if="item.style[1]" class="clearfix p-0">
                         <div v-for="(spot,j) of spots01.tabs[i].imgsList" :key="j" class="col-6 p-1 col-md-4   float-left">
-                            <img class="img-fluid" :src="spot.iimg_380_220" alt="">
+                            <img class="img-fluid" :src="spot.iimg_380_220" alt="" @click="jumpToDetails(spot.sid)">
                             <div class="position-absolute p-3 " >
                                 <p v-cloak>{{spot.spot || spot.country}}</p>
                             </div>
@@ -102,39 +102,40 @@
                     </div>
                     <div v-for="(item,i) of spots02.tabs" :key="i" class="p-0" v-show="item.style[1]">
                         <div class="position-relative p-1">
-                            <img class="img-fluid" :src="item.imgsList[0] ? item.imgsList[0][0].lg_url :''"  alt="">
+                            <img class="img-fluid" :src="item.imgsList[0] ? item.imgsList[0][0].lg_url :''"  alt="" @click="jumpToDetails(item.imgsList[0][0].cid)">
                             <div class="position-absolute p-3 " >
                                 <p v-cloak>{{item.imgsList[0] ? (item.imgsList[0][0].spot || item.imgsList[0][0].country) : ''}}</p>
                             </div>
                         </div>
                         <div class="row p-0 m-0">
                             <div class="col p-1 ">
-                                <img class="img-fluid" :src="item.imgsList[1] ? item.imgsList[1][0].iimg_390_552 :''"  alt="">
+                                <img class="img-fluid" :src="item.imgsList[1] ? item.imgsList[1][0].iimg_390_552 :''"  alt="" @click="jumpToDetails(item.imgsList[1][0].sid)">
                                 <div class="position-absolute p-3 " >
                                     <p v-cloak>{{item.imgsList[1] ? (item.imgsList[1][0].spot || item.imgsList[1][0].country) : ''}}</p>
                                 </div>
                             </div>
                             <div class="col p-1 ">
-                                <img class="img-fluid" :src="item.imgsList[1] ? item.imgsList[1][1].iimg_390_552 :''" alt="">
+                                <img class="img-fluid" :src="item.imgsList[1] ? item.imgsList[1][1].iimg_390_552 :''" alt=""
+                                @click="jumpToDetails(item.imgsList[1][1].sid)">
                                 <div class="position-absolute p-3 " >
                                     <p v-cloak>{{item.imgsList[1] ? (item.imgsList[1][1].spot || item.imgsList[1][1].country) : ''}}</p>
                                 </div>
                             </div>
                             <div class="col d-none d-md-block p-1 ">
-                                <img class="img-fluid" :src="item.imgsList[1] ? item.imgsList[1][2].iimg_390_552 :''" alt="">
+                                <img class="img-fluid" :src="item.imgsList[1] ? item.imgsList[1][2].iimg_390_552 :''" alt="" @click="jumpToDetails(item.imgsList[1][2].sid)">
                                 <div class="position-absolute p-3 " >
                                     <p v-cloak>{{item.imgsList[1] ? (item.imgsList[1][2].spot || item.imgsList[1][2].country) : ''}}</p>
                                 </div>
                             </div>
                             <div class="col d-none d-md-block p-1 ">
-                                <img class="img-fluid" :src="item.imgsList[1] ? item.imgsList[1][3].iimg_390_552 :''" alt="">
+                                <img class="img-fluid" :src="item.imgsList[1] ? item.imgsList[1][3].iimg_390_552 :''" alt="" @click="jumpToDetails(item.imgsList[1][3].sid)">
                                 <div class="position-absolute p-3 " >
                                     <p v-cloak>{{item.imgsList[1] ? (item.imgsList[1][3].spot || item.imgsList[1][3].country) : ''}}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="position-relative p-1 d-md-none">
-                            <img class="img-fluid" :src="item.imgsList[0] ? item.imgsList[0][1].lg_url :''" alt="">
+                            <img class="img-fluid" :src="item.imgsList[0] ? item.imgsList[0][1].lg_url :''" alt="" @click="jumpToDetails(item.imgsList[0][1].sid)">
                             <div class="position-absolute p-3 " >
                                 <p v-cloak>{{item.imgsList[0] ? (item.imgsList[0][1].spot || item.imgsList[0][1].country) : ''}}</p>
                             </div>
@@ -152,7 +153,7 @@
                 <div class="pl-1 pr-1 mt-3">
                     <div class="row w-100 m-0 p-0">
                         <div v-for="(item,i) of spots03.imgs" :key="i" class="col-6 col-md-3 p-1 card border-0 position-relative">
-                            <img class="card-img" :src="item.iimg_270_165"/>
+                            <img class="card-img" :src="item.iimg_270_165" @click="jumpToDetails(item.sid)"/>
                             <div class="card-footer m-0 p-1">
                                 <p class="m-0" v-cloak>{{item.spot || item.country}}</p>
                                 <p class="m-0" v-cloak>人气指数：{{item.click_rate}}</p>
@@ -180,7 +181,6 @@
                     i:0
                 },
                 // --------------------------------轮播数据end--------------------------------------------
-
                 // --------------------------------全部景点start--------------------------------------------
                 allSpotsList:{
                     home:{
@@ -194,7 +194,6 @@
                     activeItem:null,
                 },
                 // --------------------------------全部景点end--------------------------------------------
-
                 // --------------------------------当季景点推荐start--------------------------------------------
                 spots01:{
                     tabs:[],
@@ -239,9 +238,7 @@
                 clearInterval(this.timer);
             },
             // -----------------------------------轮播方法end--------------------------------------------------
-
             // -----------------------------------全部景点start--------------------------------------------------
-
             loadAllSpotsList(){
                 this.allSpotsList.activeItem = this.allSpotsList.home;
                 this.axios.get("http://127.0.0.1:3001/spots/allSpotsList").then(res=>{
@@ -380,8 +377,10 @@
                     // console.log(res.data);
                     this.spots03.imgs = res.data;
                 })
-            }
-
+            },
+            jumpToDetails(id){
+                   this.$router.push("/strategy_details?pid="+id);   //跳转至strategy_details.vue
+              }
         },
         created() {
             this.loadCarousel();

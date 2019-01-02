@@ -1,7 +1,7 @@
 <template>
     <section class='container strategy_details pt-5 mt-4 mb-3' v-cloak>
     <p class="breadCrumb pb-3">
-        <router-link to='/strategy'>首页</routerl>&gt;</router-link> 
+        <router-link to='/strategy'>首页&gt;</router-link> 
         <span href="#">{{StrategyDetails[0].spot}}</span>&gt;
         <span href="#">自由行攻略</span>
     </p>
@@ -119,7 +119,6 @@
 
 </template>
 <script>
-import StrategyComment from '../views/Sub/StrategyComment';
 
 import $ from 'jquery';
 import {rightCategory}  from '../assets/js/strategy_details.js';
@@ -132,9 +131,7 @@ export default{
             pid:this.$route.query.pid
         } 
     },
-    components:{
-        StrategyComment
-    },
+ 
     methods: {
         // 获取详情
         loadStrategyDetails(){

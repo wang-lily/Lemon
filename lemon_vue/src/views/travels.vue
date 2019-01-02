@@ -1,5 +1,6 @@
 <template>
-    <section class="app-travels">
+    <section class="app-travels position-relative">
+        <toast v-if="loginAlert" :toastMsg="loginAlertMsg" :toastBgColor="loginAlertBgColor"></toast>
         <div id="bigImg" class="container-fluid w-100 p-0 m-0">
             <picture>
                 <source media="(min-width: 1000px)" :srcset="bigImg.lg_url">
@@ -16,7 +17,7 @@
                 </div>
                 <div class="co-12 col-md-auto order-0 order-md-2 text-center text-md-right">
                     <button class="btn btn-group-sm btn-warning mr-1 mb-2 mt-4 mt-md-2" type="button"><router-link to="/" class="iconfont icon-youji1">我的游记</router-link></button>
-                    <button class="btn btn-group-sm btn-warning ml-1 mb-2 mt-4 mt-md-2" type="button"><router-link to="/add_travel" class="iconfont icon-fabiaoyouji">发表游记</router-link></button>
+                    <button class="btn btn-group-sm btn-warning ml-1 mb-2 mt-4 mt-md-2" type="button" @click="jumpToAdd()"><a herf="javascript:;" class="iconfont icon-fabiaoyouji">发表游记</a></button>
                 </div>
             </div>
             <!-- 加载travelbox组件 -->
@@ -41,6 +42,7 @@
 </template>
 <script>
 import TravelBox from "@/views/travel_box/Travel_box.vue"
+import Toast from "@/components/toast.vue"
 export default {
     data(){
         return {
@@ -58,12 +60,16 @@ export default {
                 pno:1,//用户需要显示的页码，默认为1
                 pageSize:6
             },
-            pageCount:0//总页数，由travel_box传入
-            // list:[]
+            pageCount:0,//总页数，由travel_box传入
+            loginAlert:false,
+            loginAlertMsg:"请先登录 !",
+            loginAlertBgColor:"bg-dark"
+
         }
     },
     components:{
-        TravelBox
+        TravelBox,
+        Toast
     },
     watch: {
         tempNum(){
@@ -129,6 +135,17 @@ export default {
                 }   
                 this.activeEle = e.target.dataset.num;
                 }
+        },
+        jumpToAdd(){
+            if(!this.$store.state.userMsg){
+                this.loginAlert = true;
+                setTimeout(()=>{
+                    this.loginAlert = false;
+                },1000)
+                return;
+            }else{
+                this.$router.push("/add_travel");
+            }
         }
     },
     

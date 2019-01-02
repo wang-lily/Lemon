@@ -2,7 +2,7 @@ const express=require("express");
 const router=express.Router();
 const pool=require("../pool");
 
-//测试: http://localhost:3001/travels/get_travel_details
+//测试: http://127.0.0.1:3001/travels/get_travel_details
 
 //-------------------------------------------- 获得页面top大图---start-----------------------------------------------------------
 router.get("/top",(req,res)=>{
@@ -94,25 +94,12 @@ router.get("/get_travel_details",(req,res)=>{
         res.send(obj);
       }
     }) 
-    var sql2 = `select count(tid) as c from comments where tid=?`;
+    var sql2 = `select uname,txt,time from comments c inner join user u on c.uid=u.uid  where tid=? order by cid desc`;
     pool.query(sql2,tid,(err,result)=>{
       if(err) throw (err);
-      if(result.length>0){
-        progress += 50;
-        obj.commentsTotal = result[0].c;
-      }
-      if(progress==150){
-        res.send(obj);
-      }
-    }) 
-    var sql3 = `select uname,txt,time from comments c inner join user u on c.uid=u.uid  where tid=?`;
-    pool.query(sql3,tid,(err,result)=>{
-      if(err) throw (err);
-      if(result.length>0){
         progress += 50;
         obj.comments = result;
-      }
-      if(progress==150){
+      if(progress==100){
         res.send(obj);
       }
     })
@@ -202,4 +189,38 @@ router.post("/changZan",(req,res)=>{
   }
 })
 // ----------------------更改数据库中的赞的数量--end----------------
+
+// ----------------------添加评论--start----------------
+router.post("/add_comment",(req,res)=>{
+  var txt = req.body.txt;
+  var uid = parseInt(req.body.uid);
+  var tid = parseInt(req.body.tid);
+  var time = new Date().getTime();
+  var obj = {code:1,data:{},msg:"成功添加评论!"};
+  var progress = 0;
+  var sql1 = `insert into comments set txt=?,uid=?,tid=?,time=?`;
+  pool.query(sql1,[txt,uid,tid,time],(err,result)=>{
+    if(err) throw err;
+    if(result.affectedRows>0){
+      obj.data.txt = txt;
+      obj.data.time = time;
+      progress += 50;
+      if(progress == 100){
+        res.send(obj);
+      }
+    }
+  });
+  var sql2 = `select uname from user where uid=?`;
+  pool.query(sql2,uid,(err,result)=>{
+    if(err) throw (err);
+    if(result.length>0){
+      obj.data.uname = result[0].uname;
+      progress += 50;
+      if(progress == 100){
+        res.send(obj);
+      }
+    }
+  })
+})
+// ----------------------添加评论--end----------------
 module.exports=router;

@@ -12,7 +12,7 @@ import Add_travel from './views/Add_travel.vue'
 import Travel_detail from './views/travel_detail.vue'
 import Travels from './views/travels.vue'
 
-// import Strategy_details from './views/Strategy_details.vue'
+import Strategy_details from './views/Strategy_details.vue'
 
 Vue.use(Router);
 
@@ -27,7 +27,7 @@ export default new Router({
       {path: '/strategy', component: Strategy},
       {path: '/travel_detail', component: Travel_detail},
       {path: '/travels', component: Travels},
-      // {path: '/strategy_details', component: Strategy_details},
+      {path: '/strategy_details', component: Strategy_details},
       {path: '/add_travel', component: Add_travel}
     ]},
     {path:'/login_register',component:Register_Login},

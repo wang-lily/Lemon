@@ -155,8 +155,8 @@ function addTravel(){
     })
     $("#section").on("focus","textarea,input",function(){ 
         focusedEles["editable"] = this;
-        sectionScrollTop = $("#section").scrollTop();
     })
+
     $("#section").click(function(e){
         // 删除添加的img及相关无用信息
         if(e.target.title=="删除"){
@@ -266,9 +266,9 @@ function addTravel(){
                                     if($imgHtml[$imgHtml.length-1].tagName=="TEXTAREA" && !$imgHtml[$imgHtml.length-1].nextElementSibling){
                                         $imgHtml[$imgHtml.length-1].focus();
                                     }else{
-                                        // console.log(sectionScrollTop)
-                                        $("#section").scrollTop(sectionScrollTop+parseInt(imgObj.imgPreviewHeight));
-                                        // console.log(sectionScrollTop+parseInt(imgObj.imgPreviewHeight))
+                                        console.log(sectionScrollTop)
+                                        $("#section")[0].scrollTo(0,sectionScrollTop+parseInt(imgObj.imgPreviewHeight));
+                                        console.log(sectionScrollTop+parseInt(imgObj.imgPreviewHeight))
                                         $imgHtml[$imgHtml.length-1].nextElementSibling.focus();
                                         $imgHtml[$imgHtml.length-1].nextElementSibling.selectionEnd = 0;
                                     }
@@ -391,6 +391,7 @@ function addTravel(){
     })
 
     $("#insertVideo").click(function(){
+        sectionScrollTop = $("#section").scrollTop();
         initSection();
         if(!isInsertedable()){
             return;
@@ -398,6 +399,7 @@ function addTravel(){
         $("#fileVideo").trigger("click").trigger("change");
     })
     $("#insertImg").click(function(){
+        sectionScrollTop = $("#section").scrollTop();
         initSection();
         if(!isInsertedable()){
             return;
@@ -405,6 +407,7 @@ function addTravel(){
         $("#fileImg").trigger("click").trigger("change");   
     })
     $("#insertTitle").click(function(){
+        sectionScrollTop = $("#section").scrollTop();
         initSection();
         if(!isInsertedable()){
             return;
@@ -412,6 +415,7 @@ function addTravel(){
         $("#btnTitle").trigger("click");
     })
     $("#insertTxt").click(function(){
+        sectionScrollTop = $("#section").scrollTop();
         initSection();
         if(!isInsertedable()){
             return;

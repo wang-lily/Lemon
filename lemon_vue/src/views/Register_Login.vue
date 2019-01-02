@@ -120,7 +120,7 @@
             verifyUser(){
                 var phoneReg = /^1[3-8]\d{9}$/;//手机号验证
                 var emailReg = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;//邮箱验证
-                if(!this.registerForm.user){
+                if(!this.registerForm.user.trim()){
                     this.registerForm.alert.msg.user = "请输入手机号或者邮箱进行注册！"
                     this.registerForm.alert.show = true;
                     this.registerForm.userVerifyStyle = "border-danger";
@@ -150,7 +150,7 @@
             },
             verifyUpwd(){
                 var upwdReg = /^\w{6,14}$/; //密码验证
-                if(!this.registerForm.upwd){
+                if(!this.registerForm.upwd.trim()){
                     this.registerForm.alert.msg.upwd = "请设置密码！";
                     this.registerForm.alert.show = true;
                     this.registerForm.upwdVerifyStyle = "border-danger";
@@ -168,7 +168,7 @@
                 return;
             },
             verifyAgainUpwd(){
-                if(!this.registerForm.againUpwd){
+                if(!this.registerForm.againUpwd.trim()){
                     this.registerForm.alert.show = true;
                     this.registerForm.alert.msg.againUpwd = "请确认密码！";
                     this.registerForm.againUpwdVerifyStyle = "border-danger";
@@ -226,7 +226,7 @@
                 // console.log(this.loginForm);
                 var phoneReg = /^1[3-8]\d{9}$/;//手机号验证
                 var emailReg = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;//邮箱验证
-                if(!this.loginForm.user){
+                if(!this.loginForm.user.trim()){
                     this.loginForm.alert.show = true;
                     this.loginForm.alert.style = "text-danger";
                     this.loginForm.alert.msg = "请输入手机号或者邮箱进行登录！";
@@ -238,7 +238,7 @@
                     this.loginForm.alert.msg = "手机号或者邮箱格式错误！";
                     return;
                 }
-                if(!this.loginForm.upwd){
+                if(!this.loginForm.upwd.trim()){
                     this.loginForm.alert.show = true;
                     this.loginForm.alert.style = "text-danger";
                     this.loginForm.alert.msg = "请输入密码！";

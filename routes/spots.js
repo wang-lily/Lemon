@@ -18,7 +18,7 @@ router.get("/carousel",(req,res)=>{
 })
 
 router.get("/allSpotsList",(req,res)=>{
-  var sql = `SELECT country,spot,sid FROM spot ORDER BY sid`;
+  var sql = `SELECT * FROM spot ORDER BY sid`;
   pool.query(sql,(err,result)=>{
     if(err) throw (err);
     res.send(result);
@@ -27,7 +27,8 @@ router.get("/allSpotsList",(req,res)=>{
 // select season,iimg_380_220,country,spot from img i inner join spot s on i.sid=s.sid order by season
 
 router.get("/spots01",(req,res)=>{
-  var sql = `select season,iimg_380_220,country,spot from img i inner join spot s on i.sid=s.sid order by season`;
+  // var sql = `select season,iimg_380_220,country,spot from img i inner join spot s on i.sid=s.sid order by season`;
+  var sql = `select * from img i inner join spot s on i.sid=s.sid order by season`;
   pool.query(sql,(err,result)=>{
     if(err) throw (err);
     res.send(result);
@@ -36,8 +37,8 @@ router.get("/spots01",(req,res)=>{
 
 router.get("/spots02",(req,res)=>{
   var data = {lgImgs:[],mdImgs:[]};
-  var sql1 = `select theme,lg_url,country,spot from carousel order by theme`;
-  var sql2 = `select theme,iimg_390_552,country,spot from img i inner join spot s on i.sid=s.sid order by theme`;
+  var sql1 = `select * from carousel order by theme`;
+  var sql2 = `select * from img i inner join spot s on i.sid=s.sid order by theme`;
   pool.query(sql1,(err,result)=>{
     if(err) throw (err);
     data.lgImgs = result;
@@ -50,7 +51,7 @@ router.get("/spots02",(req,res)=>{
 })
 
 router.get("/spots03",(req,res)=>{
-  var sql = `select click_rate,iimg_270_165,country,spot from img i inner join spot s on i.sid=s.sid GROUP by click_rate order by click_rate DESC LIMIT 0,4`;
+  var sql = `select * from img i inner join spot s on i.sid=s.sid GROUP by click_rate order by click_rate DESC LIMIT 0,4`;
   pool.query(sql,(err,result)=>{
     if(err) throw (err);
     res.send(result);

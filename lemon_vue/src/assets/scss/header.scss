@@ -80,6 +80,7 @@ ul,li,ol{
           border-left:0.5px solid #999;
         }
         &>ul{
+          border:1px solid #999 !important;
           &.speed{
             width:200px;
             transition:all 0.3s linear;

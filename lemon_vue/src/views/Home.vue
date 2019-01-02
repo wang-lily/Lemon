@@ -1,10 +1,9 @@
 <template>
-  <div  v-cloak>
+  <div  v-cloak class="position-relative">
     <Header></Header>
     <router-view v-if="reloadable"></router-view>
-    <toTop></toTop>
+    <toTop @handleShowToast="handleShowToast"></toTop>
     <Footer></Footer>
-
   </div>
 </template>
 

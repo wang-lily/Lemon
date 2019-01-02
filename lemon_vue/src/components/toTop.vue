@@ -9,8 +9,8 @@
                     <i class="iconfont icon-love" :class="(zan.style==-1)?'text-muted':'text-pink'"></i>
                     <span>{{zan.total}}</span>
                 </li>
-                <li v-show="show" class="comment" @click="handleComments($event)">
-                    <i class="iconfont icon-pinglun"></i>
+                <li v-show="show" class="comment"  @click="handleComments($event)">
+                    <i class="iconfont icon-pinglun font-weight-bold" :class="(comments.style==-1)?'text-muted':'text-info'"></i>
                     <span>{{comments.total}}</span>
                 </li>
                 <li>
@@ -33,7 +33,8 @@ import {toTop} from '../../src/assets/js/index.js'
                    style:-1//-1为"text-muted"，1为"text-pink"       
                },
                comments:{
-                   total:0
+                   total:0,
+                   style:-1//-1为"text-muted"，1为"text-info" 
                }
             }
         },
@@ -69,7 +70,8 @@ import {toTop} from '../../src/assets/js/index.js'
             handleZan(e){
                 e.preventDefault();
                 if(!this.$store.state.userMsg){
-                    alert("请先登录才可以点赞哦！");
+                    // alert("请先登录才可以点赞哦！");
+                    this.bus.$emit("handleShowToast");
                     return;
                 }
                 this.zan.style *= -1;
@@ -95,6 +97,7 @@ import {toTop} from '../../src/assets/js/index.js'
             handleComments(e){
                 e.preventDefault();
                 this.bus.$emit("showComments");
+                this.comments.style *= -1;
             }
         },
         watch: {
@@ -113,12 +116,17 @@ import {toTop} from '../../src/assets/js/index.js'
                 this.comments.total = commentsTotal;
                 this.show = true;
             })
-            this.bus.$on("resetZan",()=>{
+            this.bus.$on("resetToTap",()=>{
                 this.show=false;
                 this.tid=0;
                 this.sid=0;
                 this.zan.total=0;
                 this.zan.style=-1;//-1为"text-muted"，1为"text-pink"
+                this.comments.style=-1;//-1为"text-muted"，1为"text-info"
+                console.log(this.comments.style);
+            })
+            this.bus.$on("postCommentsTotal",(commentsTotal)=>{
+                this.comments.total = commentsTotal;
             })
             
         }

@@ -40,6 +40,7 @@ $fontColor:#FF9800;
     }
     .icon-qq,.icon-weibo,.icon-weixin{
         color:$fontNormalColor !important;
+        font-size: 3rem;
         &:hover{
             color:$iconHoverColor !important;
             transition: all 0.2s linear;
