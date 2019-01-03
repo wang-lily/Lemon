@@ -90,7 +90,7 @@ router.get("/get_travel_details",(req,res)=>{
         progress += 50;
         obj.details = result[0];
       }
-      if(progress==150){
+      if(progress==100){
         res.send(obj);
       }
     }) 
