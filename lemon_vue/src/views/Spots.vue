@@ -100,7 +100,7 @@
                         <span class="col d-md-none  p-0 pt-1 pb-1 m-0 text-center"  ><button class="text-white border-0 bg-transparent iconfont icon-arrow-r" @click="showNextTab(spots02)" :disabled="spots02.nextHideTab==5"></button></span>
                         <span class="col d-none d-md-block p-0 pt-1 pb-1"></span>
                     </div>
-                    <div v-for="(item,i) of spots02.tabs" :key="i" class="p-0" v-show="item.style[1]">
+                    <div v-for="(item,i) of spots02.tabs" :key="i" class="p-0" v-if="item.style[1]">
                         <div class="position-relative p-1">
                             <img class="img-fluid" :src="item.imgsList[0] ? item.imgsList[0][0].lg_url :''"  alt="" @click="jumpToDetails(item.imgsList[0][0].cid)">
                             <div class="position-absolute p-3 " >

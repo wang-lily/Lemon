@@ -3,8 +3,8 @@
         <div class="border-bottom">
             <div class="container">
                 <div class=" d-flex justify-content-between">
-                    <span class="ml-3" >作 者: {{details.author}}</span>
-                    <span class="mr-3" >发表时间: {{new Date(details.time).toLocaleDateString()}}</span>
+                    <span>作 者: {{details.author}}</span>
+                    <span>发表时间: {{new Date(details.time).toLocaleDateString()}}</span>
                 </div>    
             </div>
         </div>
@@ -19,7 +19,7 @@
                 <div class="row ml-1 mr-1 mb-1 ml-sm-3 mr-sm-3 mb-sm-3 align-items-center position-relative">
                     <textarea class="col m-1 border bg-light mt-2 p-1 p-sm-2 h50" placeholder="写下你的评论(字数在200以内)..." v-model="myComment" @focus="resetAlertMsg()"></textarea>
                     <button type="button" class="col-auto m-1 h-50 btn  btn-outline-success" @click="submitComment()">发表</button>
-                    <Toast v-if="toastMsg" :toastMsg="toastMsg" :toastBgColor="toastBgColor"></Toast>
+                    <Toast v-if="toastMsg" :toastMsg="toastMsg" :toastClass="toastClass"></Toast>
                 </div>
                 
                 <div class="comments">
@@ -38,7 +38,7 @@
                 </div>
             </div>
         </div>
-        <Toast v-if="loginAlert" :toastMsg="loginAlertMsg" :toastBgColor="loginAlertBgcolor"></Toast>
+        <Toast v-if="loginAlert" :toastMsg="loginAlertMsg" :toastClass="loginAlertBgcolor"></Toast>
     </div>
 </template>
 
@@ -50,7 +50,7 @@ export default {
         return {
             loginAlert:false,
             loginAlertMsg : "先请登录！",
-            loginAlertBgcolor : "bg-dark",
+            loginAlertBgcolor : "bg-dark position-fixed",
             tid:this.$route.query.tid,
             zanTotal:0,
             details:{
@@ -64,7 +64,7 @@ export default {
             myComment:"",
             commentsList:[],
             alertMsg:"",
-            toastBgColor:"",
+            toastClass:"",
             toastMsg:""
         }
     },
@@ -97,30 +97,30 @@ export default {
         submitComment(){
             if(!this.$store.state.userMsg){
                 this.toastMsg = "请先登录！";
-                this.toastBgColor = "bg-dark";
+                this.toastClass = "bg-dark position-absolute";
                 setTimeout(()=>{
                     this.toastMsg = "";
-                    this.toastBgColor = "";
+                    this.toastClass = "";
                 },1000)
                 return;
             }
             if(!this.myComment.trim()){
                 this.alertMsg = "您没有输入任何评论！";
                 this.toastMsg = "发表失败！";
-                this.toastBgColor = "bg-danger";
+                this.toastClass = "bg-danger position-absolute";
                 setTimeout(()=>{
                     this.toastMsg = "";
-                    this.toastBgColor = "";
+                    this.toastClass = "";
                 },1000)
                 return;
             }
             if(this.myComment.length>200){
                 this.alertMsg = "您写的评论长度超过200字，请从新输入！";
-                this.toastBgColor = "bg-danger";
+                this.toastClass = "bg-danger position-absolute";
                 this.toastMsg = "发表失败！";
                 setTimeout(()=>{
                     this.toastMsg = "";
-                    this.toastBgColor = "";
+                    this.toastClass = "";
                 },1000)
                 return;
             }
@@ -130,11 +130,11 @@ export default {
                 tid:this.tid
                 }).then((res)=>{
                 if(res.data.code===1){
-                    this.toastBgColor = "bg-success";
+                    this.toastClass = "bg-success position-absolute";
                     this.toastMsg = "发表成功！";
                     setTimeout(()=>{
                         this.toastMsg = "";
-                        this.toastBgColor = "";
+                        this.toastClass = "";
                     },1000);
                     this.commentsList.unshift(res.data.data);
                     this.commentsTotal++;
@@ -152,9 +152,11 @@ export default {
     },
     mounted() {
         //显示或者隐藏评论区
-        this.bus.$on("showComments",()=>{
+        this.bus.$on("showComments",(style)=>{
             this.loadComments = !this.loadComments;
-            window.scrollTo(0,$("#travel-details")[0].offsetHeight);
+            if(style==1){     
+                window.scrollTo(0,$("#travel-details")[0].offsetHeight);
+            }    
         })   
         this.bus.$on("handleShowToast",()=>{          
             console.log(123);
@@ -182,7 +184,12 @@ export default {
     .app-travel-details .alertMsg{
         height: 24px;
     }
-    
+    .app-travel-details img{
+        max-width: 100%;
+    }
+    .app-travel-details p{
+        padding:0 !important;
+    }
     [v-cloak] {
         display: none;
     }

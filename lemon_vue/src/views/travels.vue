@@ -1,6 +1,6 @@
 <template>
-    <section class="app-travels position-relative">
-        <toast v-if="loginAlert" :toastMsg="loginAlertMsg" :toastBgColor="loginAlertBgColor"></toast>
+    <section class="app-travels">
+        <toast v-if="loginAlert" :toastMsg="loginAlertMsg" :toastClass="loginAlertBgColor"></toast>
         <div id="bigImg" class="container-fluid w-100 p-0 m-0">
             <picture>
                 <source media="(min-width: 1000px)" :srcset="bigImg.lg_url">
@@ -63,7 +63,7 @@ export default {
             pageCount:0,//总页数，由travel_box传入
             loginAlert:false,
             loginAlertMsg:"请先登录 !",
-            loginAlertBgColor:"bg-dark"
+            loginAlertBgColor:"bg-dark position-fixed"
 
         }
     },

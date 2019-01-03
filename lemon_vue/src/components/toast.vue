@@ -1,5 +1,5 @@
 <template>
-    <div class="app-toast" :class="toastBgColor">
+    <div class="app-toast" :class="toastClass">
         {{toastMsg}}
     </div>
 </template>
@@ -10,7 +10,7 @@ export default {
             
         }
     },
-    props:["toastMsg","toastBgColor"]
+    props:["toastMsg","toastClass"]
         
     
 }
@@ -22,7 +22,7 @@ export default {
         line-height: 0rem;
         /* background:rgba(40, 167, 69, 1); */
         color:#fff;
-        position: absolute;
+        /* position: absolute; */
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);

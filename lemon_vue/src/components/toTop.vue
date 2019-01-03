@@ -2,7 +2,7 @@
       <!-- 回到顶部 -->
         <div class="footerBox">
             <ul>
-                <li class="toTop">
+                <li class="toTop" @click="changeCommentsStyle()">
                     <i class="iconfont icon-shouqi"></i>
                 </li>
                 <li v-show="show" class="zan" @click="handleZan($event)">
@@ -96,13 +96,20 @@ import {toTop} from '../../src/assets/js/index.js'
             },
             handleComments(e){
                 e.preventDefault();
-                this.bus.$emit("showComments");
                 this.comments.style *= -1;
+            },
+            changeCommentsStyle(){
+                if(this.show && this.comments.style==1){
+                    this.comments.style *= -1;
+                }
             }
         },
         watch: {
             tid:function(tid){
                 this.verifyZanStatus(tid);
+            },
+            "comments.style":function(style){
+                this.bus.$emit("showComments",style);
             }
         },
         created() {  

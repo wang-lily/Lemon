@@ -2,7 +2,7 @@
   <div  v-cloak class="position-relative">
     <Header></Header>
     <router-view v-if="reloadable"></router-view>
-    <toTop @handleShowToast="handleShowToast"></toTop>
+    <toTop></toTop>
     <Footer></Footer>
   </div>
 </template>
