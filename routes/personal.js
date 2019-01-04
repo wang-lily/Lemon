@@ -128,4 +128,14 @@ router.post('/modifyPwd',bodyParser.json(),(req,res)=>{
        
     })
 })
+
+// 获得游记
+router.get('/getOwntravel',(req,res)=>{
+      var uid=req.query.uid;
+      var sql=`select tid,title from travel where uid=?`;
+      pool.query(sql,[uid],(err,result)=>{
+          if(err) throw err;
+          res.send(result);
+      })
+})
 module.exports=router;

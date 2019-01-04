@@ -23,10 +23,20 @@ router.get('/tab',(req,res)=>{
 })
 
 router.get('/guide',(req,res)=>{
-  var sql= `select click_rate,iimg_170_240,country,spot from img i inner join spot s on i.sid=s.sid GROUP by click_rate order by click_rate DESC LIMIT 0,6`;
+  var sql= ` SELECT pid,img,Ttime,tview,zan,totaltitle,subtitle,spot FROM pointer LIMIT 0,6`;
   pool.query(sql,(err,result)=>{
     if(err) throw (err);
+    console.log(result)
     res.send(result);
   })
+})
+
+
+router.get('/travel',(req,res)=>{
+  var sql =`select tid,uname,Ttime,describle,headerImg,title,tview,zan,spot from user i inner join travel s on i.uid=s.uid ORDER BY zan DESC LIMIT 0,4`;
+  pool.query(sql,(err,result)=>{
+    if(err) throw err;
+    res.send(result);
+  }) 
 })
 module.exports=router;

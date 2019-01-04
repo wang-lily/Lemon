@@ -11,11 +11,9 @@
                         </li>
                     </ul>
                      <div class="mt-2 p-2 col-sm-12 col-5 mr-0 text-left">
-                            <p class="publicTraval" @click="staticSty.ifShow=staticSty.ifShow?false:true;staticSty.ind=0;"><i class="iconfont icon-youji1 pr-1"></i> <b>我的游记</b></p>   
-                            <ul v-show="staticSty.ifShow" class="ml-2  publicList">
-                                <li><a href="#">风筝有风，海...</a></li>
-                                <li><a href="#">风筝有风，海豚有海。</a></li>
-                                <li><a href="#">风筝有风，海...</a></li>
+                            <p class="publicTraval" @click=" myTravel"><i class="iconfont icon-youji1 pr-1"></i> <b>我的游记</b></p>   
+                            <ul v-show="staticSty.ifShow" class="ml-2  publicList" v-for="item of myTravelList">
+                                <li><a href="#">{{item}}</a></li>
                             </ul>
                         </div>
                 </div>
@@ -148,10 +146,10 @@
                },
                deleteUser:false,
                ackAllFlag:false,  //当为true时才可提交信息
-            //    progress:0,   //信息修改完成度
                newPwd:'',
                againPwd:'',
-               pwdAckAllFlag:false  ////当为true时才可提交密码
+               pwdAckAllFlag:false,  ////当为true时才可提交密码
+               myTravelList:[]
             }
         },
          created() {
@@ -170,6 +168,15 @@
                  }
              },
         methods:{
+            myTravel(){
+               this.staticSty.ifShow=this.staticSty.ifShow?false:true;
+               this.staticSty.ind=0;
+               this.axios.get("http://127.0.0.1:3001/personal/getOwntravel",
+                {params:{uid:this.$store.state.userMsg.uid}}).then(res=>{
+                   this.myTravelList=res.data;
+                   // console.log(res)
+                })
+            },
             tabChange(index){
                 this.staticSty.ind=index;
                 this.staticSty.ifShow=false;
@@ -321,8 +328,6 @@
              },
             
              submitInfo(){  
-                //  console.log(this.ackAllFlag)
-                //  console.log(this.info.infoList)
                  if(this.ackAllFlag){
                       this.axios({
                           method:'post',
@@ -386,9 +391,7 @@
                             if(res.data.code===1){
                                 this.pwdSubAck.flag = true;
                                 this.pwdSubAck.tip = res.data.msg; 
-                                // this.$store.commit("signout"); 
                                  this.$router.push('/index');
-                                // this.axios.get("http://127.0.0.1:3001/user/signout");
                             }else{
                                 this.pwdSubAck.flag = true;
                                 this.pwdSubAck.tip = res.data.msg;
@@ -396,9 +399,7 @@
                            
                         })  
                 }
-             },
-             
-
+             }
       }
     }
 </script>

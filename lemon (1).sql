@@ -21,12 +21,17 @@ SET time_zone = "+00:00";
 --
 -- Database: `lemon`
 --
-
+set names utf8;
+drop database if EXISTS lemon;
+CREATE database lemon CHARSET=utf8;
+use lemon;
 -- --------------------------------------------------------
 
 --
 -- 表的结构 `carousel`
 --
+
+
 
 CREATE TABLE `carousel` (
   `cid` int(11) NOT NULL,
@@ -256,31 +261,31 @@ CREATE TABLE `pointer` (
 --
 
 INSERT INTO `pointer` (`pid`, `spot`, `img`, `Ttime`, `tview`, `zan`, `totaltitle`, `subtitle`) VALUES
-(1, '重庆', 'http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg\n&http://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg&\nhttp://127.0.0.1:3001/img/chongqing_strategy/nanbinglu.png&\nhttp://127.0.0.1:3001/img/cho', '2018-5-8', 355316, 2331, '重庆48h｜网红、艺术、市井全体验，山城这样玩才地道！', NULL),
-(2, '香港', 'http://127.0.0.1:3001/img/chongqing_strategy/HongKong1.jpg\n&http://127.0.0.1:3001/img/chongqing_strategy/HongKong2.jpg\n&http://127.0.0.1:3001/img/chongqing_strategy/HongKong3.jpg', '2018-5-8', 355316, 2331, '我的2017# 二刷香港——“打个飞的去红馆看杨小姐演唱会！', NULL),
-(3, '上海', 'http://127.0.0.1:3001/img/chongqing_strategy/Disney1.jpg\n&http://127.0.0.1:3001/img/chongqing_strategy/Disney2.jpg&\nhttp://127.0.0.1:3001/img/chongqing_strategy/Disney3.jpg', '2018-5-8', 355316, 2331, '上海迪士尼最全攻略！好吃好玩带娃必备！', NULL),
-(4, '大阪', 'http://127.0.0.1:3001/img/chongqing_strategy/db1.jpg&\nhttp://127.0.0.1:3001/img/chongqing_strategy/db2.png&http://127.0.0.1:3001/img/chongqing_strategy/db3.jpg', '2018-5-8', 355316, 2331, '大阪经典2日玩法（含购物攻略）！', NULL),
-(5, '北海道', 'http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&\nhttp://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg', '2018-5-8', 355316, 2331, '没有樱花没有雪 秋天的北海道也挺美！', NULL),
+(1, '重庆', 'http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg\n&http://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg&\nhttp://127.0.0.1:3001/img/chongqing_strategy/nanbinglu.png&\nhttp://127.0.0.1:3001/img/cho', '2018-5-8', 605316, 6031, '重庆48h｜网红、艺术、市井全体验，山城这样玩才地道！', NULL),
+(2, '香港', 'http://127.0.0.1:3001/img/chongqing_strategy/HongKong1.jpg\n&http://127.0.0.1:3001/img/chongqing_strategy/HongKong2.jpg\n&http://127.0.0.1:3001/img/chongqing_strategy/HongKong3.jpg', '2018-5-8', 5316, 2331, '我的2017# 二刷香港——“打个飞的去红馆看杨小姐演唱会！', NULL),
+(3, '上海', 'http://127.0.0.1:3001/img/chongqing_strategy/Disney1.jpg\n&http://127.0.0.1:3001/img/chongqing_strategy/Disney2.jpg&\nhttp://127.0.0.1:3001/img/chongqing_strategy/Disney3.jpg', '2018-5-8', 365316, 17731, '上海迪士尼最全攻略！好吃好玩带娃必备！', NULL),
+(4, '大阪', 'http://127.0.0.1:3001/img/chongqing_strategy/db1.jpg&\nhttp://127.0.0.1:3001/img/chongqing_strategy/db2.png&http://127.0.0.1:3001/img/chongqing_strategy/db3.jpg', '2018-5-8', 385316, 13331, '大阪经典2日玩法（含购物攻略）！', NULL),
+(5, '北海道', 'http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&\nhttp://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg', '2018-5-8', 405316, 3331, '没有樱花没有雪 秋天的北海道也挺美！', NULL),
 (6, '美国大峡谷', 'http://127.0.0.1:3001/img/chongqing_strategy/America1.jpg\n&http://127.0.0.1:3001/img/chongqing_strategy/America2.jpg&http://127.0.0.1:3001/img/chongqing_strategy/America3.jpg', '2018-5-8', 355316, 2331, '美国大峡谷环线自驾：住宿优选！', NULL),
-(7, '三亚', 'http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&\nhttp://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg', '2018-5-8', 355316, 2331, '天堂大佛石全海景玻璃栈道，开启三亚新体验！', NULL),
+(7, '三亚', 'http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&\nhttp://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg', '2018-5-8', 455316, 6631, '天堂大佛石全海景玻璃栈道，开启三亚新体验！', NULL),
 (8, '香港', 'http://127.0.0.1:3001/img/chongqing_strategy/HongKong1.jpg&\nhttp://127.0.0.1:3001/img/chongqing_strategy/HongKong2.jpg&http://127.0.0.1:3001/img/chongqing_strategy/HongKong3.jpg', '2018-5-8', 355316, 2331, '香港美食地图，惊艳了味蕾的9家店！', NULL),
-(9, '云南', 'http://127.0.0.1:3001/img/chongqing_strategy/yunnan1.jpg&\nhttp://127.0.0.1:3001/img/chongqing_strategy/yunnan2.jpg&http://127.0.0.1:3001/img/chongqing_strategy/yunnan3.jpg', '2018-5-8', 355316, 2331, '云南的天空，开出漫天的花（大理、丽江、泸沽湖、昆明）！', NULL),
+(9, '云南', 'http://127.0.0.1:3001/img/chongqing_strategy/yunnan1.jpg&\nhttp://127.0.0.1:3001/img/chongqing_strategy/yunnan2.jpg&http://127.0.0.1:3001/img/chongqing_strategy/yunnan3.jpg', '2018-5-8', 395316, 7731, '云南的天空，开出漫天的花（大理、丽江、泸沽湖、昆明）！', NULL),
 (10, '重庆', 'http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&\nhttp://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg&\nhttp://127.0.0.1:3001/img/chongqing_strategy/nanbinglu.png&\nhttp://127.0.0.1:3001/img/cho', '2018-5-8', 355316, 2331, '重庆48h｜网红、艺术、市井全体验，山城这样玩才地道！', NULL),
 (11, '香港', 'http://127.0.0.1:3001/img/chongqing_strategy/HongKong1.jpg&\nhttp://127.0.0.1:3001/img/chongqing_strategy/HongKong2.jpg&http://127.0.0.1:3001/img/chongqing_strategy/HongKong3.jpg', '2018-5-8', 355316, 2331, '我的2017# 二刷香港——“打个飞的去红馆看杨小姐演唱会！', NULL),
 (12, '上海', 'http://127.0.0.1:3001/img/chongqing_strategy/Disney1.jpg&\nhttp://127.0.0.1:3001/img/chongqing_strategy/Disney2.jpg&\nhttp://127.0.0.1:3001/img/chongqing_strategy/Disney3.jpg', '2018-5-8', 355316, 2331, '上海迪士尼最全攻略！好吃好玩带娃必备！', NULL),
 (13, '大阪', 'http://127.0.0.1:3001/img/chongqing_strategy/db1.jpg&\nhttp://127.0.0.1:3001/img/chongqing_strategy/db2.png&http://127.0.0.1:3001/img/chongqing_strategy/db3.jpg', '2018-5-8', 355316, 2331, '大阪经典2日玩法（含购物攻略）！', NULL),
 (14, '北海道', 'http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&\nhttp://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg', '2018-5-8', 355316, 2331, '没有樱花没有雪 秋天的北海道也挺美！', NULL),
 (15, '美国大峡谷', 'http://127.0.0.1:3001/img/chongqing_strategy/America1.jpg\n&http://127.0.0.1:3001/img/chongqing_strategy/America2.jpg\n&http://127.0.0.1:3001/img/chongqing_strategy/America3.jpg', '2018-5-8', 355316, 2331, '美国大峡谷环线自驾：住宿优选！', NULL),
-(16, '三亚大佛石', 'http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&\nhttp://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg', '2018-5-8', 355316, 2331, '天堂大佛石全海景玻璃栈道，开启三亚新体验！', NULL),
-(17, '香港', 'http://127.0.0.1:3001/img/chongqing_strategy/HongKong1.jpg&\nhttp://127.0.0.1:3001/img/chongqing_strategy/HongKong2.jpg&http://127.0.0.1:3001/img/chongqing_strategy/HongKong3.jpg', '2018-5-8', 355316, 2331, '香港美食地图，惊艳了味蕾的9家店！', NULL),
-(18, '云南', 'http://127.0.0.1:3001/img/chongqing_strategy/yunnan1.jpg&\nhttp://127.0.0.1:3001/img/chongqing_strategy/yunnan2.jpg&http://127.0.0.1:3001/img/chongqing_strategy/yunnan3.jpg', '2018-5-8', 355316, 2331, '云南的天空，开出漫天的花（大理、丽江、泸沽湖、昆明）！', NULL),
-(19, '上海', 'http://127.0.0.1:3001/img/chongqing_strategy/Disney1.jpg&\r\nhttp://127.0.0.1:3001/img/chongqing_strategy/Disney2.jpg&\r\nhttp://127.0.0.1:3001/img/chongqing_strategy/Disney3.jpg', '2018-5-8', 355316, 2331, '上海迪士尼最全攻略！好吃好玩带娃必备！', NULL),
-(20, '香港', 'http://127.0.0.1:3001/img/chongqing_strategy/HongKong1.jpg&\r\nhttp://127.0.0.1:3001/img/chongqing_strategy/HongKong2.jpg&http://127.0.0.1:3001/img/chongqing_strategy/HongKong3.jpg', '2018-5-8', 355316, 2331, '我的2017# 二刷香港——“打个飞的去红馆看杨小姐演唱会！', NULL),
-(21, '北海道', 'http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&\r\nhttp://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg', '2018-5-8', 355316, 2331, '没有樱花没有雪 秋天的北海道也挺美！', NULL),
+(16, '三亚大佛石', 'http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&\nhttp://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg', '2018-5-8', 35516, 2331, '天堂大佛石全海景玻璃栈道，开启三亚新体验！', NULL),
+(17, '香港', 'http://127.0.0.1:3001/img/chongqing_strategy/HongKong1.jpg&\nhttp://127.0.0.1:3001/img/chongqing_strategy/HongKong2.jpg&http://127.0.0.1:3001/img/chongqing_strategy/HongKong3.jpg', '2018-5-8', 35536, 2331, '香港美食地图，惊艳了味蕾的9家店！', NULL),
+(18, '云南', 'http://127.0.0.1:3001/img/chongqing_strategy/yunnan1.jpg&\nhttp://127.0.0.1:3001/img/chongqing_strategy/yunnan2.jpg&http://127.0.0.1:3001/img/chongqing_strategy/yunnan3.jpg', '2018-5-8', 35316, 2331, '云南的天空，开出漫天的花（大理、丽江、泸沽湖、昆明）！', NULL),
+(19, '上海', 'http://127.0.0.1:3001/img/chongqing_strategy/Disney1.jpg&\r\nhttp://127.0.0.1:3001/img/chongqing_strategy/Disney2.jpg&\r\nhttp://127.0.0.1:3001/img/chongqing_strategy/Disney3.jpg', '2018-5-8', 35536, 2331, '上海迪士尼最全攻略！好吃好玩带娃必备！', NULL),
+(20, '香港', 'http://127.0.0.1:3001/img/chongqing_strategy/HongKong1.jpg&\r\nhttp://127.0.0.1:3001/img/chongqing_strategy/HongKong2.jpg&http://127.0.0.1:3001/img/chongqing_strategy/HongKong3.jpg', '2018-5-8', 35316, 2331, '我的2017# 二刷香港——“打个飞的去红馆看杨小姐演唱会！', NULL),
+(21, '北海道', 'http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&\r\nhttp://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg', '2018-5-8', 35536, 2331, '没有樱花没有雪 秋天的北海道也挺美！', NULL),
 (22, '香港', 'http://127.0.0.1:3001/img/chongqing_strategy/HongKong1.jpg\r\n&http://127.0.0.1:3001/img/chongqing_strategy/HongKong2.jpg\r\n&http://127.0.0.1:3001/img/chongqing_strategy/HongKong3.jpg', '2018-5-8', 355316, 2331, '我的2017# 二刷香港——“打个飞的去红馆看杨小姐演唱会！', NULL),
-(23, '上海', 'http://127.0.0.1:3001/img/chongqing_strategy/Disney1.jpg&\r\nhttp://127.0.0.1:3001/img/chongqing_strategy/Disney2.jpg&\r\nhttp://127.0.0.1:3001/img/chongqing_strategy/Disney3.jpg', '2018-5-8', 355316, 2331, '上海迪士尼最全攻略！好吃好玩带娃必备！', NULL),
-(24, '三亚大佛石', 'http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&\r\nhttp://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg', '2018-5-8', 355316, 2331, '天堂大佛石全海景玻璃栈道，开启三亚新体验！', NULL),
-(25, '北海道', 'http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&\r\nhttp://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg', '2018-5-8', 355316, 2331, '没有樱花没有雪 秋天的北海道也挺美！', NULL);
+(23, '上海', 'http://127.0.0.1:3001/img/chongqing_strategy/Disney1.jpg&\r\nhttp://127.0.0.1:3001/img/chongqing_strategy/Disney2.jpg&\r\nhttp://127.0.0.1:3001/img/chongqing_strategy/Disney3.jpg', '2018-5-8', 35316, 2331, '上海迪士尼最全攻略！好吃好玩带娃必备！', NULL),
+(24, '三亚大佛石', 'http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&\r\nhttp://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg', '2018-5-8', 35516, 2331, '天堂大佛石全海景玻璃栈道，开启三亚新体验！', NULL),
+(25, '北海道', 'http://127.0.0.1:3001/img/chongqing_strategy/cm.jpg&\r\nhttp://127.0.0.1:3001/img/chongqing_strategy/cq_route2.png&http://127.0.0.1:3001/img/chongqing_strategy/cqk.jpg', '2018-5-8', 3316, 2331, '没有樱花没有雪 秋天的北海道也挺美！', NULL);
 
 -- --------------------------------------------------------
 

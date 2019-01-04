@@ -51,6 +51,11 @@ body{
     left:50%;
     transform: translateX(-50%);
 }
+.carouselBox  .link span{
+   background: rgba(0, 0, 0, .6);
+   color:#fff;
+   padding: 1rem;
+}
 .carouselBox  .link a{
    background: rgba(0, 0, 0, .6);
    color:#fff;
@@ -105,7 +110,14 @@ body{
     -ms-text-overflow: ellipsis;
     width: 90%;
 }
-
+.popTravels .travel_title a{
+    text-decoration: none;
+}
+.popTravels .author_time{
+    font-size: 0.9rem;
+    font-style: normal;
+    color: #6c757d;
+}
  @media screen and (max-width:375px){
     .carouselBox .imgMd ul li {
         display: none;

@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="position-absolute link">
-                    <router-link to="/add_travel" class="pt-1 pb-1 ml-1"> <i class="iconfont icon-dianping"></i>写游记</router-link>
+                    <span @click="toAddtravel" class="pt-1 pb-1 ml-1"> <i class="iconfont icon-dianping"></i>写游记</span>
                     <router-link to='/pics' class="pt-1 pb-1  ml-1">历历在目</i></router-link> 
                 </div> 
             </div>
@@ -63,7 +63,6 @@
                                             <span class="flex-end">
                                                 <i class="iconfont icon-xingxing1" v-for="i in item.hot"></i>
                                             </span>
-                                           <!-- <small>热度 <i class="iconfont icon-xingxing1" v-for="i in item.hot"></i></small> -->
                                         </p>
                                     </div>
                                 </div>
@@ -89,66 +88,66 @@
                 <div class="row">
                     <div class="col-12 text-center p-4">
                         <span class="pop_title">人气指南</span>
-                        <a href='#' class="ml-1">更多&gt;</a>
+                        <router-link to='/strategy' class="ml-1"> 更多&gt;</router-link>
                     </div>
                     <div class="col-lg-2 col-md-3 col-sm-6 col-6 bordered mb-2" v-for="item in  guide.imgList">
                         <div class="card ">
                             <div class="card-head">
-                               <img :src="item.iimg_170_240" alt="" class="w-100"> 
+                               <img :src="item.img" alt="" class="w-100" @click="$router.push('/strategy_details?pid='+item.pid)"> 
                             </div>
                             <div class="card-body pl-0 ml-1 pt-0 pb-0">
-                                <p class="mb-0">{{item.country}}</p>
+                                <p class="mb-0">{{item.spot}}</p>
                                 <span class="views text-muted">浏览量
-                                    <b>{{item.click_rate}}</b>次</span>
+                                    <b>{{item.tview}}</b>次</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 </div>
             </div>
-        </div>
-
+      
         <!-- 精品游记 -->
         <div class="popTravels">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center p-4">
                         <span class="pop_title">精品游记</span>
-                        <a href='#' class="ml-1">更多&gt;</a>
+                        <router-link to='/travels'class="ml-1">更多&gt;</router-link>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 bordered mb-5">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-6 bordered mb-5 " v-for='item in travel.travelList'  >
                         <div class="card">
                             <div class="card-head">
-                                <!-- <img src="img/270-165/Singapore07.png" alt="" class="w-100"> -->
+                                <img @click="$router.push('/travel_detail?tid='+item.tid)"  :src="item.headerImg" alt="" class="w-100">
                             </div>
-                            <div class="card-body  ml-1  pb-1  ">
+                            <div class="card-body ml-1 pb-1">
                                 <p class="mb-0">
                                     <h6 class="travel_title">
-                                        <a href="#">最后一个暑假，我们来到了hhh</a>
+                                        <a href="javascript:void(0)">{{item.title}}</a>
                                     </h6>
                                 </p>
                                 <p class="mb-0 travel_title text_muted">
-                                    <i class="iconfont">&#xe652;</i>新加坡，圣淘沙岛</p>
-                                <p class="mb-2 travel_title">第一次来，我就爱上了这里</p>
-                                <p class="mb-0 d-flex justify-content-between flex-wrap text_muted">
-                                    <span>
-                                        <b>作者</b>
-                                        灰灰世界</span>
-                                    <span>
-                                        <b> 时间</b> 2018-2-1</span>
+                                    <i class="iconfont">&#xe652;</i>{{item.spot}}</p>
+                                <p class="mb-0 d-flex justify-content-between flex-wrap text_muted travel_info">
+                                    <span class="author_time ">
+                                        <b>作者:</b>
+                                       {{item.uname ||'匿名' }}</span>
+                                    <span class="author_time">
+                                        <b> 时间:</b>{{new Date(item.Ttime).toLocaleDateString()}}
+                                    </span>
                                 </p>
                             </div>
                         </div>
                     </div>
-                  
                 </div>
             </div>
         </div>
-
+         <Toast v-if="loginAlert" :toastMsg="loginAlertMsg" :toastClass="loginAlertBgColor"></Toast>
     </section>
 </template>
 
 <script>
+import {mapState} from 'vuex'
+import Toast from "@/components/toast.vue"
     export default{
         data(){
             return{
@@ -164,11 +163,18 @@
                 },
                 guide:{
                     imgList:['','','','','','']
-
-                }
+                },
                
-                
+                travel:{
+                    travelList:['','','','']
+                },
+                loginAlert:false,
+                loginAlertMsg:"请先登录 !",
+                loginAlertBgColor:"bg-dark position-fixed"
             }
+        }, 
+          components:{
+            Toast
         },
         methods:{
              carouselTask(){
@@ -193,31 +199,48 @@
                  this.axios.get('http://localhost:3001/index/tab'
                 ).then(res=>{
                     this.tab.imgList=res.data;
-
                 })
              },
               loadGuide(){
-                 this.axios.get('http://localhost:3001/index/guide',
+                 this.axios.get('http://localhost:3001/index/guide'
                 ).then(res=>{
                     this.guide.imgList=res.data;
+                     for(var item of this.guide.imgList){
+                        item.img=item.img.split('&')[0];
+                     }
+                     console.log(this.guide.imgList)
                 })
              },
+
+             loadpopTravels(){
+                  this.axios.get("http://127.0.0.1:3001/index/travel").then((res=>{
+                     console.log(res)
+                     this.travel.travelList=res.data;
+                 }))
+             },
+           
+            toAddtravel(){
+                if(this.userMsg){
+                    this.$router.push('/add_travel')
+                }else{
+                    this.loginAlert=true;
+                    setTimeout(()=>{
+                        this.loginAlert=false;
+                    },2000)
+                }
+            }
         },
         created() {
             this.loadCarousel();
             this.carouselTask();
             this. loadTab();
             this.loadGuide();
-            
+            this.loadpopTravels();
         },
-        mounted(){
-          
-    
+        computed: {
+            ...mapState(['userMsg'])
         },
-        destroyed() {
-            
-        },
-
+      
     }
 </script>
 <style>
