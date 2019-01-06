@@ -2,7 +2,7 @@ const express=require("express");
 const router=express.Router();
 const pool=require("../pool");
 
-//测试: http://127.0.0.1:3001/travels/get_travel_details
+//测试: http://23z20z4973.iask.in:50346/travels/get_travel_details
 
 //-------------------------------------------- 获得页面top大图---start-----------------------------------------------------------
 router.get("/top",(req,res)=>{

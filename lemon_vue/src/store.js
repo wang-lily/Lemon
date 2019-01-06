@@ -5,6 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state:{
+        url:"http://23z20z4973.iask.in:50346",
+        // url:"http://127.0.0.1:3001",
         islogin: false,
         userMsg: sessionStorage.getItem('userMsg')?
         JSON.parse(sessionStorage.getItem('userMsg')):null

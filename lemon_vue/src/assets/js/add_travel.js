@@ -35,7 +35,7 @@ function addTravel(){
     }
     // img预加载
     function imgPreview(url,width,height,callback){
-        var imgPreview = `<img src="${url}" style="opacity:0"/>`;
+        var imgPreview = `<img src="${url}" style="opacity:0;max-width:100%;""/>`;
         var img = `<img src="${url}" alt="" style="max-width:100%;"/>`;
         $("#preview").append(imgPreview);
         var imgPreviewWidth = "";
@@ -489,7 +489,10 @@ function addTravel(){
                     // 点确定绘制图片
                     if($(e.target).attr("data-target")==="sure"){
                         observer && observer.disconnect();
-                        var scale = imgObj.imgPreviewWidth.slice(0,-2)/1500;
+                        var imgTemp = new Image();
+                        imgTemp.src = url;
+                        var realWidth = imgTemp.width;
+                        var scale = parseInt(realWidth)/parseInt(imgObj.imgPreviewWidth);
                         scale = (scale>1) ? scale : 1;
                         var width = $("#selected-area")[0].offsetWidth;
                         var height = $("#selected-area")[0].offsetHeight;

@@ -72,7 +72,7 @@
                    
                     <div v-for="i in 3" class="ind" :class="tab.ind==i?'':'hide'">
                         <div class="text-center">
-                            <img src="../assets/background/loading.gif" alt=""> 
+                            <img :src="imgUrl" alt=""> 
                         </div>
                     </div>
                 </div>
@@ -147,10 +147,11 @@
 
 <script>
 import {mapState} from 'vuex'
-import Toast from "@/components/toast.vue"
+import Toast from "@/components/Toast.vue"
     export default{
         data(){
             return{
+                imgUrl:this.$store.state.url+"/img/background/loading.gif",
                carousel:{  
                    carouselList:['','','','',''],
                    timer:null,
@@ -186,7 +187,7 @@ import Toast from "@/components/toast.vue"
                  },4000)
              },
              loadCarousel(){
-                 this.axios.get('http://localhost:3001/index/carousel',{
+                 this.axios.get(this.$store.state.url+'/index/carousel',{
                 params:{num1:1,num2:4,num3:8,num4:17,num5:18}
                 }).then(res=>{
                     this.carousel.carouselList=res.data;
@@ -196,13 +197,13 @@ import Toast from "@/components/toast.vue"
 
              //http://localhost:3001/index/tab
                loadTab(){
-                 this.axios.get('http://localhost:3001/index/tab'
+                 this.axios.get(this.$store.state.url+'/index/tab'
                 ).then(res=>{
                     this.tab.imgList=res.data;
                 })
              },
               loadGuide(){
-                 this.axios.get('http://localhost:3001/index/guide'
+                 this.axios.get(this.$store.state.url+'/index/guide'
                 ).then(res=>{
                     this.guide.imgList=res.data;
                      for(var item of this.guide.imgList){
@@ -213,7 +214,7 @@ import Toast from "@/components/toast.vue"
              },
 
              loadpopTravels(){
-                  this.axios.get("http://127.0.0.1:3001/index/travel").then((res=>{
+                  this.axios.get(this.$store.state.url+"/index/travel").then((res=>{
                      console.log(res)
                      this.travel.travelList=res.data;
                  }))

@@ -12,7 +12,7 @@
               </div>
               <!--logo-->
               <a href="/">
-                  <img id="brand" src="http://127.0.0.1:3001/img/logo/lemon_logo_black.png">
+                  <img id="brand" :src="this.$store.state.url+'/img/logo/lemon_logo_black.png'">
               </a>
               <!--个人中心-->
               <div v-if="this.$store.state.userMsg" class="col col-md-auto order-md-4 position-relative iconfont icon-login1_1 text-right p-md-0 personal" data-trigger="toggle">
@@ -124,7 +124,7 @@
         props:[],//接收来自父子件的数据
         methods:{
             signout(){
-                this.axios.get("http://127.0.0.1:3001/user/signout");
+                this.axios.get(this.$store.state.url+"/user/signout");
                 this.$store.commit("signout");
                 this.$router.push('/index');
             },

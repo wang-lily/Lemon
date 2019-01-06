@@ -21,6 +21,7 @@ console.log("服务器创建成功，端口号3001");
 app.use(bodyParser.json({limit:'50mb'}));
 app.use(bodyParser.urlencoded({limit:'50mb',extended:true}));
 app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/dist"));
 app.use(cors({
     origin:[
         "http://localhost:3001",
@@ -30,7 +31,8 @@ app.use(cors({
         "http://localhost:8080",
         "http://183.67.56.247:3001/",
         "http://183.67.56.247:8080/",
-        "http://localhost:8081"
+        "http://localhost:8081",
+        "http://23z20z4973.iask.in:50346"
     ],
     credentials:true
 }))

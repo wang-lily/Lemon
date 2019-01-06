@@ -135,7 +135,7 @@ export default{
     methods: {
         // 获取详情
         loadStrategyDetails(){
-                    this.axios.get('http://localhost:3001/strategy/getStrategyDetails',
+                    this.axios.get(this.$store.state.url+'/strategy/getStrategyDetails',
                     {params:{pid:this.pid}}).then(res=>{
                          this.StrategyDetails=res.data;
                          for(var item of this.StrategyDetails){

@@ -38,7 +38,7 @@ export default {
     },
     methods: {
         loadTravelBox(obj){
-             this.axios.get("http://127.0.0.1:3001/travels/all_travels",{params:obj}).then((res=>{
+             this.axios.get(this.$store.state.url+"/travels/all_travels",{params:obj}).then((res=>{
                 this.list = res.data.data;
             }))
         },

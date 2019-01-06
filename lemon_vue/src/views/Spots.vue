@@ -158,7 +158,7 @@
                                 <p class="m-0" v-cloak>{{item.spot || item.country}}</p>
                                 <p class="m-0" v-cloak>人气指数：{{item.click_rate}}</p>
                             </div>
-                            <img class="no-shadow" src="http://127.0.0.1:3001/img/tab/hot.png">
+                            <img class="no-shadow" :src="hotImgUrl">
                         </div>
                     </div>
                 </div>
@@ -212,7 +212,8 @@
                     activeItem:null,
                 },
                 spots03:{
-                    imgs:["","","",""]
+                    imgs:["","","",""],
+                    hotImgUrl:this.$store.state.url+'/img/tab/hot.png'
                 }
                 
             }
@@ -220,7 +221,7 @@
         methods:{
             // -------------------------------------轮播方法start------------------------------------------------
             loadCarousel(){
-                this.axios.get(`http://127.0.0.1:3001/spots/carousel`,{params:
+                this.axios.get(this.$store.state.url+`/spots/carousel`,{params:
                     {num1:9, num2:11, num3:14, num4:16}}).then(res=>{
                         this.carousel.Imgs = res.data;
                         // console.log(res.data);
@@ -241,7 +242,7 @@
             // -----------------------------------全部景点start--------------------------------------------------
             loadAllSpotsList(){
                 this.allSpotsList.activeItem = this.allSpotsList.home;
-                this.axios.get("http://127.0.0.1:3001/spots/allSpotsList").then(res=>{
+                this.axios.get(this.$store.state.url+"/spots/allSpotsList").then(res=>{
                     var spotsList = res.data;
                     for(var spot of spotsList){
                         if(spot.country=="中国"){
@@ -316,7 +317,7 @@
                 spotsObj.activeItem = spotsObj.tabs[spotsObj.presentTab];
             },
             loadSpots01Imgs(){
-                this.axios.get("http://127.0.0.1:3001/spots/spots01").then(res=>{
+                this.axios.get(this.$store.state.url+"/spots/spots01").then(res=>{
                     var list = res.data;
                     for(var item of list){
                         if(this.spots01.tabs[item.season].imgsList.length==6){
@@ -327,7 +328,7 @@
                 })
             },
             loadSpots02Imgs(){
-                this.axios.get("http://127.0.0.1:3001/spots/spots02").then(res=>{
+                this.axios.get(this.$store.state.url+"/spots/spots02").then(res=>{
                     // var lgImgs = res.data.lgImgs;
                     // var mdImgs = res.data.mdImgs;
                     for(var i=0; i<5; i++){
@@ -373,7 +374,7 @@
                 })
             },
             loadSpots03Imgs(){
-                this.axios.get("http://127.0.0.1:3001/spots/spots03").then(res=>{
+                this.axios.get(this.$store.state.url+"/spots/spots03").then(res=>{
                     // console.log(res.data);
                     this.spots03.imgs = res.data;
                 })

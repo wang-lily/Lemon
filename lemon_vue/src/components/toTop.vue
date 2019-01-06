@@ -49,7 +49,7 @@ import {toTop} from '../../src/assets/js/index.js'
                     return;
                 }
                 var uid = this.$store.state.userMsg.uid;
-                this.axios.get("http://127.0.0.1:3001/travels/get_zan",{params:{uid:uid,tid:id}}).then((res)=>{
+                this.axios.get(this.$store.state.url+"/travels/get_zan",{params:{uid:uid,tid:id}}).then((res)=>{
                     if(res.data.code==1){
                         this.zan.style=1;
                     }else{
@@ -59,7 +59,7 @@ import {toTop} from '../../src/assets/js/index.js'
             },
             // 上传赞
             postZan(params){
-                this.axios.post("http://127.0.0.1:3001/travels/changZan",{params:params}).then((res)=>{
+                this.axios.post(this.$store.state.url+"/travels/changZan",{params:params}).then((res)=>{
                     if(res.data.code==-1){
                         this.zan.style *= -1;
                         this.zan.total += this.zan.style;
@@ -173,7 +173,7 @@ import {toTop} from '../../src/assets/js/index.js'
     align-items: center;
 }
 .footerBox li>i.text-pink{
-    color:#db0033b5;
+    color:#db0033;
 }
 .footerBox li:hover{
     background: rgba(0, 0, 0, .1);

@@ -86,14 +86,14 @@ export default {
     },
     methods: {
         loadBigImg(){
-            this.axios.get("http://127.0.0.1:3001/travels/top?num=22").then((res)=>{
+            this.axios.get(this.$store.state.url+"/travels/top?num=22").then((res)=>{
                 this.bigImg.lg_url = res.data.lg_url;
                 this.bigImg.md_url = res.data.md_url;
                 this.bigImg.src = res.data.src;
             })
         },
         loadHotTravels(){
-            this.axios.get("http://127.0.0.1:3001/travels/all_travels").then((res)=>{
+            this.axios.get(this.$store.state.url+"/travels/all_travels").then((res)=>{
                 // console.log(res.data);
                 this.pageCount = res.data.pageCount;
             })

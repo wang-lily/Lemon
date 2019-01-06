@@ -96,19 +96,19 @@
         methods: {
             // 大图
               loadCarousel(){
-                  this.axios.get('http://localhost:3001/strategy/bigimg',{params:{num:10}}).then(res=>{
+                  this.axios.get(this.$store.state.url+'/strategy/bigimg',{params:{num:10}}).then(res=>{
                    this.carousel=res.data[0];
                   })
               },
             //   获取排行数据
               loadTab(){
-                   this.axios.get('http://localhost:3001/strategy/tab').then(res=>{
+                   this.axios.get(this.$store.state.url+'/strategy/tab').then(res=>{
                    this.spot=res.data;
                   })
               },
             //   获取分页数据
               loadStrategy(){
-                    this.axios.get('http://localhost:3001/strategy/getStrategy',{params:{pno:this.pno,pageSize:this.pageSize}}).then(res=>{
+                    this.axios.get(this.$store.state.url+'/strategy/getStrategy',{params:{pno:this.pno,pageSize:this.pageSize}}).then(res=>{
                      this.strategyList=res.data.data;
                     //  console.log(res.data);
                     this.pageCount=res.data.pageCount;

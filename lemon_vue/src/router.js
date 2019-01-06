@@ -9,8 +9,8 @@ import Register_Login from './views/Register_Login.vue'
 import Pics from './views/Pics.vue'
 import Strategy from './views/Strategy.vue'
 import Add_travel from './views/Add_travel.vue'
-import Travel_detail from './views/travel_detail.vue'
-import Travels from './views/travels.vue'
+import Travel_detail from './views/Travel_detail.vue'
+import Travels from './views/Travels.vue'
 
 import Strategy_details from './views/Strategy_details.vue'
 

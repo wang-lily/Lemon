@@ -13,7 +13,7 @@
             <div class="row " > 
                      <div class="col-md-2 col-sm-12"> 
                         <a class="col align-self-center text-center" href="#">
-                            <img id="brand" src="../assets/logo/lemon_logo_white.png" >
+                            <img id="brand" :src="this.$store.state.url+'/img/logo/lemon_logo_white.png'" >
                         </a>
                     </div> 
                     <div  class="col-md-7 col-sm-12 text_small text-center ml-4">

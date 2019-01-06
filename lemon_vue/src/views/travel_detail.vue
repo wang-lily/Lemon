@@ -44,7 +44,7 @@
 
 <script>
 import $ from 'jquery';
-import Toast from '@/components/toast.vue';
+import Toast from '@/components/Toast.vue';
 export default {
     data(){
         return {
@@ -73,7 +73,7 @@ export default {
     },
     methods: {
         loadContent(){
-            this.axios.get("http://127.0.0.1:3001/travels/get_travel_details",{params:{tid:this.tid}}).then((res)=>{
+            this.axios.get(this.$store.state.url+"/travels/get_travel_details",{params:{tid:this.tid}}).then((res)=>{
                 if(res.data && res.data.code==1){
                     console.log(res.data);
                     this.zanTotal = res.data.details.zan;
@@ -90,7 +90,7 @@ export default {
             })
         },
         getComments(){
-            this.axios.get("http://127.0.0.1:3001/travels/get_comments",{params:{tid:this.tid}}).then((res)=>{
+            this.axios.get(this.$store.state.url+"/travels/get_comments",{params:{tid:this.tid}}).then((res)=>{
                 console.log(res.data);
             })
         },
@@ -124,7 +124,7 @@ export default {
                 },1000)
                 return;
             }
-            this.axios.post("http://127.0.0.1:3001/travels/add_comment",{
+            this.axios.post(this.$store.state.url+"/travels/add_comment",{
                 txt:this.myComment,
                 uid:this.$store.state.userMsg ? this.$store.state.userMsg.uid : 0,
                 tid:this.tid

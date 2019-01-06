@@ -171,7 +171,7 @@
             myTravel(){
                this.staticSty.ifShow=this.staticSty.ifShow?false:true;
                this.staticSty.ind=0;
-               this.axios.get("http://127.0.0.1:3001/personal/getOwntravel",
+               this.axios.get(this.$store.state.url+"/personal/getOwntravel",
                 {params:{uid:this.$store.state.userMsg.uid}}).then(res=>{
                    this.myTravelList=res.data;
                    // console.log(res)
@@ -193,7 +193,7 @@
             },
            //基本信息修改
            getInfo(){
-                 this.axios.get("http://127.0.0.1:3001/personal/getinfo",
+                 this.axios.get(this.$store.state.url+"/personal/getinfo",
                 {params:{uid:this.$store.state.userMsg.uid}}).then(res=>{
                 //记录原始值看是否被改变    
                 this.info.originInfoList.uname=res.data[0].uname;
@@ -244,7 +244,7 @@
 
                      if((!this.unameAck.flag)&&(!(this.info.infoList.uname=== this.info.originInfoList.uname))){
                         //查询昵称是否被占用
-                        this.axios.get("http://127.0.0.1:3001/personal/ackuname",
+                        this.axios.get(this.$store.state.url+"/personal/ackuname",
                         {params:{uname:this.info.infoList.uname}}).then(res=>{
                                 if(res.data.code==1){
                                     this.unameAck.tip=res.data.msg;
@@ -277,7 +277,7 @@
                   }
                   if(!this.phoneAck.flag&&(!(this.info.infoList.phone=== this.info.originInfoList.phone))){
                        //查询手机是否被占用
-                        this.axios.get("http://127.0.0.1:3001/personal/ackphone",
+                        this.axios.get(this.$store.state.url+"/personal/ackphone",
                         {params:{phone:this.info.infoList.phone}}).then(res=>{
                                 if(res.data.code==1){
                                     this.phoneAck.tip=res.data.msg;
@@ -306,7 +306,7 @@
                   }
                     if(!this.emailAck.flag&&(!(this.info.infoList.email=== this.info.originInfoList.email))){ 
                         //查询邮箱是否被占用
-                        this.axios.get("http://127.0.0.1:3001/personal/ackemail",
+                        this.axios.get(this.$store.state.url+"/personal/ackemail",
                         {params:{email:this.info.infoList.email}}).then(res=>{
                                 if(res.data.code==1){
                                     this.emailAck.tip=res.data.msg;
@@ -331,7 +331,7 @@
                  if(this.ackAllFlag){
                       this.axios({
                           method:'post',
-                          url:"http://127.0.0.1:3001/personal/submitInfo",
+                          url:this.$store.state.url+"/personal/submitInfo",
                           data:{
                                uid:this.$store.state.userMsg.uid,
                                uname:this.info.infoList.uname,
@@ -382,7 +382,7 @@
                   if(this.pwdAckAllFlag){
                       this.axios({
                           method:'post',
-                          url:"http://127.0.0.1:3001/personal/modifyPwd",
+                          url:this.$store.state.url+"/personal/modifyPwd",
                           data:{
                                uid:this.$store.state.userMsg.uid,
                                upwd:this.newPwd,

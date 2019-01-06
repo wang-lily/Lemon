@@ -194,7 +194,7 @@ import autosize from "autosize"
         },
         methods:{
             loadTopImg(){
-                this.axios.get("http://127.0.0.1:3001/add_travel/top?num=8").then(res=>{
+                this.axios.get(this.$store.state.url+"/add_travel/top?num=8").then(res=>{
                     this.topImg.lg_url = res.data.lg_url;
                     this.topImg.md_url = res.data.md_url;
                     this.topImg.src = res.data.src;
@@ -297,7 +297,7 @@ import autosize from "autosize"
 
                 $.ajax({
                     type:"post",
-                    url:"http://127.0.0.1:3001/add_travel/submit_text",
+                    url:this.$store.state.url+"/add_travel/submit_text",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     data:JSON.stringify(submitObj),

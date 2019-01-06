@@ -1,5 +1,5 @@
 body section.pics{
-  background: url(../background/bg-pics.png) no-repeat fixed;
+  background: url("http://23z20z4973.iask.in:50346/img/background/bg-pics.png") no-repeat fixed;
   background-size: cover; }
 
 .pics .pics_wall {

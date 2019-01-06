@@ -2,7 +2,8 @@
       <section class="container-fulid mt-5 pt-5 pics">
         <div class="container pics_wall pr-0">
            <div class="title position-relative">
-               <img src="../assets/background/title.png">
+               <img :src="imgUrl">
+               <!-- <img src=""> -->
                 <span class="position-absolute">欢迎来到柠檬的宝藏库！<span class="curYear">2018</span></span>
            </div>  
            <div class="masonry w-100 ">
@@ -19,13 +20,14 @@ import {init} from '../../src/assets/js/pics.js'
     export default{
         data(){
             return{
+                  imgUrl:this.$store.state.url+"/img/background/title.png",
                   imgList:[],
                   bigList:[],
                   midList:[]
             }
         },
          created() {
-            this.axios.get('http://localhost:3001/pics/pics'
+            this.axios.get(this.$store.state.url+'/pics/pics'
                 ).then(res=>{
                     this.imgList=res.data;
                    var len=this.imgList.length;

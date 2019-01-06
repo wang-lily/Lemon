@@ -132,7 +132,7 @@
                     this.registerForm.userVerifyStyle = "border-danger";
                     return;
                 }
-                this.axios.get("http://127.0.0.1:3001/user",{params:{user:this.registerForm.user}}).then(res=>{
+                this.axios.get(this.$store.state.url+"/user",{params:{user:this.registerForm.user}}).then(res=>{
                     if(res.data.code==1){
                         this.registerForm.alert.msg.user = "您输入的手机号或者邮箱已被使用！";
                         this.registerForm.alert.show = true;
@@ -194,7 +194,7 @@
                     }
                 }
                 if(this.registerForm.userVerifyStyle == "border-success" && this.registerForm.upwdVerifyStyle == "border-success" && this.registerForm.againUpwdVerifyStyle == "border-success" && this.registerForm.checked){
-                    this.axios.post("http://127.0.0.1:3001/user/register",`user=${this.registerForm.user}&upwd=${this.registerForm.upwd}`).then(res=>{
+                    this.axios.post(this.$store.state.url+"/user/register",`user=${this.registerForm.user}&upwd=${this.registerForm.upwd}`).then(res=>{
                         if(res && res.data && res.data.code===1){
                             this.loginForm.alert.show = true;
                             this.loginForm.alert.style = "text-info";
@@ -244,7 +244,7 @@
                     this.loginForm.alert.msg = "请输入密码！";
                     return;
                 }
-                this.axios.post("http://127.0.0.1:3001/user/login",`user=${this.loginForm.user}&upwd=${this.loginForm.upwd}`).then(res=>{
+                this.axios.post(this.$store.state.url+"/user/login",`user=${this.loginForm.user}&upwd=${this.loginForm.upwd}`).then(res=>{
                     if(res && res.data){
                         if(res.data.code===-1){
                         this.loginForm.alert.show = true;
