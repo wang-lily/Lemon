@@ -35,6 +35,7 @@ function addTravel(){
     }
     // img预加载
     function imgPreview(url,width,height,callback){
+        console.log("图片预览")
         var imgPreview = `<img src="${url}" style="opacity:0;max-width:100%;""/>`;
         var img = `<img src="${url}" alt="" style="max-width:100%;"/>`;
         $("#preview").append(imgPreview);
@@ -200,7 +201,6 @@ function addTravel(){
         $(this).toggleClass("icon-arrow_l").toggleClass("icon-arrow-r").parent().next().toggleClass("spread");
     })
     $("#fileImg").change(function(){
-        // var fileImg = this;
         if(this.files.length==1){
             var url = window.URL.createObjectURL(this.files[0]);
             var keyWords = "图片";
@@ -216,10 +216,10 @@ function addTravel(){
                         var img = this.files[0];
                         var formData = new FormData();
                         formData.append("fileImg", img); 
-                        //上传video到服务器
+                        //上传img到服务器
                         $.ajax({
                             type:"post",
-                            url:"http://localhost:3001/add_travel/upload_img",
+                            url:"http://23z20z4973.iask.in:50346/add_travel/upload_img",
                             data: formData,
                             contentType: false,//必须false才会自动加上正确的Content-Type
                             processData: false,//必须false才会避开jQuery对 formdata 的默认处理 XMLHttpRequest会对 formdata 进行正确的处理
@@ -299,7 +299,7 @@ function addTravel(){
             //上传video到服务器
             $.ajax({
                 type:"post",
-                url:"http://localhost:3001/add_travel/upload_video",
+                url:"http://23z20z4973.iask.in:50346/add_travel/upload_video",
                 data: formData,
                 contentType: false,//必须false才会自动加上正确的Content-Type
                 processData: false,//必须false才会避开jQuery对 formdata 的默认处理 XMLHttpRequest会对 formdata 进行正确的处理
@@ -510,7 +510,7 @@ function addTravel(){
                         src = src.replace(/\+/g,"%2B");
                         $.ajax({
                             type:"post",
-                            url:"http://127.0.0.1:3001/add_travel/add_img",
+                            url:"http://23z20z4973.iask.in:50346/add_travel/add_img",
                             data:"img=" + src,
                             success:function(res){
                                 // console.log(res);

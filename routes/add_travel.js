@@ -15,6 +15,7 @@ var upload = multer({dest:"public/upload/"});
 //mypic           指定上传文件表单 name="mypic"
 router.post("/upload_video",upload.single("fileVideo"),
 (req,res)=>{
+  console.log(req);
  //5:获取上传文件大小  拒绝超过20MB文件 (字节)
  var size = req.file.size/1000/1000;
  if(size > 20){
