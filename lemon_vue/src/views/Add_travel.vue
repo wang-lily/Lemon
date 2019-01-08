@@ -160,7 +160,7 @@
             <div class="load-img position-absolute" > 
                 <div class="position-relative">
                     <img class="img-box" src="">
-                    <div id="selected-area" class="position-absolute"></div>
+                    <div id="selected-area"></div>
                     <canvas id="my-canvas" ></canvas>
                 </div> 
                 <div class="d-flex justify-content-center mt-3" data-target="btn">

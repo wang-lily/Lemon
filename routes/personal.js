@@ -86,7 +86,7 @@ router.post('/submitInfo',bodyParser.json(),(req,res)=>{
     _sex = req.body.sex,
     _email = req.body.email,
     _profile = req.body.profile;
-    console.log(_uid,_uname,_phone,_sex,_email,_profile);
+    // console.log(_uid,_uname,_phone,_sex,_email,_profile);
     var sql=`UPDATE user SET uname=?,phone=?,sex=?,email=?,profile=?
     WHERE uid=?`;
     pool.query(sql,[_uname,_phone,_sex,_email,_profile,_uid],(err,result)=>{
