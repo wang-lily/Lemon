@@ -32,7 +32,7 @@ app.use(cors({
         "http://183.67.56.247:3001/",
         "http://183.67.56.247:8080/",
         "http://localhost:8081",
-        "http://23z20z4973.iask.in:50346"
+        "http://172.81.238.103:3001"
     ],
     credentials:true
 }))

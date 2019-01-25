@@ -219,7 +219,7 @@ function addTravel(){
                         //上传img到服务器
                         $.ajax({
                             type:"post",
-                            url:"http://23z20z4973.iask.in:50346/add_travel/upload_img",
+                            url:"http://172.81.238.103:3001/add_travel/upload_img",
                             data: formData,
                             contentType: false,//必须false才会自动加上正确的Content-Type
                             processData: false,//必须false才会避开jQuery对 formdata 的默认处理 XMLHttpRequest会对 formdata 进行正确的处理
@@ -299,7 +299,7 @@ function addTravel(){
             //上传video到服务器
             $.ajax({
                 type:"post",
-                url:"http://23z20z4973.iask.in:50346/add_travel/upload_video",
+                url:"http://172.81.238.103:3001/add_travel/upload_video",
                 data: formData,
                 contentType: false,//必须false才会自动加上正确的Content-Type
                 processData: false,//必须false才会避开jQuery对 formdata 的默认处理 XMLHttpRequest会对 formdata 进行正确的处理
@@ -510,7 +510,7 @@ function addTravel(){
                         src = src.replace(/\+/g,"%2B");
                         $.ajax({
                             type:"post",
-                            url:"http://23z20z4973.iask.in:50346/add_travel/add_img",
+                            url:"http://172.81.238.103:3001/add_travel/add_img",
                             data:"img=" + src,
                             success:function(res){
                                 // console.log(res);

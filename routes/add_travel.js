@@ -37,7 +37,7 @@ router.post("/upload_video",upload.single("fileVideo"),
  var i3 = src.lastIndexOf(".");
  var suff = src.substring(i3,src.length);
  var des = "./public/upload/"+fTime+fRand+suff;
- var url = "http://23z20z4973.iask.in:50346/upload/"+fTime+fRand+suff;
+ var url = "http://172.81.238.103:3001/upload/"+fTime+fRand+suff;
  //8:将临时文件移动upload目录下
  fs.renameSync(req.file.path,des);
  //9:返回上传成功信息
@@ -65,7 +65,7 @@ router.post("/add_img",(req,res)=>{
   var data = req.body.img;
   var imgName = Date.now() + ".png";
   var path = 'public/upload/'+ imgName;//相对路径
-  var url = "http://23z20z4973.iask.in:50346/upload/" + imgName;//绝对路径
+  var url = "http://172.81.238.103:3001/upload/" + imgName;//绝对路径
   var base64 = data.replace(/^data:image\/\w+;base64,/, "");//去掉图片base64码前面部分data:image/png;base64
   var dataBuffer = new Buffer(base64, 'base64'); //把base64码转成buffer对象，
   fs.writeFile(path,dataBuffer,function(err){//用fs写入文件
@@ -106,7 +106,7 @@ router.post("/upload_img",upload.single("fileImg"),
  var i3 = src.lastIndexOf(".");
  var suff = src.substring(i3,src.length);
  var des = "./public/upload/"+fTime+fRand+suff;
- var url = "http://23z20z4973.iask.in:50346/upload/"+fTime+fRand+suff;
+ var url = "http://172.81.238.103:3001/upload/"+fTime+fRand+suff;
  //8:将临时文件移动upload目录下
  fs.renameSync(req.file.path,des);
  //9:返回上传成功信息
